@@ -93,7 +93,7 @@ body, html{
 .resume span {
     font-family: 'Roboto', sans-serif;
 	position: absolute;
-    margin-top: 5px;
+    margin-top: 18px;
     border-top: solid #F5F5F5 1px;
     border-bottom: solid #F5F5F5 1px;
     border-radius: 5px;
@@ -130,7 +130,7 @@ body, html{
 
 .about-container{
     text-align: justify;
-    margin-top: 150px;
+    margin-top: 120px !important;
 }
 
 .about-me{
@@ -143,8 +143,7 @@ body, html{
     color: rgb(190, 190, 190);
     font-size: 11em;
     font-weight: 700;
-    opacity: 0.1;
-    max-width: fit-content;
+    opacity: 0.2;
 }
 
 .about-me h2{
@@ -156,6 +155,7 @@ body, html{
     font-weight: 500;
     color: #FFF;
     position: absolute;
+    text-shadow: 0 0 15px #000;
 }
 
 .about-me p {
@@ -170,11 +170,72 @@ body, html{
 .about-me-img img{
     margin-top: 120px;
     float: left;
-    width: 100%;
+    width: 80%;
+}
+
+/* ============================== Skills ============================== */
+
+
+.skills-container{
+    margin-top: 150px !important;
+}
+
+.skills{
+    float: left;
+}
+
+.skills h1{
+    position: absolute;
+    color: rgb(190, 190, 190);
+    font-size: 11em;
+    font-weight: 700;
+    opacity: 0.6;
 }
 
 
-/* ============================== Skills ============================== */
+/* .progress{
+    height: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 0.6rem;
+    background-color: #F3F4F6;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
+} */
+
+.skills-img img{
+    margin-top: 120px;
+    float: right;
+    width: 90%;
+}
+
+.skillset{
+    margin-top: 18rem;
+}
+
+.skillset h2{
+    color: #F5F5F5;
+    font-size: 1.2em;
+}
+
+.individual-skill{
+    margin-top: 2rem;
+}
+
+.progress{
+    width: 90%;
+    height: 5px !important;
+}
+
+.progress-bar{
+    height: 5px;
+    background-color: #3aaf85 !important;
+}
+
+
+
+/* ============================== Marquee ============================== */
 
 
 :root {
@@ -231,6 +292,10 @@ body, html{
 
 
 
+
+  
+/* ============================== Media Frames ============================== */
+
   
 @media only screen and (min-width: 960px) {
     /* styles for browsers larger than 960px; */
@@ -244,10 +309,9 @@ body, html{
 @media only screen and (max-width: 580px) {
    /* styles for mobile browsers smaller than 580px; (iPhone) */
 
-.about-me h1{
+.h1-head h1{
     font-size: 8.5em;
     font-weight: 700;
-    opacity: 0.1;
 }
 
 .about-me h2{
