@@ -6,7 +6,7 @@ body, html{
     font-family: 'Roboto', sans-serif;
 }
 
-/* ========== Particle.JS ========== */
+/* ============================== Particle.JS ============================== */
 
 #particles-js{
     position: relative;
@@ -18,18 +18,10 @@ body, html{
 .name-head{
     padding: 20px;
     position: absolute;
-    /* display: inline-block; */
     top: 55%;
     left: 10%;
 }
 
-/* .iam-border{
-    position: absolute;
-    margin-left: 5px;
-    width: 500px;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.226);
-    border-width: 35px;
-} */
 
 .iam{
     display: flex;
@@ -37,9 +29,8 @@ body, html{
 
 .iam-border{
     margin-left: 20px;
-    /* margin-bottom: 30px; */
     margin-top: 14px;
-    width: 450px;
+    width: 100%;
     border-top: white solid;
 }
 
@@ -108,12 +99,8 @@ body, html{
     border-radius: 5px;
 	color: #F5F5F5;
     font-size: 0.8em;
-    /* font-size: 10px; */
     padding: 2px 6px 2px;
-	/* letter-spacing: 1px; */
 	transition: all ease 0.7s;
-	/* -webkit-transition: all ease 0.7s;
-	-moz-transition: all ease 0.7s; */
 }
 
 
@@ -122,7 +109,7 @@ body, html{
 	color: #000;
 }
 
-/* ========== scrollbar ========== */
+/* ============================== scrollbar ============================== */
 
 ::-webkit-scrollbar {
 	height: 5px; 
@@ -139,7 +126,7 @@ body, html{
 	background-color:#F5F5F5;
 }
 
-/* ========== About Me ========== */
+/* ============================== About Me ============================== */
 
 .about-container{
     text-align: justify;
@@ -147,15 +134,17 @@ body, html{
 }
 
 .about-me{
+    display: flex;
     float: right;
 }
 
 .about-me h1{
-    position:absolute;
+    position: absolute;
     color: rgb(190, 190, 190);
     font-size: 11em;
     font-weight: 700;
     opacity: 0.1;
+    max-width: fit-content;
 }
 
 .about-me h2{
@@ -171,6 +160,7 @@ body, html{
 
 .about-me p {
     font-family: 'Roboto', sans-serif;
+    /* position: absolute; */
     margin-top: 250px;
     color: #EEEEEE;
     padding: 10px;
@@ -180,13 +170,112 @@ body, html{
 .about-me-img img{
     margin-top: 120px;
     float: left;
-    width: 45%;
+    width: 100%;
+}
+
+
+/* ============================== Skills ============================== */
+
+
+:root {
+    --marquee-width: 80vw;
+    --marquee-height: 20vh;
+    --marquee-elements-displayed: 5;
+    --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+    --marquee-animation-duration: calc(var(--marquee-elements) * 7s);
+  }
+  
+  .marquee {
+    width: var(--marquee-width);
+    height: var(--marquee-height);
+    color: rgb(190, 190, 190);
+    opacity: 0.5;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .marquee:before, .marquee:after {
+    position: absolute;
+    top: 0;
+    width: 10rem;
+    height: 100%;
+    content: "";
+    z-index: 1;
+  }
+
+  .marquee-content {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    animation: scrolling var(--marquee-animation-duration) linear infinite;
+  }
+  /* .marquee-content:hover {
+    animation-play-state: paused;
+  } */
+  @keyframes scrolling {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+  }
+  .marquee-content li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: var(--marquee-element-width);
+    max-height: 100%;
+    font-size: calc(var(--marquee-height)*1.5/5); /* 5rem; */
+    white-space: nowrap;
+  }
+
+
+
+
+
+  
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+}
+@media only screen and (min-width: 1440px) {
+    /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width: 2000px) {
+    /* for sumo sized (mac) screens */
+}
+@media only screen and (max-width: 580px) {
+   /* styles for mobile browsers smaller than 580px; (iPhone) */
+
+.about-me h1{
+    font-size: 8.5em;
+    font-weight: 700;
+    opacity: 0.1;
+}
+
+.about-me h2{
+    margin-top: 100px;
+    margin-left: 150px;
+    font-size: 1em;
+}
+
+:root {
+    --marquee-width: 100vw;
+    --marquee-height: 16vh;
+    --marquee-elements-displayed: 3;
+  }
+  .marquee:before, .marquee:after { width: 5rem; }
+
+
+}
+@media only screen and (device-width: 768px) {
+   /* default iPad screens */
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
 }
 
 
 
-/* @font-face {
-    font-family: 'abc';
-    src: local('Abc'),
-         url('../static/fonts/abc.ttf') format("truetype");
-  } */
