@@ -140,7 +140,7 @@ body, html{
 
 .about-me h1{
     position: absolute;
-    color: rgb(190, 190, 190);
+    color: #FFD717;
     font-size: 11em;
     font-weight: 700;
     opacity: 0.2;
@@ -166,11 +166,10 @@ body, html{
     padding: 10px;
 }
 
-
 .about-me-img img{
     margin-top: 120px;
     float: left;
-    width: 80%;
+    width: 90%;
 }
 
 /* ============================== Skills ============================== */
@@ -186,10 +185,10 @@ body, html{
 
 .skills h1{
     position: absolute;
-    color: rgb(190, 190, 190);
+    color: #FF6701;
     font-size: 11em;
     font-weight: 700;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 
@@ -234,6 +233,27 @@ body, html{
 }
 
 
+/* ============================== Blogs ============================== */
+.blogs-container{
+    margin-top: 150px !important;
+}
+
+.blogs-container h1{
+    text-align: center;
+    color: #A7FF83;
+    font-size: 11em;
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 100px;
+}
+
+.blog-list{
+    border: solid white 1px;
+    padding: 15px;
+    margin-top: 80px;
+    margin: 50px;
+    border-radius: 10px;
+}
 
 /* ============================== Marquee ============================== */
 
@@ -312,6 +332,7 @@ body, html{
 .h1-head h1{
     font-size: 8.5em;
     font-weight: 700;
+    text-align: center;
 }
 
 .about-me h2{
