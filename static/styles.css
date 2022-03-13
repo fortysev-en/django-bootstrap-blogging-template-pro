@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Staatliches&display=swap');
+
+body, html{
+    background-color: #1B1A17 !important;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ========== Particle.JS ========== */
+
+#particles-js{
+    position: relative;
+    background-color: #1B1A17;
+    width: 100%;
+    height: 100vh;
+}
+
+.name-head{
+    padding: 20px;
+    position: absolute;
+    /* display: inline-block; */
+    top: 55%;
+    left: 10%;
+}
+
+/* .iam-border{
+    position: absolute;
+    margin-left: 5px;
+    width: 500px;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.226);
+    border-width: 35px;
+} */
+
+.iam{
+    display: flex;
+}
+
+.iam-border{
+    margin-left: 20px;
+    /* margin-bottom: 30px; */
+    margin-top: 14px;
+    width: 450px;
+    border-top: white solid;
+}
+
+.particle h1{
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 10px;
+    color: #85F4FF;
+    text-shadow: rgb(0, 0, 0) 0px 0px 30px;
+    position: relative;
+    font-size:4em;
+    font-weight:900;
+}
+
+.particle h2{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 5px;
+    color: #F5F5F5;
+    position: relative;
+    font-size:1.5em;
+}
+
+.icon-list {
+    position: absolute;
+    top: 25%;
+    right: 2%;
+}
+
+.icon-list ul{
+    list-style-type: none;
+    line-height: 3;
+}
+
+.icon-list a{
+    font-size: 26px;
+    color: #FFF;
+    transition: all 0.5s ease 0s;
+}
+
+.icon-list a:hover{
+    color: rgb(151, 151, 151);
+}
+
+.typed-cursor {
+    opacity: 1;
+    animation: blink .7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.resume span {
+    font-family: 'Roboto', sans-serif;
+	position: absolute;
+    margin-top: 5px;
+    border-top: solid #F5F5F5 1px;
+    border-bottom: solid #F5F5F5 1px;
+    border-radius: 5px;
+	color: #F5F5F5;
+    font-size: 0.8em;
+    /* font-size: 10px; */
+    padding: 2px 6px 2px;
+	/* letter-spacing: 1px; */
+	transition: all ease 0.7s;
+	/* -webkit-transition: all ease 0.7s;
+	-moz-transition: all ease 0.7s; */
+}
+
+
+.resume span:hover {
+	background-color: #BBE1FA;
+	color: #000;
+}
+
+/* ========== scrollbar ========== */
+
+::-webkit-scrollbar {
+	height: 5px; 
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+	height: 80px;
+	background-color:#F5F5F5;
+}
+
+/* ========== About Me ========== */
+
+.about-container{
+    text-align: justify;
+    margin-top: 150px;
+}
+
+.about-me{
+    float: right;
+}
+
+.about-me h1{
+    position:absolute;
+    color: rgb(190, 190, 190);
+    font-size: 11em;
+    font-weight: 700;
+    opacity: 0.1;
+}
+
+.about-me h2{
+    font-family: 'Roboto', sans-serif;
+    margin-top: 120px;
+    margin-left: 160px;
+    letter-spacing: 2px;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #FFF;
+    position: absolute;
+}
+
+.about-me p {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 250px;
+    color: #EEEEEE;
+    padding: 10px;
+}
+
+
+.about-me-img img{
+    margin-top: 120px;
+    float: left;
+    width: 45%;
+}
+
+
+
+/* @font-face {
+    font-family: 'abc';
+    src: local('Abc'),
+         url('../static/fonts/abc.ttf') format("truetype");
+  } */
