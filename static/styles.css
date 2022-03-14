@@ -233,28 +233,6 @@ body, html{
 }
 
 
-/* ============================== Blogs ============================== */
-.blogs-container{
-    margin-top: 150px !important;
-}
-
-.blogs-container h1{
-    text-align: center;
-    color: #A7FF83;
-    font-size: 11em;
-    font-weight: 700;
-    opacity: 0.7;
-    margin-bottom: 100px;
-}
-
-.blog-list{
-    border: solid white 1px;
-    padding: 15px;
-    margin-top: 80px;
-    margin: 50px;
-    border-radius: 10px;
-}
-
 /* ============================== Marquee ============================== */
 
 
@@ -309,7 +287,200 @@ body, html{
   }
 
 
+/* ============================== Timeline ============================== */
 
+.bg-timeline-head h1{
+    padding: 20px;
+    margin: 50px;
+    position: absolute;
+    color: #4e4e4e;
+    font-size: 15em;
+    font-weight: 700;
+    opacity: 0.2;
+    transform: translateX(-100%) rotate(-90deg);
+    transform-origin: right;
+    left: 10%;
+}
+
+.container-timeline {
+    margin-top: 18em;
+    margin-bottom: 200px;
+}
+
+.timeline-bg {
+    color: #c7c7c7;
+    height: 100%; 
+}
+  
+.circle-txt {
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #d8d8d8;
+    color: #000;
+    max-height: 50px;
+    z-index: 2; 
+}
+
+.individual-timeline-data{
+    margin: 50px 0px 50px !important;
+}
+
+.individual-timeline-data span{
+    display: block;
+    color: #6d6d6d;
+    font-size: 0.9em;
+}
+
+.individual-timeline-data h4{
+    margin: 3px 0px 5px;
+    color: #FF9704;
+}
+
+.individual-timeline-data h6{
+    font-size: 0.9em;
+    color: white;
+}
+
+.individual-timeline-data a{
+    font-weight: 500;
+    color: #4e4e4e;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+
+.individual-timeline-data a:hover{
+    color: white;
+}
+
+.how-it-works.row .line{
+    border-left: 3px solid #d8d8d8;
+    height: calc(100% / 3);
+    top: 35%;
+    position: relative;
+    }
+  
+.how-it-works.row {
+    display: flex; 
+}
+
+.how-it-works.row .col-2 {
+    display: inline-flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center; 
+}
+
+.how-it-works.row .col-2::after {
+    content: '';
+    position: relative;
+    border-left: 3px solid #d8d8d8;
+    z-index: 1; }
+
+.how-it-works.row .col-2.bottom::after {
+  height: 50%;
+  left: calc(0% + -1px);
+  top: 25%; }
+
+.how-it-works.row .col-2.full::after {
+  height: 100%;
+  left: 0%; }
+
+.how-it-works.row .col-2.top::after {
+  height: 100%;
+  left: calc(0% + -1px);
+  top: 0%; }
+
+.how-it-works.row .col-2.final-top::after {
+    height: 50%;
+    left: calc(0% + -1px);
+    top: -25%; }
+
+/* .how-it-works.row .line{
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 200px;
+    height: 150px;
+    border-left: 3px solid #d8d8d8;
+} */
+
+.timeline div {
+    padding: 0;
+    height: 40px; 
+}
+  
+.timeline hr {
+    border-top: 3px solid #d8d8d8;
+    margin: 0;
+    top: 17px;
+    opacity: 1;
+    position: relative; 
+}
+
+.text-center hr {
+    border-top: 3px solid #d8d8d8;
+    transform: translateX(-100%) rotate(-90deg);
+    transform-origin: right;
+    opacity: 1;
+    position: relative; 
+}
+  
+.timeline .col-2 {
+    display: flex;
+    overflow: hidden; 
+}
+  
+.timeline .corner {
+    border: 3px solid #d8d8d8;
+    width: 100%;
+    position: relative;
+    border-radius: 15px; 
+}
+  
+.timeline .top-right {
+    left: 49%;
+    top: -50%; 
+}
+  
+.timeline .left-bottom {
+    left: -49%;
+    top: calc(50% - 3px); 
+}
+  
+.timeline .top-left {
+    left: -49%;
+    top: -50%; 
+}
+  
+.timeline .right-bottom {
+    left: 49%;
+    top: calc(50% - 3px); 
+}
+
+
+
+/* ============================== Blogs ============================== */
+.blogs-container{
+    margin-top: 150px !important;
+}
+
+.blogs-container h1{
+    text-align: center;
+    color: #A7FF83;
+    font-size: 11em;
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 100px;
+}
+
+.blog-list{
+    border: solid white 1px;
+    padding: 15px;
+    margin-top: 80px;
+    margin: 50px;
+    border-radius: 10px;
+}
 
 
 
