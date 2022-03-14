@@ -290,6 +290,7 @@ body, html{
 /* ============================== Timeline ============================== */
 
 .bg-timeline-head h1{
+    white-space: nowrap;
     padding: 20px;
     margin: 50px;
     position: absolute;
