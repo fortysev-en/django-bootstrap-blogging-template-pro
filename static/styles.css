@@ -7,12 +7,105 @@ body, html{
 }
 
 /* ============================== Particle.JS ============================== */
+.heart-button {
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 
+.heart .heart-flip, .heart-button .heart-flip {
+    --base: 12px;
+    --duration: 0.6s;
+    --active: #ea4673;
+    --inactive: #d1d6ee;
+    width: var(--base);
+    height: calc(var(--base) + var(--base) / 2);
+    border-radius: calc(var(--base) / 2) calc(var(--base) / 2) 0 0;
+    position: relative;
+    transform-origin: 50% 66.66%;
+    transform-style: preserve-3d;
+    transform: rotate(var(--rotate, -45deg));
+    transition: background var(--duration), transform var(--duration) ease;
+    background: var(--heart-background, var(--inactive));
+  }
+
+.heart .heart-flip:before, .heart-button .heart-flip:before, .heart .heart-flip:after, .heart-button .heart-flip:after {
+    content: '';
+    width: calc(var(--base) / 2);
+    height: var(--base);
+    border-radius: var(--pseudo-border-radius, calc(var(--base) / 2) 0 0 calc(var(--base) / 2));
+    position: absolute;
+    left: var(--pseudo-left, -50%);
+    transform-origin: var(--pseudo-origin, 100%) 50%;
+    bottom: 0;
+    background: var(--heart-background, var(--inactive));
+    filter: brightness(var(--pseudo-filter, 50%));
+    transform: translateX(1%) rotateY(var(--pseudo-rotate, 90deg)) translateZ(0);
+    transition: background var(--duration), transform var(--duration) ease, filter var(--duration);
+  }
+
+.heart .heart-flip:after, .heart-button .heart-flip:after {
+    --pseudo-border-radius: 0 calc(var(--base) / 2) calc(var(--base) / 2) 0;
+    --pseudo-left: 100%;
+    --pseudo-origin: 0;
+    filter: brightness(var(--pseudo-filter-second, 100%));
+    transform: translateX(-1%) rotateY(var(--pseudo-rotate-second, 0deg)) translateZ(0);
+  }
+
+.heart.active .heart-flip, .heart-button.active .heart-flip {
+    --rotate: 45deg;
+    --pseudo-filter: 100%;
+    --pseudo-filter-second: 50%;
+    --pseudo-rotate: 0deg;
+    --pseudo-rotate-second: 90deg;
+    --heart-background: var(--active);
+  }
+
+.heart {
+    background: none;
+    border: none;
+    padding: 0;
+    transform: scale(var(--button-scale, 1)) translateZ(0);
+    transition: transform 0.2s;
+  }
+
+.heart:active {
+    --button-scale: 0.95;
+  }
+
+.heart{
+    position: absolute;
+    bottom: 21%;
+    left: 20px;
+  }
+  
 #particles-js{
     position: relative;
     background-color: #1B1A17;
     width: 100%;
     height: 100vh;
+}
+
+/* .btn-like a{
+    color: red;
+    position: absolute;
+    float: left;
+    left: 2px;
+    bottom: 18%;
+    font-size: 1.2em;
+    padding: 5px;
+    margin-left: 10px;
+} */
+
+.txt-like h6{
+    position: absolute;
+    left: 25px;
+    bottom: 15%;
+    padding: 5px;
+    color: white;
+    transform: translateX(-100%) rotate(-90deg);
+    transform-origin: right;
 }
 
 .name-head{

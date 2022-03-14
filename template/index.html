@@ -26,6 +26,14 @@
 
 <body>
   <div class="particle" id="particles-js">
+    <div class="txt-like"><h6>DROP A HEART</h6></div>
+    <button class="heart">
+      <div class="heart-flip"></div>
+      <script>
+        document.querySelectorAll('.heart, .heart-button').forEach(button => button.addEventListener('click', e => button.classList.toggle('active')));
+      </script>
+  </button>
+    <!-- <div class="btn-like"><a href=""><i class="bi bi-heart"></i></a></div> -->
     <div class="icon-list">
       <ul>
         <li><a href=""><i class="bi bi-linkedin"></i></a></li>
@@ -322,6 +330,7 @@
           </p>
         </div>
       </div>
+
 
       <!--right to left-->
       <div class="row timeline">
