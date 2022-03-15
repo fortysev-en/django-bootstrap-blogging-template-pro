@@ -613,7 +613,7 @@ html {
     text-align: justify;
     /* border: solid white 2px; */
     /* border-radius: 10px; */
-    padding: 10px;
+    padding: 20px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -669,7 +669,37 @@ html {
     margin-left: 5px;
 }
 
-  
+/* ============================== Contact ============================== */
+
+.contact-bg{
+    margin-top: 150px;
+    padding-top: 60px;
+}
+
+.contact-bg .contact-head h4{
+    color: white;
+}
+
+.get-in-touch{
+    text-align: left;
+}
+
+.leave-me-a-message{
+    text-align: right;
+}
+
+.contact-bg .contact-data{
+    margin-top: 150px;
+}
+
+.contact-bg .contact-data .get-in-data i, h6{
+    color: #4e4e4e;
+    display: inline-block;
+}
+
+.contact-bg .contact-data .get-in-data i{
+    margin-right: 20px;
+}
 /* ============================== Media Frames ============================== */
 
   
