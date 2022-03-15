@@ -592,7 +592,6 @@ html {
 
 /* ============================== Blogs ============================== */
 .blogs-container{
-    margin-top: 150px !important;
     padding-top: 40px;
 }
 
@@ -622,8 +621,9 @@ html {
     width: 100%;
 }
 
-.blog-content h3{
+.blog-content h4{
     margin: 10px 0px 10px;
+    text-align: left;
     color: white;
 }
 
@@ -632,6 +632,10 @@ html {
     color: #6d6d6d;
 }
 
+.blog-content span{
+    font-size: 0.8em;
+    color: #999999;
+}
 
 .blog-content a {
     text-decoration: none;
