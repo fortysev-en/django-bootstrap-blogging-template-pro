@@ -28,14 +28,15 @@
   <div id="navbar">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 brand-img"><img src="{% static 'logo.png' %}" alt="brand-logo"></div>
+        <div class="col-lg-4 brand-img"><img src="{% static 'img/nav-logo.svg' %}" alt="brand-logo"></div>
     <div class="col-lg-4"></div>
     <div class="col-lg-4 nav-contents">
+      <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
       <ul>
         <li><a href="#particles-js">HOME</a></li>
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#skills">SKILLS</a></li>
-        <li><a href="">BLOGS</a></li>
+        <li><a href="#blogs">BLOGS</a></li>
         <li><a href="">CONTACT</a></li>
       </ul>
     </div>
@@ -167,7 +168,7 @@
   </div>
 
   <!-- skills marquee display -->
-  <!-- <div class="marquee">
+  <div class="marquee">
     <ul class="marquee-content">
       <li><i class="devicon-postgresql-plain"></i></li>
       <li><i class="devicon-python-plain"></i></li>
@@ -405,7 +406,7 @@
     </div>
   </div>
 
-  <!-- <div class="container">
+  <div class="container" id="blogs">
     <div class="row blogs-container h1-head">
       <h1>BLOGS</h1>
       <div class="col-lg-3 col-sm-12 col-10 blog-list"></div>
@@ -413,7 +414,13 @@
       <div class="col-lg-3 col-sm-12 col-10 blog-list"></div>
     </div>
 
-  </div> -->
+    <div class="row">
+      <div class="col-lg-10 col-7"></div>
+      <div class="col-lg-2 col-5 btn-load-more">
+        <a href="">LOAD MORE <i class="bi bi-box-arrow-up-right"></i></a>
+      </div>
+    </div>
+  </div>
 
 
   <!-- <div class="projects">
