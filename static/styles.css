@@ -2,11 +2,46 @@
 
 body, html{
     background-color: #1B1A17 !important;
-    scroll-behavior: smooth;
     font-family: 'Roboto', sans-serif;
 }
 
+html {
+	scroll-behavior: smooth !important;
+}
+
+/* ============================== Navbar ============================== */
+#navbar {
+    background-color:rgba(6, 6, 6, 0.950);
+    position: fixed;  
+    z-index: 1000;
+    width: 100%;
+    height: 50px;
+    top: -50px;
+    transition: top 0.3s ease;
+  }
+
+
+.brand-img img{
+    width: 40%;
+    padding: 12px;
+}
+
+.nav-contents{
+    padding: 12px;
+}
+
+.nav-contents a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+  }
+
+.nav-contents li {
+    display: inline;
+    padding: 5px;
+}
 /* ============================== Particle.JS ============================== */
+
 .heart-button {
     cursor: pointer;
     outline: none;
@@ -207,6 +242,7 @@ body, html{
 ::-webkit-scrollbar {
 	height: 5px; 
     width: 6px;
+
 }
 
 ::-webkit-scrollbar-track {
@@ -224,6 +260,7 @@ body, html{
 .about-container{
     text-align: justify;
     margin-top: 120px !important;
+    padding-top: 40px;
 }
 
 .about-me{
@@ -253,7 +290,6 @@ body, html{
 
 .about-me p {
     font-family: 'Roboto', sans-serif;
-    /* position: absolute; */
     margin-top: 250px;
     color: #EEEEEE;
     padding: 10px;
@@ -270,6 +306,7 @@ body, html{
 
 .skills-container{
     margin-top: 150px !important;
+    padding-top: 40px;
 }
 
 .skills{
@@ -283,18 +320,6 @@ body, html{
     font-weight: 700;
     opacity: 0.7;
 }
-
-
-/* .progress{
-    height: 4px;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    border-radius: 0.6rem;
-    background-color: #F3F4F6;
-    font-size: 0.75rem;
-    font-weight: 600;
-    box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
-} */
 
 .skills-img img{
     margin-top: 120px;
@@ -491,14 +516,6 @@ body, html{
     left: calc(0% + -1px);
     top: -25%; }
 
-/* .how-it-works.row .line{
-    position: absolute;
-    margin-left: 2px;
-    margin-top: 200px;
-    height: 150px;
-    border-left: 3px solid #d8d8d8;
-} */
-
 .timeline div {
     padding: 0;
     height: 40px; 
@@ -611,7 +628,8 @@ body, html{
     --marquee-height: 16vh;
     --marquee-elements-displayed: 3;
   }
-  .marquee:before, .marquee:after { width: 5rem; }
+
+.marquee:before, .marquee:after { width: 5rem; }
 
 
 }

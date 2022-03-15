@@ -25,14 +25,35 @@
 </head>
 
 <body>
+  <div id="navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 brand-img"><img src="{% static 'logo.png' %}" alt="brand-logo"></div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4 nav-contents">
+      <ul>
+        <li><a href="#particles-js">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="">BLOGS</a></li>
+        <li><a href="">CONTACT</a></li>
+      </ul>
+    </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="particle" id="particles-js">
-    <div class="txt-like"><h6>DROP A HEART</h6></div>
+    <div class="txt-like">
+      <h6>DROP A HEART</h6>
+    </div>
     <button class="heart">
       <div class="heart-flip"></div>
       <script>
         document.querySelectorAll('.heart, .heart-button').forEach(button => button.addEventListener('click', e => button.classList.toggle('active')));
       </script>
-  </button>
+    </button>
     <!-- <div class="btn-like"><a href=""><i class="bi bi-heart"></i></a></div> -->
     <div class="icon-list">
       <ul>
@@ -57,7 +78,7 @@
   </div>
 
   <!-- about + skills container -->
-  <div class="container">
+  <div class="container" id="about">
     <div class="row about-container">
       <div class="col-lg-6 about-me-img">
         <img src="{% static 'about-me.png' %}" alt="about-me-art-image">
@@ -87,7 +108,7 @@
       </div>
     </div>
 
-    <div class="row skills-container">
+    <div class="row skills-container" id="skills">
       <div class="col-lg-6 h1-head skills">
         <h1>SKILLS</h1>
 
@@ -205,7 +226,7 @@
       <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
-          <div class="circle-txt">1</div>
+          <div class="circle-txt">5</div>
         </div>
         <div class="col-6 individual-timeline-data">
           <span>2020 - Present</span>
@@ -400,6 +421,7 @@
   </div> -->
 
   <script src="{% static 'js/particles.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/canvas.js' %}"></script>
   <script src="{% static 'js/typed.js' %}"></script>
   <script src="{% static 'js/marquee-config.js' %}"></script>
