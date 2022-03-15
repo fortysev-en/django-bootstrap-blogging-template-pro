@@ -606,11 +606,39 @@ html {
 }
 
 .blog-list{
-    border: solid white 1px;
     padding: 15px;
     margin-top: 80px;
-    margin: 50px;
-    border-radius: 10px;
+}
+
+.blog-content{
+    text-align: justify;
+    /* border: solid white 2px; */
+    /* border-radius: 10px; */
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.blog-content img{
+    width: 100%;
+}
+
+.blog-content h3{
+    margin: 10px 0px 10px;
+    color: white;
+}
+
+.blog-content p{
+    margin: 10px 0px 10px;
+    color: #6d6d6d;
+}
+
+
+.blog-content a {
+    text-decoration: none;
+}
+
+.blog-content:hover{
+    box-shadow: #000 0px 0px 30px;
 }
 
 .btn-load-more{
@@ -630,6 +658,7 @@ html {
 
 .btn-load-more a:hover{
     border-color: #000;
+    color: white;
 }
 
 .btn-load-more i{
