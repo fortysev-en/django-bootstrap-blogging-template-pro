@@ -611,8 +611,6 @@ html {
 
 .blog-content{
     text-align: justify;
-    /* border: solid white 2px; */
-    /* border-radius: 10px; */
     padding: 20px;
     transition: all 0.3s ease-in-out;
 }
@@ -654,6 +652,8 @@ html {
     text-decoration: none;
     font-size: 0.8em;
     border: 2px solid white;
+    border-radius: 5px;
+
     color: white;
     font-weight: 600;
     padding: 10px 20px 10px;
@@ -672,12 +672,13 @@ html {
 /* ============================== Contact ============================== */
 
 .contact-bg{
-    margin-top: 150px;
+    margin-top: 80px;
     padding-top: 60px;
 }
 
 .contact-bg .contact-head h4{
     color: white;
+    margin: 5em 0em 2.5em;
 }
 
 .get-in-touch{
@@ -688,10 +689,6 @@ html {
     text-align: right;
 }
 
-.contact-bg .contact-data{
-    margin-top: 150px;
-}
-
 .contact-bg .contact-data .get-in-data i, h6{
     color: #4e4e4e;
     display: inline-block;
@@ -700,6 +697,66 @@ html {
 .contact-bg .contact-data .get-in-data i{
     margin-right: 20px;
 }
+
+.leave-me-data input{
+    width: 100%;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.form-row{
+    padding: 10px !important;
+    margin: 10px;
+}
+
+textarea, input{
+    padding: 20px 0 0 10px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	background-color: #232323;
+	margin-top: 20px;
+	color: #e0e0e0;
+}
+
+textarea:focus{
+    outline: none !important;
+	border-color: #3aaf85 !important;
+    box-shadow: 0 0 2px #3aaf85;
+}
+
+input:focus{
+    outline: none !important;
+	border-color: #3aaf85 !important;
+    box-shadow: 0 0 2px #3aaf85;
+}
+
+
+.btn-submit{
+    padding: 10px;
+}
+
+.btn-submit button{
+    background-color: #000;
+    text-decoration: none;
+    font-size: 0.8em;
+    border: 2px solid white;
+    border-radius: 5px;
+
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px 10px;
+    transition: all 0.3s ease-in-out;
+}
+    
+.btn-submit button:hover{
+    border-color: #000;
+    color: white;
+}
+
+.btn-submit i{
+    margin-left: 5px;
+}
+
 /* ============================== Media Frames ============================== */
 
   
@@ -741,8 +798,13 @@ html {
     --marquee-elements-displayed: 3;
   }
 
-.marquee:before, .marquee:after { width: 5rem; }
+.marquee:before, .marquee:after { 
+    width: 5rem; 
+}
 
+.blog-list{
+    width: 100% !important;
+}
 
 }
 
