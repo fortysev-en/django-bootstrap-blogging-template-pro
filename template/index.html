@@ -480,7 +480,6 @@
           </div>
         </div>
 
-        <!-- right side columns - 8 -->
         <div class="col-lg-7 leave-me-data">
           <div class="container">
             <div class="row contact-head">
@@ -488,16 +487,16 @@
             </div>
             <div class="row">
               <div class="col-lg-6">
-                <form action="#contact" method="post">
+                <form id="contact-form">
                   {% csrf_token %}
-                  <input id="name" name="name" class="form-inp" type="text" placeholder="Name">
+                  <input id="name" name="name" class="form-input-name" type="text" placeholder="Name">
               </div>
               <div class="col-lg-6">
-                <input id="email" name="email" class="form-inp" type="email" placeholder="Email">
+                <input id="email" name="email" class="form-input-email" type="text" placeholder="Email">
               </div>
             </div>
             <div class="row form-row">
-              <textarea name="desc" id="desc" placeholder="How can I help you?" rows="8"></textarea>
+              <textarea name="desc" id="desc" class="form-input-desc" placeholder="How can I help you?" rows="8"></textarea>
             </div>
             <div class="row">
               <div class="btn-submit">
@@ -508,89 +507,32 @@
           </div>
         </div>
       </div>
-
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem totam nemo itaque nesciunt excepturi corporis
         debitis nulla iste natus, doloribus accusamus voluptatibus assumenda tempore dolore mollitia. Placeat suscipit
         tempore possimus.
         Sequi, ex harum molestias minus impedit, nesciunt repellat autem alias rerum ab blanditiis praesentium.
         Veritatis harum ab eos eligendi, iure amet nobis ea error ad voluptatum laboriosam doloremque voluptatibus
-        voluptatem.
-        Itaque, vel corporis molestias officia nam obcaecati vitae accusantium numquam et repellendus ex culpa,
-        recusandae quia nisi suscipit amet, vero sapiente ipsa sunt iusto eum consequatur nemo. Eius, repellat animi.
-        Culpa velit illo sunt ut, dolorem qui neque aperiam veritatis libero quasi provident dolorum maxime, voluptas
-        reiciendis quis dolor tempora? Quod vero esse inventore quibusdam veniam ducimus laboriosam nostrum voluptatem.
-        Assumenda illum ratione vitae nihil laudantium labore quas tenetur dicta quod ea minus ab aliquam necessitatibus
-        at sunt, sapiente eveniet itaque qui, natus voluptates animi asperiores placeat facilis fuga? Esse.
-        Beatae consequatur provident illum dolorem perspiciatis optio minus quas, maxime officia, earum exercitationem
-        assumenda? Numquam expedita quis, cumque voluptatem nemo culpa odio eum quia ratione ipsam similique facilis,
-        sit impedit?
-        Omnis, totam quod, sit magnam iusto, aperiam modi mollitia eaque voluptatibus reprehenderit deleniti alias nobis
-        illum incidunt iure provident nostrum perferendis! Dolores fugiat asperiores culpa corporis dolor. Fugiat,
-        consectetur fugit.
-        Inventore cumque cupiditate deserunt, natus voluptatum tenetur reprehenderit dignissimos eligendi repellat
-        voluptatem quos modi quam quia in error. A harum quae eveniet consectetur, alias sequi quisquam magni? Quisquam,
-        fugiat sapiente.
-        Animi eos facilis aut! Voluptas officia dolore modi odit vitae! Sint omnis aut laborum. At mollitia error
-        reiciendis fugit quasi neque voluptatum tempora quod nesciunt vel, assumenda consequatur veritatis ut!
-        Nisi exercitationem accusamus porro laborum alias maxime ut hic vel rerum nostrum sit debitis aliquam aut,
-        inventore est repellat, soluta facilis neque tenetur autem non doloribus ipsam! Consequuntur, sunt nam?
-        Deleniti doloribus repellendus itaque pariatur sequi soluta quisquam numquam ullam distinctio rem beatae tempore
-        laudantium officiis nesciunt accusantium cumque eius velit, culpa ea ad cum. Aspernatur molestiae at laboriosam
-        aliquid!
-        Adipisci corrupti ex ut libero ab commodi, fugit, itaque facilis omnis dignissimos autem dolorem aspernatur
-        aliquam, doloremque rerum velit unde amet ea alias voluptatum. Repellat et ipsum dolorem. Placeat, id.
-        Sit sed neque sapiente voluptate blanditiis sequi esse! Veritatis iure culpa reprehenderit natus voluptas sit
-        autem officia molestias eligendi rerum? Velit corrupti sit molestias cumque minima, optio fuga animi
-        consectetur.
-        Officia est itaque nesciunt esse excepturi doloribus quis, magnam optio error. Nisi porro beatae at deserunt
-        quis expedita dicta reprehenderit, nostrum repellendus nobis ipsam provident? Impedit dolorem repudiandae iusto
-        ullam.
-        Cum provident sunt accusamus molestias, repellat veniam quam saepe labore nam possimus consectetur libero rerum
-        mollitia numquam incidunt ipsa totam eaque fugiat. Perspiciatis repellat magni veritatis, nulla quia ab natus.
-        Saepe quasi laboriosam deserunt eligendi. Neque dicta laborum placeat doloremque itaque. Ipsum, rem voluptates.
-        Rerum pariatur deleniti mollitia placeat velit voluptatum quae sed, sint deserunt nulla quisquam cupiditate
-        adipisci doloremque.
-        Debitis molestias neque adipisci et amet illo accusamus nemo in ea consequuntur, nam exercitationem earum
-        doloremque esse quam cupiditate quod dolor fugit quia ratione? Eaque dolore similique rem vitae consectetur.
-        Rerum culpa laboriosam ipsum. Qui sunt placeat mollitia omnis dolorum facilis, voluptatibus quae autem quod?
-        Laudantium, explicabo recusandae modi dicta dolore in rem hic temporibus ipsam iure molestiae sunt molestias!
-        Explicabo fuga ipsum quis! Quidem corporis necessitatibus vel repellendus sed laborum consequatur. Dignissimos
-        excepturi, repellat aut sequi architecto nihil recusandae animi perferendis ad esse provident ratione maxime,
-        exercitationem iure deserunt.
-        Dolorum totam labore ipsam cupiditate rem excepturi, architecto reprehenderit nostrum eveniet est voluptatibus
-        nemo, eaque dicta? Suscipit, veritatis deserunt! Dolorum earum nesciunt, hic ipsa expedita repellat. Eligendi
-        non porro magni!
-        Neque molestias quo nostrum commodi, incidunt itaque veniam nesciunt illum sint quidem a debitis reiciendis
-        repellat tempore architecto. Totam ducimus doloremque praesentium sunt sint repellat similique non accusamus
-        veniam neque!
-        Incidunt obcaecati quas dolor nobis labore, consequuntur esse minus alias accusantium molestias vero consectetur
-        quis aspernatur tempore rerum numquam non nemo corporis. Fuga dolores soluta quidem nam repudiandae expedita
-        eos.
-        Eius, odio! Id, fugit reiciendis facere, corporis et, nemo error ab impedit delectus ut saepe! Inventore
-        officiis rerum hic, dolore autem ad sapiente facilis fugiat, odio quas aperiam, ipsa voluptatum?
-        Aut accusamus molestiae iusto quas sint placeat laboriosam voluptatem quae reprehenderit, cupiditate enim facere
-        a perspiciatis? Ut nulla veritatis laudantium corporis omnis voluptates, libero delectus tempore iure
-        perferendis laborum repudiandae!
-        Sequi, inventore libero. Sequi voluptate assumenda placeat quia blanditiis neque est pariatur ex culpa dicta
-        officiis perspiciatis magnam, porro explicabo labore ratione accusamus nesciunt fuga atque maiores. Cum, nostrum
-        molestiae?
-        Et rerum deleniti assumenda sapiente mollitia atque amet fugiat aspernatur libero odit eaque hic, beatae
-        distinctio provident incidunt, blanditiis quasi perferendis pariatur labore nihil, consequuntur sit veniam.
-        Sequi, aut hic.
-        Eaque accusamus corporis ducimus facere in possimus quas magni iusto ipsa ipsum earum distinctio unde, facilis
-        eius quo aut ut. In ad dolor cum dicta perspiciatis corporis nisi corrupti minus.
-        Perferendis magni culpa eligendi maiores, suscipit laborum repellat sequi omnis a deleniti dolorum animi nemo ea
-        accusamus nisi est sit voluptatibus repellendus provident eius quam quia asperiores ratione? Ad, quidem.
-        Ut error nihil deserunt optio sed, saepe vel doloremque dolor, minus suscipit excepturi sapiente sit ipsum
-        facilis possimus magnam? Vero omnis, at natus fugiat cumque maxime molestias voluptates perferendis laboriosam!
-        Eveniet minus culpa rem corporis explicabo quae id nostrum distinctio commodi sit excepturi natus, suscipit
-        molestias a. Soluta unde, ullam atque alias hic, debitis aspernatur cupiditate enim rem, maiores suscipit.</p>
+        voluptatem.</p>
+    </div>
+  </div>
 
+  <div class="alert-box">
+    <div class="alert-boxes-green">
+      <div class="alert-popup-green" role="alert">
+        <strong class="green-inner-alert-msg"></strong>
+      </div>
+    </div>
+
+    <div class="alert-boxes-red">
+      <div class="alert-popup-red" role="alert">
+        <strong class="red-inner-alert-msg"></strong>
+      </div>
     </div>
   </div>
 
 
   <script src="{% static 'js/particles.js' %}"></script>
+  <script src="{% static 'js/contact.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/canvas.js' %}"></script>
   <script src="{% static 'js/typed.js' %}"></script>

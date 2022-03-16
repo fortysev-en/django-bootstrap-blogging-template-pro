@@ -6,5 +6,6 @@ from portfolio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='portfolio')
+    path('', views.index, name='portfolio'),
+    path('contact', views.contact, name='contact')
 ]

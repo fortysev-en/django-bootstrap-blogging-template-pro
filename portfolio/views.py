@@ -2,14 +2,16 @@ from urllib import request
 from django.shortcuts import render, HttpResponse
 from . import models
 
-def index(response):
-    if response.method == 'POST':
-        name = response.POST['name']
-        email = response.POST['email']
-        desc = response.POST['desc']
+def index(request):
+    return render(request, 'index.html')
 
-        print(name, email, desc)
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        desc = request.POST['desc']
         con = models.Contact(name=name, email=email, desc=desc)
         con.save()
+        # success = f'Message successfully sent {name}!'
 
-    return render(response, 'index.html')
+        return HttpResponse()
