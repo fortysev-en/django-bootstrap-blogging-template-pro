@@ -47,14 +47,32 @@
 
   <div class="particle" id="particles-js">
     <div class="txt-like">
-      <h6>DROP A HEART</h6>
+      <h6>DROP A HEART {{ viewsCount }} </h6>
     </div>
-    <button class="heart">
-      <div class="heart-flip"></div>
-      <script>
-        document.querySelectorAll('.heart, .heart-button').forEach(button => button.addEventListener('click', e => button.classList.toggle('active')));
-      </script>
-    </button>
+
+    <form id="heart">
+      {% csrf_token %}
+      <button class="heart" type="submit" id="btn-heart">
+        <div class="heart-flip"></div>
+      </button>
+    </form>
+
+
+
+    <script type="text/javascript">
+      var status = "{{ isIpInDb }}"
+      console.log(status)
+      if (status == 'False') {
+        document.getElementById('btn-heart').classList.remove('active');
+        console.log('REMOVE')
+      } else if (status == 'True') {
+        document.getElementById('btn-heart').classList.add('active');
+        console.log('ADD')
+      }else{
+        console.log('ELSE')
+      }
+    </script>
+
     <!-- <div class="btn-like"><a href=""><i class="bi bi-heart"></i></a></div> -->
     <div class="icon-list">
       <ul>
@@ -496,7 +514,8 @@
               </div>
             </div>
             <div class="row form-row">
-              <textarea name="desc" id="desc" class="form-input-desc" placeholder="How can I help you?" rows="8"></textarea>
+              <textarea name="desc" id="desc" class="form-input-desc" placeholder="How can I help you?"
+                rows="8"></textarea>
             </div>
             <div class="row">
               <div class="btn-submit">
@@ -532,6 +551,7 @@
 
 
   <script src="{% static 'js/particles.js' %}"></script>
+  <script src="{% static 'js/heart.js' %}"></script>
   <script src="{% static 'js/contact.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/canvas.js' %}"></script>

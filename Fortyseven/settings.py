@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-fe1#n^faux117p6=ip64q0%)f1^6sb3sdw6&2&1b)w77ho3nfy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io','https://*.127.0.0.1']
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
