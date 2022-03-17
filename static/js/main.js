@@ -6,3 +6,7 @@ window.onscroll = function () {
       document.getElementById("navbar").style.top = "-55px";
     }
   }
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

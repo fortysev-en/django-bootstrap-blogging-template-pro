@@ -130,9 +130,20 @@ html {
 
 .heart{
     position: absolute;
-    bottom: 21%;
+    bottom: 20%;
     left: 20px;
   }
+
+.txt-like h6{
+    position: absolute;
+    left: 25px;
+    bottom: 15%;
+    /* margin-bottom: 10px; */
+    padding: 5px;
+    color: white;
+    transform: translateX(-100%) rotate(-90deg);
+    transform-origin: right;
+}
   
 #particles-js{
     position: relative;
@@ -152,21 +163,58 @@ html {
     margin-left: 10px;
 } */
 
-.txt-like h6{
+
+.logo-sign {
     position: absolute;
-    left: 25px;
-    bottom: 15%;
-    padding: 5px;
-    color: white;
-    transform: translateX(-100%) rotate(-90deg);
-    transform-origin: right;
-}
+    width: 45px;
+    height: 30px;
+    right: 2%;
+    bottom: 3%;
+    margin-left: -27px;
+    margin-top: -15px;
+    transition: all .2s ease; }
+  
+  .logo-sign__line {
+    transition: all .2s ease;
+    animation: wavy 1s ease infinite forwards;
+    transform-origin: 50% 50%; }
+  
+  .logo-sign__line:nth-child(1) {
+    animation-delay: 0.25s; }
+  
+  .logo-sign__line:nth-child(2) {
+    animation-delay: 0.5s; }
+  
+  .logo-sign__line:nth-child(3) {
+    animation-delay: 0.75s; }
+  
+  .logo-sign__line:nth-child(4) {
+    animation-delay: 1s; }
+  
+  .logo-sign__line:nth-child(5) {
+    animation-delay: 1.25s; }
+  
+  .logo-sign__line:nth-child(6) {
+    animation-delay: 1.5s; }
+  
+  .logo-sign__line:nth-child(7) {
+    animation-delay: 1.75s; }
+  
+  @keyframes wavy {
+    0% {
+      transform: scaleY(1); }
+    50% {
+      transform: scaleY(0.6); }
+    100% {
+      transform: scaleY(1); } }
+  
+
 
 .name-head{
     padding: 20px;
     position: absolute;
-    top: 55%;
-    left: 10%;
+    top: 40%;
+    left: 35%;
 }
 
 
@@ -211,7 +259,7 @@ html {
 }
 
 .icon-list a{
-    font-size: 26px;
+    font-size: 18px;
     color: #FFF;
     transition: all 0.5s ease 0s;
 }
@@ -315,7 +363,7 @@ html {
 }
 
 .about-me-img img{
-    margin-top: 120px;
+    margin-top: 165px;
     float: left;
     width: 90%;
 }
@@ -341,9 +389,9 @@ html {
 }
 
 .skills-img img{
-    margin-top: 120px;
+    margin-top: 130px;
     float: right;
-    width: 90%;
+    width: 100%;
 }
 
 .skillset{
@@ -438,6 +486,24 @@ html {
     transform: translateX(-100%) rotate(-90deg);
     transform-origin: right;
     left: 10%;
+}
+
+.individual-timeline-data .display-img-one{
+    position: absolute;
+    right: 10%;
+    width: 30%;
+}
+
+.individual-timeline-data .display-img-two{
+    position: absolute;
+    left: 10%;
+    width: 25%;
+}
+
+.individual-timeline-data .display-img-three{
+    position: absolute;
+    right: 10%;
+    width: 25%;
 }
 
 .container-timeline {
@@ -801,6 +867,52 @@ input:focus{
 	padding-right: 80px;
 } */
 
+
+/* ============================== Footer ============================== */
+
+footer{
+    height: 250px;
+    background-color: #000;
+}
+
+.icon-sec{
+    margin-top: 50px !important;
+    text-align: center;
+    padding: 20px;
+}
+
+.icon-sec a{
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.copyright{
+    text-align: center;
+    color: white;
+}
+
+.footer-text{
+    text-align: center;
+}
+
+.footer-text a:hover {
+	color: #e0e0e0;
+}
+
+.footer-text a {
+	color: #333;
+	text-decoration: none;
+	font-size: 16px;
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+}
+
+.footer-text .visit-counter{
+	cursor: pointer;
+	font-size: 13px !important;
+}
+
 /* ============================== Media Frames ============================== */
 
   
@@ -820,6 +932,10 @@ input:focus{
     font-size: 8.5em;
     font-weight: 700;
     text-align: center;
+}
+
+.txt-like h6{
+    font-size: 0.9em;
 }
 
 .nav-contents ul{
@@ -846,6 +962,19 @@ input:focus{
     width: 5rem; 
 }
 
+.individual-timeline-data .display-img-one{
+    display: none;
+}
+
+.individual-timeline-data .display-img-two{
+    display: none;
+
+}
+
+.individual-timeline-data .display-img-three{
+    display: none;
+}
+
 .blog-list{
     width: 100% !important;
 }
@@ -867,6 +996,8 @@ input:focus{
 }
 
 }
+
+
 
 @media only screen and (min-width: 580px) and (max-width: 1200px){
     .nav-contents ul{

@@ -15,10 +15,12 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
   <title>Portfolio - Pushkar Jadhav</title>
 
@@ -44,10 +46,9 @@
     </div>
   </div>
 
-
   <div class="particle" id="particles-js">
     <div class="txt-like">
-      <h6>DROP A HEART {{ viewsCount }} </h6>
+      <h6>SHARE YOUR LOVE</h6>
     </div>
 
     <form id="heart">
@@ -57,21 +58,32 @@
       </button>
     </form>
 
-
-
     <script type="text/javascript">
       var status = "{{ isIpInDb }}"
       console.log(status)
       if (status == 'False') {
         document.getElementById('btn-heart').classList.remove('active');
-        console.log('REMOVE')
       } else if (status == 'True') {
         document.getElementById('btn-heart').classList.add('active');
-        console.log('ADD')
-      }else{
+      } else {
         console.log('ELSE')
       }
     </script>
+
+    <div>
+      <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30"
+        fill="#FFF">
+        <g class="logo-sign__box">
+          <polygon class="logo-sign__line" points="-1,37.333 -1,42.667 -3,44 -3,36" />
+          <polygon class="logo-sign__line" points="-5,33.333 -5,46.667 -7,48 -7,32" />
+          <polygon class="logo-sign__line" points="-9,29.333 -9,50.667 -11,52 -11,28" />
+          <polygon class="logo-sign__line" points="-13.5,25 -13,25.333 -13,54.667 -13.5,55 -15,54 -15,26" />
+          <polygon class="logo-sign__line" points="-17,28.667 -17,51.333 -19,50 -19,30" />
+          <polygon class="logo-sign__line" points="-21,32.667 -21,47.333 -23,46 -23,34" />
+          <polygon class="logo-sign__line" points="-25,36.667 -25,43.333 -27,42 -27,38" />
+        </g>
+      </svg>
+    </div>
 
     <!-- <div class="btn-like"><a href=""><i class="bi bi-heart"></i></a></div> -->
     <div class="icon-list">
@@ -86,13 +98,13 @@
     </div>
 
     <div class="name-head">
-      <div class="iam">
+      <!-- <div class="iam">
         <h2 class="iam-head">I'am</h2>
         <div class="col-lg-10 col-6 iam-border"></div>
-      </div>
+      </div> -->
       <h1>PUSHKAR JADHAV</h1>
-      <h2><span class="element"></span></h2>
-      <a class="resume" href="" target="_blank"><span>RESUME</span></a>
+      <!-- <h2><span class="element"></span></h2> -->
+      <!-- <a class="resume" href="" target="_blank"><span>RESUME</span></a> -->
     </div>
   </div>
 
@@ -100,7 +112,7 @@
   <div class="container" id="about">
     <div class="row about-container">
       <div class="col-lg-6 about-me-img">
-        <img src="{% static 'img/portfolio/about-me.png' %}" alt="about-me-art-image">
+        <img src="{% static 'img/portfolio/about-img.svg' %}" alt="about-me-art-image">
       </div>
       <div class="col-lg-6 h1-head about-me">
         <h1>ABOUT</h1>
@@ -180,7 +192,7 @@
 
       </div>
       <div class="col-lg-6 skills-img">
-        <img src="{% static 'img/portfolio/skills-img.png' %}" alt="skills-art-image">
+        <img src="{% static 'img/portfolio/skills-img.svg' %}" alt="skills-art-image">
       </div>
     </div>
     <!-- skills marquee display -->
@@ -247,6 +259,9 @@
           <div class="circle-txt">5</div>
         </div>
         <div class="col-6 individual-timeline-data">
+          <div class="display-img-one">
+            <img src="{% static 'img/portfolio/featured-img.svg' %}" alt="featured-img">
+          </div>
           <span>2020 - Present</span>
           <h4>Cybage Software PVT. LTD</h4>
           <h6><i>Web Developer - Support Analyst</i></h6>
@@ -284,6 +299,9 @@
       <!--forth section-->
       <div class="row align-items-center justify-content-end how-it-works">
         <div class="col-6 individual-timeline-data">
+          <div class="display-img-two">
+            <img src="{% static 'img/portfolio/hosting-img.svg' %}" alt="hosting-img">
+          </div>
           <span>2017 - 2020</span>
           <h4>Concentrix Daksh PVT. LTD</h4>
           <h6><i>Sr. Technical Support Executive</i></h6>
@@ -336,7 +354,9 @@
           <h4>Bachelor of Engineering (Computer Science)</h4>
           <h6><i>Savitribai Phule Pune University (formerly, University of Pune)</i></h6><br>
           <br>
-
+          <div class="display-img-three">
+            <img src="{% static 'img/portfolio/grad-img.svg' %}" alt="graduation-img">
+          </div>
           <span>2015 - 2016</span>
           <h4>Android Development</h4>
           <h6><i>Freelancer</i></h6>
@@ -549,6 +569,48 @@
     </div>
   </div>
 
+
+  <footer class="">
+    <div class="container footer-container">
+      <div class="row icons-row">
+        <section class="mb-12 icon-sec">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-linkedin"></i></a>
+
+          <!-- Twitter -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-github"></i></a>
+
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-discord"></i></a>
+
+          <!-- Linkedin -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-facebook"></i></a>
+
+          <!-- Github -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+        </section>
+      </div>
+
+      <div class="row copyright">
+        <p>Copyright ©
+          <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="footer-text">
+          <a href="#">fortyseven</a><br>
+          <!-- <a class="visit-counter" data-toggle="tooltip" data-placement="right" title="Total Visits">{{viewsCount}}</a> -->
+          <a class="visit-counter" data-toggle="tooltip" data-placement="right"
+            title="Total Visits">{{viewsCount}}</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
 
   <script src="{% static 'js/particles.js' %}"></script>
   <script src="{% static 'js/heart.js' %}"></script>
