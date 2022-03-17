@@ -740,6 +740,7 @@ html {
 .contact-bg{
     margin-top: 80px;
     padding-top: 60px;
+    margin-bottom: 100px;
 }
 
 .contact-bg .contact-head h4{
@@ -871,19 +872,34 @@ input:focus{
 /* ============================== Footer ============================== */
 
 footer{
-    height: 250px;
-    background-color: #000;
+    height: 350px;
+    background-color: rgb(32, 32, 32);
+}
+
+.btn-footer{
+    margin: 15px !important;
 }
 
 .icon-sec{
-    margin-top: 50px !important;
+    margin-top: 60px !important;
+    margin-bottom: 60px;
     text-align: center;
     padding: 20px;
 }
 
 .icon-sec a{
+    font-size: 1.2em;
+    color: white;
     border: 2px solid white;
-    border-radius: 20px;
+    border-radius: 25px;
+    padding: 10px 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-sec a:hover{
+    color: white;
+    border-color: rgb(32, 32, 32);
+    background-color: #000;
 }
 
 .copyright{
@@ -891,7 +907,14 @@ footer{
     color: white;
 }
 
+.copyright p{
+    padding: 10px;
+    font-size: 0.9em;
+    margin: 0px !important;
+}
+
 .footer-text{
+    margin-bottom: 60px;
     text-align: center;
 }
 
@@ -993,6 +1016,10 @@ footer{
 
 .alert-box{
     max-width:80%;
+}
+
+.btn-footer{
+    margin: 10px !important;
 }
 
 }

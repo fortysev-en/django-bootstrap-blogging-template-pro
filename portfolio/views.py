@@ -48,7 +48,7 @@ def contact(request):
         return HttpResponse()
 
 
-def temp(request):
+def likes(request):
     global context
 
     if request.method == 'POST':
