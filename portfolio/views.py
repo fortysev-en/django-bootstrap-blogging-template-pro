@@ -52,8 +52,6 @@ def likes(request):
     global context
 
     if request.method == 'POST':
-        print('HELLO THERE')
-
         #get IP address of a user and save it in a model
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:

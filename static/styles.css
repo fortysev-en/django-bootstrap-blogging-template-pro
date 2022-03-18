@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Staatliches&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
 body, html{
     background-color: #1B1A17 !important;
     font-family: 'Roboto', sans-serif;
@@ -59,7 +59,7 @@ html {
     display: inline;
     padding: 5px;
 }
-/* ============================== Particle.JS ============================== */
+/* ============================== Lander ============================== */
 
 .heart-button {
     cursor: pointer;
@@ -145,24 +145,95 @@ html {
     transform-origin: right;
 }
   
-#particles-js{
+/* #particles-js{
     position: relative;
     background-color: #1B1A17;
     width: 100%;
     height: 100vh;
 }
 
-/* .btn-like a{
-    color: red;
-    position: absolute;
-    float: left;
-    left: 2px;
-    bottom: 18%;
-    font-size: 1.2em;
-    padding: 5px;
-    margin-left: 10px;
+.particles-js-canvas-el{
+    display: none;
 } */
 
+.container-head {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-head .box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-head .box .title {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.container-head .box .title .block {
+  width: 0%;
+  height: inherit;
+  height: 80px;
+  background: #ffb510;
+  position: absolute;
+  animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+  display: flex;
+}
+.container-head .box .title h1 {
+  margin-left: -30px;
+  font-family: 'Staatliches', cursive;
+  font-size:4em;
+  font-weight:900;
+  padding: 20px;
+  color: #fff;
+  letter-spacing: 2px;
+  -webkit-animation: mainFadeIn 2s forwards;
+  -o-animation: mainFadeIn 2s forwards;
+  animation: mainFadeIn 2s forwards;
+  animation-delay: 1.6s;
+  opacity: 0;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+}
+.container-head .box .role {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-top: -10px;
+}
+
+@keyframes mainBlock {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes mainFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .logo-sign {
     position: absolute;
@@ -210,7 +281,7 @@ html {
   
 
 
-.name-head{
+/* .name-head{
     padding: 20px;
     position: absolute;
     top: 40%;
@@ -227,9 +298,9 @@ html {
     margin-top: 14px;
     width: 100%;
     border-top: white solid;
-}
+} */
 
-.particle h1{
+/* .particle h1{
     font-family: 'Staatliches', cursive;
     letter-spacing: 10px;
     color: #85F4FF;
@@ -245,7 +316,7 @@ html {
     color: #F5F5F5;
     position: relative;
     font-size:1.5em;
-}
+} */
 
 .icon-list {
     position: absolute;
@@ -416,6 +487,9 @@ html {
     height: 5px;
     background-color: #3aaf85 !important;
 }
+
+/* ============================== Particles Playground ============================== */
+
 
 
 /* ============================== Marquee ============================== */
@@ -955,6 +1029,11 @@ footer{
     font-size: 8.5em;
     font-weight: 700;
     text-align: center;
+}
+
+.container-head .box .title h1{
+    font-size: 3em;
+    font-weight: 600;
 }
 
 .txt-like h6{

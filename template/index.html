@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <div class="particle" id="particles-js">
+  <div class="lander">
     <div class="txt-like">
       <h6>SHARE YOUR LOVE</h6>
     </div>
@@ -60,7 +60,6 @@
 
     <script type="text/javascript">
       var status = "{{ isIpInDb }}"
-      console.log(status)
       if (status == 'False') {
         document.getElementById('btn-heart').classList.remove('active');
       } else if (status == 'True') {
@@ -97,7 +96,7 @@
       </ul>
     </div>
 
-    <div class="name-head">
+    <!-- <div class="name-head">
       <div class="iam">
         <h2 class="iam-head">I'am</h2>
         <div class="col-lg-10 col-6 iam-border"></div>
@@ -105,7 +104,16 @@
       <h1>PUSHKAR JADHAV</h1>
       <h2><span class="element"></span></h2>
       <a class="resume" href="" target="_blank"><span>RESUME</span></a>
-    </div>
+    </div> -->
+
+    <div class="container container-head">
+      <div class="box">
+          <div class="title">
+              <span class="block"></span>
+              <h1>Pushkar Jadhav</h1>
+          </div>
+      </div>
+  </div>
   </div>
 
   <!-- about + skills container -->
@@ -245,14 +253,13 @@
     </div>
   </div>
 
-
   <div class="bg-timeline-head">
     <h1>CARRIER TIMELINE</h1>
   </div>
   <!-- timeline container -->
   <div class="timeline-bg">
     <div class="container container-timeline">
-      <!-- <h2 class="pb-3 pt-2">Projects Timeline</h2> -->
+      <h2 class="pb-3 pt-2">Carrier Timeline</h2>
       <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
@@ -498,11 +505,6 @@
 
   <div class="contact-bg" id="contact">
     <div class="container contact-container">
-      <!-- <div class="row contact-head">
-       <div class="col-lg-4 get-in-touch"><h4>GET IN TOUCH</h4></div>
-       <div class="col-lg-8 leave-me-a-message"><h4>LEAVE ME A MESSAGE!</h4></div>
-      </div> -->
-
       <div class="row contact-data">
 
         <div class="col-lg-5 get-in-data">
@@ -592,7 +594,7 @@
         <div class="footer-text">
           <a href="#">fortyseven</a><br>
           <a class="visit-counter" data-toggle="tooltip" data-placement="right"
-            title="Total Visits">{{viewsCount}}</a>
+            title="Total Unique Visitors">{{viewsCount}}</a>
         </div>
       </div>
     </div>
