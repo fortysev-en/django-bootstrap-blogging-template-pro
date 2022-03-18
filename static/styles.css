@@ -1262,12 +1262,12 @@ footer{
     display: none;
 }
 
-.individual-timeline-data .display-img-two{
+.container-timeline .display-img-two{
     display: none;
 
 }
 
-.individual-timeline-data .display-img-three{
+.container-timeline .display-img-three{
     display: none;
 }
 
