@@ -69,6 +69,7 @@
       }
     </script>
 
+
     <div>
       <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30"
         fill="#FFF">
@@ -106,37 +107,37 @@
       <a class="resume" href="" target="_blank"><span>RESUME</span></a>
     </div> -->
 
-      <div class="container container-head">
-        <div class="row">
-          <div class="box">
-            <div class="title">
-                <span class="block"></span>
-                <h1>Pushkar Jadhav</h1>
-            </div>
-            <!-- <div class="work">
-              <h2><span class="element"></span></h2>
-            </div> -->
-            <div class="role">
-              <div class="block"></div>
-              <h2><span class="element"></span></h2>
+    <div class="container container-head">
+      <div class="row">
+        <div class="lander-img">
+          <img src="{% static 'img/portfolio/lander-img-one.svg' %}" alt="lander-img">
+        </div>
+      </div>
+      <div class="row lander-txt">
+        <div class="box">
+          <div class="title">
+            <span class="block"></span>
+            <h1>Pushkar Jadhav</h1>
+          </div>
+          <div class="role">
+            <div class="block"></div>
+            <h2><span class="element"></span></h2>
           </div>
         </div>
-        </div>
-        <div class="bouncer">
-          <a class="btn-bounce bounce" href="#about"><i class="bi bi-caret-down-fill"></i></a>
-        </div>
+      </div>
+      <div class="bouncer">
+        <a class="btn-bounce bounce" href="#about"><i class="bi bi-caret-down-fill"></i></a>
+      </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-      </div>
+
   </div>
 
   <!-- about + skills container -->
   <div class="container" id="about">
     <div class="row about-container">
       <div class="col-lg-6 about-me-img">
-        <img src="{% static 'img/portfolio/about-img.svg' %}" alt="about-me-art-image">
+        <img src="{% static 'img/portfolio/about-me.svg' %}" alt="about-me-art-image">
       </div>
       <div class="col-lg-6 h1-head about-me">
         <h1>ABOUT</h1>
@@ -144,7 +145,7 @@
         <p>Well, here's a gist, I'm a Programmer, a Blogger and an Ethical Hacker by profession. As a graduate, I hold a
           Bachelors Degree in Computer Science and Engineering from Savitribai Phule Pune University (formerly
           University
-          of Pune). Currently working in Cybage Software PVT.LTD, a leading IT services company which mainly delivers
+          of Pune). Currently working in Cybage Software PVT. LTD, a leading IT services company which mainly delivers
           outsourced software product development.<br><br>
 
           It's been more than five years I'm working, and as a freelancer, I've worked on several projects throughout
@@ -159,7 +160,7 @@
           and/or
           you to succeed in your business and objectives.<br><br>
 
-          Feel free to get in touch.</p>
+          Feel free to get in <a href="#contact">touch</a>.</p>
       </div>
     </div>
 
@@ -216,7 +217,7 @@
 
       </div>
       <div class="col-lg-6 skills-img">
-        <img src="{% static 'img/portfolio/skills-img.svg' %}" alt="skills-art-image">
+        <img src="{% static 'img/portfolio/skills.svg' %}" alt="skills-art-image">
       </div>
     </div>
     <!-- skills marquee display -->
@@ -270,21 +271,23 @@
   </div>
 
   <div class="bg-timeline-head">
-    <h1>CARRIER TIMELINE</h1>
+    <h1>CAREER TIMELINE</h1>
   </div>
+
   <!-- timeline container -->
   <div class="timeline-bg">
     <div class="container container-timeline">
-      <h2 class="pb-3 pt-2">Carrier Timeline</h2>
+      <div class="display-img-one">
+        <img src="{% static 'img/portfolio/featured-img.svg' %}" alt="featured-img">
+      </div>
+      <h2 class="pb-3 pt-2">Career Timeline</h2>
       <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
           <div class="circle-txt">5</div>
         </div>
         <div class="col-6 individual-timeline-data">
-          <div class="display-img-one">
-            <img src="{% static 'img/portfolio/featured-img.svg' %}" alt="featured-img">
-          </div>
+      
           <span>2020 - Present</span>
           <h4>Cybage Software PVT. LTD</h4>
           <h6><i>Web Developer - Support Analyst</i></h6>
@@ -319,12 +322,13 @@
         </div>
       </div>
 
+      <div class="display-img-two">
+        <img src="{% static 'img/portfolio/freelancer-img-one.svg' %}" alt="freelancing-img">
+      </div>
       <!--forth section-->
       <div class="row align-items-center justify-content-end how-it-works">
         <div class="col-6 individual-timeline-data">
-          <div class="display-img-two">
-            <img src="{% static 'img/portfolio/hosting-img.svg' %}" alt="hosting-img">
-          </div>
+      
           <span>2017 - 2020</span>
           <h4>Concentrix Daksh PVT. LTD</h4>
           <h6><i>Sr. Technical Support Executive</i></h6>
@@ -367,6 +371,10 @@
         </div>
       </div>
 
+      <div class="display-img-three">
+        <img src="{% static 'img/portfolio/graduation.svg' %}" alt="graduation-img">
+      </div>
+
       <!--third section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center top">
@@ -377,9 +385,7 @@
           <h4>Bachelor of Engineering (Computer Science)</h4>
           <h6><i>Savitribai Phule Pune University (formerly, University of Pune)</i></h6><br>
           <br>
-          <div class="display-img-three">
-            <img src="{% static 'img/portfolio/grad-img.svg' %}" alt="graduation-img">
-          </div>
+      
           <span>2015 - 2016</span>
           <h4>Android Development</h4>
           <h6><i>Freelancer</i></h6>

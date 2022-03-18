@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Staatliches&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
+
 body, html{
     background-color: #1B1A17 !important;
     font-family: 'Roboto', sans-serif;
@@ -156,6 +156,15 @@ html {
     display: none;
 } */
 
+.lander-img img{
+    width: 100%;
+}
+
+.lander-txt{
+    position: absolute;
+    top: 57%;
+}
+
 .container-head {
   width: 100%;
   height: 100vh;
@@ -163,12 +172,12 @@ html {
   justify-content: center;
   align-items: center;
 }
+
 .container-head .box {
   position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  left: 40%;
 }
+
 .container-head .box .title {
   width: 100%;
   position: relative;
@@ -186,11 +195,10 @@ html {
   display: flex;
 }
 .container-head .box .title h1 {
-  margin-left: -30px;
   font-family: 'Staatliches', cursive;
   font-size:4em;
   font-weight:900;
-  color: #fff;
+  color: #ffb510;
   letter-spacing: 2px;
   -webkit-animation: mainFadeIn 2s forwards;
   -o-animation: mainFadeIn 2s forwards;
@@ -248,13 +256,13 @@ html {
 
 .container-head .box span{
     font-size: 0.5em;
-    color: #ffb510;
+    font-weight: 700;
+    color: #3f3d56;
 }
 
 .container-head .box .role {
-  margin-left: -30px;
-  width: calc(100% + 30px);
-  position: relative;
+width: 100%;
+    position: relative;
   display: flex;
   align-items: center;
   height: 30px;
@@ -477,6 +485,16 @@ html {
     padding-top: 40px;
 }
 
+.about-container a{
+    text-decoration: none;
+    color: #FF9704;
+    transition: all 0.3s ease-in-out;
+}
+
+.about-container a:hover{
+    color: #fff;
+}
+
 .about-me{
     display: flex;
     float: right;
@@ -484,7 +502,7 @@ html {
 
 .about-me h1{
     position: absolute;
-    color: #FFD717;
+    color: #FFF;
     font-size: 11em;
     font-weight: 700;
     opacity: 0.2;
@@ -496,10 +514,10 @@ html {
     margin-left: 160px;
     letter-spacing: 2px;
     font-size: 1.5em;
-    font-weight: 500;
-    color: #FFF;
+    font-weight: 600;
+    color: #FF9704;
     position: absolute;
-    text-shadow: 0 0 15px #000;
+    text-shadow: 0 0 10px #000;
 }
 
 .about-me p {
@@ -635,22 +653,43 @@ html {
     left: 10%;
 }
 
-.individual-timeline-data .display-img-one{
+.container-timeline .display-img-one{
     position: absolute;
-    right: 10%;
-    width: 30%;
+    right: 0%;
+    z-index: 3;
 }
 
-.individual-timeline-data .display-img-two{
+.container-timeline .display-img-one img{
+    width: 60%;
+    margin-top: 20em;
+}
+
+.individual-timeline-data{
+    z-index: 9;
+}
+
+.container-timeline .display-img-two{
     position: absolute;
     left: 10%;
     width: 25%;
+    z-index: 3;
 }
 
-.individual-timeline-data .display-img-three{
+.container-timeline .display-img-two img{
+    width: 120%;
+    margin-top: 7em;
+}
+
+.container-timeline .display-img-three{
     position: absolute;
-    right: 10%;
-    width: 25%;
+    right: 0%;
+    width: 40%;
+    z-index: 3;
+}
+
+.container-timeline .display-img-three img{
+    width: 80%;
+    margin-top: 20em;
 }
 
 .container-timeline {
@@ -1177,6 +1216,14 @@ footer{
     text-align: center;
 }
 
+.container-head .box {
+    left: 0%;
+  }
+
+  .container-head .box span {
+    color: #fff;
+  }
+
 .container-head .box .title h1{
     font-size: 3em;
     font-weight: 600;
@@ -1189,6 +1236,7 @@ footer{
 .nav-contents ul{
     display: none;
 }
+
 
 .list-icon{
     display: block;
@@ -1210,7 +1258,7 @@ footer{
     width: 5rem; 
 }
 
-.individual-timeline-data .display-img-one{
+.container-timeline .display-img-one{
     display: none;
 }
 
