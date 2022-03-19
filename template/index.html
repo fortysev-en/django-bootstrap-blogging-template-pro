@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,12 +30,12 @@
   <div id="navbar">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 brand-img"><img src="{% static 'img/nav-logo.svg' %}" alt="brand-logo"></div>
+        <div class="col-lg-4 brand-img"><img src="{% static 'img/f-3.svg' %}" alt="brand-logo"></div>
         <div class="col-lg-4"></div>
         <div class="col-lg-4 nav-contents">
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
-            <li><a href="#particles-js">HOME</a></li>
+            <li><a href="#lander">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#skills">SKILLS</a></li>
             <li><a href="#blogs">BLOGS</a></li>
@@ -85,7 +85,6 @@
       </svg>
     </div>
 
-    <!-- <div class="btn-like"><a href=""><i class="bi bi-heart"></i></a></div> -->
     <div class="icon-list">
       <ul>
         <li><a href=""><i class="bi bi-linkedin"></i></a></li>
@@ -97,17 +96,12 @@
       </ul>
     </div>
 
-    <!-- <div class="name-head">
-      <div class="iam">
-        <h2 class="iam-head">I'am</h2>
-        <div class="col-lg-10 col-6 iam-border"></div>
-      </div>
-      <h1>PUSHKAR JADHAV</h1>
-      <h2><span class="element"></span></h2>
-      <a class="resume" href="" target="_blank"><span>RESUME</span></a>
-    </div> -->
-
     <div class="container container-head">
+      <div class="row resume">
+        <div>
+          <a href="{% static 'Pushkar_Jadhav_CV.pdf' %}" target="_black">RESUME <i class="bi bi-box-arrow-up-right"></i></a>
+        </div>
+      </div>
       <div class="row">
         <div class="lander-img">
           <img src="{% static 'img/portfolio/lander-img-one.svg' %}" alt="lander-img">
@@ -129,8 +123,6 @@
         <a class="btn-bounce bounce" href="#about"><i class="bi bi-caret-down-fill"></i></a>
       </div>
     </div>
-
-
   </div>
 
   <!-- about + skills container -->
@@ -287,14 +279,15 @@
           <div class="circle-txt">5</div>
         </div>
         <div class="col-6 individual-timeline-data">
-      
+
           <span>2020 - Present</span>
           <h4>Cybage Software PVT. LTD</h4>
-          <h6><i>Web Developer - Support Analyst</i></h6>
-          <p>Develop a Python based model to analyze data using various libraries such as pandas, matplotlib,
-            scikit-learn numpy etc. Fix HTML/CSS/JS related bugs resulting build issues in a project. Manipulate
-            captured data with the help of Python. Run Shell Scripts periodically to gather word count data for each
-            available project. Sanity Checking and Publishing a webpage to live. Communicate with Client in PST hours
+          <h6><i>Web Developer</i></h6>
+          <p>Debug HTML/CSS/JS related bugs resulting build issues of Google Cloud. Run scripts to calculate all the
+            words available in any Google Cloud's live project. Develop a Python based model to analyze that data using
+            various libraries such as pandas, matplotlib,
+            scikit-learn numpy etc, also, manipulate the captured data if required. Sanity Checking and Publishing a
+            webpage to live. Communicate with Client in PST hours
             and generate reports on a weekly basis.</p><br>
 
           <span>2021 - 2022</span>
@@ -328,7 +321,7 @@
       <!--forth section-->
       <div class="row align-items-center justify-content-end how-it-works">
         <div class="col-6 individual-timeline-data">
-      
+
           <span>2017 - 2020</span>
           <h4>Concentrix Daksh PVT. LTD</h4>
           <h6><i>Sr. Technical Support Executive</i></h6>
@@ -385,7 +378,7 @@
           <h4>Bachelor of Engineering (Computer Science)</h4>
           <h6><i>Savitribai Phule Pune University (formerly, University of Pune)</i></h6><br>
           <br>
-      
+
           <span>2015 - 2016</span>
           <h4>Android Development</h4>
           <h6><i>Freelancer</i></h6>
@@ -519,7 +512,7 @@
     <div class="row">
       <div class="col-lg-10 col-7"></div>
       <div class="col-lg-2 col-5 btn-load-more">
-        <a href="">LOAD MORE <i class="bi bi-box-arrow-up-right"></i></a>
+        <a href="{% url 'blogs:blog-homepage' %}">LOAD MORE <i class="bi bi-box-arrow-up-right"></i></a>
       </div>
     </div>
   </div>
