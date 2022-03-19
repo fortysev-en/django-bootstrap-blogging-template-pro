@@ -48,7 +48,7 @@ $(document).on('submit', '#contact-form', function(e){
 	} else {
 		$.ajax({
 			type: 'POST',
-			url: '/contact',
+			url: 'portfolio/contact',
 			data: {
 				name : name,
 				email : email,

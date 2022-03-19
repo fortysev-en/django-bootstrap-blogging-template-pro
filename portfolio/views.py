@@ -2,7 +2,7 @@ from tkinter import StringVar
 from urllib import request
 from django import views
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse, reverse
 from . import models
 
 context = {'isIpInDb' : 'False'}

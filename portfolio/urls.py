@@ -1,12 +1,14 @@
 from unicodedata import name
 from django import views
 from django.contrib import admin
-from django.urls import path
 from portfolio import views
+from django.urls import path, include
+
+app_name = 'portfolio'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='portfolio'),
-    path('contact', views.contact, name='contact'),
-    path('likes', views.likes, name='likes')
+    path('portfolio/contact', views.contact, name='contact'),
+    path('portfolio/likes', views.likes, name='likes'),
 ]

@@ -11,7 +11,7 @@ $(document).on('submit', '#heart', function(e){
 
     $.ajax({
         type: 'POST',
-        url: '/likes',
+        url: 'portfolio/likes',
         data: {
             csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val(),
         },
