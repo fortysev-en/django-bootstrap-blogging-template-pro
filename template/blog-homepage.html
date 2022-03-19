@@ -5,6 +5,19 @@
 {% block start %}
 
 <div class="container">
+    <div class="row search-row">
+        <div class="col-lg-7"></div>
+        <div class="col-lg-3">
+            <form id="search-bar">
+                {% csrf_token %}
+                <input id="serchField" name="search" type="text" placeholder="Search">
+        </div>
+        <div class="col-lg-2 btn-search">
+            <button type="submit">SEARCH <i class="bi bi-search"></i></button>
+        </div>
+        </form>
+    </div>
+
     <div class="row">
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content">
@@ -13,11 +26,14 @@
                     <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit
                         quasi
                         provident ut totam itaque.</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur
-                        aliquid,
-                        delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque
+                    <p>Lorem ipsus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque
                         expedita illum
-                        cumque consequuntur modi.</p><br>
+                        cumque consequuntur modis quasi libero atque! Laboriosam atque, accusantium porro pariatur vel
+                        neque
+                        expedita illum
+                        cumque consequuntur modim dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit
+                        consequuntur
+                        aliquid,.</p><br>
                     <span>17 MAY 2022</span>
                 </a>
             </div>
@@ -46,9 +62,7 @@
                         quasi
                         provident ut totam itaque.</h4>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur
-                        aliquid,
-                        delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque
-                        expedita illum
+                        aliquid
                         cumque consequuntur modi.</p><br>
                     <span>17 MAY 2022</span>
                 </a>
@@ -88,4 +102,4 @@
         </div>
     </div>
 </div>
-    {% endblock %}
+{% endblock %}

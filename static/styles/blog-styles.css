@@ -327,7 +327,56 @@ html {
         padding: 15px;
         margin-top: 80px;
     }
+
+    .search-row{
+        margin-bottom: 50px;
+    }
+
+    .search-row input{
+        width: 100%;
+        padding: 6px;
+    }
+
+    input{
+        padding: 20px 0 0 10px;
+        border: 2px solid grey;
+        border-radius: 5px;
+        background-color: #232323;
+        margin-top: 20px;
+        color: #e0e0e0;
+    }
+
+    input:focus{
+        outline: none !important;
+        border-color: #249169 !important;
+        box-shadow: 0 0 3px #249169;
+    }
     
+    .btn-search button{
+        background-color: #000;
+        text-decoration: none;
+        font-size: 0.7em;
+        border: 2px solid white;
+        border-radius: 5px;
+        color: white;
+        font-weight: 600;
+        padding: 10px 18px 10px;
+        transition: all 0.3s ease-in-out;
+    }
+        
+    .btn-search button:hover{
+        border-color: #000;
+        color: white;
+    }
+    
+    .btn-search i{
+        margin-left: 5px;
+    }
+
+    /* .btn-search button{
+        text-align: center;
+    }
+     */
     .blog-content{
         border-radius: 20px;
         padding: 20px;
@@ -477,6 +526,12 @@ html {
 .blog-list{
     width: 100% !important;
 }
+
+.btn-search {
+    padding-top: 15px;
+    text-align: right;
+}
+
 /* #navbar{
     height: 16em;
 }
@@ -517,6 +572,11 @@ html {
         
         .list-icon{
             display: block;
+        }
+
+        .btn-search {
+            padding-top: 15px;
+            text-align: right;
         }
         
       }
