@@ -19,3 +19,12 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.title)
         super(Blog, self).save(*args, **kwargs)
+
+
+
+
+class ViewsModel(models.Model):
+    total_visits = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.total_visits

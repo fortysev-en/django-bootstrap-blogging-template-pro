@@ -11,5 +11,12 @@ class Contact(models.Model):
 class ViewsModel(models.Model):
     total_views = models.CharField(max_length=256)
 
+    def __str__(self):
+        return self.total_views
+
+
 class LikesModel(models.Model):
     total_likes = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.total_likes
