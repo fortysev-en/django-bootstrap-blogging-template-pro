@@ -14,7 +14,8 @@ urlpatterns = [
     path('', views.blogHomepage, name='blog-homepage'),
     path('froala_editor/',include('froala_editor.urls')),
     path('login/', views.login, name='login'),
-    path('signup/', views.signup, name='signup')
+    path('signup/', views.signup, name='signup'),
+    path('api/', include('blogs.urls_api'))
 ]
 
 if settings.DEBUG:

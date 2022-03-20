@@ -15,8 +15,6 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-            <form action="" id="login-form">
-                {% csrf_token %}
                 <input id="username" name="username" type="text" placeholder="Username">
         </div>
         <div class="col-lg-4"></div>
@@ -34,8 +32,7 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 btn-base btn-login">
-            <button type="submit">LOGIN <i class="bi bi-box-arrow-in-right"></i></button>
-            </form>
+            <button onclick="logIn()">LOGIN <i class="bi bi-box-arrow-in-right"></i></button>
         </div>
         <div class="col-lg-4"></div>
     </div>

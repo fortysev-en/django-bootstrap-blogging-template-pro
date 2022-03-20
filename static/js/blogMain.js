@@ -22,11 +22,48 @@ function togglePassword(){
       });
 }
 
+
+
 function logIn(){
-  text = "Please enter a valid name!";
-  warningText.innerHTML = text;
-  var bsAlert = new bootstrap.Toast(warningAlert);
-  bsAlert.show();
+  var username = document.getElementById('username').value
+  var password = document.getElementById('password').value
+  var csrf = document.getElementById('csrf').value
+
+	if (username == "" || username.length < 5) {
+		text = "Please enter a valid username!";
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
+		return false;
+	}
+  if (password == "") {
+		text = "Please enter a valid password!";
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
+		return false;
+	}
+  else{
+    var data = {
+      'username' : username,
+      'password' : password
+    }
+  
+    fetch('/api/login/', {
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json',
+        'X-CSRFToken' : csrf,
+      },
+      body : JSON.stringify(data)
+      
+    }).then(result => result.json()).then(response =>{
+    text = "Welcome <b>" + username + "</b>!";
+    successText.innerHTML = text;
+    var bsAlert = new bootstrap.Toast(successAlert);
+    bsAlert.show();
+    })
+  }
 }
 
 function signUp(){
