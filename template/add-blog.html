@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block start %}
+
+<div class="container">
+    <div class="row add-blog-row">
+        <div class="col-lg-12 add-blog-froala">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Enter blog title</label>
+                        <input type="text" class="form-control" placeholder="Enter title" name="title">
+                    </div>
+                    <div class="col-md-12">
+                        {{form.media}}
+                        {{form.as_p}}
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="file" name="image" class="form-control">
+                    </div>
+                </div>
+                <div class="btn-create">
+                    <button type="submit">CREATE</button>
+                </div>
+
+            </form>
+            <!-- <a href="" class="btn btn-warning">View Your blogs</a> -->
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

@@ -59,14 +59,16 @@ function logIn(){
       
     }).then(result => result.json()).then(response =>{
           if (response.status == 200){
-            window.location.reload('/')
             text = "Welcome <b>" + username + "</b>!";
-            successText.innerHTML = text;
-            var bsAlert = new bootstrap.Toast(successAlert);
-            bsAlert.show();
+              successText.innerHTML = text;
+              var bsAlert = new bootstrap.Toast(successAlert);
+              bsAlert.show();
+            setTimeout(function (){
+              window.location.href = '/'     
+            }, 1000);
           }
           else{
-            response.message = text
+            text = response.message 
             warningText.innerHTML = text;
             var bsAlert = new bootstrap.Toast(warningAlert);
             bsAlert.show();

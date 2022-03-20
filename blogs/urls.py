@@ -15,6 +15,7 @@ urlpatterns = [
     path('froala_editor/',include('froala_editor.urls')),
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
+    path('add-blog/', views.add_blog, name='add-blog'),
     path('api/', include('blogs.urls_api'))
 ]
 

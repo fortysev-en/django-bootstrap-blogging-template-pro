@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 
 class LoginView(APIView):
@@ -34,6 +34,7 @@ class LoginView(APIView):
             usr_name = data.get('username')
 
             if user_obj:
+                login(request, user_obj)
                 response['status'] = 200
                 response['message'] = f'Welcome {usr_name}'
             else:

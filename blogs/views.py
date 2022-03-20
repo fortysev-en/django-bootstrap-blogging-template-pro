@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from . import models
+from .models import ViewsModel
+from .forms import *
 
 context = {}
 
@@ -18,11 +19,11 @@ def blogHomepage(request):
         print ("returning REMOTE_ADDR")
         ip = request.META.get('REMOTE_ADDR')
 
-    if not models.ViewsModel.objects.filter(total_visits = ip).exists():
-        models.ViewsModel.objects.create(total_visits = ip)
+    if not ViewsModel.objects.filter(total_visits = ip).exists():
+        ViewsModel.objects.create(total_visits = ip)
 
     # get total unique visitor count
-    visitor_count = models.ViewsModel.objects.all().count()
+    visitor_count = ViewsModel.objects.all().count()
     context['visitorCount'] = visitor_count
 
 
@@ -31,6 +32,10 @@ def blogHomepage(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def add_blog(request):
+    context = {'form' : BlogForms}
+    return render(request, 'add-blog.html', context)
 
 def signup(request):
     return render(request, 'signup.html')
