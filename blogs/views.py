@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import ViewsModel
 from .forms import *
 
@@ -35,6 +35,24 @@ def login(request):
 
 def add_blog(request):
     context = {'form' : BlogForms}
+
+    try:
+        if request.method == 'POST':
+            form = BlogForms(request.POST)
+            image = request.FILES['image']
+            title = request.POST.get('title')
+            user = request.user
+
+            if form.is_valid():
+                content = form.cleaned_data['content']
+
+            Blog.objects.create(user = user, title = title, content = content, image = image)
+
+            return redirect('/add-blog/')
+
+    except Exception as e:
+        print(e)
+
     return render(request, 'add-blog.html', context)
 
 def signup(request):
