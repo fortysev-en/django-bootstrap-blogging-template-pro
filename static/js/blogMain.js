@@ -58,10 +58,19 @@ function logIn(){
       body : JSON.stringify(data)
       
     }).then(result => result.json()).then(response =>{
-    text = "Welcome <b>" + username + "</b>!";
-    successText.innerHTML = text;
-    var bsAlert = new bootstrap.Toast(successAlert);
-    bsAlert.show();
+          if (response.status == 200){
+            window.location.reload('/')
+            text = "Welcome <b>" + username + "</b>!";
+            successText.innerHTML = text;
+            var bsAlert = new bootstrap.Toast(successAlert);
+            bsAlert.show();
+          }
+          else{
+            response.message = text
+            warningText.innerHTML = text;
+            var bsAlert = new bootstrap.Toast(warningAlert);
+            bsAlert.show();
+          }
     })
   }
 }

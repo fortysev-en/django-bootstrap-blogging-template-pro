@@ -16,28 +16,29 @@ class LoginView(APIView):
             data = request.data
 
             if data.get('username') is None:
-                response['message'] = 'Something went wrong!'
-                raise Exception('Key username not found')
+                response['message'] = 'Username Empty'
+                raise Exception('Username Empty')
 
             if data.get('password') is None:
-                response['message'] = 'Something went wrong!'
-                raise Exception('Key password not found')
+                response['message'] = 'Password Empty'
+                raise Exception('Password Empty')
         
-            
             check_user = User.objects.filter(username = data.get('username')).first()
 
             if check_user is None:
-                response['message'] = 'Invalid Username'
+                response['message'] = 'Invalid Username/Password!'
                 raise Exception('User not found')
 
             user_obj = authenticate(username = data.get('username'), password = data.get('password'))
 
+            usr_name = data.get('username')
+
             if user_obj:
                 response['status'] = 200
-                response['message'] = 'Welcome'
+                response['message'] = f'Welcome {usr_name}'
             else:
-                response['message'] = 'Invalid Password'
-                raise Exception('Inalid Password')
+                response['message'] = 'Invalid Username/Password!'
+                raise Exception('Invalid Password')
         
         
         except Exception as e:
