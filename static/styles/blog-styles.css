@@ -151,11 +151,11 @@ html {
       transform: scaleY(1); } }
 
     .bg-toast-green {
-        background-color: #249169 !important;
+        background-color: #00BFA6 !important;
     }
 
     .bg-toast-red {
-        background-color: #842029 !important;
+        background-color: #F50057 !important;
     }
 
     .d-flex{
