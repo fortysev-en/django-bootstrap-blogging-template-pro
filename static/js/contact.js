@@ -1,8 +1,10 @@
-// Defining Alerts
-var green_inner_html = document.querySelector(".green-inner-alert-msg");
-var red_inner_html = document.querySelector(".red-inner-alert-msg");
-const green_div = document.querySelector(".alert-popup-green");
-const red_div = document.querySelector(".alert-popup-red");
+// Defining Toasts
+var successAlert = document.getElementById('success-toast');
+var successText = document.getElementById("success-span");
+
+var warningAlert = document.getElementById('warning-toast');
+var warningText = document.getElementById("warning-span");
+
 
 
 $(document).on('submit', '#contact-form', function(e){
@@ -15,11 +17,9 @@ $(document).on('submit', '#contact-form', function(e){
 
 	if (name == "" || name.length < 5) {
 		text = "Please enter a valid name!";
-		red_inner_html.innerHTML = text;
-		red_div.style.display = "block";
-		setTimeout(function () {
-			red_div.style.display = "none";
-		}, 5000);
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
 		return false;
 	}
 
@@ -29,21 +29,17 @@ $(document).on('submit', '#contact-form', function(e){
 		email.length < 6
 	) {
 		text = "Please enter a valid email address!";
-		red_inner_html.innerHTML = text;
-		red_div.style.display = "block";
-		setTimeout(function () {
-			red_div.style.display = "none";
-		}, 5000);
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
 		return false;
 	}
 
 	if (desc == "" || desc.length <= 10) {
 		text = "Some more information would be better!";
-		red_inner_html.innerHTML = text;
-		red_div.style.display = "block";
-		setTimeout(function () {
-			red_div.style.display = "none";
-		}, 5000);
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
 		return false;
 	} else {
 		$.ajax({
@@ -58,11 +54,9 @@ $(document).on('submit', '#contact-form', function(e){
 			success: function(data){
 				// $('.output').html(data);
 				text = 'Thank you for reaching out \<b>'+ name +'</b>. I\'ll surely get back to you!';
-				green_inner_html.innerHTML = text;
-				green_div.style.display = "block";
-				setTimeout(function () {
-					green_div.style.display = "none";
-				}, 5000);
+				successText.innerHTML = text;
+				var bsAlert = new bootstrap.Toast(successAlert);
+				bsAlert.show();
 				document.getElementById("contact-form").reset(); 
 			
 			}

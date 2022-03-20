@@ -71,19 +71,24 @@
 
     {% endblock %}
 
-  <div class="alert-box">
-    <div class="alert-boxes-green">
-      <div class="alert-popup-green" role="alert">
-        <strong class="green-inner-alert-msg"></strong>
+    <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <span id="success-span"></span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  
+    <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <span id="warning-span"></span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
 
-    <div class="alert-boxes-red">
-      <div class="alert-popup-red" role="alert">
-        <strong class="red-inner-alert-msg"></strong>
-      </div>
-    </div>
-  </div>
 
   <div class="container">
     <div class="row">
