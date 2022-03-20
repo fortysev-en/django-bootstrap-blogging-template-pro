@@ -53,6 +53,10 @@ html {
     color: white;
 }
 
+.nav-contents i {
+    font-size: 1.2em;
+}
+
 .nav-contents li {
     display: inline;
     padding: 5px;

@@ -41,7 +41,7 @@
         <div class="col-lg-4 col-sm-4 nav-contents">
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
-            <li><a href="">LOGIN/REGISTER</a></li>
+            <li><a href="">LOGIN/REGISTER <i class="bi bi-box-arrow-in-right"></i></a></li>
           </ul>
         </div>
       </div>
@@ -96,6 +96,21 @@
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
       </div>
     </div> -->
+
+    <div class="container">
+      <div class="row search-row">
+          <div class="col-lg-7"></div>
+          <div class="col-lg-3">
+              <form id="search-bar">
+                  {% csrf_token %}
+                  <input id="serchField" name="search" type="text" placeholder="Search">
+          </div>
+          <div class="col-lg-2 btn-search">
+              <button type="submit">SEARCH <i class="bi bi-search"></i></button>
+          </div>
+          </form>
+      </div>
+  
 
     {% block start %}
 

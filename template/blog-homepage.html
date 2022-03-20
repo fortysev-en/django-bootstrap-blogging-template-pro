@@ -4,20 +4,6 @@
 
 {% block start %}
 
-<div class="container">
-    <div class="row search-row">
-        <div class="col-lg-7"></div>
-        <div class="col-lg-3">
-            <form id="search-bar">
-                {% csrf_token %}
-                <input id="serchField" name="search" type="text" placeholder="Search">
-        </div>
-        <div class="col-lg-2 btn-search">
-            <button type="submit">SEARCH <i class="bi bi-search"></i></button>
-        </div>
-        </form>
-    </div>
-
     <div class="row">
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content">
