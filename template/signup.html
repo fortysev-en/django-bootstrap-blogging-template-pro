@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container login-container">
+    <div class="row" style="height: 25vh;"></div>
+    <div class="row login-row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 login">
+            <img src="{% static 'img/blog-assests/signup-img.svg' %}" alt="signup-img">
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form action="" id="signup-form">
+                {% csrf_token %}
+                <input id="username" name="username" type="text" placeholder="Email Address">
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 password">
+            <input id="password" name="password" type="password" placeholder="Password">
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 password">
+            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password">
+            <span id="eyeIcon" onclick="togglePassword()"><i class="bi bi-eye-slash toggle"></i></span>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 btn-base btn-login">
+            <button type="submit">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
+            </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+    <div class="row" style="height: 25vh;">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="bottom-login">
+                <ul>
+                    <!-- <li><a href="{% url 'blogs:login' %}">Login Here!</a></li> -->
+                    <!-- <li><a href="">New User? Sign-up Here!</a></li> -->
+                </ul>  
+            </div>
+            </div>
+        <div class="col-lg-4"></div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

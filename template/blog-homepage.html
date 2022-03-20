@@ -1,8 +1,39 @@
-{% extends 'blog-base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 
 {% block start %}
+
+<div class="container container-head">
+    <div class="row header-img-row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 header-img">
+        <img src="{% static 'blogs/homepage-img.svg' %}" alt="homepage-img">
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bouncer">
+          <a class="btn-bounce bounce" href="#about"><i class="bi bi-caret-down-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row search-row">
+        <div class="col-lg-7"></div>
+        <div class="col-lg-3">
+            <form id="search-bar">
+                {% csrf_token %}
+                <input id="serchField" name="search" type="text" placeholder="Search">
+        </div>
+        <div class="col-lg-2 btn-base">
+            <button type="submit">SEARCH <i class="bi bi-search"></i></button>
+        </div>
+        </form>
+    </div>
 
     <div class="row">
         <div class="col-lg-3 col-md-6 col-10 blog-list">

@@ -68,6 +68,10 @@ html {
     margin-top: 5px;
 }
 
+.heading-text a{
+    text-decoration: none;
+}
+
 .heading-text h1{
 	color: #e0e0e0;
 	font-family: 'Libre Barcode 39 Text';	
@@ -75,68 +79,6 @@ html {
 }
 
 
-/* ============================== Carausel ============================== */
-
-.homepage-carausel{
-    width: 50%;
-}
-
-.carousel-cell img{
-	margin-left: 15px;
-	width: 600px;
-	height: 400px;
-	filter: blur(3px);
-  	-webkit-filter: blur(3px);
-	transition: all 0.5s ease;
-	-webkit-transition:  all 0.5s ease;
-	-moz-transition:  all 0.5s ease;
-	-o-transition:  all 0.5s ease;
-	-ms-transition:  all 0.5s ease;
-}
-
-.carousel-cell img:hover{
-	box-shadow: 0px 0px 80px #000;
-	filter: none;
-}
-
-/* .carousel-cell a{
-	opacity: 1;
-	transition: all 0.5s ease;
-	-webkit-transition:  all 0.5s ease;
-	-moz-transition:  all 0.5s ease;
-	-o-transition:  all 0.5s ease;
-	-ms-transition:  all 0.5s ease;
-} */
-
-.carousel-text{
-	font-size: 25px;
-	color: #000;
-	position: absolute;
-    font-family: Staatliches, sans-serif;
-    font-weight: 500;
-	bottom: 15%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.carousel-disc{
-	font-size: 15px;
-	color: #000;
-	position: absolute;
-    font-weight: 700;
-	bottom: 10%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-
-.flickity-button{
-    background-color: rgba(0, 0, 0, 0) !important;
-}
-
-.flickity-button-icon{
-    color: #fff !important;
-}
 /* ============================== Lander ============================== */
 .container-head{
     height: 100vh;
@@ -325,6 +267,71 @@ html {
         -moz-animation: bounce 2s infinite;
         -o-animation: bounce 2s infinite;
     }
+
+    /* ============================== Login ============================== */
+
+    .login-row{
+        height: 30vh;
+    }
+
+    .login-container input{
+        margin-top: 20px;
+    }
+
+    .login-container button{
+        margin-top: 20px;
+    }
+
+    .password span{
+        color: #6d6d6d;
+        position: absolute;
+        margin-top: 28px;
+        margin-left: -40px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .password a:hover{
+        color: white;
+    }
+
+    .login{
+        display: flex;
+    }
+
+    .btn-login i{
+        font-size: 1.2em;
+    }
+
+    .btn-login{
+        text-align: center;
+    }
+
+    .login img{
+        top: 10%;
+        max-width: 100%;
+    }
+
+    .bottom-login {
+        text-align: center;
+    }
+
+    .bottom-login ul{
+        margin-left: -18px;
+        margin-top: 50px;
+        list-style-type: none;
+    }
+
+    .bottom-login a{
+        text-decoration: none;
+        color: #999999;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .bottom-login a:hover{
+        color: white;
+    }
+
     /* ============================== Blog List ============================== */
 
     .blog-list{
@@ -336,13 +343,10 @@ html {
         margin-bottom: 50px;
     }
 
-    .search-row input{
+    input{
         width: 100%;
         padding: 6px;
-    }
-
-    input{
-        padding: 20px 0 0 10px;
+        /* padding: 20px 0 0 10px; */
         border: 2px solid grey;
         border-radius: 5px;
         background-color: #232323;
@@ -356,7 +360,7 @@ html {
         box-shadow: 0 0 3px #249169;
     }
     
-    .btn-search button{
+    .btn-base button{
         background-color: #000;
         text-decoration: none;
         font-size: 0.7em;
@@ -368,12 +372,12 @@ html {
         transition: all 0.3s ease-in-out;
     }
         
-    .btn-search button:hover{
+    .btn-base button:hover{
         border-color: #000;
         color: white;
     }
     
-    .btn-search i{
+    .btn-base i{
         margin-left: 5px;
     }
 

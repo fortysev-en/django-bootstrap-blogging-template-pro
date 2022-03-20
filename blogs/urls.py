@@ -12,7 +12,9 @@ app_name = 'blogs'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.blogHomepage, name='blog-homepage'),
-    path('froala_editor/',include('froala_editor.urls'))
+    path('froala_editor/',include('froala_editor.urls')),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup')
 ]
 
 if settings.DEBUG:
