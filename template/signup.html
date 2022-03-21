@@ -4,7 +4,7 @@
 {% block start %}
 
 <div class="container login-container">
-    <div class="row" style="height: 25vh;"></div>
+    <div class="row" style="height: 15vh;"></div>
     <div class="row login-row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 login">
@@ -15,9 +15,21 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-            <form action="" id="signup-form">
-                {% csrf_token %}
-                <input id="username" name="username" type="text" placeholder="Email Address">
+            <input id="firstname" name="firstname" type="text" placeholder="First Name">
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <input id="lastname" name="lastname" type="text" placeholder="Last Name">
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <input id="username" name="username" type="text" placeholder="Email Address">
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -42,8 +54,7 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 btn-base btn-login">
-        </form>
-        <button id="btn-signup" onclick="signUp()">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
+            <button id="btn-signup" onclick="signUp()">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -55,14 +66,12 @@
                 <ul>
                     <!-- <li><a href="{% url 'blogs:login' %}">Login Here!</a></li> -->
                     <!-- <li><a href="">New User? Sign-up Here!</a></li> -->
-                </ul>  
+                </ul>
             </div>
-            </div>
+        </div>
         <div class="col-lg-4"></div>
 
     </div>
-
-
 </div>
 
 {% endblock %}
