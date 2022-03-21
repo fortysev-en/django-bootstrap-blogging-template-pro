@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <title>Portfolio - Pushkar Jadhav</title>
+
+</head>
+
+<body>
+  <div id="navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 brand-img"><img src="{% static 'img/f-3.svg' %}" alt="brand-logo"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 nav-contents">
+          <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
+          <ul>
+            <li><a href="#lander">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#blogs">BLOGS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lander" id="lander">
+    <div class="txt-like">
+      <h6>SHARE YOUR LOVE</h6>
+    </div>
+
+    <form id="heart">
+      {% csrf_token %}
+      <button class="heart" type="submit" id="btn-heart">
+        <div class="heart-flip"></div>
+      </button>
+    </form>
+
+    <script type="text/javascript">
+      var status = "{{ isIpInDb }}"
+      if (status == 'False') {
+        document.getElementById('btn-heart').classList.remove('active');
+      } else if (status == 'True') {
+        document.getElementById('btn-heart').classList.add('active');
+      } else {
+        console.log('ELSE')
+      }
+    </script>
+
+
+    <div>
+      <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30"
+        fill="#FFF">
+        <g class="logo-sign__box">
+          <polygon class="logo-sign__line" points="-1,37.333 -1,42.667 -3,44 -3,36" />
+          <polygon class="logo-sign__line" points="-5,33.333 -5,46.667 -7,48 -7,32" />
+          <polygon class="logo-sign__line" points="-9,29.333 -9,50.667 -11,52 -11,28" />
+          <polygon class="logo-sign__line" points="-13.5,25 -13,25.333 -13,54.667 -13.5,55 -15,54 -15,26" />
+          <polygon class="logo-sign__line" points="-17,28.667 -17,51.333 -19,50 -19,30" />
+          <polygon class="logo-sign__line" points="-21,32.667 -21,47.333 -23,46 -23,34" />
+          <polygon class="logo-sign__line" points="-25,36.667 -25,43.333 -27,42 -27,38" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="icon-list">
+      <ul>
+        <li><a href=""><i class="bi bi-linkedin"></i></a></li>
+        <li><a href=""><i class="bi bi-github"></i></a></li>
+        <li><a href=""><i class="bi bi-instagram"></i></a></li>
+        <li><a href=""><i class="bi bi-discord"></i></a></li>
+        <li><a href=""><i class="bi bi-facebook"></i></a></li>
+        <li><a href=""><i class="bi bi-youtube"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="container container-head">
+      <div class="row resume">
+        <div>
+          <a href="{% static 'Pushkar_Jadhav_CV.pdf' %}" target="_black">RESUME <i class="bi bi-box-arrow-up-right"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lander-img">
+          <img src="{% static 'img/portfolio/lander-img-one.svg' %}" alt="lander-img">
+        </div>
+      </div>
+      <div class="row lander-txt">
+        <div class="box">
+          <div class="title">
+            <span class="block"></span>
+            <h1>Pushkar Jadhav</h1>
+          </div>
+          <div class="role">
+            <div class="block"></div>
+            <h2><span class="element"></span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="bouncer">
+        <a class="btn-bounce bounce" href="#about"><i class="bi bi-caret-down-fill"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- about + skills container -->
+  <div class="container" id="about">
+    <div class="row about-container">
+      <div class="col-lg-6 about-me-img">
+        <img src="{% static 'img/portfolio/about-me.svg' %}" alt="about-me-art-image">
+      </div>
+      <div class="col-lg-6 h1-head about-me">
+        <h1>ABOUT</h1>
+        <h2>Hi! I'm Pushkar Jadhav</h2>
+        <p>Well, here's a gist, I'm a Programmer, a Blogger and an Ethical Hacker by profession. As a graduate, I hold a
+          Bachelors Degree in Computer Science and Engineering from Savitribai Phule Pune University (formerly
+          University
+          of Pune). Currently working in Cybage Software PVT. LTD, a leading IT services company which mainly delivers
+          outsourced software product development.<br><br>
+
+          It's been more than five years I'm working, and as a freelancer, I've worked on several projects throughout
+          years which
+          includes Web Development, Graphics Designing, Android Development along with Android ROM Development as
+          well.<br><br>
+
+          Recently, I've developed several Windows Applications with the help of Python, Responsive and Interactive
+          Websites with Django and React.<br><br>
+
+          I believe in qualitative work rather than quantitative and believe that my skills will support your brand
+          and/or
+          you to succeed in your business and objectives.<br><br>
+
+          Feel free to get in <a href="#contact">touch</a>.</p>
+      </div>
+    </div>
+
+    <div class="row skills-container" id="skills">
+      <div class="col-lg-6 h1-head skills">
+        <h1>SKILLS</h1>
+
+        <div class="skillset">
+          <!-- skills -->
+          <div class="individual-skill">
+            <h2>HTML/CSS/JS</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <!-- skills -->
+          <div class="individual-skill">
+            <h2>Django</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <!-- skills -->
+          <div class="individual-skill">
+            <h2>Python</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <!-- skills -->
+          <div class="individual-skill">
+            <h2>SQL/Postgre</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <!-- skills -->
+          <div class="individual-skill">
+            <h2>Google Cloud/Google Firebase</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 skills-img">
+        <img src="{% static 'img/portfolio/skills.svg' %}" alt="skills-art-image">
+      </div>
+    </div>
+    <!-- skills marquee display -->
+    <div class="marquee">
+      <ul class="marquee-content">
+        <li><i class="devicon-postgresql-plain"></i></li>
+        <li><i class="devicon-python-plain"></i></li>
+        <li><i class="devicon-tensorflow-original"></i></li>
+        <li><i class="devicon-css3-plain"></i></li>
+        <li><i class="devicon-devicon-plain"></i></li>
+        <li><i class="devicon-django-plain"></i></li>
+        <li><i class="devicon-docker-plain"></i></li>
+        <li><i class="devicon-figma-plain"></i></li>
+        <li><i class="devicon-googlecloud-plain"></i></li>
+        <li><i class="devicon-html5-plain"></i></li>
+        <li><i class="devicon-heroku-original"></i></li>
+        <li><i class="devicon-firebase-plain"></i></li>
+        <li><i class="devicon-flask-original"></i></li>
+        <li><i class="devicon-git-plain"></i></li>
+        <li><i class="devicon-csharp-plain"></i></li>
+        <li><i class="devicon-javascript-plain"></i></li>
+        <li><i class="devicon-jquery-plain"></i></li>
+        <li><i class="devicon-jupyter-plain"></i></li>
+        <li><i class="devicon-linux-plain"></i></li>
+        <li><i class="devicon-markdown-original"></i></li>
+        <li><i class="devicon-mongodb-plain"></i></li>
+        <li><i class="devicon-mysql-plain"></i></li>
+        <li><i class="devicon-npm-original-wordmark"></i></li>
+        <li><i class="devicon-nodejs-plain"></i></li>
+        <li><i class="devicon-numpy-original"></i></li>
+        <li><i class="devicon-pandas-original"></i></li>
+        <li><i class="devicon-github-original"></i></li>
+        <li><i class="devicon-arduino-plain"></i></li>
+        <li><i class="devicon-android-plain"></i></li>
+        <li><i class="devicon-atom-original"></i></li>
+        <li><i class="devicon-illustrator-plain"></i></li>
+        <li><i class="devicon-inkscape-plain"></i></li>
+        <li><i class="devicon-filezilla-plain"></i></li>
+        <li><i class="devicon-bootstrap-plain"></i></li>
+        <li><i class="devicon-canva-original"></i></li>
+        <li><i class="devicon-codepen-plain"></i></li>
+        <li><i class="devicon-photoshop-plain"></i></li>
+        <li><i class="devicon-pycharm-plain"></i></li>
+        <li><i class="devicon-putty-plain"></i></li>
+        <li><i class="devicon-raspberrypi-line"></i></li>
+        <li><i class="devicon-r-original"></i></li>
+        <li><i class="devicon-react-original"></i></li>
+        <li><i class="devicon-slack-plain"></i></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-timeline-head">
+    <h1>CAREER TIMELINE</h1>
+  </div>
+
+  <!-- timeline container -->
+  <div class="timeline-bg">
+    <div class="container container-timeline">
+      <div class="display-img-one">
+        <img src="{% static 'img/portfolio/featured-img.svg' %}" alt="featured-img">
+      </div>
+      <h2 class="pb-3 pt-2">Career Timeline</h2>
+      <!--first section-->
+      <div class="row align-items-center how-it-works">
+        <div class="col-2 text-center bottom">
+          <div class="circle-txt">5</div>
+        </div>
+        <div class="col-6 individual-timeline-data">
+
+          <span>2020 - Present</span>
+          <h4>Cybage Software PVT. LTD</h4>
+          <h6><i>Web Developer</i></h6>
+          <p>Debug HTML/CSS/JS related bugs resulting build issues of Google Cloud. Run scripts to calculate all the
+            words available in any Google Cloud's live project. Develop a Python based model to analyze that data using
+            various libraries such as pandas, matplotlib,
+            scikit-learn numpy etc, also, manipulate the captured data if required. Sanity Checking and Publishing a
+            webpage to live. Communicate with Client in PST hours
+            and generate reports on a weekly basis.</p><br>
+
+          <span>2021 - 2022</span>
+          <h4>Burnwood - An Open Source, Python Based Cross Platform Tool</h4>
+          <h6><i>Freelance</i></h6>
+          <p>Burnwood is an open source, cross-platform tool used to generate Windows Exploitation Packages (A Malware).
+            The tool is capable of generating Windows Executables consisting of a malware masking behind any normal
+            file. The results could be used to study the vulnerabilities, and ultimately will help you prevent them.
+            Burnwood provides two delivery methods, Email Based (Gmail) and State -of-The-Art Cloud Based (Google's
+            Firebase). Both of these methods works on Google Services and has it's own pros and cons..</p>
+
+        </div>
+      </div>
+
+      <!--right to left-->
+      <div class="row timeline">
+        <div class="col-2">
+          <div class="corner top-right"></div>
+        </div>
+        <div class="col-8">
+          <hr />
+        </div>
+        <div class="col-2">
+          <div class="corner left-bottom"></div>
+        </div>
+      </div>
+
+      <div class="display-img-two">
+        <img src="{% static 'img/portfolio/freelancer-img-one.svg' %}" alt="freelancing-img">
+      </div>
+      <!--forth section-->
+      <div class="row align-items-center justify-content-end how-it-works">
+        <div class="col-6 individual-timeline-data">
+
+          <span>2017 - 2020</span>
+          <h4>Concentrix Daksh PVT. LTD</h4>
+          <h6><i>Sr. Technical Support Executive</i></h6>
+          <p>Resolve customers' service or service related complaints by performing activities such as troubleshooting.
+
+            Use different set of tools to troubleshoot any service related issues and fix them.
+
+            Provide Knowledge Training to Clients over call, message, email or chat along with Application Support.
+
+            Register or Escalate Tickets to rightful department.
+
+            Contact customers to respond to inquiries or to notify them of claim investigation results or any planned
+            adjustments.</p><br>
+
+          <span>2019 - 2020</span>
+          <h4>Web Development</h4>
+          <h6><i>Freelance Project</i></h6>
+          <p>First Web Development freelance project. A Simple dynamic website, freely hosted on EPIZY as their
+            sub-domain.<br>
+            <a href="http://yogayogcreations.epizy.com/?i=1" target="_blank">Website <i
+                class="bi bi-box-arrow-up-right"></i></a>
+          </p>
+
+        </div>
+        <div class="col-2 text-center full">
+          <div class="circle-txt">4</div>
+        </div>
+      </div>
+
+      <!--left to right-->
+      <div class="row timeline">
+        <div class="col-2">
+          <div class="corner right-bottom"></div>
+        </div>
+        <div class="col-8">
+          <hr />
+        </div>
+        <div class="col-2">
+          <div class="corner top-left"></div>
+        </div>
+      </div>
+
+      <div class="display-img-three">
+        <img src="{% static 'img/portfolio/graduation.svg' %}" alt="graduation-img">
+      </div>
+
+      <!--third section-->
+      <div class="row align-items-center how-it-works">
+        <div class="col-2 text-center top">
+          <div class="circle-txt">3</div>
+        </div>
+        <div class="col-6 individual-timeline-data">
+          <span>2013 - 2017</span>
+          <h4>Bachelor of Engineering (Computer Science)</h4>
+          <h6><i>Savitribai Phule Pune University (formerly, University of Pune)</i></h6><br>
+          <br>
+
+          <span>2015 - 2016</span>
+          <h4>Android Development</h4>
+          <h6><i>Freelancer</i></h6>
+          <p>ROM Development - Developed latest (at that period) Android ROM [7.0] exclusively for outdated Sony Experia
+            Acro S with the sources available from Google as an AOSP project.<br>
+            <a href="https://forum.xda-developers.com/t/rom-7-x-nougat-naosp-rom-for-acro-s.3507721/"
+              target="_blank">XDA Developers <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </p>
+          <p>Stock Application Port - Ported all the stock applications of Sony to be compatable for all general Android
+            devices.<br>
+            <a href="https://forum.xda-developers.com/t/apps-ported-mar03-xperia-ported-apps-for-aosp-based-roms.3558430/"
+              target="_blank">XDA Developers <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </p>
+          <br>
+
+          <span>2020</span>
+          <h4>Classification and Prediction of Rice Crop Diseases Using CNN and PNN</h4>
+          <h6><i>Engineering Project</i></h6>
+          <p>Rice production in India is an important part of the national economy. India is the world's 2nd largest
+            producer with approximately 43 Mio Ha planted area, account ing for 22% of the world's rice production. The
+            physiological diseases in rice crops are highly common and can be predicted through the structural
+            abnormalities in the leaves. Our system proposes a solution to predict few of these disease conditions in
+            cluding 'Brown Spot','Hispa','LeafBlast', and a Healthy Rice Crop. The main aim of this proposed system is
+            to optimize identification and monitoring of rice crops us ing technologies like:-image processing, neural
+            networks, forward feedback mechanism. We hope this forms a basis for other systems as well. <br>
+            <a href="https://link.springer.com/chapter/10.1007/978-981-15-5679-1_4" target="_blank">Springer - <i
+                class="bi bi-box-arrow-up-right"></i></a>
+          </p>
+        </div>
+      </div>
+
+
+      <!--right to left-->
+      <div class="row timeline">
+        <div class="col-2">
+          <div class="corner top-right"></div>
+        </div>
+        <div class="col-8">
+          <hr />
+        </div>
+        <div class="col-2">
+          <div class="corner left-bottom"></div>
+        </div>
+      </div>
+
+      <!--second section-->
+      <div class="row align-items-center justify-content-end how-it-works">
+        <div class="col-6 text-right individual-timeline-data">
+          <span>2011 - 2013</span>
+          <h4>HSC - 12th Grade</h4>
+          <h6><i>Maharashtra State Board of Secondary and Higher Secondary Board, Pune</i></h6>
+        </div>
+        <div class="col-2 text-center full">
+          <div class="circle-txt">2</div>
+        </div>
+      </div>
+
+      <!--path left to right-->
+      <div class="row timeline">
+        <div class="col-2">
+          <div class="corner right-bottom"></div>
+        </div>
+        <div class="col-8">
+          <hr />
+        </div>
+        <div class="col-2">
+          <div class="corner top-left"></div>
+        </div>
+      </div>
+
+      <!--first section-->
+      <div class="row align-items-center how-it-works">
+        <div class="col-2 text-center final-top">
+          <div class="circle-txt">1</div>
+        </div>
+        <div class="col-6 individual-timeline-data">
+          <span>2010 - 2011</span>
+          <h4>SSC - 10th Grade</h4>
+          <h6><i>Maharashtra State Board of Secondary and Higher Secondary Board, Pune</i></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container blogs-container" id="blogs">
+    <div class="row h1-head">
+      <h1>BLOGS</h1>
+      <div class="col-lg-4 col-sm-12 col-10 blog-list">
+        <div class="blog-content">
+          <a href="">
+            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
+            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
+              provident ut totam itaque.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
+              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
+              cumque consequuntur modi.</p><br>
+            <span>17 MAY 2022</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12 col-10 blog-list">
+        <div class="blog-content">
+          <a href="">
+            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
+            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
+              provident ut totam itaque.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
+              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
+              cumque consequuntur modi.</p><br>
+            <span>17 MAY 2022</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12 col-10 blog-list">
+        <div class="blog-content">
+          <a href="">
+            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
+            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
+              provident ut totam itaque.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
+              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
+              cumque consequuntur modi.</p><br>
+            <span>17 MAY 2022</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 col-7"></div>
+      <div class="col-lg-2 col-5 btn-load-more">
+        <a href="{% url 'blogs:blog-homepage' %}">LOAD MORE <i class="bi bi-box-arrow-up-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="contact-bg" id="contact">
+    <div class="container contact-container">
+      <div class="row contact-data">
+
+        <div class="col-lg-5 get-in-data">
+          <div class="container">
+            <div class="row contact-head">
+              <h4>GET IN TOUCH</h4>
+            </div>
+            <i class="bi bi-geo-alt"></i>
+            <h6>Vadgaon Sheri, Pune-14</h6>
+            <br>
+            <i class="bi bi-envelope"></i>
+            <h6>pushkar.jadhao@gmail.com</h6>
+          </div>
+        </div>
+
+        <div class="col-lg-7 leave-me-data">
+          <div class="container">
+            <div class="row contact-head">
+              <h4>LEAVE ME A MESSAGE!</h4>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <form id="contact-form">
+                  {% csrf_token %}
+                  <input id="name" name="name" class="form-input-name" type="text" placeholder="Name">
+              </div>
+              <div class="col-lg-6">
+                <input id="email" name="email" class="form-input-email" type="text" placeholder="Email">
+              </div>
+            </div>
+            <div class="row form-row">
+              <textarea name="desc" id="desc" class="form-input-desc" placeholder="How can I help you?"
+                rows="8"></textarea>
+            </div>
+            <div class="row">
+              <div class="btn-submit">
+                <button type="submit">SUBMIT <i class="bi bi-send"></i></button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <span id="success-span"></span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <span id="warning-span"></span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="bouncer">
+        <a class="btn-bounce bounce" href="#lander"><i class="bi bi-caret-up-fill"></i></a>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="">
+    <div class="container footer-container">
+      <div class="row icons-row">
+        <section class="mb-12 icon-sec">
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-linkedin"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-facebook"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+        </section>
+      </div>
+
+      <div class="row copyright">
+        <p>Copyright ©
+          <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="footer-text">
+          <a href="#">fortyseven</a><br>
+          <a class="visit-counter" data-toggle="tooltip" data-placement="right"
+            title="Total Unique Visitors">{{viewsCount}}</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="{% static 'js/particles.js' %}"></script>
+  <script src="{% static 'js/heart.js' %}"></script>
+  <script src="{% static 'js/contact.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/canvas.js' %}"></script>
+  <script src="{% static 'js/typed.js' %}"></script>
+  <script src="{% static 'js/marquee-config.js' %}"></script>
+</body>
+
+</html>
