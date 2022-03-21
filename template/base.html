@@ -21,8 +21,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Open+Sans&display=swap"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Open+Sans&display=swap"
+    rel="stylesheet">
 
   <title>Fortyseven | Homepage</title>
 
@@ -35,7 +35,9 @@
       <div class="row">
         <div class="col-lg-4 col-sm-4 brand">
           <div class="heading-text">
-            <a href="/"><h1>fortyseven</h1></a>
+            <a href="/">
+              <h1>fortyseven</h1>
+            </a>
           </div>
         </div>
         <div class="col-lg-4 col-sm-4"></div>
@@ -43,13 +45,14 @@
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
             {% if request.user.is_authenticated %}
+            <li><a href="{% url 'blogs:see-blogs' %}">MY BLOGS </a></li>
             <li><a href="{% url 'blogs:add-blog' %}">ADD BLOGS </a></li>
+            <li><a href="{% url 'blogs:logout-view' %}">LOGOUT <i class="bi bi-box-arrow-in-right"></i></a></li>
 
-            <li><a href="{% url 'blogs:login' %}">LOGOUT <i class="bi bi-box-arrow-in-right"></i></a></li>
             {% else %}
             <li><a href="{% url 'blogs:login' %}">LOGIN/REGISTER <i class="bi bi-box-arrow-in-right"></i></a></li>
-            {% endif %}
 
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -79,66 +82,98 @@
 
     {% endblock %}
 
-    <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+
+
+    <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">
           <span id="success-span"></span>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
       </div>
     </div>
-  
-    <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+
+    <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">
           <span id="warning-span"></span>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
       </div>
     </div>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="bouncer">
-        <a class="btn-bounce bounce" href="#lander"><i class="bi bi-caret-up-fill"></i></a>
-      </div>
-    </div>
-  </div>
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <script>
+          var successAlert = document.getElementById('success-toast');
+          var successText = document.getElementById("success-span");
+          var msg = '{{message | safe}}'
+          successText.innerHTML = msg;
+          var bsAlert = new bootstrap.Toast(successAlert);
+          bsAlert.show();
+        </script>
 
+        {% elif message.tags == 'warning' %}
+        <script>
+          var warningAlert = document.getElementById('warning-toast');
+          var warningText = document.getElementById("warning-span");
+          var msg = '{{message | safe}}'
+          warningAlert.innerHTML = msg;
+          var bsAlert = new bootstrap.Toast(warningAlert);
+          bsAlert.show();
+        </script>
 
-  <footer class="">
-    <div class="container footer-container">
-      <div class="row icons-row">
-        <section class="mb-12 icon-sec">
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
-
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
-
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
-        </section>
-      </div>
-
-      <div class="row copyright">
-        <p>Copyright ©
-          <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved.
-        </p>
-      </div>
-
+    <div class="container">
       <div class="row">
-        <div class="footer-text">
-          <a href="{% url 'portfolio:portfolio' %}">fortyseven</a><br>
-          <a class="visit-counter" data-toggle="tooltip" data-placement="right"
-            title="Total Unique Visitors">{{visitorCount}}</a>
+        <div class="bouncer">
+          <a class="btn-bounce bounce" href="#lander"><i class="bi bi-caret-up-fill"></i></a>
         </div>
       </div>
     </div>
 
-  </footer>
 
-  <script src="{% static 'js/blogMain.js' %}"></script>
+    <footer class="">
+      <div class="container footer-container">
+        <div class="row icons-row">
+          <section class="mb-12 icon-sec">
+            <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
+
+            <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+
+            <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
+
+            <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+          </section>
+        </div>
+
+        <div class="row copyright">
+          <p>Copyright ©
+            <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="footer-text">
+            <a href="{% url 'portfolio:portfolio' %}">fortyseven</a><br>
+            <a class="visit-counter" data-toggle="tooltip" data-placement="right"
+              title="Total Unique Visitors">{{visitorCount}}</a>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="{% static 'js/blogMain.js' %}"></script>
 </body>
 
 </html>

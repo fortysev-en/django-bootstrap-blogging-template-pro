@@ -59,19 +59,20 @@ function logIn(){
       
     }).then(result => result.json()).then(response =>{
           if (response.status == 200){
-            text = "Welcome <b>" + username + "</b>!";
-              successText.innerHTML = text;
-              var bsAlert = new bootstrap.Toast(successAlert);
-              bsAlert.show();
-            setTimeout(function (){
+            // text = "Welcome <b>" + username + "</b>!";
+            //   successText.innerHTML = text;
+            //   var bsAlert = new bootstrap.Toast(successAlert);
+            //   bsAlert.show();
+            // setTimeout(function (){
               window.location.href = '/'     
-            }, 1000);
+            // }, 1000);
           }
           else{
             text = response.message 
             warningText.innerHTML = text;
             var bsAlert = new bootstrap.Toast(warningAlert);
             bsAlert.show();
+            window.location.reload()
           }
     })
   }
