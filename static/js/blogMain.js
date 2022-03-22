@@ -59,19 +59,12 @@ function logIn(){
       
     }).then(result => result.json()).then(response =>{
           if (response.status == 200){
-            // text = "Welcome <b>" + username + "</b>!";
-            //   successText.innerHTML = text;
-            //   var bsAlert = new bootstrap.Toast(successAlert);
-            //   bsAlert.show();
-            // setTimeout(function (){
-              window.location.href = '/'     
-            // }, 1000);
+            window.location.href = '/'
           }
           else{
             warningText.innerHTML = response.message;
             var bsAlert = new bootstrap.Toast(warningAlert);
             bsAlert.show();
-            window.location.reload()
           }
     })
   }
@@ -148,3 +141,20 @@ function signUp(){
     })
   }
 }
+
+
+
+
+// var xmlHttp = new XMLHttpRequest();
+// xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+// xmlHttp.send( null );
+
+// let data = xmlHttp.responseText;
+// let dataJSON = JSON.parse(data);
+// console.log(dataJSON.content);
+// console.log(dataJSON.author);
+
+// document.getElementById('quote').innerHTML = dataJSON.content
+// document.getElementById('author').innerHTML = dataJSON.author
+
+
