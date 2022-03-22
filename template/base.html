@@ -45,7 +45,7 @@
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'blogs:see-blogs' %}">MY BLOGS </a></li>
+            <li><a href="{% url 'blogs:my-blogs' %}">MY BLOGS </a></li>
             <li><a href="{% url 'blogs:add-blog' %}">ADD BLOGS </a></li>
             <li><a href="{% url 'blogs:logout-view' %}">LOGOUT <i class="bi bi-box-arrow-in-right"></i></a></li>
 
@@ -59,22 +59,6 @@
     </div>
   </div>
 
-  <div class="lander" id="lander">
-    <div>
-      <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30"
-        fill="#FFF">
-        <g class="logo-sign__box">
-          <polygon class="logo-sign__line" points="-1,37.333 -1,42.667 -3,44 -3,36" />
-          <polygon class="logo-sign__line" points="-5,33.333 -5,46.667 -7,48 -7,32" />
-          <polygon class="logo-sign__line" points="-9,29.333 -9,50.667 -11,52 -11,28" />
-          <polygon class="logo-sign__line" points="-13.5,25 -13,25.333 -13,54.667 -13.5,55 -15,54 -15,26" />
-          <polygon class="logo-sign__line" points="-17,28.667 -17,51.333 -19,50 -19,30" />
-          <polygon class="logo-sign__line" points="-21,32.667 -21,47.333 -23,46 -23,34" />
-          <polygon class="logo-sign__line" points="-25,36.667 -25,43.333 -27,42 -27,38" />
-        </g>
-      </svg>
-    </div>
-
     {% block start %}
 
 
@@ -82,10 +66,8 @@
 
     {% endblock %}
 
-
-
     <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert"
-      aria-live="assertive" aria-atomic="true">
+      aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
       <div class="d-flex">
         <div class="toast-body">
           <span id="success-span"></span>
@@ -96,7 +78,7 @@
     </div>
 
     <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert"
-      aria-live="assertive" aria-atomic="true">
+      aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
       <div class="d-flex">
         <div class="toast-body">
           <span id="warning-span"></span>
@@ -166,7 +148,7 @@
           <div class="footer-text">
             <a href="{% url 'portfolio:portfolio' %}">fortyseven</a><br>
             <a class="visit-counter" data-toggle="tooltip" data-placement="right"
-              title="Total Unique Visitors">{{visitorCount}}</a>
+              title="Total Unique Visitors">{{visitorCount | safe}}</a>
           </div>
         </div>
       </div>
