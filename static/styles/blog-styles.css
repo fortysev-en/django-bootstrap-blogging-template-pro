@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cousine&family=Roboto:wght@300&family=Staatliches&display=swap');
+
 body,
 html {
 	background-color: #1B1A17 !important;
@@ -726,10 +727,34 @@ td {
 } */
 
 
-/* ============================== Blogs Page ============================== */
-
+/* ============================== Individual Blogs Page ============================== */
 .text-content p{
-	color: white !important;
+	font-family: 'Cousine', monospace !important;
+	color: #E6E6E6 !important;
+}
+
+.img-fluid{
+	margin-top: 8em;
+	width: 100%;
+}
+
+.text-heading h2{
+	font-family: 'Cousine', monospace !important;
+	color: #E6E6E6 !important;
+}
+
+.auth-details{
+	display: block;
+	margin-bottom: 4em;
+	color: white;
+}
+
+.auth-details p{
+	margin-bottom: 0px;
+}
+
+.auth-details span{
+	color: #00BFA6;
 }
 
 /* ============================== Footer ============================== */

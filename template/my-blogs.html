@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block start %}
+{% load static %}
+
+
+<div class="container my-blogs-container">
+  <div class="row my-blogs-head-row">
+    <div class="col-lg-12 my-blogs-head">
+        <h1>MY BLOGS</h1>
+        <h6>You can Update or Delete your blogs from here.</h6>
+        <h6><strong>NOTE: Once a blog is deleted, it will be deleted forever.</strong></h6>
+    </div>
+  </div>
+  <div class="row my-blogs-row">
+    <div class="col-lg-12 actual-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Blog Title</th>
+            <th scope="col">Views</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for blog in blogs_obj %}
+          <tr class="table-row">
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{blog.title}}</td>
+            <td>{{blog.total_views}}</td>
+            <td>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</td>
+            <td>
+              <a href="{%  url 'blogs:blog-update' blog.slug %}"><i class="bi bi-pen hover-color"></i></a>
+              <a href="{% url 'blogs:blog-delete' blog.id %}"><i class="bi bi-trash hover-color"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
