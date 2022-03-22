@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+<div class="container froala-container">
+    <div class="row add-blog-row">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" value="{{blog_obj.title}}" class="form-control" placeholder="Enter title" name="title">
+                </div>
+                <div class="col-md-12">
+                    {{form.media}}
+                    {{form.as_p}}
+                </div>
+                <div class="col-lg-12">
+                    <input type="file" name="image" class="form-control">
+                </div>
+            </div>
+            <div class="btn-create">
+                <button type="submit">UPDATE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
