@@ -29,11 +29,11 @@ def Homepage(request):
 
 
 def login(request):
-    # context = {
-    #     "captcha": FormWithCaptcha
-    # }
+    context = {}
 
-    return render(request, 'login.html')
+    context['recaptcha_site_key'] = settings.GOOGLE_RECAPTCHA_SITE_KEY
+    
+    return render(request, 'login.html', context)
 
 def logout_view(request):
     logout(request)

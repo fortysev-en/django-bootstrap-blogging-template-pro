@@ -16,36 +16,47 @@ class LoginView(APIView):
         response['status'] = 500
         response['message'] = 'Something went wrong!'
 
-        try:
-            data = request.data
-        
-            check_user = User.objects.filter(username = data.get('username')).first()
+        data = request.data
 
-            if check_user is None:
-                response['message'] = 'Invalid Username/Password!'
-                raise Exception('User not found')
+        recaptcha_response = data.get('gReCaptcha')
+        recaptchaData = {
+        'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=recaptchaData)
+        result = r.json()
 
-            user_obj = authenticate(username = data.get('username'), password = data.get('password'))
+        if result['success']:
+            try:            
+                check_user = User.objects.filter(username = data.get('username')).first()
 
-            usr_name = data.get('username')
+                if check_user is None:
+                    response['message'] = 'Invalid Username/Password!'
+                    raise Exception('User not found')
 
-            if user_obj is None:
-                response['message'] = 'Invalid Username/Password!'
-                raise Exception('Invalid Password')
-            else:
-                login(request, user_obj)
-                response['status'] = 200
-                response['message'] = f'Welcome {usr_name}'
-                messages.success(request, f"Welcome <b>{user_obj.first_name}</b>!")        
-        
-        except Exception as e:
-            print(e)
+                user_obj = authenticate(username = data.get('username'), password = data.get('password'))
+
+                usr_name = data.get('username')
+
+                if user_obj is None:
+                    response['message'] = 'Invalid Username/Password!'
+                    raise Exception('Invalid Password')
+                else:
+                    login(request, user_obj)
+                    response['status'] = 200
+                    response['message'] = f'Welcome {usr_name}'
+                    messages.success(request, f"Welcome <b>{user_obj.first_name}</b>!")        
+            
+            except Exception as e:
+                print(e)
+        else:
+            alert = result['error-codes'][0]
+            response['message'] = 'Captcha Error: ' + alert
 
         return Response(response)
 
 
 LoginView = LoginView.as_view()
-
 
 
 class SignupView(APIView):

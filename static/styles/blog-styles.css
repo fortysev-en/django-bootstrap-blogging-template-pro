@@ -321,7 +321,6 @@ html {
 
 .login-container{
     text-align: center;
-    max-width: 30%;
 }
 
 .login-container input {
@@ -457,6 +456,10 @@ html {
 
 .recaptcha a:hover{
 	color: white;
+}
+
+.reLogin p{
+	padding-left: 0px !important;
 }
 
 .figure{

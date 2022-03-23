@@ -27,6 +27,7 @@ function togglePassword(){
 function logIn(){
   var username = document.getElementById('username').value
   var password = document.getElementById('password').value
+  var gReCaptcha = document.getElementById('g-recaptcha-response').value
   var csrf = document.getElementById('csrf').value
 
 	if (username == "" || username.length < 5) {
@@ -46,7 +47,8 @@ function logIn(){
   else{
     var data = {
       'username' : username,
-      'password' : password
+      'password' : password,
+      'gReCaptcha' : gReCaptcha
     }
   
     fetch('/api/login/', {
@@ -76,7 +78,7 @@ function signUp(){
   var email = document.getElementById('username').value
   var password = document.getElementById('password').value
   var confirmpassword = document.getElementById('confirmPassword').value
-  gReCaptcha = document.getElementById('g-recaptcha-response').value
+  var gReCaptcha = document.getElementById('g-recaptcha-response').value
   var csrf = document.getElementById('csrf').value
 
 	if (firstname == "" || lastname == "" || firstname.length < 2 || lastname.length < 2) {

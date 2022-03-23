@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block start %}
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
 
 <div class="container login-container">
     <div class="row" style="height: 15vh;"></div>
@@ -15,7 +16,7 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-                <input id="username" name="username" type="text" placeholder="Username">
+            <input id="username" name="username" type="text" placeholder="Username">
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -39,20 +40,41 @@
 
     <div class="row" style="height: 25vh;">
         <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-4  col-md-12 col-12">
             <div class="bottom-login">
                 <ul>
                     <li><a href="">Forgot Password?</a></li>
                     <li><a href="{% url 'blogs:signup' %}">New User? Sign-Up Here!</a></li>
-                </ul>  
+                </ul>
             </div>
-            </div>
+        </div>
         <div class="col-lg-4">
             <!-- <form>{{captcha}}</form> -->
-        
+
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="recaptcha reLogin">
+                <p>This site is protected by reCAPTCHA and the <br> Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                </p>
+                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> 
+            </div>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
 </div>
+
+<script>
+    //global grecaptcha
+    grecaptcha.ready(function() {
+      grecaptcha.execute('{{recaptcha_site_key}}', {action: "/signup/"}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+      });
+    });
+  </script>
 
 {% endblock %}
