@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<title>{% block title %} Login {% endblock %}</title>
+
 {% block start %}
 <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
 
