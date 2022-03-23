@@ -22,6 +22,19 @@ function togglePassword(){
       });
 }
 
+// show and hide password while changing the icon function
+function toggleConfirmPassword(){
+  $("body").on('click', '.toggle', function() {
+      $(this).toggleClass("bi bi-eye");
+      var input = $("#confirmPassword");
+      if (input.attr("type") === "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
+    });
+}
+
 
 
 function logIn(){
