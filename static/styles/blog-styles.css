@@ -23,6 +23,31 @@ html {
 	transition: top 0.3s ease;
 }
 
+.searchBar{
+	text-align: right;
+	opacity: 0.8;
+}
+
+.searchBar button{
+	background: none;
+	border: none;
+	margin-left: -3em;
+	color: white;
+	padding: 4px 10px 5px 10px;
+	/* border-radius: 8px; */
+	/* border: white solid 2px; */
+	transition: all 0.3s ease-in-out;
+}
+
+.searchBar button:hover{
+	/* background-color: #E6E6E6; */
+	color: #FF9704;
+}
+
+.searchBar input{
+	margin-top: 12px;
+}
+
 .nav-contents {
 	padding: 15px;
 }
@@ -728,13 +753,34 @@ td {
 
 
 /* ============================== Individual Blogs Page ============================== */
+
+.editOptions{
+	position: relative;
+    margin-top: 5em;
+}
+
+.editOptions a{
+	text-decoration: none;
+	padding: 5px;
+	color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+.editOptions a:hover{
+	color: #F50057;
+}
+
+.editRow{
+	text-align: end;
+	min-height: 7em;
+}
+
 .text-content p{
 	font-family: 'Cousine', monospace !important;
 	color: #E6E6E6 !important;
 }
 
 .img-fluid{
-	margin-top: 8em;
 	width: 100%;
 }
 
@@ -899,6 +945,16 @@ footer {
     .btn-signup{
         margin-left: 0px;
     }
+
+	.searchBar input{
+		width: 100%;
+		display: block;
+	}
+
+	.searchBar button{
+		position: absolute;
+		margin-top: -34px;
+	}
 }
 
 @media only screen and (min-width: 580px) and (max-width: 1200px) {

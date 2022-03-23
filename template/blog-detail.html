@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block start %}
+<section>
+    <div class="container indBlog-container">
+            <div class="row editRow">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    {% if blogs_obj.user.is_authenticated and blogs_obj.user == request.user %}
+                    <div class="editOptions">
+                        <a href="{%  url 'blogs:blog-update' blogs_obj.pk %}"><i class="bi bi-pen hover-color"></i></a>
+                        <a href="{% url 'blogs:blog-delete' blogs_obj.id %}"><i class="bi bi-trash hover-color"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        <div class="row text-center">
+            <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5" src="/media/{{blogs_obj.image}}" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 mx-auto">
+                <div class="text-heading">
+                    <h2>{{blogs_obj.title|safe}}</h2>
+                </div>
+                <div class="auth-details">
+                    <p>Posted on <span>{{blogs_obj.created_at|date:"M d, Y"}} {{blogs_obj.created_at|time:"h:i A"}}</span> by <span>{{blogs_obj.user.first_name}}</span></p>
+                    <p>Total Views: {{blogs_obj.total_views}}</p>
+                </div>
+                <div class="text-content">
+                    {{blogs_obj.content|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -8,7 +8,6 @@ def generate_random_string(N):
     res = ''.join(random.choices(string.ascii_uppercase + string.digits, k = N))
     return res
 
-
 # generate slug
 def generate_slug(text):
     from blogs.models import Blog
@@ -18,3 +17,19 @@ def generate_slug(text):
         # if available, generate 5 ramdom characters and add it with the slug
         return generate_slug(text + generate_random_string(5))
     return new_slug
+
+
+def get_ip(request):
+
+    #get IP address of a user and save it in a model
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        print ("returning FORWARDED_FOR")
+        ip = x_forwarded_for.split(',')[-1].strip()
+    elif request.META.get('HTTP_X_REAL_IP'):
+        print ("returning REAL_IP")
+        ip = request.META.get('HTTP_X_REAL_IP')
+    else:
+        print ("returning REMOTE_ADDR")
+        ip = request.META.get('REMOTE_ADDR')
+    return ip

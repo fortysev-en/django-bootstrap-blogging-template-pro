@@ -7,7 +7,7 @@ from . import models
 
 context = {'isIpInDb' : 'False'}
 
-def index(request):
+def portfolio(request):
 
     #get IP address of a user and save it in a model
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -33,7 +33,7 @@ def index(request):
     visitor_count = models.ViewsModel.objects.all().count()
     context['viewsCount'] = visitor_count
 
-    return render(request, 'index.html', context)
+    return render(request, 'portfolio.html', context)
 
 
 def contact(request):

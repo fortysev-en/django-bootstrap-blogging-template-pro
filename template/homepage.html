@@ -6,8 +6,7 @@
 
 <div class="lander" id="lander">
   <div>
-    <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30"
-      fill="#FFF">
+    <svg class="logo-sign" xmlns="http://www.w3.org/2000/svg" width="54" height="30" viewBox="-55 25 54 30" fill="#FFF">
       <g class="logo-sign__box">
         <polygon class="logo-sign__line" points="-1,37.333 -1,42.667 -3,44 -3,36" />
         <polygon class="logo-sign__line" points="-5,33.333 -5,46.667 -7,48 -7,32" />
@@ -20,11 +19,11 @@
     </svg>
   </div>
 
-<div class="container container-head">
+  <div class="container container-head">
     <div class="row header-img-row">
       <div class="col-lg-2"></div>
       <div class="col-lg-8 header-img">
-        <img src="{% static 'blogs/homepage-img.svg' %}" alt="homepage-img">
+        <img src="{% static 'img/blog-assests/homepage-img.svg' %}" alt="homepage-img">
       </div>
       <div class="col-lg-2"></div>
     </div>
@@ -38,32 +37,22 @@
   </div>
 
   <div class="container">
-    <div class="row search-row">
-        <div class="col-lg-7"></div>
-        <div class="col-lg-3">
-            <form id="search-bar">
-                {% csrf_token %}
-                <input id="serchField" name="search" type="text" placeholder="Search">
-        </div>
-        <div class="col-lg-2 btn-base">
-            <button type="submit">SEARCH <i class="bi bi-search"></i></button>
-        </div>
-        </form>
-    </div>
-
     <div class="row">
-        {% for blog in blogs %}
-        <div class="col-lg-3 col-md-6 col-10 blog-list">
-            <div class="blog-content">
-                <a href="{% url 'blogs:blog-detail' blog.slug %}">
-                    <img src="/media/{{blog.image}}" alt="">
-                    <h4>{{blog.title}}</h4>
-                    <!-- <p>{{blog.content|safe}}</p><br> -->
-                    <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by {{blog.user.username}}</span>
-                </a>
-            </div>
+      {% for blog in blogs %}
+      <div class="col-lg-3 col-md-6 col-10 blog-list">
+        <div class="blog-content">
+          <a href="{% url 'blogs:blog-detail' blog.slug %}">
+            <img src="/media/{{blog.image}}" alt="">
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.gist|safe}}</p><br>
+            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+              {{blog.user.first_name}}</span><br>
+            <span>Total Views: {{blog.total_views}}</span>
+          </a>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </div>
 {% endblock %}

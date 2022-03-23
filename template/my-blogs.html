@@ -32,7 +32,7 @@
             <td>{{blog.total_views}}</td>
             <td>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</td>
             <td>
-              <a href="{%  url 'blogs:blog-update' blog.slug %}"><i class="bi bi-pen hover-color"></i></a>
+              <a href="{%  url 'blogs:blog-update' blog.pk %}"><i class="bi bi-pen hover-color"></i></a>
               <a href="{% url 'blogs:blog-delete' blog.id %}"><i class="bi bi-trash hover-color"></i></a>
             </td>
           </tr>

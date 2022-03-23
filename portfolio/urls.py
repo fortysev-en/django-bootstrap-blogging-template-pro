@@ -8,7 +8,7 @@ app_name = 'portfolio'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='portfolio'),
+    path('', views.portfolio, name='portfolio'),
     path('portfolio/contact', views.contact, name='contact'),
     path('portfolio/likes', views.likes, name='likes'),
 ]

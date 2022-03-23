@@ -33,14 +33,19 @@
   <div id="navbar">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-sm-4 brand">
+        <div class="col-lg-2 brand">
           <div class="heading-text">
             <a href="/">
               <h1>fortyseven</h1>
             </a>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-4"></div>
+        <div class="col-lg-6 col-md-6 col-12 searchBar">
+          <form action="{% url 'blogs:search-page' %}" id="search-bar" method="GET">
+            <input id="serchField" name="search" type="text" placeholder="Search">
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        </div>
         <div class="col-lg-4 col-sm-4 nav-contents">
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
@@ -58,104 +63,105 @@
       </div>
     </div>
   </div>
+  <div id="navigate-top"></div>
 
-    {% block start %}
+  {% block start %}
 
 
 
 
-    {% endblock %}
+  {% endblock %}
 
-    <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert"
-      aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
-      <div class="d-flex">
-        <div class="toast-body">
-          <span id="success-span"></span>
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-          aria-label="Close"></button>
+  <div id="success-toast" class="toast align-items-center bg-toast-green text-white border-0" role="alert"
+    aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
+    <div class="d-flex">
+      <div class="toast-body">
+        <span id="success-span"></span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert"
+    aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
+    <div class="d-flex">
+      <div class="toast-body">
+        <span id="warning-span"></span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+
+
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+  <script>
+    var successAlert = document.getElementById('success-toast');
+    var successText = document.getElementById("success-span");
+    var msg = '{{message | safe}}'
+    successText.innerHTML = msg;
+    var bsAlert = new bootstrap.Toast(successAlert);
+    bsAlert.show();
+  </script>
+
+  {% elif message.tags == 'warning' %}
+  <script>
+    var warningAlert = document.getElementById('warning-toast');
+    var warningText = document.getElementById("warning-span");
+    var msg = '{{message | safe}}'
+    warningAlert.innerHTML = msg;
+    var bsAlert = new bootstrap.Toast(warningAlert);
+    bsAlert.show();
+  </script>
+
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <div class="container">
+    <div class="row">
+      <div class="bouncer">
+        <a class="btn-bounce bounce" href="#navigate-top"><i class="bi bi-caret-up-fill"></i></a>
       </div>
     </div>
+  </div>
 
-    <div id="warning-toast" class="toast align-items-center bg-toast-red text-white border-0" role="alert"
-      aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
-      <div class="d-flex">
-        <div class="toast-body">
-          <span id="warning-span"></span>
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-          aria-label="Close"></button>
+
+  <footer class="">
+    <div class="container footer-container">
+      <div class="row icons-row">
+        <section class="mb-12 icon-sec">
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
+
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+        </section>
       </div>
-    </div>
 
+      <div class="row copyright">
+        <p>Copyright ©
+          <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved.
+        </p>
+      </div>
 
-    {% if messages %}
-      {% for message in messages %}
-        {% if message.tags == 'success' %}
-        <script>
-          var successAlert = document.getElementById('success-toast');
-          var successText = document.getElementById("success-span");
-          var msg = '{{message | safe}}'
-          successText.innerHTML = msg;
-          var bsAlert = new bootstrap.Toast(successAlert);
-          bsAlert.show();
-        </script>
-
-        {% elif message.tags == 'warning' %}
-        <script>
-          var warningAlert = document.getElementById('warning-toast');
-          var warningText = document.getElementById("warning-span");
-          var msg = '{{message | safe}}'
-          warningAlert.innerHTML = msg;
-          var bsAlert = new bootstrap.Toast(warningAlert);
-          bsAlert.show();
-        </script>
-
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    <div class="container">
       <div class="row">
-        <div class="bouncer">
-          <a class="btn-bounce bounce" href="#lander"><i class="bi bi-caret-up-fill"></i></a>
+        <div class="footer-text">
+          <a href="{% url 'portfolio:portfolio' %}">fortyseven</a><br>
+          <a class="visit-counter" data-toggle="tooltip" data-placement="right"
+            title="Total Unique Visitors">{{visitorCount | safe}}</a>
         </div>
       </div>
     </div>
 
+  </footer>
 
-    <footer class="">
-      <div class="container footer-container">
-        <div class="row icons-row">
-          <section class="mb-12 icon-sec">
-            <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
-
-            <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
-
-            <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
-
-            <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
-          </section>
-        </div>
-
-        <div class="row copyright">
-          <p>Copyright ©
-            <script>document.write(new Date().getFullYear());</script> Pushkar Jadhav, All rights Reserved.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="footer-text">
-            <a href="{% url 'portfolio:portfolio' %}">fortyseven</a><br>
-            <a class="visit-counter" data-toggle="tooltip" data-placement="right"
-              title="Total Unique Visitors">{{visitorCount | safe}}</a>
-          </div>
-        </div>
-      </div>
-
-    </footer>
-
-    <script src="{% static 'js/blogMain.js' %}"></script>
+  <script src="{% static 'js/blogMain.js' %}"></script>
 </body>
 
 </html>

@@ -39,14 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_email_verification',
     'rest_framework',
+    'captcha',
     'froala_editor',
     'portfolio',
     'blogs'
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io','https://*.127.0.0.1']
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,3 +137,32 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# RECAPTCHA V2 API KEYS
+RECAPTCHA_PUBLIC_KEY = '6LcfJ_seAAAAAE7OAnqMkgRa4ieOcJDz1cXq8eV3'
+RECAPTCHA_PRIVATE_KEY = '6LcfJ_seAAAAANzljZnoQpTk4SKGxsZTm6JV5pgc'
+RECAPTCHA_REQUIRED_SCORE = 0.85
+
+
+
+def verified_callback(user):
+    user.is_active = True
+
+EMAIL_VERIFIED_CALLBACK = verified_callback
+EMAIL_FROM_ADDRESS = '0a000047@gmail.com' 
+EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_MAIL_HTML = 'mail_body.html'
+EMAIL_MAIL_PLAIN = 'mail_body.txt'
+EMAIL_TOKEN_LIFE = 60 * 60
+EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_DOMAIN = 'http://mydomain.com/'
+EMAIL_MULTI_USER = True  # optional (defaults to False)
+
+# For Django Email Backend
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '0a000047@gmail.com'
+EMAIL_HOST_PASSWORD = '511750#21104041'  # os.environ['password_key'] suggested
+EMAIL_USE_TLS = True

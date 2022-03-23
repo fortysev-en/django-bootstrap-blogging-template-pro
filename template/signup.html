@@ -3,73 +3,71 @@
 
 {% block start %}
 
-<div class="container login-container" id="signup-container">
+<div class="container signup-container" id="signup-container">
+
+    <!-- <div class="figure">
+        <img src="{% static 'img/blog-assests/signup-img.svg' %}" alt="">
+    </div> -->
+
     <div class="row" style="height: 15vh;"></div>
-    <div class="row login-row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 login">
+    <div class="row signup-row">
+        <div class="col-lg-5 signup">
             <img src="{% static 'img/blog-assests/signup-img.svg' %}" alt="signup-img">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-5 col-12">
             <input id="firstname" name="firstname" type="text" placeholder="First Name">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <input id="lastname" name="lastname" type="text" placeholder="Last Name">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <input id="username" name="username" type="text" placeholder="Email Address">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
 
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 password">
+        <div class="col-lg-5 password">
             <input id="password" name="password" type="password" placeholder="Password">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
 
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 password">
+        <div class="col-lg-5 password">
             <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password">
             <span id="eyeIcon" onclick="togglePassword()"><i class="bi bi-eye-slash toggle"></i></span>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
 
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 btn-base btn-login">
+        <div class="col-lg-5 btn-base btn-signup">
             <button id="btn-signup" onclick="signUp()">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-7"></div>
     </div>
 
     <div class="row" style="height: 25vh;">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <div class="bottom-login">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-5">
+            <div class="bottom-signup">
                 <ul>
-                    <!-- <li><a href="{% url 'blogs:login' %}">Login Here!</a></li> -->
+                    <!-- <li><a href="{% url 'blogs:signup' %}">signup Here!</a></li> -->
                     <!-- <li><a href="">New User? Sign-up Here!</a></li> -->
                 </ul>
             </div>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-5"></div>
     </div>
 </div>
 
