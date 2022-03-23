@@ -595,6 +595,26 @@ html {
 	-webkit-transition: ease-in;
 }
 
+/* ============================== Search Page ============================== */
+
+
+.searchHead{
+	text-align: center;
+}
+
+.searchHead h1{
+	color: white;
+	margin-top: 3em;
+}
+
+.searchHead span{
+	color: #249169;
+}
+
+.searchRow{
+	height: 80vh;
+}
+
 /* ============================== Blog Homepage ============================== */
 
 .blog-list {

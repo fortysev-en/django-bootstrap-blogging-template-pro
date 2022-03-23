@@ -176,9 +176,10 @@ def search(request):
         searchQuery = request.GET.get('search')
         searchResults = Blog.objects.filter(title__icontains=searchQuery)
         context['searchResults'] = searchResults
+        context['searchQuery'] = searchQuery
 
     return render(request, 'search-page.html', context)
-    
+
 # def postLike(request, pk):
 #     post_id = request.POST.get('blog-id')
 #     post = Blog.objects.get(pk=post_id)
