@@ -76,6 +76,7 @@ function signUp(){
   var email = document.getElementById('username').value
   var password = document.getElementById('password').value
   var confirmpassword = document.getElementById('confirmPassword').value
+  gReCaptcha = document.getElementById('g-recaptcha-response').value
   var csrf = document.getElementById('csrf').value
 
 	if (firstname == "" || lastname == "" || firstname.length < 2 || lastname.length < 2) {
@@ -112,7 +113,8 @@ function signUp(){
       'lastname' : lastname,
       'username' : email,
       'password' : password,
-      'email' : email
+      'email' : email,
+      'gReCaptcha' : gReCaptcha
     }
   
     fetch('/api/signup/', {
@@ -141,35 +143,6 @@ function signUp(){
     })
   }
 }
-
-// function searchBar(){
-
-//   searchQuery = document.getElementById('serchField').value
-
-//   console.log(searchQuery)
-
-//   $.ajax({
-//     // points to the url where your data will be posted
-//     url:'/',
-//     // post for security reason
-//     type: "GET",
-//     // data that you will like to return 
-//     data: {'searchQuery' : searchQuery},
-//     // what to do when the call is success 
-//     success:function(response){
-//       console.log('SUCCESS')
-//       $( "#src" ).load(window.location.href + " #src" );
-//     },
-//     // what to do when the call is complete ( you can right your clean from code here)
-//     complete:function(){},
-//     // what to do when there is an error
-//     error:function (xhr, textStatus, thrownError){
-//       console.log('FAIL')
-//     }
-// });
-
-// }
-
 
 
 

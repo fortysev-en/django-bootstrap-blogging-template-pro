@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block start %}
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
 
 <div class="container signup-container" id="signup-container">
 
@@ -49,7 +50,6 @@
         </div>
         <div class="col-lg-7"></div>
     </div>
-
     <div class="row">
         <div class="col-lg-5 btn-base btn-signup">
             <button id="btn-signup" onclick="signUp()">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
@@ -58,16 +58,16 @@
     </div>
 
     <div class="row" style="height: 25vh;">
-        <div class="col-lg-5"></div>
         <div class="col-lg-5">
-            <div class="bottom-signup">
-                <ul>
+            <div class="recaptcha">
                     <!-- <li><a href="{% url 'blogs:signup' %}">signup Here!</a></li> -->
                     <!-- <li><a href="">New User? Sign-up Here!</a></li> -->
-                </ul>
+                    <p>This site is protected by reCAPTCHA and the <br> Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                    </p>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> 
             </div>
         </div>
-        <div class="col-lg-5"></div>
+        <div class="col-lg-7"></div>
     </div>
 </div>
 
@@ -82,6 +82,15 @@
             aria-label="Close"></button>
     </div>
 </div>
+
+<script>
+    //global grecaptcha
+    grecaptcha.ready(function() {
+      grecaptcha.execute('{{recaptcha_site_key}}', {action: "/signup/"}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+      });
+    });
+  </script>
 
 
 {% endblock %}

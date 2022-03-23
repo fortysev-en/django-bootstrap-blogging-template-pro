@@ -438,27 +438,24 @@ html {
 	max-width: 80%;
 }
 
-.bottom-signup {
+.recaptcha{
+	margin-top: 40px;
 	text-align: center;
 }
 
-.bottom-signup li {
-	margin-top: 15px;
+.recaptcha p{
+	font-size: 0.8em;
+	color: white;
+	padding-left: 70px;
 }
 
-.bottom-signup ul {
-	margin-left: -18px;
-	margin-top: 50px;
-	list-style-type: none;
-}
-
-.bottom-signup a {
+.recaptcha a{
 	text-decoration: none;
-	color: #999999;
+	color: #00BFA6;
 	transition: all 0.3s ease-in-out;
 }
 
-.bottom-signup a:hover {
+.recaptcha a:hover{
 	color: white;
 }
 
@@ -974,6 +971,10 @@ footer {
 	.searchBar button{
 		position: absolute;
 		margin-top: -34px;
+	}
+
+	.recaptcha p{
+		padding-left: 0px;
 	}
 }
 

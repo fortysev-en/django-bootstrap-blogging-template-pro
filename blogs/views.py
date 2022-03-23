@@ -163,10 +163,14 @@ def my_blogs(request):
         return render(request, 'my-blogs.html', context)
 
 def signup(request):
+    context = {}
     if (request.user.is_authenticated):
         return redirect('/')
     else:
-        return render(request, 'signup.html')
+
+        context['recaptcha_site_key'] = settings.GOOGLE_RECAPTCHA_SITE_KEY
+
+        return render(request, 'signup.html', context)
 
 
 def search(request):
