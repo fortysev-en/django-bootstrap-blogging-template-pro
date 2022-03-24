@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 from froala_editor.fields import FroalaField
@@ -10,7 +11,7 @@ class ViewsModel(models.Model):
     def __str__(self):
         return self.total_visits
 
-# Create your models here.
+# Blog post model
 class Blog(models.Model):
     title = models.CharField(max_length=1000)
     gist = models.CharField(max_length=1000)
@@ -36,3 +37,16 @@ class Blog(models.Model):
 
     # def total_likes(self):
     #     return self.likes.count()
+
+
+# Blog comment model
+class BlogComment(models.Model):
+    serial = models.AutoField(primary_key=True)
+    comment = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.first_name

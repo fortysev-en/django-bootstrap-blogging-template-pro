@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_email_verification',
     'rest_framework',
-    'captcha',
     'froala_editor',
     'portfolio',
     'blogs'
@@ -137,12 +136,6 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# RECAPTCHA V2 API KEYS
-# RECAPTCHA_PUBLIC_KEY = '6LcfJ_seAAAAAE7OAnqMkgRa4ieOcJDz1cXq8eV3'
-# RECAPTCHA_PRIVATE_KEY = '6LcfJ_seAAAAANzljZnoQpTk4SKGxsZTm6JV5pgc'
-# RECAPTCHA_REQUIRED_SCORE = 0.85
 
 
 GOOGLE_RECAPTCHA_SITE_KEY = '6Lf8ZAUfAAAAADLG4s-ANbIJDi-B-5vNixRgIyc8' #your reCAPTCHA SITE key 

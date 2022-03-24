@@ -823,6 +823,156 @@ td {
 	color: #00BFA6;
 }
 
+/* ============================== ChatBox ============================== */
+
+.chatbar{
+	text-align: center;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	position: fixed;
+	background-color: #249169;
+	width: 25em;
+	height: 30px;
+	bottom: 0%;
+	right: 10%;
+	transition: all 0.5s ease-in-out;
+}
+
+.chatbar h6{
+	padding: 5px;
+}
+
+#chtHead:hover{
+	cursor: pointer;
+}
+.chatbar i{
+	font-size: 0.8em;
+	/* color: white; */
+}
+
+/* .chtContentBox p{
+	padding: 15px;
+	background-color: #F50057;
+} */
+
+.chtContentBox{
+	background-color: #232323;
+	padding: 15px;
+	margin-top: -8px;
+}
+
+.innerContentBox{
+	height: 500px;
+	overflow-y: scroll;
+}
+
+.userComment{
+	color: white;
+	text-align: left;
+	background-color: #333;
+	padding:10px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+
+.userComment a{
+	color: #999999;
+	position: absolute;
+	right: 10%;
+	transition: all 0.3s ease-in-out;
+}
+
+.userComment a:hover{
+	color: #F50057;
+}
+
+.userComment h6{
+	color: #FF9704;
+	padding: 0px;
+	/* color: #F50057; */
+}
+
+.userComment span{
+	display: block;
+	margin-top: -10px;
+	font-size: 0.8em;
+}
+
+.userComment p{
+	/* margin-top: 10px; */
+	margin-bottom: 0px;
+	line-height: 1;
+	margin-top: 5px;
+}
+
+.userAddComment{
+	/* text-align: left; */
+	/* padding: 20px;
+	margin-bottom: 20px; */
+	/* bottom: 2%; */
+	position: relative;
+	margin-bottom: 50px;
+	background-color: #232323;
+
+}
+
+
+
+.userAddComment form{
+	padding: 20px;
+}
+
+.userAddComment input{
+	width: 100%;
+}
+
+
+/* 
+.userAddComment input{
+	float: left;
+} */
+
+/* .userAddComment a{
+	float: right;
+	color: white;
+	padding: 4px 12px 4px 12px ;
+	border: solid 2px #999999;
+	border-radius: 5px;
+	transition: all 0.3s ease-in-out;
+} */
+
+.userAddComment button{
+	position: absolute;
+	background: none;
+	border: none;
+	margin-top: 4px;
+	margin-left: -3em;
+	color: white;
+	/* padding: 4px 10px 5px 10px; */
+	/* border-radius: 8px; */
+	/* border: white solid 2px; */
+	transition: all 0.3s ease-in-out;
+}
+
+.userAddComment button:hover{
+	color: #00BFA6;
+}
+
+
+
+.slideout {
+	animation: slideOut 0.5s ease-in-out both;
+  }
+  
+  @keyframes slideOut {
+	0% {
+	  bottom: 0%;
+	}
+	100% {
+	  bottom: 65%;
+	}
+  }
+
 /* ============================== Footer ============================== */
 
 footer {

@@ -6,17 +6,17 @@
 {% block start %}
 <section>
     <div class="container indBlog-container">
-            <div class="row editRow">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    {% if blogs_obj.user.is_authenticated and blogs_obj.user == request.user %}
-                    <div class="editOptions">
-                        <a href="{%  url 'blogs:blog-update' blogs_obj.pk %}"><i class="bi bi-pen hover-color"></i></a>
-                        <a href="{% url 'blogs:blog-delete' blogs_obj.id %}"><i class="bi bi-trash hover-color"></i></a>
-                    </div>
-                    {% endif %}
+        <div class="row editRow">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                {% if blogs_obj.user.is_authenticated and blogs_obj.user == request.user %}
+                <div class="editOptions">
+                    <a href="{%  url 'blogs:blog-update' blogs_obj.pk %}"><i class="bi bi-pen hover-color"></i></a>
+                    <a href="{% url 'blogs:blog-delete' blogs_obj.id %}"><i class="bi bi-trash hover-color"></i></a>
                 </div>
+                {% endif %}
             </div>
+        </div>
         <div class="row text-center">
             <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5" src="/media/{{blogs_obj.image}}" alt=""></div>
         </div>
@@ -26,7 +26,7 @@
                     <h2>{{blogs_obj.title|safe}}</h2>
                 </div>
                 <div class="auth-details">
-                    <p>Posted on <span>{{blogs_obj.created_at|date:"M d, Y"}} {{blogs_obj.created_at|time:"h:i A"}}</span> by <span>{{blogs_obj.user.first_name}}</span></p>
+                    <p>Posted on <span>{{blogs_obj.created_at|date:"M d, Y"}} {{blogs_obj.created_at|time:"h:iA"}}</span> by <span>{{blogs_obj.user.first_name}}</span></p>
                     <p>Total Views: {{blogs_obj.total_views}}</p>
                 </div>
                 <div class="text-content">
@@ -36,5 +36,38 @@
         </div>
     </div>
 </section>
+
+
+<div class="chatbar" id="chatbar">
+    <div>
+    <h6 id="chtHead">COMMENTS <i class="bi bi-box-arrow-in-up"></i></h6>
+    <div class="chtContentBox">
+        <div class="innerContentBox" id="innerContentBox">
+            {% for comment in comments %}
+            <div class="userComment">
+                <a href="{% url 'blogs:delete-comment' comment.pk %}"><i class="bi bi-trash hover-color"></i></a>
+                <h6>{{comment.user.first_name}}</h6> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:iA"}}</span>
+                <p>{{comment.comment}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% if request.user.is_authenticated %}
+    <div class="userAddComment">
+        <form>
+            <input type="text" name="postComment" id="postComment">
+            <input type="hidden" name="postId" id="postId" value="{{blogs_obj.id}}">
+            <button onclick="blogComment(event)"><i class="bi bi-send-fill"></i></button>
+        </form>
+    </div>
+    {% else %}
+    <div class="userAddComment" style="color: white; height: 6em">
+        <h6 style="padding-top:30px;">You need to login to add a comment.</h6>
+    </div>
+    {% endif %}
+</div>
+</div>
 
 {% endblock %}

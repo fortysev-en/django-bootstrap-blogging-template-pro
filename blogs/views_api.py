@@ -9,6 +9,7 @@ from .forms import *
 from django_email_verification import send_email
 from django.conf import settings
 import requests
+from .models import *
 
 class LoginView(APIView):
     def post(self, request):
@@ -104,3 +105,45 @@ class SignupView(APIView):
         return Response(response)
 
 SignupView = SignupView.as_view()
+
+
+class PostComments(APIView):
+    def post(self, request):
+        response = {}
+        response['status'] = 500
+        response['message'] = 'Something went wrong!'
+
+        try:
+            data = request.data
+            user = request.user
+            post = data['postId']
+            comment = data['postComment']
+            blog_post = Blog.objects.get(id = post)        
+            BlogComment.objects.create(comment=comment, user=user, post = blog_post)
+            response['message'] = 'Comment added successfully'
+            response['status'] = 200
+        except Exception as e:
+            print(e)
+
+        return Response(response)
+
+PostComments = PostComments.as_view()
+
+
+class DeleteComments(APIView):
+    def post(self, request):
+        response = {}
+        response['status'] = 500
+        response['message'] = 'Something went wrong!'
+
+        try:
+            data = request.data
+            
+            response['message'] = 'Comment added successfully'
+            response['status'] = 200
+        except Exception as e:
+            print(e)
+
+        return Response(response)
+
+DeleteComments = DeleteComments.as_view()

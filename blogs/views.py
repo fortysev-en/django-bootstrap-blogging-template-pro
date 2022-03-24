@@ -1,4 +1,5 @@
 from traceback import print_tb
+from urllib import response
 from django import views
 from django.conf import settings
 from django.shortcuts import redirect, render, HttpResponse
@@ -54,6 +55,10 @@ def blog_detail(request, slug):
             blog_obj.views.add(ViewsModel.objects.get(total_visits = ip))
         else:
             blog_obj.views.add(ViewsModel.objects.get(total_visits = ip))
+
+        comments = BlogComment.objects.filter(post=blog_obj)
+        context['comments'] = comments
+        # context['user'] = request.user
 
     except Exception as e:
         print(e)
@@ -172,7 +177,6 @@ def signup(request):
 
         return render(request, 'signup.html', context)
 
-
 def search(request):
     context = {}
 
@@ -184,6 +188,12 @@ def search(request):
 
     return render(request, 'search-page.html', context)
 
+def comment_delete(request, id):
+
+    co = BlogComment.objects.filter(serial = id)
+    co.delete()
+
+    return redirect('')
 # def postLike(request, pk):
 #     post_id = request.POST.get('blog-id')
 #     post = Blog.objects.get(pk=post_id)

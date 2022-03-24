@@ -9,6 +9,12 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
+$("#chtHead").click(function() {
+  $('#chatbar').toggleClass("slidein slideout");
+  var scrollEnd = document.getElementById('innerContentBox');
+  scrollEnd.scrollTop = scrollEnd.scrollHeight;
+});
+
 // show and hide password while changing the icon function
 function togglePassword(){
     $("body").on('click', '.toggle', function() {
@@ -34,8 +40,6 @@ function toggleConfirmPassword(){
       }
     });
 }
-
-
 
 function logIn(){
   var username = document.getElementById('username').value
@@ -158,6 +162,64 @@ function signUp(){
     })
   }
 }
+
+function blogComment(event){
+  event.preventDefault();
+  var postComment = document.getElementById('postComment').value
+  var postId = document.getElementById('postId').value
+  var csrf = document.getElementById('csrf').value
+
+  if (postComment == ''){
+    text = "Please enter a message!";
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
+		return false;
+  }
+  else{
+    var data = {
+      'postComment' : postComment,
+      'postId' : postId
+    }
+  
+    fetch('/api/comment/', {
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json',
+        'X-CSRFToken' : csrf,
+      },
+      body : JSON.stringify(data)
+      
+    }).then(result => result.json()).then(response =>{
+          if (response.status == 200){
+            $( "#innerContentBox" ).load(window.location.href + " #innerContentBox" );
+          }
+          else{
+            warningText.innerHTML = response.message;
+            var bsAlert = new bootstrap.Toast(warningAlert);
+            bsAlert.show();
+          }
+    })
+  }
+}
+
+
+//   $.ajax({
+//     // points to the url where your data will be posted
+//     url:'/comment',
+//     // post for security reason
+//     type: "POST",
+//     // data that you will like to return 
+//     data: {'postComment' : postComment},
+//     // what to do when the call is success 
+//     success:function(response){
+//       console.log('DONE')
+//     },
+//     // what to do when the call is complete ( you can right your clean from code here)
+//     complete:function(){},
+//     // what to do when there is an error
+//     error:function (xhr, textStatus, thrownError){}
+// });
 
 
 
