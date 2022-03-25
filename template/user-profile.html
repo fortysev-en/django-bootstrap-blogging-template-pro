@@ -3,6 +3,38 @@
 {% block start %}
 {% load static %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 profilePage-img">
+            <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-img">
+            <span><a href="">Change Avatar <i class="bi bi-pencil-square"></i></a></span>
+        </div>
 
+        <div class="col-lg-8 profilePage-summary">
+            <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+            <div class="col-lg-2 summary-wid">
+                <h6>Total Messages</h6>
+                <span>256</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Reaction Score</h6>
+                <span>200</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>User Type</h6>
+                <span>{{request.user.is_staff}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Joined Since</h6>
+                <span>{{request.user.date_joined|date:"M d, Y"}} {{request.user.date_joined|time:"h:i A"}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Last Login</h6>
+                <span>{{request.user.last_login|date:"M d, Y"}} {{request.user.last_login|time:"h:i A"}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}

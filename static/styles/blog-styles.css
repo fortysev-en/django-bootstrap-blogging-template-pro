@@ -524,6 +524,75 @@ html {
     max-width: 100%;
 }
 
+/* ============================== Profile Page ============================== */
+
+.profilePage-img{
+	/* border: 2px solid white; */
+	height: 40vh;
+	text-align: center;
+}
+
+.profilePage-img img{
+	position: relative;
+	top: 50%;
+	max-width: 200px;
+}
+
+.profilePage-img span{
+	font-size: 0.8em;
+	height: 60px;
+	background-color: #1b1a1730;
+	position: relative;
+	display: block;
+	top: 35%;
+}
+
+.profilePage-img a{
+	position: relative;
+	top: 20%;
+	text-decoration: none;
+	color: #000;
+	font-weight: 600;
+	transition: all 0.3s ease-in-out;
+}
+
+.profilePage-img a:hover{
+	color: white;
+}
+
+.profilePage-summary{
+	/* border: 2px solid white; */
+	height: 40vh;
+	text-align: center;
+
+}
+
+.profilePage-summary h1{
+	position: relative;
+	top: 50%;
+	color: white;
+}
+
+.summary-wid{
+	/* padding:10px;
+	border: 2px solid white;
+	border-radius: 10px; */
+	height: 4em;
+	top: 60%;
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+}
+
+.summary-wid h6{
+	color: #999999;
+}
+
+.summary-wid span{
+	color: white;
+	font-size: 0.8em;
+}
+
 /* ============================== Froala ============================== */
 
 
@@ -1145,6 +1214,12 @@ footer {
 	} */
 
 	.nav-contents .dropdown{
+		position: absolute;
+		right: 2%;
+		top: 13%;
+	}
+
+	.nav-contents .btnLoginLogout{
 		position: absolute;
 		right: 2%;
 		top: 13%;
