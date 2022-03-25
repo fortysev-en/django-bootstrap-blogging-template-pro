@@ -19,6 +19,7 @@
         </div>
         <div class="col-lg-7"></div>
     </div>
+    <form id="signupForm">
     <div class="row">
         <div class="col-lg-5 col-12">
             <input id="firstname" name="firstname" type="text" placeholder="First Name">
@@ -54,7 +55,8 @@
     </div>
     <div class="row">
         <div class="col-lg-5 btn-base btn-signup">
-            <button id="btn-signup" onclick="signUp()">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
+            <button type="submit" id="btn-signup">SIGN UP <i class="bi bi-box-arrow-in-right"></i></button>
+            </form>
         </div>
         <div class="col-lg-7"></div>
     </div>
@@ -84,11 +86,15 @@
 </div>
 
 <script>
-    //global grecaptcha
     grecaptcha.ready(function() {
-      grecaptcha.execute('{{recaptcha_site_key}}', {action: "/signup/"}).then(function(token) {
-        document.getElementById('g-recaptcha-response').value = token;
-      });
+        document.getElementById('signupForm').addEventListener("submit", function(event) {
+          event.preventDefault();
+          
+          grecaptcha.execute('{{recaptcha_site_key}}', {action: '/signup/'}).then(function(token) {
+             document.getElementById("g-recaptcha-response").value = token; 
+             signUp();
+          });        
+        }, false);
     });
   </script>
 

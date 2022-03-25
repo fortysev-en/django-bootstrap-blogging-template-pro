@@ -15,6 +15,7 @@
         </div>
         <div class="col-lg-4"></div>
     </div>
+    <form id="loginForm">
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
@@ -35,7 +36,8 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 btn-base btn-login">
-            <button onclick="logIn()">LOGIN <i class="bi bi-box-arrow-in-right"></i></button>
+            <button type="submit">LOGIN <i class="bi bi-box-arrow-in-right"></i></button>
+            </form>
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -59,7 +61,7 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-            <div class="recaptcha reLogin" id="recaptcha">
+            <div class="recaptcha reLogin">
                 <p>This site is protected by reCAPTCHA and the <br> Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                 </p>
                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> 
@@ -70,12 +72,29 @@
     </div>
 </div>
 
-<script>
+<!-- <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div> -->
+
+<!-- <script>
     //global grecaptcha
     grecaptcha.ready(function() {
       grecaptcha.execute('{{recaptcha_site_key}}', {action: "/signup/"}).then(function(token) {
         document.getElementById('g-recaptcha-response').value = token;
       });
+    });
+  </script> -->
+
+  <script>
+    grecaptcha.ready(function() {
+        document.getElementById('loginForm').addEventListener("submit", function(event) {
+          event.preventDefault();
+          
+          grecaptcha.execute('{{recaptcha_site_key}}', {action: '/login/'}).then(function(token) {
+             document.getElementById("g-recaptcha-response").value = token; 
+             logIn();
+          });        
+        }, false);
     });
   </script>
 

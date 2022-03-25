@@ -66,6 +66,7 @@ function toggleConfirmPassword(){
 }
 
 function logIn(){
+  // event.preventDefault()
   var username = document.getElementById('username').value
   var password = document.getElementById('password').value
   var gReCaptcha = document.getElementById('g-recaptcha-response').value
