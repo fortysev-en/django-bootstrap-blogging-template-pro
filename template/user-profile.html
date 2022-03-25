@@ -7,14 +7,22 @@
     <div class="row">
         <div class="col-lg-4 profilePage-img">
             <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-img">
-            <span><a href="">Change Avatar <i class="bi bi-pencil-square"></i></a></span>
+
+            <!-- <form method="post" enctype="multipart/form-data" style="margin-top: 10em;">
+                {% csrf_token %}
+                <input type="file" name="myfile" />
+                <input type="submit" name="submit" value="Upload" />
+            </form> -->
+
+            <span><a href="{% url 'blogs:select-pro-pic' %}">Change Avatar <i
+                        class="bi bi-pencil-square"></i></a></span>
         </div>
 
         <div class="col-lg-8 profilePage-summary">
             <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
             <div class="col-lg-2 summary-wid">
                 <h6>Total Messages</h6>
-                <span>256</span>
+                <span>{{userTotalComments}}</span>
             </div>
             <div class="col-lg-2 summary-wid">
                 <h6>Reaction Score</h6>
@@ -34,6 +42,24 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="container profileUserData-container">
+    <div class="row profileUserData-row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8 profileUserData">
+            <div class="row">
+                <input type="text" placeholder="Firstname" value="{{request.user.first_name}}">
+                <input type="text" placeholder="Lastname" value="{{request.user.last_name}}">
+                <input type="text" placeholder="Email" value="{{request.user.email}}">
+                <input type="text" placeholder="Github">
+                <textarea name="" id="" cols="25" rows="5" placeholder="Bio"></textarea>
+            </div>
+            <div class="btn-update">
+                <button>UPDATE</button>
+            </div>
+        </div>
     </div>
 </div>
 

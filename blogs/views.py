@@ -37,8 +37,22 @@ def login(request):
 
 
 def user_profile(request):
-    return render(request, 'user-profile.html')
+    context = {}
 
+    userCommentData = BlogComment.objects.filter(user = request.user).all()
+    context['userCommentData'] = userCommentData
+
+    context['userTotalComments'] = userCommentData.count()
+
+    return render(request, 'user-profile.html', context)
+
+
+def select_pro_pic(request):
+
+    # image =  request.FILES['myfile']
+    # print(image)
+
+    return redirect('/user-profile.html/')
 
 def logout_view(request):
     logout(request)

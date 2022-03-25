@@ -65,6 +65,11 @@ function toggleConfirmPassword(){
     });
 }
 
+function scrollTillBottom(){
+  var scrollEnd = document.getElementById('innerContentBox');
+  scrollEnd.scrollTop = scrollEnd.scrollHeight;
+}
+
 function logIn(){
   // event.preventDefault()
   var username = document.getElementById('username').value
@@ -218,6 +223,8 @@ function blogComment(event){
     }).then(result => result.json()).then(response =>{
           if (response.status == 200){
             $( "#innerContentBox" ).load(window.location.href + " #innerContentBox" );
+            setTimeout(scrollTillBottom(), 1000)
+            document.querySelector('input[name="postComment"]').value = '';
           }
           else{
             warningText.innerHTML = response.message;
