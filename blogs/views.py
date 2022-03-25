@@ -28,7 +28,6 @@ def Homepage(request):
 
     return render(request, 'homepage.html', context)
 
-
 def login(request):
     context = {}
 
@@ -68,7 +67,7 @@ def blog_detail(request, slug):
 def add_blog(request):
     context = {}
 
-    if not (request.user.is_authenticated):
+    if not (request.user.is_authenticated and request.user.is_staff):
             return redirect('/')
     else:
 
@@ -97,7 +96,7 @@ def add_blog(request):
 
 def blog_update(request, pk):
     context = {}
-    if not (request.user.is_authenticated):
+    if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
         try:
@@ -137,7 +136,7 @@ def blog_update(request, pk):
         return render(request, 'update-blog.html', context)
 
 def blog_delete(request, id):
-    if not (request.user.is_authenticated):
+    if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
         try:
@@ -155,7 +154,7 @@ def blog_delete(request, id):
 
 def my_blogs(request):
     context = {}
-    if not (request.user.is_authenticated):
+    if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
         try:

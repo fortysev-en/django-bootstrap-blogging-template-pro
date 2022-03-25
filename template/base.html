@@ -50,10 +50,11 @@
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'blogs:my-blogs' %}">MY BLOGS </a></li>
-            <li><a href="{% url 'blogs:add-blog' %}">ADD BLOGS </a></li>
+                {% if request.user.is_staff %}
+                  <li><a href="{% url 'blogs:my-blogs' %}">MY BLOGS </a></li>
+                  <li><a href="{% url 'blogs:add-blog' %}">ADD BLOGS </a></li>
+                  {% endif %}
             <li><a href="{% url 'blogs:logout-view' %}">LOGOUT <i class="bi bi-box-arrow-in-right"></i></a></li>
-
             {% else %}
             <li><a href="{% url 'blogs:login' %}">LOGIN/REGISTER <i class="bi bi-box-arrow-in-right"></i></a></li>
 
