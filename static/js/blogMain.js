@@ -10,10 +10,34 @@ $(function () {
 })
 
 $("#chtHead").click(function() {
-  $('#chatbar').toggleClass("slidein slideout");
+  // $('#chatbar').toggleClass("slidein slideout");
+  var elementClasses = document.getElementById("chatbar");
+  var classesArr = elementClasses.classList;
+
+  if(classesArr.value.includes("slideout"))  
+  {  
+    elementClasses.classList.remove("slideout");
+    elementClasses.classList.add('slidein');
+  }   
+  else if (classesArr.value.includes("slidein"))
+  {  
+    elementClasses.classList.remove("slidein");
+    elementClasses.classList.add('slideout');
+  }
+  else{
+    elementClasses.classList.add('slideout');
+  }
+
+  // if (element.className != "slidein") {
+  //   element.className = "newStyle";
+  // } else {
+  //   element.className = "myStyle";
+  // }
+
   var scrollEnd = document.getElementById('innerContentBox');
   scrollEnd.scrollTop = scrollEnd.scrollHeight;
 });
+
 
 // show and hide password while changing the icon function
 function togglePassword(){
@@ -204,22 +228,39 @@ function blogComment(event){
 }
 
 
-//   $.ajax({
-//     // points to the url where your data will be posted
-//     url:'/comment',
-//     // post for security reason
-//     type: "POST",
-//     // data that you will like to return 
-//     data: {'postComment' : postComment},
-//     // what to do when the call is success 
-//     success:function(response){
-//       console.log('DONE')
-//     },
-//     // what to do when the call is complete ( you can right your clean from code here)
-//     complete:function(){},
-//     // what to do when there is an error
-//     error:function (xhr, textStatus, thrownError){}
-// });
+function deleteComment(event){
+  event.preventDefault();
+  var cmd = document.getElementById('userCommentID').value
+  var csrf = document.getElementById('csrf').value
+
+  // console.log(cmd)
+
+  // var data = {
+  //   'commentId' : cmd,
+  // }
+
+  // fetch('/api/deleteComment/', {
+  //   method : 'POST',
+  //   headers : {
+  //     'Content-Type' : 'application/json',
+  //     'X-CSRFToken' : csrf,
+  //   },
+  //   body : JSON.stringify(data)
+    
+  // }).then(result => result.json()).then(response =>{
+  //       if (response.status == 200){
+  //         $( "#innerContentBox" ).load(window.location.href + " #innerContentBox" );
+  //       }
+  //       else{
+  //         warningText.innerHTML = response.message;
+  //         var bsAlert = new bootstrap.Toast(warningAlert);
+  //         bsAlert.show();
+  //       }
+  // })
+
+  $( "#innerContentBox" ).load(window.location.href + " #innerContentBox" );
+}
+
 
 
 

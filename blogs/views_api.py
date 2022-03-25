@@ -138,6 +138,9 @@ class DeleteComments(APIView):
 
         try:
             data = request.data
+            print(data)
+            # co = BlogComment.objects.filter(serial = data)
+            # co.delete()
             
             response['message'] = 'Comment added successfully'
             response['status'] = 200

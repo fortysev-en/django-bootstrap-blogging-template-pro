@@ -877,7 +877,6 @@ td {
 
 .userComment a{
 	color: #999999;
-	position: absolute;
 	right: 10%;
 	transition: all 0.3s ease-in-out;
 }
@@ -963,6 +962,10 @@ td {
 .slideout {
 	animation: slideOut 0.5s ease-in-out both;
   }
+
+  .slidein {
+	animation: slideIn 0.5s ease-in-out both;
+  }
   
   @keyframes slideOut {
 	0% {
@@ -970,6 +973,15 @@ td {
 	}
 	100% {
 	  bottom: 65%;
+	}
+  }
+
+  @keyframes slideIn {
+	0% {
+	  bottom: 65%;
+	}
+	100% {
+	  bottom: 0%;
 	}
   }
 

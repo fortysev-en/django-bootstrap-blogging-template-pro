@@ -190,10 +190,14 @@ def search(request):
 
 def comment_delete(request, id):
 
+    if request.method == 'POST':
+        print('POST', id)
+
     co = BlogComment.objects.filter(serial = id)
     co.delete()
 
     return redirect('')
+
 # def postLike(request, pk):
 #     post_id = request.POST.get('blog-id')
 #     post = Blog.objects.get(pk=post_id)
