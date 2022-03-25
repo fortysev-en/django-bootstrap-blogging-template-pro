@@ -331,6 +331,15 @@ html {
 	margin-top: 20px;
 }
 
+.loginBtn{
+	min-width: 97px;
+	min-height: 45px;
+}
+
+#postLogin{
+	display: none !important;
+}
+
 .password span {
 	color: #6d6d6d;
 	position: absolute;
@@ -459,7 +468,7 @@ html {
 }
 
 .reLogin p{
-	padding-left: 0px !important;
+	padding-left: 18px !important;
 }
 
 .figure{
