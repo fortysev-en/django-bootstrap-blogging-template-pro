@@ -33,7 +33,7 @@
   <div id="navbar">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 brand">
+        <div class="col-lg-2 col-md-2 brand">
           <div class="heading-text">
             <a href="/">
               <h1>fortyseven</h1>
@@ -44,9 +44,9 @@
           <form action="{% url 'blogs:search-page' %}" id="search-bar" method="GET">
             <input id="serchField" name="search" type="text" placeholder="Search">
             <button type="submit"><i class="bi bi-search"></i></button>
-        </form>
+          </form>
         </div>
-        <div class="col-lg-4 col-sm-4 nav-contents">
+        <!-- <div class="col-lg-4 col-sm-4 nav-contents">
           <div class="list-icon"><a href=""><i class="bi bi-list"></i></a></div>
           <ul>
             {% if request.user.is_authenticated %}
@@ -60,6 +60,30 @@
 
             {% endif %}
           </ul>
+        </div> -->
+
+        <div class="col-lg-4 col-sm-4 nav-contents">
+          {% if request.user.is_authenticated %}
+          <div class="dropdown">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              <li><a class="dropdown-item" href="{% url 'blogs:user-profile' %}">Profile</a></li>
+              {% if request.user.is_staff %}
+              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
+              {% endif %}
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'blogs:logout-view' %}">Logout</a></li>
+            </ul>
+          </div>
+          {% else %}
+          <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i class="bi bi-box-arrow-in-right"></i></a>
+          {% endif %}
         </div>
       </div>
     </div>

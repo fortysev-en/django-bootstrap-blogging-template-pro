@@ -71,7 +71,7 @@ html {
 .list-icon a {
 	color: white !important;
 }
-
+/* 
 .nav-contents {
 	text-align: end;
 }
@@ -87,6 +87,47 @@ html {
 .nav-contents li {
 	display: inline;
 	padding: 5px;
+} */
+
+
+
+/* NAV TEST */
+.nav-contents {
+	text-align: end;
+	padding: 8px;
+}
+
+.nav-contents .dropdown button{
+	background: none;
+	border: 2px solid #999999;
+	border-radius: 30px;
+	/* font-size: 2em; */
+	padding: 0px;
+}
+
+.nav-contents .dropdown img{
+	border-radius: 30px;
+	padding: 2px;
+	max-width: 35px;
+}
+
+.nav-contents .dropdown button:focus{
+	box-shadow: none;
+}
+
+.dropdown-menu-dark{
+	background-color: #232323 !important;
+}
+
+.nav-contents .btnLoginLogout{
+	display: block;
+	margin-top: 10px;
+	color: #999999;
+	transition: all 0.3s ease-in-out;
+}
+
+.nav-contents .btnLoginLogout:hover{
+	color: white;
 }
 
 .heading-text {
@@ -1096,12 +1137,19 @@ footer {
 
 @media only screen and (max-width: 580px) {
 	/* styles for mobile browsers smaller than 580px; (iPhone) */
-	.nav-contents ul {
+	/* .nav-contents ul {
 		display: none;
 	}
 	.list-icon {
 		display: block;
+	} */
+
+	.nav-contents .dropdown{
+		position: absolute;
+		right: 2%;
+		top: 13%;
 	}
+
 	.header-img img {
 		margin-left: 0px;
 	}

@@ -35,6 +35,11 @@ def login(request):
     
     return render(request, 'login.html', context)
 
+
+def user_profile(request):
+    return render(request, 'user-profile.html')
+
+
 def logout_view(request):
     logout(request)
     messages.success(request, f"Logged out successfully!")
