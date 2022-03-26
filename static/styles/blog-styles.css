@@ -690,6 +690,51 @@ html {
 	color: white;
 }
 
+.profileLeftPanel{
+	position: relative;
+}
+
+.panel{
+	width: 85%;
+    left: 25%;
+	top: 7%;
+    position: relative;
+}
+
+.profileLeftPanel ul{
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+.profileLeftPanel li{
+	margin: 10px;
+	border-radius: 10px;
+	text-decoration: none;
+	display: block;
+	color: #e0e0e0;
+	padding: 6px;
+	max-width: 60%;
+	transition: all 0.3s ease-out;
+	transition-duration: 200ms;
+	font-weight: 500;
+}
+
+.profileLeftPanel i{
+	margin-right: 10px;
+}
+
+.profileLeftPanel li:hover{
+	background-color: #000;
+	box-shadow: 0px 0px 4px #000;
+	cursor: pointer;
+}
+
+.active{
+	color: #FF9704 !important;
+	background-color: #000;
+	box-shadow: 0px 0px 4px #000;
+}
+
 
 /* ============================== Froala ============================== */
 

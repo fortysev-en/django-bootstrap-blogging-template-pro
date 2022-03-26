@@ -50,7 +50,20 @@
     {% csrf_token %}
     <div class="container profileUserData-container">
         <div class="row profileUserData-row">
-            <div class="col-lg-4"></div>
+            <div class="col-lg-4 profileLeftPanel">
+
+                <div class="panel">
+                    <ul class="checklist-select" role="tablist">
+                        <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i class="bi bi-person-video"></i> Profile</li>
+                        <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i class="bi bi-chat-left-quote"></i> Comments</li>
+                        <li id="tab2" role="tab" aria-controls="panel3" aria-selected="false"><i class="bi bi-bookmark-star"></i> Bookmarks</li>
+                        <li id="tab2" role="tab" aria-controls="panel4" aria-selected="false"><i class="bi bi-heart"></i> Likes</li>
+                        <li id="tab2" role="tab" aria-controls="panel5" aria-selected="false"><i class="bi bi-gear-wide-connected"></i> Settings</li>
+                    </ul>
+                </div>
+
+
+            </div>
             <div class="col-lg-8 profileUserData">
                 <div class="row">
 
@@ -97,9 +110,8 @@
                 <div class="btn-update">
                     <button type="submit">UPDATE</button>
                 </div>
+            </div>
+        </div>
+    </div>
 </form>
-</div>
-</div>
-</div>
-
 {% endblock %}
