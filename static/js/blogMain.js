@@ -272,6 +272,7 @@ function deleteComment(event){
 
 
 
+
 // var xmlHttp = new XMLHttpRequest();
 // xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
 // xmlHttp.send( null );

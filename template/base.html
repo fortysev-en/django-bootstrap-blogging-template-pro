@@ -67,10 +67,20 @@
           <div class="dropdown">
             <button class="btn btn-secondary" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-img">
+              {% if request.user.profile.profilePicture %}
+              <div class="profileImg" style="background-image: url('{{request.user.profile.profilePicture.url}}');">
+                {% else %}
+                <div class="profileImg">
+                  {% endif %}
+                </div>
             </button>
+            <style>
+              .profileImg {
+                background-image: url("{% static 'img/blog-assests/default-profile-img.svg' %}");
+              }
+            </style>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item" href="{% url 'blogs:user-profile' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:my-profile' %}">Profile</a></li>
               {% if request.user.is_staff %}
               <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
               <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
@@ -82,7 +92,8 @@
             </ul>
           </div>
           {% else %}
-          <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i class="bi bi-box-arrow-in-right"></i></a>
+          <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i
+              class="bi bi-box-arrow-in-right"></i></a>
           {% endif %}
         </div>
       </div>

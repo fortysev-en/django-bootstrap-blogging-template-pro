@@ -6,18 +6,18 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 profilePage-img">
-            <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-img">
-
-            <!-- <form method="post" enctype="multipart/form-data" style="margin-top: 10em;">
-                {% csrf_token %}
-                <input type="file" name="myfile" />
-                <input type="submit" name="submit" value="Upload" />
-            </form> -->
-
-            <span><a href="{% url 'blogs:select-pro-pic' %}">Change Avatar <i
-                        class="bi bi-pencil-square"></i></a></span>
+            {% if request.user.profile.profilePicture %}
+            <div class="center-cropped" style="background-image: url('{{request.user.profile.profilePicture.url}}');">
+            </div>
+            {% else %}
+            <div class="center-cropped"></div>
+            {% endif %}
         </div>
-
+        <style>
+            .center-cropped {
+                background-image: url("{% static 'img/blog-assests/default-profile-img.svg' %}");
+            }
+        </style>
         <div class="col-lg-8 profilePage-summary">
             <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
             <div class="col-lg-2 summary-wid">
@@ -45,22 +45,40 @@
     </div>
 </div>
 
-<div class="container profileUserData-container">
-    <div class="row profileUserData-row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-8 profileUserData">
-            <div class="row">
-                <input type="text" placeholder="Firstname" value="{{request.user.first_name}}">
-                <input type="text" placeholder="Lastname" value="{{request.user.last_name}}">
-                <input type="text" placeholder="Email" value="{{request.user.email}}">
-                <input type="text" placeholder="Github">
-                <textarea name="" id="" cols="25" rows="5" placeholder="Bio"></textarea>
-            </div>
-            <div class="btn-update">
-                <button>UPDATE</button>
-            </div>
-        </div>
-    </div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container profileUserData-container">
+        <div class="row profileUserData-row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8 profileUserData">
+                <div class="row">
+                    <input type="text" id="firstname" name="firstname" placeholder="Firstname"
+                        value="{{request.user.first_name}}">
+                    <input type="text" id="lastname" name="lastname" placeholder="Lastname"
+                        value="{{request.user.last_name}}">
+                    <input class="disabled" id="email" type="text" placeholder="Email" value="{{request.user.email}}"
+                        disabled>
+                    <input type="text" id="personalWebsite" name="personalWebsite" placeholder="Personal Website"
+                        value="{{request.user.profile.website_url}}">
+                    <input type="text" id="personalGithub" name="personalGithub" placeholder="Github Profile"
+                        value="{{request.user.profile.github_url}}">
+                    <input type="text" id="personalFacebook" name="personalFacebook" placeholder="Facebook Profile"
+                        value="{{request.user.profile.facebook_url}}">
+                    <input type="text" id="personalInstagram" name="personalInstagram" placeholder="Instagram Profile"
+                        value="{{request.user.profile.instagram_url}}">
+                    <input type="text" id="personalTwitter" name="personalTwitter" placeholder="Twitter Profile"
+                        value="{{request.user.profile.twitter_url}}">
+                    <input type="file" name="profilePictureImg" name="profilePictureImg" id="profilePictureImg">
+                    <textarea name="bio" id="personalBio" cols="25" rows="5" name="personalBio"
+                        placeholder="Bio">{{request.user.profile.bio}}</textarea>
+                </div>
+                <div class="btn-update">
+                    <button type="submit">UPDATE</button>
+                </div>
+</form>
+</div>
+</div>
 </div>
 
 {% endblock %}

@@ -10,6 +10,7 @@ from django_email_verification import send_email
 from django.conf import settings
 import requests
 from .models import *
+import os
 
 class LoginView(APIView):
     def post(self, request):

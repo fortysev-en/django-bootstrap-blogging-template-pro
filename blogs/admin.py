@@ -8,3 +8,4 @@ admin.site.index_title = 'Welcome to Fortyseven Admin Panel'
 # Register your models here.
 admin.site.register((models.Blog, models.BlogComment))
 admin.site.register(models.ViewsModel)
+admin.site.register(models.Profile)

@@ -105,11 +105,30 @@ html {
 	padding: 0px;
 }
 
-.nav-contents .dropdown img{
+/* .nav-contents .dropdown img{
 	border-radius: 30px;
 	padding: 2px;
 	max-width: 35px;
+} */
+
+.nav-contents .profileImg {
+	border-radius: 30px;
+	height: 35px;
+	width: 35px;
+	background-color: #333;
+	background-size: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
+
+
+/* .nav-contents .nav-profileImg{
+	width: 35px;
+	height: 35px;
+	border-radius: 2em;
+	background-position: center center;
+	background-repeat: no-repeat;
+} */
 
 .nav-contents .dropdown button:focus{
 	box-shadow: none;
@@ -529,36 +548,51 @@ html {
 .profilePage-img{
 	/* border: 2px solid white; */
 	height: 40vh;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+.center-cropped {
+	position: relative;
+	top: 20%;
+	height: 200px;
+	width: 200px;
+	border-radius: 12em;
+	background-size: 100%;
+	background-color: #333;
+	background-position: center center;
+	background-repeat: no-repeat;
+  }
 
 .profilePage-img img{
 	position: relative;
 	top: 50%;
+	min-width: 200px;
 	max-width: 200px;
 }
 
-.profilePage-img span{
+/* .profilePage-img span{
 	font-size: 0.8em;
 	height: 60px;
 	background-color: #1b1a1730;
 	position: relative;
 	display: block;
 	top: 35%;
-}
+} */
 
-.profilePage-img a{
+/* .profilePage-img a{
 	position: relative;
 	top: 20%;
 	text-decoration: none;
 	color: #000;
 	font-weight: 600;
 	transition: all 0.3s ease-in-out;
-}
+} */
 
-.profilePage-img a:hover{
+/* .profilePage-img a:hover{
 	color: white;
-}
+} */
 
 .profilePage-summary{
 	/* border: 2px solid white; */
@@ -601,12 +635,19 @@ html {
 	padding: 20px !important;
 }
 
+.profileUserData .disabled{
+	color: #6d6d6d;
+}
+
 .profileUserData-row input{
 	margin-top: 30px;
 	width: 100%;
 }
 
 .profileUserData-row textarea{
+	color: #e0e0e0;
+    font-size: 0.8em !important;
+	padding: 6px;
 	margin-top: 30px;
 	width: 100%;
 	border-radius: 5px;

@@ -36,23 +36,44 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-def user_profile(request):
+def my_profile(request):
     context = {}
 
     userCommentData = BlogComment.objects.filter(user = request.user).all()
     context['userCommentData'] = userCommentData
-
     context['userTotalComments'] = userCommentData.count()
+
+    context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
+
+    userModel = User.objects.get(username = request.user)
+    userProfile = Profile.objects.get(user = request.user)
+
+    if request.method == 'POST':
+        userModel.first_name = request.POST.get('firstname')
+        userModel.last_name = request.POST.get('lastname')
+        userProfile.website_url = request.POST.get('personalWebsite')
+        userProfile.github_url = request.POST.get('personalGithub')
+        userProfile.facebook_url = request.POST.get('personalFacebook')
+        userProfile.instagram_url = request.POST.get('personalInstagram')
+        userProfile.twitter_url = request.POST.get('personalTwitter')
+
+        if not userProfile.profilePicture is None:
+            os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
+            userProfile.profilePicture = request.FILES['profilePictureImg']
+        else:
+            userProfile.profilePicture = request.FILES['profilePictureImg']
+
+        userProfile.save()
+        userModel.save()
+
+        messages.success(request, f"Profile updated successfully!")
+        return redirect('/my-profile/')
+        # request.POST.get('gist')
 
     return render(request, 'user-profile.html', context)
 
 
-def select_pro_pic(request):
 
-    # image =  request.FILES['myfile']
-    # print(image)
-
-    return redirect('/user-profile.html/')
 
 def logout_view(request):
     logout(request)

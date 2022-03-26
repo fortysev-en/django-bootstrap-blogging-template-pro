@@ -13,7 +13,7 @@ urlpatterns = [
     path('', views.Homepage, name='homepage'),
     path('froala_editor/',include('froala_editor.urls')),
     path('login/', views.login, name='login'),
-    path('user-profile/', views.user_profile, name='user-profile'),
+    path('my-profile/', views.my_profile, name='my-profile'),
     path('signup/', views.signup, name='signup'),
     path('add-blog/', views.add_blog, name='add-blog'),
     path('blog-detail/<slug>', views.blog_detail, name='blog-detail'),
@@ -23,9 +23,8 @@ urlpatterns = [
     path('logout-view/', views.logout_view, name='logout-view'),
     path('api/', include('blogs.urls_api')),
     path('search/', views.search, name='search-page'),
-    path('delete-comment/<id>', views.comment_delete, name='delete-comment'),
-    path('select-pro-pic/', views.select_pro_pic, name='select-pro-pic')
-    ]
+    path('delete-comment/<id>', views.comment_delete, name='delete-comment')
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
