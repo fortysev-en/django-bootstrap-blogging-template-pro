@@ -642,6 +642,15 @@ html {
 .profileUserData-row input{
 	margin-top: 30px;
 	width: 100%;
+	padding-right: 0px;
+}
+
+.profileUserData-row .col-lg-6{
+	padding-right: 0px !important;
+}
+
+.profileUserData-row .row{
+	padding-right: 0px !important;
 }
 
 .profileUserData-row textarea{

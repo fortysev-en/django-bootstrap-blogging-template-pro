@@ -53,25 +53,46 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-8 profileUserData">
                 <div class="row">
-                    <input type="text" id="firstname" name="firstname" placeholder="Firstname"
-                        value="{{request.user.first_name}}">
-                    <input type="text" id="lastname" name="lastname" placeholder="Lastname"
-                        value="{{request.user.last_name}}">
-                    <input class="disabled" id="email" type="text" placeholder="Email" value="{{request.user.email}}"
-                        disabled>
-                    <input type="text" id="personalWebsite" name="personalWebsite" placeholder="Personal Website"
-                        value="{{request.user.profile.website_url}}">
-                    <input type="text" id="personalGithub" name="personalGithub" placeholder="Github Profile"
-                        value="{{request.user.profile.github_url}}">
-                    <input type="text" id="personalFacebook" name="personalFacebook" placeholder="Facebook Profile"
-                        value="{{request.user.profile.facebook_url}}">
-                    <input type="text" id="personalInstagram" name="personalInstagram" placeholder="Instagram Profile"
-                        value="{{request.user.profile.instagram_url}}">
-                    <input type="text" id="personalTwitter" name="personalTwitter" placeholder="Twitter Profile"
-                        value="{{request.user.profile.twitter_url}}">
-                    <input type="file" name="profilePictureImg" name="profilePictureImg" id="profilePictureImg">
-                    <textarea name="bio" id="personalBio" cols="25" rows="5" name="personalBio"
-                        placeholder="Bio">{{request.user.profile.bio}}</textarea>
+
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="firstname" name="firstname" placeholder="Firstname"
+                                value="{{request.user.first_name}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="lastname" name="lastname" placeholder="Lastname"
+                                value="{{request.user.last_name}}"></div>
+                    </div>
+
+                    <div>
+                        <input class="disabled" id="email" type="text" placeholder="Email"
+                            value="{{request.user.email}}" disabled>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalWebsite" name="personalWebsite"
+                                placeholder="Personal Website" value="{{request.user.profile.website_url}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="personalGithub" name="personalGithub"
+                                placeholder="Github Profile" value="{{request.user.profile.github_url}}"></div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalFacebook" name="personalFacebook"
+                                placeholder="Facebook Profile" value="{{request.user.profile.facebook_url}}"></div>
+                        <div class="col-lg-6"><input type="text" id="personalInstagram" name="personalInstagram"
+                                placeholder="Instagram Profile" value="{{request.user.profile.instagram_url}}"></div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6"> <input type="text" id="personalTwitter" name="personalTwitter"
+                                placeholder="Twitter Profile" value="{{request.user.profile.twitter_url}}"></div>
+                        <div class="col-lg-6"> <input type="file" name="profilePictureImg" name="profilePictureImg"
+                                id="profilePictureImg"></div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <textarea name="bio" id="personalBio" cols="25" rows="5" name="personalBio"
+                            placeholder="Bio">{{request.user.profile.bio}}</textarea>
+                    </div>
                 </div>
                 <div class="btn-update">
                     <button type="submit">UPDATE</button>
