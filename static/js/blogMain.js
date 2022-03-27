@@ -270,13 +270,17 @@ function deleteComment(event){
 }
 
 
-$('ul.checklist-select li').click(function() {
-    var selectID = $(this).attr('id');
-    $('ul.checklist-select li').removeClass('active');
-    $(this).addClass('active');
-    $('div.box').removeClass('selected');
-    $('.' + selectID + '-box').addClass('selected');
-});    
+
+  $('ul.checklist-select li').click(function() {
+      var selectID = $(this).attr('id');
+      $('ul.checklist-select li').removeClass('active');
+      $(this).addClass('active');
+
+      $('div.tabcontent').removeClass('selected');
+      $('div.tabcontent').addClass('box');
+      $('.' + selectID + '-tabcontent').removeClass('box');
+      $('.' + selectID + '-tabcontent').addClass('selected');
+ });    
 
 // var xmlHttp = new XMLHttpRequest();
 // xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request

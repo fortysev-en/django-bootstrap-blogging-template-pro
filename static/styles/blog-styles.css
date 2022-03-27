@@ -628,11 +628,12 @@ html {
 }
 
 .profileUserData-container{
-	margin-top: 6em;
+	margin-top: 4em;
 }
 
 .profileUserData {
 	padding: 20px !important;
+	height: 100vh;
 }
 
 .profileUserData .disabled{
@@ -692,12 +693,13 @@ html {
 
 .profileLeftPanel{
 	position: relative;
+	padding: 20px;
 }
 
 .panel{
 	width: 85%;
     left: 25%;
-	top: 7%;
+	top: 2%;
     position: relative;
 }
 
@@ -713,14 +715,15 @@ html {
 	display: block;
 	color: #e0e0e0;
 	padding: 6px;
+	padding-left: 12px;
 	max-width: 60%;
-	transition: all 0.3s ease-out;
+	transition: all 0.3s ease-in-out;
 	transition-duration: 200ms;
 	font-weight: 500;
 }
 
 .profileLeftPanel i{
-	margin-right: 10px;
+	margin-right: 7px;
 }
 
 .profileLeftPanel li:hover{
@@ -730,12 +733,25 @@ html {
 }
 
 .active{
-	color: #FF9704 !important;
+	color: #F50057 !important;
 	background-color: #000;
 	box-shadow: 0px 0px 4px #000;
 }
 
+.selected {
+    display: block;
+}
 
+.box{
+	display: none !important;
+}
+
+.tabcontent h3{
+	text-align: left;
+	font-size: 1.5em;
+	color: #F50057;
+	margin-top: 1em;
+}
 /* ============================== Froala ============================== */
 
 

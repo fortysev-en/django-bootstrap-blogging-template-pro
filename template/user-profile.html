@@ -54,19 +54,24 @@
 
                 <div class="panel">
                     <ul class="checklist-select" role="tablist">
-                        <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i class="bi bi-person-video"></i> Profile</li>
-                        <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i class="bi bi-chat-left-quote"></i> Comments</li>
-                        <li id="tab2" role="tab" aria-controls="panel3" aria-selected="false"><i class="bi bi-bookmark-star"></i> Bookmarks</li>
-                        <li id="tab2" role="tab" aria-controls="panel4" aria-selected="false"><i class="bi bi-heart"></i> Likes</li>
-                        <li id="tab2" role="tab" aria-controls="panel5" aria-selected="false"><i class="bi bi-gear-wide-connected"></i> Settings</li>
+                        <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i
+                                class="bi bi-person-video"></i> Profile</li>
+                        <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i
+                                class="bi bi-chat-left-quote"></i> Comments</li>
+                        <li id="tab3" role="tab" aria-controls="panel3" aria-selected="false"><i
+                                class="bi bi-bookmark-star"></i> Bookmarks</li>
+                        <li id="tab4" role="tab" aria-controls="panel4" aria-selected="false"><i
+                                class="bi bi-heart"></i> Likes</li>
+                        <li id="tab5" role="tab" aria-controls="panel5" aria-selected="false"><i
+                                class="bi bi-gear-wide-connected"></i> Settings</li>
                     </ul>
                 </div>
-
-
             </div>
-            <div class="col-lg-8 profileUserData">
-                <div class="row">
 
+            <div class="col-lg-8 profileUserData">
+                <!-- Profile Panel -->
+                <div class="row tabcontent tab1-tabcontent selected" id="panel1" role="tabpanel" aria-labelledby="tab1">
+                    <h3>PROFILE DETAILS</h3>
                     <div class="row">
                         <div class="col-lg-6"><input type="text" id="firstname" name="firstname" placeholder="Firstname"
                                 value="{{request.user.first_name}}"></div>
@@ -107,6 +112,44 @@
                             placeholder="Bio">{{request.user.profile.bio}}</textarea>
                     </div>
                 </div>
+
+                <!-- Settings Panel -->
+                <div class="row tabcontent tab5-tabcontent box" id="panel5" role="tabpanel" aria-labelledby="tab5">
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="firstname" name="firstname" placeholder="Firstname"
+                                value="{{request.user.first_name}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="lastname" name="lastname" placeholder="Lastname"
+                                value="{{request.user.last_name}}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalWebsite" name="personalWebsite"
+                                placeholder="Personal Website" value="{{request.user.profile.website_url}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="personalGithub" name="personalGithub"
+                                placeholder="Github Profile" value="{{request.user.profile.github_url}}"></div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalFacebook" name="personalFacebook"
+                                placeholder="Facebook Profile" value="{{request.user.profile.facebook_url}}"></div>
+                        <div class="col-lg-6"><input type="text" id="personalInstagram" name="personalInstagram"
+                                placeholder="Instagram Profile" value="{{request.user.profile.instagram_url}}"></div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6"> <input type="text" id="personalTwitter" name="personalTwitter"
+                                placeholder="Twitter Profile" value="{{request.user.profile.twitter_url}}"></div>
+                        <div class="col-lg-6"> <input type="file" name="profilePictureImg" name="profilePictureImg"
+                                id="profilePictureImg"></div>
+                    </div>
+
+                </div>
+
+
+
                 <div class="btn-update">
                     <button type="submit">UPDATE</button>
                 </div>
@@ -114,4 +157,6 @@
         </div>
     </div>
 </form>
+
+
 {% endblock %}
