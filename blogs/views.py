@@ -41,8 +41,8 @@ def my_profile(request):
 
     userCommentData = BlogComment.objects.filter(user = request.user).all()
     context['userCommentData'] = userCommentData
-    context['userTotalComments'] = userCommentData.count()
 
+    context['userTotalComments'] = userCommentData.count()
     context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
 
     userModel = User.objects.get(username = request.user)
@@ -70,7 +70,7 @@ def my_profile(request):
         return redirect('/my-profile/')
         # request.POST.get('gist')
 
-    return render(request, 'user-profile.html', context)
+    return render(request, 'my-profile.html', context)
 
 
 

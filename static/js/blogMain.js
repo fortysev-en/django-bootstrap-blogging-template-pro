@@ -280,7 +280,15 @@ function deleteComment(event){
       $('div.tabcontent').addClass('box');
       $('.' + selectID + '-tabcontent').removeClass('box');
       $('.' + selectID + '-tabcontent').addClass('selected');
- });    
+ });  
+ 
+ 
+ $('div.blogHead').click(function() {
+  var blogID = $(this).attr('id');
+  console.log(blogID)
+  $('.comment-'+blogID).toggleClass('disBlock');
+});  
+
 
 // var xmlHttp = new XMLHttpRequest();
 // xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
