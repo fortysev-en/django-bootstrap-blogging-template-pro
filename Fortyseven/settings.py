@@ -148,12 +148,12 @@ def verified_callback(user):
 
 EMAIL_VERIFIED_CALLBACK = verified_callback
 EMAIL_FROM_ADDRESS = '0a000047@gmail.com' 
-EMAIL_MAIL_SUBJECT = 'Confirm your email'
-EMAIL_MAIL_HTML = 'mail_body.html'
+EMAIL_MAIL_SUBJECT = 'Confirm Your Email'
+EMAIL_MAIL_HTML = 'verification-email.html'
 EMAIL_MAIL_PLAIN = 'mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60
 EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
-EMAIL_PAGE_DOMAIN = 'http://mydomain.com/'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 EMAIL_MULTI_USER = True  # optional (defaults to False)
 
 # For Django Email Backend
