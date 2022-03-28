@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block start %}
+
+<div class="container">
+    {% if success %}
+    <div class="email-success emailBase">
+        <img src="{% static 'img/blog-assests/email-success.svg' %}" alt="success">
+        <P>HOOREY!</P>
+        <p>EMAIL SUCCESSFULLY VERIFIED!</p>
+        <span>You can now login to the portal.</span>
+    </div>
+    {% else %}
+    <div class="email-error emailBase">
+        <img src="{% static 'img/blog-assests/email-error.svg' %}" alt="success">
+        <P>OOPS!</P>
+        <p>YOU'RE LATE! THE TOKEN HAS EXPIRED</p>
+        <span>You can request for a new verification email <a href="">here</a>!</span>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

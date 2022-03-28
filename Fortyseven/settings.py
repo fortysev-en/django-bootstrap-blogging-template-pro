@@ -152,7 +152,7 @@ EMAIL_MAIL_SUBJECT = 'Confirm Your Email'
 EMAIL_MAIL_HTML = 'verification-email.html'
 EMAIL_MAIL_PLAIN = 'mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60
-EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_TEMPLATE = 'email-confirmation.html'
 EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 EMAIL_MULTI_USER = True  # optional (defaults to False)
 

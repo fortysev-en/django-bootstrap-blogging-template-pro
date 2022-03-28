@@ -166,6 +166,50 @@ html {
 }
 
 
+/* ============================== Email Verification ============================== */
+.emailBase{
+	text-align: center;
+	height: 100vh;
+}
+
+.email-success p{
+	color: #00BFA6;
+	position: relative;
+	top: 30%;
+	font-weight: 500;
+}
+
+.email-error p{
+	color: #F50057;
+	position: relative;
+	top: 30%;
+	font-weight: 500;
+}
+
+.emailBase span{
+	color: #999999;
+	position: relative;
+	top: 60%;
+}
+
+.emailBase img{
+	position: relative;
+	top: 20%;
+	width: 20%;
+	min-width: 200px;
+}
+
+.emailBase a{
+	text-decoration: none;
+	color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+.emailBase a:hover{
+	color: #F50057;
+}
+
+
 /* ============================== Lander ============================== */
 
 .container-head {
