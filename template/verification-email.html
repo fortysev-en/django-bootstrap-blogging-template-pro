@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Email Confirmation</title>
+</head>
+
+<body>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Cousine&family=Libre+Barcode+39+Text&display=swap');
+
+		body {
+			height: 100vh;
+			font-family: 'Cousine', monospace;
+		}
+
+		.wrapper {
+			text-align: center;
+			margin: 15px;
+		}
+
+		.head-img h1 {
+			font-size: 35px;
+			font-family: 'Libre Barcode 39 Text';
+			color: #333;
+			font-weight: 100;
+		}
+
+		.welcome-img img {
+			width: 25%;
+			min-width: 280px;
+		}
+
+		.email-body {
+			line-height: 2;
+			text-align: center;
+		}
+
+		.email-body p {
+			color: #333;
+		}
+
+		.email-body a {
+			position: relative;
+			text-decoration: none;
+			color: white;
+			font-size: 1.5em;
+			padding: 15px 80px 15px 80px;
+			border: 2px solid white;
+			border-radius: 40px;
+			transition: all 0.3s ease-in-out;
+			background-color: #00BFA6;
+			max-width: 150px;
+		}
+
+		.btn-verify {
+			margin-top: 30px;
+		}
+
+		.footer {
+			margin-left: 10px;
+			margin-right: 10px;
+			margin-top: 130px;
+			text-align: center;
+		}
+
+		.footer p {
+			font-size: 0.8em;
+			color: #999999;
+		}
+	</style>
+
+	<div class="wrapper">
+		<div class="head-img">
+			<h1>FORTYSEVEN</h1>
+		</div>
+		<div class="col-one welcome-img">
+			<img src="https://i.ibb.co/W0QC1p9/Welcome.png" alt="welcome-img">
+		</div>
+		<div class="email-body">
+			<p>
+				Hi {{ user.first_name }},<br>
+
+				We just need to verify your email address before you can access your account.<br>
+
+				Please verify your email address by clicking on the button below.<br>
+
+				The link expires at {{ expiry|time:"h:i A" }}.<br>
+
+			<div class="btn-verify">
+				<a href="{{ link }}">VERIFY</a>
+			</div>
+			</p>
+		</div>
+		<div class="footer">
+			<p>Copyright © 2022 FORTYSEVEN, All rights Reserved.</p>
+		</div>
+	</div>
+</body>
+
+</html>
