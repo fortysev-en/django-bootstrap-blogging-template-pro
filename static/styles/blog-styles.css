@@ -746,6 +746,10 @@ html {
 	display: none !important;
 }
 
+.blogHead:hover{
+	cursor: pointer;
+}
+
 .tabcontent h3{
 	text-align: left;
 	font-size: 1.5em;
@@ -762,14 +766,21 @@ html {
 	padding: 10px;
 	background-color: #000;
 	transition: all 0.3s ease-in-out;
+	border-radius: 10px;
 }
 
 .disNone{
+	transition: all 0.3s ease-in-out;
 	display: none;
 }
 
 .disBlock{
+	transition-delay: 1s;
 	display: block;
+}
+
+.commentList{
+	position: relative;
 }
 
 .commentList span{
@@ -1204,13 +1215,14 @@ td {
 .userComment h6{
 	color: #FF9704;
 	padding: 0px;
+	display: inline-block;
 	/* color: #F50057; */
 }
 
 .userComment span{
-	display: block;
-	margin-top: -10px;
+	float: right;
 	font-size: 0.8em;
+	color: #6d6d6d;
 }
 
 .userComment p{
