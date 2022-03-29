@@ -48,18 +48,6 @@ html {
 	margin-top: 12px;
 }
 
-.nav-contents {
-	padding: 15px;
-}
-
-.nav-contents a {
-	text-decoration: none;
-	color: #6d6d6d;
-	font-size: 0.8em;
-	transition: all 0.2s ease-in-out;
-	font-weight: 500;
-}
-
 .list-icon {
 	position: absolute;
 	top: 0%;
@@ -92,17 +80,47 @@ html {
 
 
 /* NAV TEST */
+
 .nav-contents {
-	text-align: end;
+	padding: 15px;
+}
+
+.nav-contents .nav-tab{
+	position: absolute;
+	display: flex;
+	right: 23%;
+}
+
+.nav-contents .nav-tab a{
+	margin: 10px;
+}
+
+.nav-contents .dropdown{
+	display: flex;
+	float: right;
+	margin: 3px;
+}
+
+.nav-contents a{
+	text-decoration: none;
+	color: #999999;
+	font-size: 0.8em;
+	transition: all 0.2s ease-in-out;
+	font-weight: 500;
+}
+
+.nav-contents {
+	display: flexbox;
 	padding: 8px;
 }
 
 .nav-contents .dropdown button{
 	background: none;
 	border: 2px solid #999999;
-	border-radius: 30px;
+	border-radius: 8px;
 	/* font-size: 2em; */
-	padding: 0px;
+	padding: 2px;
+	float: right;
 }
 
 /* .nav-contents .dropdown img{
@@ -112,9 +130,9 @@ html {
 } */
 
 .nav-contents .profileImg {
-	border-radius: 30px;
-	height: 35px;
-	width: 35px;
+	border-radius: 5px;
+	height: 25px;
+	width: 25px;
 	background-color: #333;
 	background-size: 100%;
 	background-position: center center;
@@ -139,13 +157,14 @@ html {
 }
 
 .nav-contents .btnLoginLogout{
+	float: right;
 	display: block;
 	margin-top: 10px;
 	color: #999999;
 	transition: all 0.3s ease-in-out;
 }
 
-.nav-contents .btnLoginLogout:hover{
+.nav-contents a:hover{
 	color: white;
 }
 
@@ -165,6 +184,82 @@ html {
 	font-size: 35px;
 }
 
+
+/* ============================== About ============================== */
+.about-row{
+	height: 100vh;
+	text-align: center;
+}
+
+.about-row img{
+	width: 40%;
+	/* padding: 20px; */
+	margin: 50px;
+}
+
+.about-row .infoPara{
+	font-family: 'Cousine', monospace;
+	margin-top: 10em;
+	color: white;
+}
+
+.about-row blockquote{
+	color: #F50057;
+}
+
+/* ============================== Contact ============================== */
+
+.contactPara{
+	position: relative;
+	margin-top: 10em;
+	color: white;
+}
+
+.contactForm{
+	position: relative;
+	margin-top: 6em;
+}
+
+.contactForm textarea{
+	padding: 20px 0 0 10px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	background-color: #232323;
+	margin-top: 20px;
+	color: #e0e0e0;
+	width: 100%;
+}
+
+.contactForm input{
+	margin-top: 20px;
+	width: 100%;
+}
+
+.btn-submit{
+    padding: 10px;
+}
+
+.btn-submit button{
+    background-color: #000;
+    text-decoration: none;
+    font-size: 0.8em;
+    border: 2px solid white;
+    border-radius: 5px;
+
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px 10px;
+    transition: all 0.3s ease-in-out;
+}
+    
+.btn-submit button:hover{
+    border-color: #000;
+    color: white;
+}
+
+.btn-submit i{
+    margin-left: 5px;
+}
 
 /* ============================== Email Verification ============================== */
 .emailBase{
@@ -602,7 +697,7 @@ html {
 	top: 20%;
 	height: 200px;
 	width: 200px;
-	border-radius: 12em;
+	border-radius: 2em;
 	background-size: 100%;
 	background-color: #333;
 	background-position: center center;
@@ -900,12 +995,20 @@ html {
 	height: 100%;
 }
 
+.add-blog-row a{
+	text-decoration: none;
+}
+
 .add-blog-row form{
 	margin-top: 5em !important;
 }
 
 .btn-create {
 	text-align: right;
+}
+
+#btn-approve{
+	background-color: #FF9704;
 }
 
 .btn-create button {
@@ -985,6 +1088,15 @@ html {
 .searchRow{
 	height: 80vh;
 }
+
+/* ============================== Admin Panel ============================== */
+.pendingReviwes h3{
+	position: relative;
+	padding: 15px;
+	margin-top: 4em;
+	color: #F50057;
+}
+
 
 /* ============================== Blog Homepage ============================== */
 
@@ -1187,6 +1299,7 @@ td {
 }
 
 .auth-details p{
+	font-size: 0.9em;
 	margin-bottom: 0px;
 }
 
@@ -1475,6 +1588,11 @@ footer {
 	.nav-contents .btnLoginLogout{
 		position: absolute;
 		right: 2%;
+		top: 13%;
+	}
+
+	.nav-contents .nav-tab{
+		right: 28%;
 		top: 13%;
 	}
 

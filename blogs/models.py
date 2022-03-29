@@ -5,12 +5,29 @@ from django.contrib.auth.models import User, AbstractUser
 from froala_editor.fields import FroalaField
 from .helpers import *
 
-# Total website visitors model
+# Total website visitors model 
 class ViewsModel(models.Model):
     total_visits = models.CharField(max_length=255)
 
     def __str__(self):
         return self.total_visits
+
+
+
+# User profile model - extended
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profilePicture = models.ImageField(null=True, blank=True,  upload_to='img/blog-assests/profile-pictures/')
+    website_url = models.CharField(max_length=255, null=True, blank=True)
+    github_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
 
 # Blog post model
 class Blog(models.Model):
@@ -22,6 +39,10 @@ class Blog(models.Model):
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     upload_to = models.DateTimeField(auto_now=True)
+
+    is_approved = models.BooleanField(default=False)
+    approved_at = models.CharField(max_length=255, null=True, blank=True)
+    approved_by = models.CharField(max_length=255, null=True, blank=True)
 
     views = models.ManyToManyField(ViewsModel, related_name="post_views", blank=True)
     # likes = models.ManyToManyField(ViewsModel, related_name="post_likes", blank=True, null=True)
@@ -40,6 +61,7 @@ class Blog(models.Model):
     #     return self.likes.count()
 
 
+
 # Blog comment model
 class BlogComment(models.Model):
     serial = models.AutoField(primary_key=True)
@@ -51,22 +73,6 @@ class BlogComment(models.Model):
 
     def __str__(self):
         return self.user.first_name
-
-
-# User profile model - extended
-class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profilePicture = models.ImageField(null=True, blank=True,  upload_to='img/blog-assests/profile-pictures/')
-    website_url = models.CharField(max_length=255, null=True, blank=True)
-    github_url = models.CharField(max_length=255, null=True, blank=True)
-    facebook_url = models.CharField(max_length=255, null=True, blank=True)
-    instagram_url = models.CharField(max_length=255, null=True, blank=True)
-    twitter_url = models.CharField(max_length=255, null=True, blank=True)
-
-    def __str__(self):
-        return str(self.user)
-
 
 # class Ticket(models.Model):
 #     ticketID = models.AutoField(primary_key=True)

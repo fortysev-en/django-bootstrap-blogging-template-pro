@@ -3,13 +3,14 @@ from urllib import response
 from django import views
 from django.conf import settings
 from django.shortcuts import redirect, render, HttpResponse
-from .models import ViewsModel
+from .models import ViewsModel, Contact
 from .forms import *
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.db.models import F
 from .helpers import get_ip
 import os
+from datetime import datetime
 
 # Create your views here.
 def Homepage(request):
@@ -35,7 +36,6 @@ def login(request):
     
     return render(request, 'login.html', context)
 
-
 def my_profile(request):
     context = {}
 
@@ -45,8 +45,15 @@ def my_profile(request):
     context['userTotalComments'] = userCommentData.count()
     context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
 
-    userModel = User.objects.get(username = request.user)
-    userProfile = Profile.objects.get(user = request.user)
+    userModel = User.objects.filter(username = request.user)
+    userProfile = Profile.objects.filter(user = request.user)
+
+    if request.user.is_superuser:
+        context['userState'] = 'SUPERUSER'
+    elif request.user.is_staff and not request.user.is_superuser:
+        context['userState'] = 'Staff'
+    else:
+        context['userState'] = 'Viwer'
 
     if request.method == 'POST':
         userModel.first_name = request.POST.get('firstname')
@@ -72,8 +79,18 @@ def my_profile(request):
 
     return render(request, 'my-profile.html', context)
 
+def about(request):
+    return render(request, 'about.html')
 
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        desc = request.POST['desc']
+        con = Contact(name=name, email=email, desc=desc)
+        con.save()
 
+    return render(request, 'contact.html')
 
 def logout_view(request):
     logout(request)
@@ -97,7 +114,8 @@ def blog_detail(request, slug):
 
         comments = BlogComment.objects.filter(post=blog_obj)
         context['comments'] = comments
-        # context['user'] = request.user
+        context['approvedAt'] = blog_obj.approved_at
+        context['approvedBy'] = blog_obj.approved_by
 
     except Exception as e:
         print(e)
@@ -126,13 +144,25 @@ def add_blog(request):
 
                 Blog.objects.create(user = user, title = title, gist = gist, content = content, image=image)
                 
-                messages.success(request, f"Blog added successfully!")
+                messages.success(request, f"Blog added successfully, pending review!")
                 return redirect('/my-blogs/')
 
         except Exception as e:
             print(e)
 
         return render(request, 'add-blog.html', context)
+
+
+def publish_blog(request, pk):
+
+    blogForApproval = Blog.objects.get(id = pk)
+    blogForApproval.is_approved = True
+    blogForApproval.approved_at = datetime.now().strftime('%b %d, %Y %I:%M %p')
+    blogForApproval.approved_by = str(request.user)
+    blogForApproval.save()
+    
+    return redirect('/admin-panel/')
+
 
 def blog_update(request, pk):
     context = {}
@@ -142,33 +172,34 @@ def blog_update(request, pk):
         try:
             blog_obj = Blog.objects.get(id = pk)
         
-            if blog_obj.user != request.user:
+            if (request.user.is_superuser) or (blog_obj.user == request.user):
+                initial_dict = {'content': blog_obj.content}
+                form = BlogForms(initial = initial_dict)
+
+                old_img = blog_obj.image.name
+
+                if request.method == 'POST':
+                    form = BlogForms(request.POST)
+                    blog_obj.title = request.POST.get('title')
+                    blog_obj.gist =  request.POST.get('gist')
+
+                    if not len(request.FILES['image']) == 0:
+                        blog_obj.image = request.FILES['image']
+                        os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+
+                    if form.is_valid():
+                        blog_obj.content = form.cleaned_data['content']
+
+                    blog_obj.is_approved = False
+                    blog_obj.save()
+
+                    messages.success(request, f"Blog updated successfully!")
+                    return redirect('/my-blogs/')
+                
+                context['blog_obj'] = blog_obj
+                context['form'] = form
+            else:
                 return redirect('/')
-            
-            initial_dict = {'content': blog_obj.content}
-            form = BlogForms(initial = initial_dict)
-
-            old_img = blog_obj.image.name
-
-            if request.method == 'POST':
-                form = BlogForms(request.POST)
-                blog_obj.image = request.FILES['image']
-                blog_obj.title = request.POST.get('title')
-                blog_obj.gist =  request.POST.get('gist')
-
-                if not len(request.FILES['image']) == 0:
-                    os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
-
-                if form.is_valid():
-                    blog_obj.content = form.cleaned_data['content']
-
-                blog_obj.save()
-
-                messages.success(request, f"Blog updated successfully!")
-                return redirect('/my-blogs/')
-            
-            context['blog_obj'] = blog_obj
-            context['form'] = form
 
         except Exception as e:
             print(e)
@@ -248,3 +279,25 @@ def comment_delete(request, id):
 #     else:
 #         post.likes.add(IpModel.objects.get(ip=ip))
 #     return HttpResponseRedirect(reverse('post_detail', args=[post_id]))
+
+#TODO
+# EDIT BLOG should work even if image is not selected
+# About and Contact tabs in the navbar
+# Add bookmark option for a user
+# Should be able to see each users profile page anonymously
+# comment box should scoll at bottom after adding a new comment
+# Review blog from any user and then publish accordingly
+
+def tickets(request):
+    return HttpResponse()
+
+def admin_panel(request):
+    context = {}
+
+    if request.user.is_superuser:
+        context['pending_approval'] = Blog.objects.filter(is_approved = False)
+
+        return render(request, 'admin-panel.html', context)
+
+    else:
+        return redirect('/')

@@ -85,9 +85,13 @@
             </style>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
               <li><a class="dropdown-item" href="{% url 'blogs:my-profile' %}">Profile</a></li>
-              {% if request.user.is_staff %}
-              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
-              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
+              {% if request.user.is_staff and request.user.is_superuser %}
+                <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
+                <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li> 
+                <li><a class="dropdown-item" href="{% url 'blogs:admin-panel' %}">Admin Panel</a></li> 
+              {% elif request.user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
+                <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>  
               {% endif %}
               <li>
                 <hr class="dropdown-divider">

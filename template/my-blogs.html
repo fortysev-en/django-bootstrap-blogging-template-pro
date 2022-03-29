@@ -20,6 +20,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Blog Title</th>
+            <th scope="col">Is Approved</th>
             <th scope="col">Views</th>
             <th scope="col">Created At</th>
             <th scope="col">Action</th>
@@ -30,6 +31,7 @@
           <tr class="table-row">
             <th scope="row">{{forloop.counter}}</th>
             <td>{{blog.title}}</td>
+            <td>{{blog.is_approved}}</td>
             <td>{{blog.total_views}}</td>
             <td>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</td>
             <td>

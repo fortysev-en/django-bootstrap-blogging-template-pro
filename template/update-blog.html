@@ -22,9 +22,14 @@
                 </div>
             </div>
             <div class="btn-create">
-                <button type="submit">UPDATE</button>
+                <button type="submit">UPDATE</button>   
             </div>
         </form>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'blogs:publish-blog' blog_obj.pk %}">
+            <button id="btn-approve">APPROVE</button>
+        </a>
+        {% endif %}
     </div>
 </div>
 

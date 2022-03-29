@@ -23,7 +23,11 @@ urlpatterns = [
     path('logout-view/', views.logout_view, name='logout-view'),
     path('api/', include('blogs.urls_api')),
     path('search/', views.search, name='search-page'),
-    path('delete-comment/<id>', views.comment_delete, name='delete-comment')
+    path('delete-comment/<id>', views.comment_delete, name='delete-comment'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('admin-panel/', views.admin_panel, name='admin-panel'),
+    path('publish-blog/<int:pk>', views.publish_blog, name='publish-blog')
 ]
 
 if settings.DEBUG:

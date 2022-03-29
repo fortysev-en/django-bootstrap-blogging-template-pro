@@ -39,18 +39,20 @@
   <div class="container" id="blogs-container">
     <div class="row">
       {% for blog in blogs %}
-      <div class="col-lg-3 col-md-6 col-10 blog-list">
-        <div class="blog-content">
-          <a href="{% url 'blogs:blog-detail' blog.slug %}">
-            <img src="/media/{{blog.image}}" alt="">
-            <h4>{{blog.title}}</h4>
-            <p>{{blog.gist|safe}}</p><br>
-            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
-              {{blog.user.first_name}}</span><br>
-            <span>Total Views: {{blog.total_views}}</span>
-          </a>
+        {% if blog.is_approved %}
+        <div class="col-lg-3 col-md-6 col-10 blog-list">
+          <div class="blog-content">
+            <a href="{% url 'blogs:blog-detail' blog.slug %}">
+              <img src="/media/{{blog.image}}" alt="">
+              <h4>{{blog.title}}</h4>
+              <p>{{blog.gist|safe}}</p><br>
+              <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+                {{blog.user.first_name}}</span><br>
+              <span>Total Views: {{blog.total_views}}</span>
+            </a>
+          </div>
         </div>
-      </div>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

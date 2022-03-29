@@ -9,7 +9,7 @@
         <div class="row editRow">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
-                {% if blogs_obj.user.is_authenticated and blogs_obj.user == request.user %}
+                {% if blogs_obj.user.is_authenticated and blogs_obj.user == request.user or request.user.is_superuser %}
                 <div class="editOptions">
                     <a href="{%  url 'blogs:blog-update' blogs_obj.pk %}"><i class="bi bi-pen hover-color"></i></a>
                     <a href="{% url 'blogs:blog-delete' blogs_obj.id %}"><i class="bi bi-trash hover-color"></i></a>
@@ -27,6 +27,7 @@
                 </div>
                 <div class="auth-details">
                     <p>Posted on <span>{{blogs_obj.created_at|date:"M d, Y"}} {{blogs_obj.created_at|time:"h:i A"}}</span> by <span>{{blogs_obj.user.first_name}}</span></p>
+                    <p>Approved at {{approvedAt}} by {{approvedBy}}</p>
                     <p>Total Views: {{blogs_obj.total_views}}</p>
                 </div>
                 <div class="text-content">
