@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<title>{% block title %} About {% endblock %}</title>
+
+{% load static %}
+{% block start %}
+    
+<div class="container">
+    <div class="row about-row">
+        <div class="col-lg-12 infoPara">
+            <img src="{% static 'img/blog-assests/about-img.svg' %}" alt="about-img">
+            <p>On this website, you'll find various blogs and tools related to hacking, mostly with the help of Python. The main purpose of these blogs are EDUCATION. You can refer these blogs to understand how malwares work and how easy it is to create one by yourselves. It will help you understand the basics behind it, and eventually, will make you aware of such hacks. It will also help you in developing a way to protect yourselves.
+            </p>
+        </div>
+        <blockquote>
+            The blogs available on this website are meant for EDUCATIONAL PURPOSE ONLY. I've used my own systems to carry out these tests. I personally DO NOT support or promote any unethical practices, as said, it is solely meant for educational purpose. Any misuse of the available content is completely at your own risks.
+        </blockquote>
+    </div>
+</div>
+
+{% endblock %}

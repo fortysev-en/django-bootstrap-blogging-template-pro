@@ -5,9 +5,9 @@ from django.contrib.auth.models import User, AbstractUser
 from froala_editor.fields import FroalaField
 from .helpers import *
 
-
+# Total website visitors model
 class ViewsModel(models.Model):
-    total_visits = models.CharField(max_length=256)
+    total_visits = models.CharField(max_length=255)
 
     def __str__(self):
         return self.total_visits
@@ -18,7 +18,7 @@ class Blog(models.Model):
     gist = models.CharField(max_length=1000)
     content = FroalaField()
     slug = models.SlugField(max_length=1000, null=True, blank=True)
-    image = models.ImageField(upload_to='blogs')
+    image = models.ImageField(null=True, blank=True, upload_to='blogs')
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     upload_to = models.DateTimeField(auto_now=True)
@@ -53,6 +53,7 @@ class BlogComment(models.Model):
         return self.user.first_name
 
 
+# User profile model - extended
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
@@ -65,3 +66,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
+# class Ticket(models.Model):
+#     ticketID = models.AutoField(primary_key=True)
+#     issue = models.CharField(max_length=255, null=True, blank=False)
+#     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+
+
+# Blog contact model
+class Contact(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return str(self.name)

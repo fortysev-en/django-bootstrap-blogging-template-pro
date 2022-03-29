@@ -63,6 +63,10 @@
         </div> -->
 
         <div class="col-lg-4 col-sm-4 nav-contents">
+          <div class="nav-tab">
+            <a href="{% url 'blogs:about' %}">ABOUT</a>
+          <a href="{% url 'blogs:contact' %}">CONTACT</a>
+          </div>
           {% if request.user.is_authenticated %}
           <div class="dropdown">
             <button class="btn btn-secondary" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
@@ -96,6 +100,8 @@
               class="bi bi-box-arrow-in-right"></i></a>
           {% endif %}
         </div>
+
+
       </div>
     </div>
   </div>

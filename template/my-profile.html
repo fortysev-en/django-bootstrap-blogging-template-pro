@@ -3,6 +3,8 @@
 {% block start %}
 {% load static %}
 
+<title>{% block title %} My Profile {% endblock %}</title>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-4 profilePage-img">
@@ -121,9 +123,9 @@
                                 <li>{{comment.post}}</li>
                             </div>
                         {% endifchanged %}
-                        <div class="commentList disNone comment-{{comment.post.pk}}" id="comment-{{comment.serial}}">
-                            <p>{{comment.comment}}</p> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}</span>
-                        </div>
+                        <!-- <div class="commentList disNone comment-{{comment.post.pk}}" id="comment-{{comment.serial}}"> -->
+                            <li class="commentList disNone comment-{{comment.post.pk}}" id="comment-{{comment.serial}}"><p>{{comment.comment}}</p> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}</span></li>
+                        <!-- </div> -->
                     {% endfor %}
                 </div>
 
