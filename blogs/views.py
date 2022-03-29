@@ -158,7 +158,7 @@ def publish_blog(request, pk):
     blogForApproval = Blog.objects.get(id = pk)
     blogForApproval.is_approved = True
     blogForApproval.approved_at = datetime.now().strftime('%b %d, %Y %I:%M %p')
-    blogForApproval.approved_by = str(request.user)
+    blogForApproval.approved_by = str(request.user.first_name)
     blogForApproval.save()
     
     return redirect('/admin-panel/')
@@ -193,7 +193,7 @@ def blog_update(request, pk):
                     blog_obj.is_approved = False
                     blog_obj.save()
 
-                    messages.success(request, f"Blog updated successfully!")
+                    messages.success(request, f"Blog updated successfully, pending review!")
                     return redirect('/my-blogs/')
                 
                 context['blog_obj'] = blog_obj

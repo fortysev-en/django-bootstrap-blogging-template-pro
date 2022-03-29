@@ -6,6 +6,13 @@
 
 <div class="container froala-container">
     <div class="row add-blog-row">
+        {% if request.user.is_superuser %}
+        <div class="btn-approve">
+            <a href="{% url 'blogs:publish-blog' blog_obj.pk %}">
+                <button>APPROVE</button>
+            </a>
+        </div>
+        {% endif %}
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
@@ -25,11 +32,6 @@
                 <button type="submit">UPDATE</button>   
             </div>
         </form>
-        {% if request.user.is_superuser %}
-        <a href="{% url 'blogs:publish-blog' blog_obj.pk %}">
-            <button id="btn-approve">APPROVE</button>
-        </a>
-        {% endif %}
     </div>
 </div>
 

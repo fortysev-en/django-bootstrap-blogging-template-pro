@@ -944,19 +944,11 @@ html {
 	text-decoration: none;
 }
 
-.add-blog-row form{
-	margin-top: 5em !important;
-}
-
 .btn-create {
 	text-align: right;
 }
 
-#btn-approve{
-	background-color: #FF9704;
-}
-
-.btn-create button {
+.btn-create button, .btn-approve button{
 	margin-top: 50px;
 	color: #000;
 	font-size: 0.8em;
@@ -966,6 +958,21 @@ html {
 	font-weight: 600;
 	padding: 10px 18px 10px;
 	transition: all 0.3s ease-in-out;
+}
+
+.btn-approve button{
+	background-color: #FF9704;
+}
+
+.btn-approve{
+	padding-left: 3em !important;
+	position: relative;
+	top: 3em;
+}
+
+.btn-approve button:hover {
+	border-color: white;
+	color: white;
 }
 
 .btn-create button:hover {
