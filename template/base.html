@@ -63,10 +63,16 @@
         </div> -->
 
         <div class="col-lg-4 col-sm-4 nav-contents">
-          <!-- <div class="nav-tab"> -->
-            <a href="{% url 'blogs:about' %}">ABOUT</a>
-          <a href="{% url 'blogs:contact' %}">CONTACT</a>
-          <!-- </div> -->
+          <!-- <a href="{% url 'blogs:about' %}">ABOUT</a>
+          <a href="{% url 'blogs:contact' %}">CONTACT</a> -->
+          {% if request.user.is_staff and request.user.is_superuser %}
+          <a href=""><i class="bi bi-chat-square-text"></i></a>
+          <span>5</span>
+          <a href=""><i class="bi bi-archive"></i></a>
+          <span>2</span>
+          <a href=""><i class="bi bi-bell"></i></a>
+          <span>0</span>
+          {% endif %}
           {% if request.user.is_authenticated %}
           <div class="dropdown">
             <button class="btn btn-secondary" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
@@ -100,10 +106,9 @@
             </ul>
           </div>
           {% else %}
-          <!-- <div class="logInOut"> -->
-            <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i
-              class="bi bi-box-arrow-in-right"></i></a>
-          <!-- </div> -->
+            <!-- <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i
+              class="bi bi-box-arrow-in-right"></i></a> -->
+              <a href="{% url 'blogs:login' %}" class="logInIcon"><i class="bi bi-box-arrow-in-right"></i></a>
           {% endif %}
         </div>
 

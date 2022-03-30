@@ -5,114 +5,91 @@
 {% block start %}
 
 <div class="container">
-    {% if not usersList == None  %}
-    <div class="row userList adminRowHead">
-        <h3>USERS LIST</h3>
-        <div class="col-lg-12">
-          <!-- {% for user in usersList %}
+  {% if not usersList == None %}
+  <div class="row userList adminRowHead">
+    <h3>USERS LIST</h3>
+    <div class="col-lg-12 userCol">
+      <table class="table table-hover userAccountTable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Email</th>
+            <th scope="col">Joined On</th>
+            <th scope="col">Last Login</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in usersList reversed %}
+          <tr class="table-row">
+            <th scope="row">{{forloop.revcounter}}</th>
             {% if user.is_active %}
-              <div class="activeUser">
-                <a href=""><h6>{{user.first_name}} {{user.last_name}}</h6></a>
-                <span>{{user.email}}</span>
-                <div class="userDetails">
-                  <span>{{commentCount}}</span>
-                </div>
-                <div class="taskOnUser">
-                  <a href=""><i class="bi bi-person-x"></i></a>
-                <a href=""><i class="bi bi-envelope-paper"></i></a>
-                <a href=""><i class="bi bi-trash"></i></a>
-                </div>
-              </div>
+            <td class="activeUser">{{user.first_name}} {{user.last_name}}</td>
             {% else %}
-            <div class="inactiveUser">
-              <a href=""><h6>{{user.first_name}} {{user.last_name}}</h6></a>
-                <span>{{user.email}}</span>
-                <div class="userDetails">
-                  <span>{{commentCount}}</span>
-                </div>
-                <div class="taskOnUser">
-                <a href=""><i class="bi bi-person-check"></i></a>
-                <a href=""><i class="bi bi-envelope-paper"></i></a>
-                <a href=""><i class="bi bi-trash"></i></a>
-                </div>
-            </div>
+            <td class="inactiveUser">{{user.first_name}} {{user.last_name}}</td>
             {% endif %}
-            {% endfor %} -->
-  
-            <table class="table table-hover userAccountTable">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Joined On</th>
-                  <th scope="col">Last Login</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for user in usersList reversed %}
-                <tr class="table-row">
-                    <th scope="row">{{forloop.revcounter}}</th>
-                    {% if user.is_active %}
-                    <td class="activeUser">{{user.first_name}} {{user.last_name}}</td>
-                    {% else %}
-                    <td class="inactiveUser">{{user.first_name}} {{user.last_name}}</td>
-                    {% endif %}
-                    <td>{{user.email}}</td>
-                    <td>{{user.date_joined|date:"M d, Y"}} {{user.date_joined|time:"h:i A"}}</td>
-                    <td>{{user.last_login|date:"M d, Y"}} {{user.last_login|time:"h:i A"}}</td>
-                    <td>
-                      {% if user.is_active %}
-                      <a href=""><i class="bi bi-person-x"></i></a>
-                      <a href=""><i class="bi bi-key"></i></a>
-                      <a href=""><i class="bi bi-trash"></i></a>
-                      {% else %}
-                      <a href=""><i class="bi bi-person-check"></i></a>
-                      <a href=""><i class="bi bi-envelope-paper"></i></a>
-                      <a href=""><i class="bi bi-key"></i></a>
-                      <a href=""><i class="bi bi-trash"></i></a>
-                      {% endif %}
-                    </td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-            </table>
-  
-  
-          <!-- <div class="pages">
-            {% if usersList.has_other_pages %}
-            <ul class="pagination">
-          {% if usersList.has_previous %}
-            <li><a href="?page={{ usersList.previous_page_number }}">&laquo;</a></li>
-          {% else %}
-            <li class="disabled"><span>&laquo;</span></li>
-          {% endif %}
-          {% for i in usersList.paginator.page_range %}
-            {% if usersList.number == i %}
-               <li class="active"><span>{{ i }} <span class="sr-only">(current)</span> 
-          .     </span></li>
-          {% else %}
-            <li><a href="?page={{ i }}">{{ i }}</a></li>
-          {% endif %}
+            <td>{{user.email}}</td>
+            <td>{{user.date_joined|date:"M d, Y"}} {{user.date_joined|time:"h:i A"}}</td>
+            <td>{{user.last_login|date:"M d, Y"}} {{user.last_login|time:"h:i A"}}</td>
+            <td>
+              {% if user.is_active %}
+              <a href="{% url 'blogs:disable-user' user.pk %}"><i class="bi bi-person-x"></i></a>
+              <a href="{% url 'blogs:change-user-pwd' user.pk %}"><i class="bi bi-key"></i></a>
+              <a href="{% url 'blogs:delete-user' user.pk %}"><i class="bi bi-trash"></i></a>
+              {% else %}
+              <a href="{% url 'blogs:activate-user' user.pk %}"><i class="bi bi-person-check"></i></a>
+              <a href="{% url 'blogs:resend-verification' user.pk %}"><i class="bi bi-envelope-paper"></i></a>
+              <a href="{% url 'blogs:change-user-pwd' user.pk %}"><i class="bi bi-key"></i></a>
+              <a href="{% url 'blogs:delete-user' user.pk %}"><i class="bi bi-trash"></i></a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-12 paginator">
+    <nav aria-label="Page navigation">
+      {% if usersList.has_other_pages %}
+      <ul class="pagination">
+        {% if usersList.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ usersList.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true" class="disabled">&laquo;</span>
+            {% endif %}
+          </a>
+        </li>
+
+        {% for i in usersList.paginator.page_range %}
+        {% if usersList.number == i %}
+        <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
         {% endfor %}
+
         {% if usersList.has_next %}
-          <li><a href="?page={{ usersList.next_page_number }}">&raquo;</a></li>
-             {% else %}
-             <li class="disabled"><span>&raquo;</span></li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ usersList.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true" class="disabled">&raquo;</span>
             {% endif %}
-         </ul>
-         {% endif %}
-          </div> -->
-  
-  
-        </div>
-      </div>
-      {% else %}
-      <div class="row noDataAvailable">
-        <h3>NO DATA AVAILABLE</h3>
-      </div>    
+          </a>
+        </li>
+      </ul>
       {% endif %}
+    </nav>
+  </div>
+</div>
+
+  {% else %}
+  <div class="row noDataAvailable">
+    <h3>NO DATA AVAILABLE</h3>
+  </div>
+  {% endif %}
 </div>
 
 {% endblock %}

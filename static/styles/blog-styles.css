@@ -59,27 +59,42 @@ html {
 .nav-contents {
 	position: relative;
 	text-align: end;
-	padding: 13px;
+	padding: 3px;
 }
 
 .nav-contents .dropdown{
 	display: flex;
 	float: right;
 	margin-left: 10px;
-	margin-top: -2px;
+	margin-top: 8px;
+}
+
+.nav-contents .dropdown a{
+	font-size: 0.8em;
 }
 
 .nav-contents a{
 	text-decoration: none;
 	color: #999999;
-	font-size: 0.8em;
+	font-size: 1.4em;
 	transition: all 0.2s ease-in-out;
 	font-weight: 500;
-	margin-right: 10px;
-	/* border: 2px solid #999999;
-    padding: 6px 20px 6px 20px;
-    border-radius: 8px; */
+	padding-top: 8px;
+	margin-right: 12px;
+	display: inline-flex;
 }
+
+.nav-contents span{
+	position: absolute;
+	/* background-color: #F50057; */
+	padding: 0px 3px 0px 3px;
+	margin-left: -18px;
+	top: 10%;
+	/* border-radius: 8px; */
+	font-size: 0.8em;
+	color: #F50057;
+	font-weight: 800;
+	}
 
 .nav-contents .dropdown button{
 	background: none;
@@ -107,10 +122,10 @@ html {
 	background-color: #232323 !important;
 }
 
-.nav-contents .logInOut a{
+/* .nav-contents .logInOut a{
 	color: #999999;
 	transition: all 0.3s ease-in-out;
-}
+} */
 
 .nav-contents a:hover{
 	color: white;
@@ -605,6 +620,7 @@ html {
 	font-size: 0.8em;
 	color: white;
 	padding-left: 70px;
+	font-weight: 600;
 }
 
 .recaptcha a{
@@ -619,6 +635,7 @@ html {
 
 .reLogin p{
 	padding-left: 18px !important;
+	font-weight: 600;
 }
 
 .figure{
@@ -1060,9 +1077,6 @@ html {
 }
 
 /* ============================== Admin Panel ============================== */
-/* .pendingReviwes{
-	height: 100vh;
-} */
 
 .adminTasksRow{
 	height: 100vh;
@@ -1100,6 +1114,10 @@ html {
 	position: relative;
 	top: 50%;
 	color: #F50057;
+}
+
+.userCol{
+	min-height: 78vh;
 }
 
 .adminRowHead h3{
@@ -1153,64 +1171,32 @@ html {
 	background-color: #121212 !important;
 }
 
-/* 
-.activeUser, .inactiveUser{
-	border: 1px solid white;
-	display: inline-block;
-	margin: 10px;
-	border-radius: 10px;
-	padding: 10px;
-	min-width: 300px;
-	text-align: center;
-}
-
-.activeUser span, .inactiveUser span{
-	display: block;
-	margin-top: -5px;
-	color: white;
-}
-
-.activeUser h6{
-	color: #00BFA6;
-	transition: all 0.3s ease-in-out;
-}
-
-.inactiveUser h6{
-	color:#F50057;
-	transition: all 0.3s ease-in-out;
-}
-
-.activeUser a, .inactiveUser a{
-	text-decoration: none;
-}
-
-.activeUser h6:hover {
-	color: white;
-}
-
-.inactiveUser h6:hover{
-	color: white;
-}
-
-.taskOnUser a{
-	color: #6d6d6d;
-	padding: 5px;
-	transition: all 0.3s ease-in-out;
-}
-
-.taskOnUser a:hover{
+.table-row a:hover{
 	color: #F50057;
 }
 
-.userDetails{
-	text-align: left;
+.page-link{
+	background-color: #232323 !important;
+	border-color: #232323 !important;
 }
 
-.userDetails span{
-	display: inline-block;
-	font-size: 0.8em;
+.page-item a{
+	color: #FFF !important;
 }
- */
+
+.page-item.active .page-link{
+	box-shadow: 0px 0px 2px #FFF;
+	background-color: #00BFA6 !important;
+	border-color: #00BFA6 !important;
+}
+
+.paginator nav{
+	text-align: center;
+}
+
+.paginator ul{
+	display:inline-flex;
+}
 
 /* ============================== Blog Homepage ============================== */
 

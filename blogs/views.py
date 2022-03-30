@@ -151,7 +151,7 @@ def add_blog(request):
                 Blog.objects.create(user = user, title = title, gist = gist, content = content, image=image)
                 
                 messages.success(request, f"Blog Added Successfully, Pending Review!")
-                return redirect('/my-blogs/')
+                return redirect('/myBlogs/')
 
         except Exception as e:
             print(e)
@@ -189,7 +189,7 @@ def blog_update(request, pk):
                     blog_obj.save()
 
                     messages.success(request, f"Blog Updated Successfully, Pending Review!")
-                    return redirect('/my-blogs/')
+                    return redirect('/myBlogs/')
                 
                 context['blog_obj'] = blog_obj
                 context['form'] = form
@@ -216,7 +216,7 @@ def blog_delete(request, id):
         except Exception as e:
             print(e)
 
-        return redirect('/my-blogs/')
+        return redirect('/myBlogs/')
 
 def my_blogs(request):
     context = {}
