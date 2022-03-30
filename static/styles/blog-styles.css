@@ -1071,6 +1071,24 @@ html {
 .adminTasksRow .adminTasks{
 	position: relative;
 	top: 50%;
+	text-align: center;
+}
+
+.adminTasks a{
+	border: 2px solid white;
+	padding: 15px 25px 15px 25px;
+	margin: 15px;
+	border-radius: 15px;
+	background-color: #00BFA6;
+	color: #000;
+	text-decoration: none;
+	font-weight: 500;
+	transition: all 0.3s ease-in-out;
+}
+
+.adminTasks a:hover{
+	background-color: inherit;
+	color: white;
 }
 
 .noDataAvailable{
