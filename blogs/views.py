@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from traceback import print_tb
 from urllib import response
 from django import views
@@ -47,8 +48,9 @@ def my_profile(request):
     context['userTotalComments'] = userCommentData.count()
     context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
 
-    userModel = User.objects.filter(username = request.user)
-    userProfile = Profile.objects.filter(user = request.user)
+    userModel = User.objects.get(username = request.user)
+
+    userProfile = Profile.objects.get(user = request.user)
 
     if request.user.is_superuser:
         context['userState'] = 'SUPERUSER'
@@ -66,17 +68,18 @@ def my_profile(request):
         userProfile.instagram_url = request.POST.get('personalInstagram')
         userProfile.twitter_url = request.POST.get('personalTwitter')
 
-        if not userProfile.profilePicture is None:
-            os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
+        if not userProfile.profilePicture:
             userProfile.profilePicture = request.FILES['profilePictureImg']
         else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
             userProfile.profilePicture = request.FILES['profilePictureImg']
+
 
         userProfile.save()
         userModel.save()
 
         messages.success(request, f"Profile updated successfully!")
-        return redirect('/my-profile/')
+        return redirect('/myProfile/')
         # request.POST.get('gist')
 
     return render(request, 'my-profile.html', context)

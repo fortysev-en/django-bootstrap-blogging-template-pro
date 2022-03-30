@@ -47,8 +47,11 @@ class LoginView(APIView):
                     login(request, user_obj)
                     response['status'] = 200
                     response['message'] = f'Welcome {usr_name}'
-                    messages.success(request, f"Welcome <b>{user_obj.first_name}</b>!")        
-            
+                    messages.success(request, f"Welcome <b>{user_obj.first_name}</b>!")
+                    usr_pro = Profile.objects.filter(user = request.user)
+                    if len(usr_pro) == 0:
+                        Profile.objects.create(user = request.user)
+
             except Exception as e:
                 print(e)
         else:
