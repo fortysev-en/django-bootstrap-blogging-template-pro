@@ -68,13 +68,14 @@ def my_profile(request):
         userProfile.instagram_url = request.POST.get('personalInstagram')
         userProfile.twitter_url = request.POST.get('personalTwitter')
 
-        if not userProfile.profilePicture:
-            userProfile.profilePicture = request.FILES['profilePictureImg']
-        else:
-            os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
-            userProfile.profilePicture = request.FILES['profilePictureImg']
-
-
+        img = request.FILES.get('profilePictureImg')
+        if not img is None:
+            if not userProfile.profilePicture:
+                userProfile.profilePicture = request.FILES['profilePictureImg']
+            else:
+                os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
+                userProfile.profilePicture = request.FILES['profilePictureImg']
+        
         userProfile.save()
         userModel.save()
 
