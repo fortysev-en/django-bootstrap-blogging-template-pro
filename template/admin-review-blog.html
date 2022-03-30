@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<title>{% block title %} Admin Panel {% endblock %}</title>
+
+{% load static %}
+{% block start %}
+    
+<div class="container">
+  {% if pending_approval.length > 0  %}
+  <div class="row pendingReviwes adminRowHead">
+    <h3>PENDING REVIWES</h3>
+      {% for blog in pending_approval %}
+      <div class="col-lg-3 col-md-6 col-10 blog-list">
+        <div class="blog-content">
+          <a href="{%  url 'blogs:blog-update' blog.pk %}">
+            <img src="/media/{{blog.image}}" alt="">
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.gist|safe}}</p><br>
+            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</span><br>
+            <span>{{blog.user.first_name}}</span>
+          </a>
+          <span class="approve-btn"><a href="{% url 'blogs:publish-blog' blog.pk %}">APPROVE</a></span>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% else %}
+  <div class="row noDataAvailable">
+    <h3>NO DATA AVAILABLE</h3>
+  </div>    
+  {% endif %}
+      </div>
+    </div>
+    
+</div>
+
+{% endblock %}

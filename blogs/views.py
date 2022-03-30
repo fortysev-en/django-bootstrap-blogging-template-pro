@@ -10,7 +10,9 @@ from django.contrib import messages
 from django.db.models import F
 from .helpers import get_ip
 import os
-from datetime import datetime
+from datetime import datetime, date
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 def Homepage(request):
@@ -144,24 +146,13 @@ def add_blog(request):
 
                 Blog.objects.create(user = user, title = title, gist = gist, content = content, image=image)
                 
-                messages.success(request, f"Blog added successfully, pending review!")
+                messages.success(request, f"Blog Added Successfully, Pending Review!")
                 return redirect('/my-blogs/')
 
         except Exception as e:
             print(e)
 
         return render(request, 'add-blog.html', context)
-
-
-def publish_blog(request, pk):
-
-    blogForApproval = Blog.objects.get(id = pk)
-    blogForApproval.is_approved = True
-    blogForApproval.approved_at = datetime.now().strftime('%b %d, %Y %I:%M %p')
-    blogForApproval.approved_by = str(request.user.first_name)
-    blogForApproval.save()
-    
-    return redirect('/admin-panel/')
 
 
 def blog_update(request, pk):
@@ -193,7 +184,7 @@ def blog_update(request, pk):
                     blog_obj.is_approved = False
                     blog_obj.save()
 
-                    messages.success(request, f"Blog updated successfully, pending review!")
+                    messages.success(request, f"Blog Updated Successfully, Pending Review!")
                     return redirect('/my-blogs/')
                 
                 context['blog_obj'] = blog_obj
@@ -291,13 +282,3 @@ def comment_delete(request, id):
 def tickets(request):
     return HttpResponse()
 
-def admin_panel(request):
-    context = {}
-
-    if request.user.is_superuser:
-        context['pending_approval'] = Blog.objects.filter(is_approved = False)
-
-        return render(request, 'admin-panel.html', context)
-
-    else:
-        return redirect('/')

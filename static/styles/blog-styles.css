@@ -76,6 +76,9 @@ html {
 	transition: all 0.2s ease-in-out;
 	font-weight: 500;
 	margin-right: 10px;
+	/* border: 2px solid #999999;
+    padding: 6px 20px 6px 20px;
+    border-radius: 8px; */
 }
 
 .nav-contents .dropdown button{
@@ -137,15 +140,17 @@ html {
 }
 
 .about-row img{
-	width: 40%;
+	width: 60%;
 	/* padding: 20px; */
 	margin: 50px;
+	text-align: center;
 }
 
 .about-row .infoPara{
 	font-family: 'Cousine', monospace;
 	margin-top: 10em;
 	color: white;
+	text-align: center;
 }
 
 .about-row blockquote{
@@ -385,6 +390,7 @@ html {
 
 .bouncer {
 	text-align: center;
+	z-index: 3;
 }
 
 .btn-bounce {
@@ -948,8 +954,20 @@ html {
 	text-align: right;
 }
 
-.btn-create button, .btn-approve button{
+.btn-create button{
 	margin-top: 50px;
+	color: #000;
+	font-size: 0.8em;
+	background-color: #00BFA6;
+	border: 2px solid #000;
+	border-radius: 5px;
+	font-weight: 600;
+	padding: 10px 18px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-approve button{
+	/* margin-top: 50px; */
 	color: #000;
 	font-size: 0.8em;
 	background-color: #00BFA6;
@@ -967,7 +985,7 @@ html {
 .btn-approve{
 	padding-left: 3em !important;
 	position: relative;
-	top: 3em;
+	/* top: 3em; */
 }
 
 .btn-approve button:hover {
@@ -1042,13 +1060,139 @@ html {
 }
 
 /* ============================== Admin Panel ============================== */
-.pendingReviwes h3{
+/* .pendingReviwes{
+	height: 100vh;
+} */
+
+.adminTasksRow{
+	height: 100vh;
+}
+
+.adminTasksRow .adminTasks{
 	position: relative;
-	padding: 15px;
+	top: 50%;
+}
+
+.noDataAvailable{
+	height: 100vh;
+	text-align: center;
+}
+
+.noDataAvailable h3{
+	position: relative;
+	top: 50%;
+	color: #F50057;
+}
+
+.adminRowHead h3{
+	text-align: center;
+	position: relative;
 	margin-top: 4em;
 	color: #F50057;
 }
 
+.approve-btn{
+	text-align: center;
+	display: block;
+	background-color: #ff9604;
+	margin-top: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.approve-btn a{
+	display: inline-block;
+	color: #000;
+	font-weight: 500;
+	width: 100%;
+	transition: all 0.3s ease-in-out;
+}
+
+.approve-btn a:hover{
+	color: #FFF;
+}
+
+
+.activeUser{
+	color: #00BFA6;
+	font-weight: 500;
+}
+
+.inactiveUser{
+	color: #F50057;
+	font-weight: 500;
+}
+
+.userAccountTable{
+	margin-top: 5em;
+}
+
+.userAccountTable th{
+	color: #e0e0e0 !important;
+}
+
+.userAccountTable tr:hover{
+	background-color: #121212 !important;
+}
+
+/* 
+.activeUser, .inactiveUser{
+	border: 1px solid white;
+	display: inline-block;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px;
+	min-width: 300px;
+	text-align: center;
+}
+
+.activeUser span, .inactiveUser span{
+	display: block;
+	margin-top: -5px;
+	color: white;
+}
+
+.activeUser h6{
+	color: #00BFA6;
+	transition: all 0.3s ease-in-out;
+}
+
+.inactiveUser h6{
+	color:#F50057;
+	transition: all 0.3s ease-in-out;
+}
+
+.activeUser a, .inactiveUser a{
+	text-decoration: none;
+}
+
+.activeUser h6:hover {
+	color: white;
+}
+
+.inactiveUser h6:hover{
+	color: white;
+}
+
+.taskOnUser a{
+	color: #6d6d6d;
+	padding: 5px;
+	transition: all 0.3s ease-in-out;
+}
+
+.taskOnUser a:hover{
+	color: #F50057;
+}
+
+.userDetails{
+	text-align: left;
+}
+
+.userDetails span{
+	display: inline-block;
+	font-size: 0.8em;
+}
+ */
 
 /* ============================== Blog Homepage ============================== */
 
@@ -1113,8 +1257,7 @@ input:focus {
 
 .blog-content img {
 	width: 100%;
-	max-height: 150px;
-	/* min-height: 150px; */
+	max-height: 250px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 }
@@ -1257,6 +1400,7 @@ td {
 
 .auth-details span{
 	color: #00BFA6;
+	font-weight: 500;
 }
 
 /* ============================== ChatBox ============================== */
@@ -1272,6 +1416,7 @@ td {
 	bottom: 0%;
 	right: 10%;
 	transition: all 0.5s ease-in-out;
+	z-index: 5;
 }
 
 .chatbar h6{
