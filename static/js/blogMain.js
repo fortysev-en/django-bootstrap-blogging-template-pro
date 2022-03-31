@@ -320,6 +320,9 @@ function disableUser(user_id){
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
         $( "#usersTable" ).load(window.location.href + " #usersTable" );
+          successText.innerHTML = 'User Disabled Successfully!' ;
+          var bsAlert = new bootstrap.Toast(successAlert);
+          bsAlert.show();
       }
   })
     });
@@ -335,6 +338,7 @@ function changeUserPwd(user_id){
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
         $( "#usersTable" ).load(window.location.href + " #usersTable" );
+        
       }
   })
     });
@@ -365,6 +369,9 @@ function activateUser(user_id){
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
         $( "#usersTable" ).load(window.location.href + " #usersTable" );
+        successText.innerHTML = 'User Activated Successfully!' ;
+        var bsAlert = new bootstrap.Toast(successAlert);
+        bsAlert.show();
       }
   })
     });
