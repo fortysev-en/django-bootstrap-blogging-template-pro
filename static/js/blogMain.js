@@ -312,6 +312,8 @@ $('#btn-confirmation-close').click(function() {
 
 function disableUser(user_id){
   var id = user_id.split('-')[1]
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to DISABLE this user?'
   toggleConfirmation()
   $("#userConfirmed").on('click',function(){
    $.ajax({
@@ -346,6 +348,8 @@ function changeUserPwd(user_id){
 
 function deleteUser(user_id){
   var id = user_id.split('-')[1]
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to DELETE this user?'
   toggleConfirmation()
   $("#userConfirmed").on('click',function(){
     $.ajax({
@@ -354,6 +358,9 @@ function deleteUser(user_id){
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
         $( "#usersTable" ).load(window.location.href + " #usersTable" );
+        successText.innerHTML = 'User Deleted Successfully!' ;
+        var bsAlert = new bootstrap.Toast(successAlert);
+        bsAlert.show();
       }
   })
     });
@@ -361,6 +368,8 @@ function deleteUser(user_id){
 
 function activateUser(user_id){
   var id = user_id.split('-')[1]
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to ACTIVATE this user?'
   toggleConfirmation()
   $("#userConfirmed").on('click',function(){
     $.ajax({
@@ -379,6 +388,8 @@ function activateUser(user_id){
 
 function resendVerification(user_id){
   var id = user_id.split('-')[1]
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to resend the verification email to this user?'
   toggleConfirmation()
   $("#userConfirmed").on('click',function(){
     $.ajax({
@@ -387,6 +398,9 @@ function resendVerification(user_id){
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
         $( "#usersTable" ).load(window.location.href + " #usersTable" );
+        successText.innerHTML = 'Email Sent Successfully!' ;
+        var bsAlert = new bootstrap.Toast(successAlert);
+        bsAlert.show();
       }
   })
     });

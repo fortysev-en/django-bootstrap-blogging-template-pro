@@ -1085,7 +1085,8 @@ html {
 }
 
 .modal-content p{
-	margin-top: 60px;
+	padding: 15px;
+	margin-top: 30px;
 	color: white;
 }
 
@@ -1171,9 +1172,9 @@ html {
 	margin-top: 3em;
 }
 
-.searchHead span{
+/* .searchHead span{
 	color: #249169;
-}
+} */
 
 .searchRow{
 	height: 80vh;

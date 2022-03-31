@@ -26,7 +26,8 @@ urlpatterns = [
     path('deleteComment/<id>', views.comment_delete, name='delete-comment'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-    path('adminView/', include('blogs.urls_admin'))
+    path('adminView/', include('blogs.urls_admin')),
+    path('userProfile/<id>', views.user_profile, name='user-profile')    
 ]
 
 if settings.DEBUG:
