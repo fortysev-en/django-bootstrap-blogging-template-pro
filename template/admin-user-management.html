@@ -8,7 +8,7 @@
   {% if not usersList == None %}
   <div class="row userList adminRowHead">
     <h3>USERS LIST</h3>
-    <div class="col-lg-12 userCol">
+    <div class="col-lg-12 userCol" id="usersTable">
       <table class="table table-hover userAccountTable">
         <thead>
           <tr>
@@ -22,6 +22,7 @@
         </thead>
         <tbody>
           {% for user in usersList reversed %}
+          <input type="hidden" name="userPK" id="{{user.pk}}">
           <tr class="table-row">
             <th scope="row">{{forloop.revcounter}}</th>
             {% if user.is_active %}
@@ -32,18 +33,29 @@
             <td>{{user.email}}</td>
             <td>{{user.date_joined|date:"M d, Y"}} {{user.date_joined|time:"h:i A"}}</td>
             <td>{{user.last_login|date:"M d, Y"}} {{user.last_login|time:"h:i A"}}</td>
-            <td>
+            {% if not user == request.user %}
+              <td>
               {% if user.is_active %}
-              <a href="{% url 'blogs:disable-user' user.pk %}"><i class="bi bi-person-x"></i></a>
-              <a href="{% url 'blogs:change-user-pwd' user.pk %}"><i class="bi bi-key"></i></a>
-              <a href="{% url 'blogs:delete-user' user.pk %}"><i class="bi bi-trash"></i></a>
+              <label id="disableUser-{{user.pk}}" onclick="disableUser(this.id)"><i class="bi bi-person-x"></i></label>
+              <label id="changeUserPwd-{{user.pk}}" onclick="changeUserPwd(this.id)"><i class="bi bi-key"></i></label>
+              <label id="deleteUser-{{user.pk}}" onclick="deleteUser(this.id)"><i class="bi bi-trash"></i></label>
               {% else %}
-              <a href="{% url 'blogs:activate-user' user.pk %}"><i class="bi bi-person-check"></i></a>
-              <a href="{% url 'blogs:resend-verification' user.pk %}"><i class="bi bi-envelope-paper"></i></a>
-              <a href="{% url 'blogs:change-user-pwd' user.pk %}"><i class="bi bi-key"></i></a>
-              <a href="{% url 'blogs:delete-user' user.pk %}"><i class="bi bi-trash"></i></a>
+              <!-- <a href="{% url 'blogs:activate-user' user.pk %}"><i class="bi bi-person-check"></i></a> -->
+              <label id="activateUser-{{user.pk}}" onclick="activateUser(this.id)"><i class="bi bi-person-check"></i></label>
+              <label id="resendVerification-{{user.pk}}" onclick="resendVerification(this.id)"><i class="bi bi-envelope-paper"></i></label>
+              <label id="changeUserPwd-{{user.pk}}" onclick="changeUserPwd(this.id)"><i class="bi bi-key"></i></label>
+              <label id="deleteUser-{{user.pk}}" onclick="deleteUser(this.id)"><i class="bi bi-trash"></i></label>
               {% endif %}
             </td>
+            {% else %}
+            <td>
+              {% if user.is_active %}
+              <label class="suUser"><i class="bi bi-person-x"></i></label>
+              <label class="suUser"><i class="bi bi-key"></i></label>
+              <label class="suUser"><i class="bi bi-trash"></i></label>
+              {% endif %}
+            </td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>

@@ -8,15 +8,18 @@ from .models import *
 
 
 def activate_user(request, pk):
-    print('activate_user', pk)
+    usr = User.objects.get(pk = pk)
+    usr.is_active = True
+    usr.save()
+    messages.success(request, 'User Activated Successfully!')
     return redirect('/adminView/userManage/')
 
 
 def disable_user(request, pk):
-    print('disable_user', pk)
     usr = User.objects.get(pk = pk)
     usr.is_active = False
     usr.save()
+    messages.success(request, 'User Disabled Successfully!')
     return redirect('/adminView/userManage/')
 
 

@@ -285,7 +285,6 @@ function deleteComment(event){
  
  $('div.blogHead').click(function() {
   var blogID = $(this).attr('id');
-  console.log(blogID)
   $('.comment-'+blogID).toggleClass('disBlock');
 });  
 
@@ -302,4 +301,90 @@ function deleteComment(event){
 // document.getElementById('quote').innerHTML = dataJSON.content
 // document.getElementById('author').innerHTML = dataJSON.author
 
+function toggleConfirmation(){
+  $('.confirmation').addClass('toggle-confirmation');
+}
 
+$('#btn-confirmation-close').click(function() {
+  $('.confirmation').removeClass('toggle-confirmation');
+});
+
+
+function disableUser(user_id){
+  var id = user_id.split('-')[1]
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+   $.ajax({
+      url: "/adminView/disableUser/"+id,
+      // data : { id : id},
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      }
+  })
+    });
+}
+
+function changeUserPwd(user_id){
+  var id = user_id.split('-')[1]
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/adminView/changeUserPwd/"+id,
+      // data : { id : id},
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      }
+  })
+    });
+}
+
+function deleteUser(user_id){
+  var id = user_id.split('-')[1]
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/adminView/deleteUser/"+id,
+      // data : { id : id},
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      }
+  })
+    });
+}
+
+function activateUser(user_id){
+  var id = user_id.split('-')[1]
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/adminView/activateUser/"+id,
+      // data : { id : id},
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      }
+  })
+    });
+}
+
+function resendVerification(user_id){
+  var id = user_id.split('-')[1]
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/adminView/resendVerification/"+id,
+      // data : { id : id},
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      }
+  })
+    });
+}
+
+function closeConfirmationBox(){
+  $('.confirmation').removeClass('toggle-confirmation');
+}
