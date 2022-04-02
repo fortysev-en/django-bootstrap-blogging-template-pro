@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from .forms import *
@@ -40,6 +41,9 @@ def resend_verification(request, pk):
 def review_blog(request):
     context = {}
     if request.user.is_superuser:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
         approval_required = Blog.objects.filter(is_approved = False)
         context['pending_approval'] = approval_required
         # context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
@@ -62,6 +66,9 @@ def user_manage(request):
     context = {}
 
     if request.user.is_superuser:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
         context['pending_approval'] = Blog.objects.filter(is_approved = False)
         usersList = User.objects.all()
         
@@ -82,8 +89,47 @@ def user_manage(request):
         return redirect('/')
 
 
-def publish_blog(request, pk):
+def admin_messages(request):
+    context = {}
 
+    if request.user.is_superuser:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+        allMessages = Contact.objects.all()
+        context['allMessages'] = allMessages
+        # pendingMessageList = Contact.objects.filter(is_viewed = False).count()
+        
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(allMessages, 15)
+        try:
+            pendingMessageList = paginator.page(page)
+        except PageNotAnInteger:
+            pendingMessageList = paginator.page(1)
+        except EmptyPage:
+            pendingMessageList = paginator.page(paginator.num_pages)
+
+        context['messageList'] = pendingMessageList
+
+        return render(request, 'admin-messages.html', context)
+    else:
+        return redirect('/')
+
+
+def mark_message(request, pk):
+    
+    msg = Contact.objects.get(pk = pk)
+
+    if msg.is_viewed:
+        msg.is_viewed = False
+    else:
+        msg.is_viewed = True
+    msg.save()
+
+    return redirect('/adminView/adminMessages/')
+
+def publish_blog(request, pk):
     blogForApproval = Blog.objects.get(id = pk)
     blogForApproval.is_approved = True
     blogForApproval.approved_at = datetime.now().strftime('%b %d, %Y %I:%M %p')
@@ -95,7 +141,11 @@ def publish_blog(request, pk):
 
 
 def admin_panel(request):
+    context = {}
     if request.user.is_superuser:
-        return render(request, 'admin-panel.html')
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+        return render(request, 'admin-panel.html', context)
     else:
         return redirect('/')

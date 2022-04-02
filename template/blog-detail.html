@@ -50,7 +50,7 @@
                     <div class="userComment">
                         <!-- <button type="submit">{{comment.serial}}<i
                                 class="bi bi-trash hover-color"></i></button> -->
-                        <h6>{{comment.user.first_name}}</h6> <span>{{comment.time|date:"M d, Y"}}
+                        <h6><a class="userPro" href="{% url 'blogs:user-profile' comment.user.username %}">{{comment.user.first_name}}</a></h6> <span>{{comment.time|date:"M d, Y"}}
                             {{comment.time|time:"h:i A"}}</span>
                         <p>{{comment.comment}}</p>
                     </div>

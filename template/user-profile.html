@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+<title>{% block title %} User Profile {% endblock %}</title>
+
+{% load static %}
+{% block start %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 profilePage-img">
+            {% if userData.profile.profilePicture %}
+            <div class="center-cropped" style="background-image: url('{{userData.profile.profilePicture.url}}');">
+            </div>
+            {% else %}
+            <div class="center-cropped"></div>
+            {% endif %}
+        </div>
+        <style>
+            .center-cropped {
+                background-image: url("{% static 'img/blog-assests/default-profile-img.svg' %}");
+            }
+        </style>
+        <div class="col-lg-8 profilePage-summary">
+            {% if userData.is_active %}
+            <h1>{{userData.first_name}} {{userData.last_name}} <i class="bi bi-patch-check verified"></i></h1>
+            {% else %}
+            <h1>{{userData.first_name}} {{userData.last_name}} <i class="bi bi-patch-exclamation notVerified"></i></h1>
+            {% endif %}
+            <div class="col-lg-2 summary-wid">
+                <h6>Total Messages</h6>
+                <span>{{userTotalComments}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Reaction Score</h6>
+                <span>200</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>User Type</h6>
+                <span>{{userState}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Joined Since</h6>
+                <span>{{userData.date_joined|date:"M d, Y"}} {{userData.date_joined|time:"h:i A"}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Last Seen</h6>
+                <span>{{userData.last_login|date:"M d, Y"}} {{userData.last_login|time:"h:i A"}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container profileUserData-container">
+    <div class="row profileUserData-row">
+        <div class="col-lg-4 profileLeftPanel">
+            <div class="panel">
+                <ul class="checklist-select" role="tablist">
+                    <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i
+                            class="bi bi-person-video"></i> Profile</li>
+                    <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i
+                            class="bi bi-chat-left-quote"></i> Comments</li>
+                    <li id="tab3" role="tab" aria-controls="panel3" aria-selected="false"><i
+                            class="bi bi-bookmark-star"></i> Bookmarks</li>
+                    <li id="tab4" role="tab" aria-controls="panel4" aria-selected="false"><i class="bi bi-heart"></i>
+                        Likes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-8 profileUserData">
+            <!-- Profile Panel -->
+            <div class="row tabcontent tab1-tabcontent selected" id="panel1" role="tabpanel" aria-labelledby="tab1">
+                <h3>PROFILE DETAILS</h3>
+                <div class="row">
+                    <div class="col-lg-6"><input type="text" id="firstname" name="firstname" placeholder="Firstname"
+                            value="{{userData.first_name}}" disabled></div>
+                    <div class="col-lg-6"> <input type="text" id="lastname" name="lastname" placeholder="Lastname"
+                            value="{{userData.last_name}}" disabled></div>
+                </div>
+
+                <div>
+                    <input class="disabled" id="email" type="text" placeholder="Email" value="{{userData.email}}"
+                        disabled>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6"><input type="text" id="personalWebsite" name="personalWebsite"
+                            placeholder="Personal Website" value="{{userData.profile.website_url}}" disabled></div>
+                    <div class="col-lg-6"> <input type="text" id="personalGithub" name="personalGithub"
+                            placeholder="Github Profile" value="{{userData.profile.github_url}}" disabled></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-6"><input type="text" id="personalFacebook" name="personalFacebook"
+                            placeholder="Facebook Profile" value="{{userData.profile.facebook_url}}" disabled></div>
+                    <div class="col-lg-6"><input type="text" id="personalInstagram" name="personalInstagram"
+                            placeholder="Instagram Profile" value="{{userData.profile.instagram_url}}" disabled></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-6"> <input type="text" id="personalTwitter" name="personalTwitter"
+                            placeholder="Twitter Profile" value="{{userData.profile.twitter_url}}" disabled></div>
+                </div>
+
+                <div class="col-lg-12">
+                    <textarea name="bio" id="personalBio" cols="25" rows="5" name="personalBio"
+                        placeholder="Bio" disabled>{{userData.profile.bio}}</textarea>
+                </div>
+            </div>
+
+            <!-- Comments Panel -->
+            <div class="row tabcontent tab2-tabcontent box" id="panel2" role="tabpanel" aria-labelledby="tab2">
+                <h3>YOUR COMMENTS</h3>
+                {% for comment in userCommentData reversed %}
+                {% ifchanged %}
+                <div class="blogHead" id="{{comment.post.pk}}">
+                    <li>{{comment.post}}</li>
+                </div>
+                {% endifchanged %}
+                <!-- <div class="commentList disNone comment-{{comment.post.pk}}" id="comment-{{comment.serial}}"> -->
+                <li class="commentList disNone comment-{{comment.post.pk}}" id="comment-{{comment.serial}}">
+                    <p>{{comment.comment}}</p> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}</span>
+                </li>
+                <!-- </div> -->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
