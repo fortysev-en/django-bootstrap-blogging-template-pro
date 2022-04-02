@@ -68,8 +68,8 @@
           {% if request.user.is_staff and request.user.is_superuser %}
           <a href=""><i class="bi bi-chat-square-text"></i></a>
           <span>5</span>
-          <a href=""><i class="bi bi-archive"></i></a>
-          <span>2</span>
+          <a href="{% url 'blogs:review-blog' %}"><i class="bi bi-archive"></i></a>
+          <span>{{pendingReviewCount}}</span>
           <a href=""><i class="bi bi-bell"></i></a>
           <span>0</span>
           {% endif %}

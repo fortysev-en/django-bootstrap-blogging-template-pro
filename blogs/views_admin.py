@@ -42,7 +42,7 @@ def review_blog(request):
     if request.user.is_superuser:
         approval_required = Blog.objects.filter(is_approved = False)
         context['pending_approval'] = approval_required
-        
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         # page = request.GET.get('page', 1)
 
         # paginator = Paginator(usersList, 2)

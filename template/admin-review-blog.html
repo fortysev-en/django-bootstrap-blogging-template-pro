@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-<title>{% block title %} Admin Panel {% endblock %}</title>
-
+<title>{% block title %} Pending Reviews {% endblock %}</title>
 {% load static %}
 {% block start %}
     
@@ -35,8 +34,9 @@
 
 <div class="container">
   <div class="row adminRowHead">
+    {% if pending_approval|length > 0 %}
     {% for blog in pending_approval %}
-    <h3>PENDING REVIWES</h3>
+    <h3>PENDING REVIEWS</h3>
       <div class="col-lg-3 col-md-6 col-10 blog-list">
         <div class="blog-content">
           <a href="{% url 'blogs:blog-update' blog.pk %}">
@@ -48,10 +48,14 @@
             <span>Total Views: {{blog.total_views}}</span>
           </a>
           <span class="approve-btn"><a href="{% url 'blogs:publish-blog' blog.pk %}">APPROVE</a></span>
-
         </div>
       </div>
     {% endfor %}
+    {% else %}
+    <div class="row noDataAvailable">
+      <h3>NO DATA AVAILABLE</h3>
+    </div>  
+    {% endif %}
   </div>
 </div>
 
