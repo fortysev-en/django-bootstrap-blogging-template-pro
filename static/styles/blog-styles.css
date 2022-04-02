@@ -1431,6 +1431,14 @@ input:focus {
 	box-shadow: #000 0px 0px 30px;
 }
 
+.usrSearchResult{
+	text-align: center !important;
+}
+
+.usrSearchResult h4{
+	text-align: center !important;
+}
+
 
 /* ============================== My Blogs ============================== */
 
@@ -1723,7 +1731,6 @@ td {
 /* ============================== Footer ============================== */
 
 footer {
-	height: 350px;
 	background-color: rgb(32, 32, 32);
 }
 
@@ -1786,6 +1793,54 @@ footer {
 	cursor: pointer;
 	font-size: 13px !important;
 }
+
+
+.subscribe{
+	margin: 60px;
+	text-align: right;
+}
+
+.subscribe button{
+	margin-top: 20px;
+}
+
+.subscribe input{
+	/* background-color: white; */
+	max-width: 400px;
+	border-color: white;
+}
+
+.footer-heading-text {
+	position: relative;
+	text-align: left;
+	margin: 60px;
+}
+
+.footer-heading-text figure{
+	display: block;
+}
+
+.footer-heading-text p{
+	color: #e0e0e0;
+	font-size: 0.8em;
+}
+
+.footer-heading-text a {
+	text-decoration: none;
+}
+
+.footer-heading-text h1 {
+	color: #e0e0e0;
+	font-family: 'Libre Barcode 39 Text';
+	font-size: 45px;
+	padding: 5px;
+	display: flex;
+}
+
+
+/* ============================== scrollbar ============================== */
+
+
 
 
 /* ============================== scrollbar ============================== */
@@ -1868,6 +1923,18 @@ footer {
 
 	.recaptcha p{
 		padding-left: 0px;
+	}
+
+	.subscribe{
+		text-align: center;
+	}
+
+	.footer-heading-text {
+		text-align: center;
+	}
+
+	.footer-heading-text h1{
+		display: block;
 	}
 }
 

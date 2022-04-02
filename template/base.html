@@ -211,17 +211,35 @@
 
 
   <footer class="">
-    <div class="container footer-container">
+    <div class="container-fluid footer-container">
       <div class="row icons-row">
-        <section class="mb-12 icon-sec">
+        <div class="col-lg-4">
+          <div class="footer-heading-text">
+            <a href="/">
+              <h1>fortyseven</h1>
+            </a>
+            <figure>
+              <blockquote class="blockquote">
+                <p>A well-known quote, contained in a blockquote element.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <section class="col-lg-4 mb-12 icon-sec">
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
-
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
-
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
-
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
         </section>
+        <div class="col-lg-4 mb-12">
+          <div class="subscribe btn-submit">
+            <input type="text" placeholder="Email Address">
+            <button>SUBSCRIBE <i class="bi bi-envelope"></i></button>
+          </div>
+        </div>
       </div>
 
       <div class="row copyright">
@@ -238,7 +256,6 @@
         </div>
       </div>
     </div>
-
   </footer>
 
   <script src="{% static 'js/blogMain.js' %}"></script>
