@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 from traceback import print_tb
+from unicodedata import name
 from urllib import response
 from django import views
 from django.conf import settings
@@ -16,7 +17,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
-def Homepage(request):
+def homepage(request):
     context = {}
 
     ip = get_ip(request)
@@ -30,7 +31,11 @@ def Homepage(request):
     context['visitorCount'] = visitor_count
     context['blogs'] = Blog.objects.all()
 
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
     return render(request, 'homepage.html', context)
+
 
 def login(request):
     context = {}
@@ -41,6 +46,9 @@ def login(request):
 
 def my_profile(request):
     context = {}
+
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     userCommentData = BlogComment.objects.filter(user = request.user).all()
     context['userCommentData'] = userCommentData
@@ -108,6 +116,9 @@ def blog_detail(request, slug):
     
     ip = get_ip(request)
 
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
     try:
         blog_obj = Blog.objects.filter(slug = slug).first()
         context['blogs_obj'] = blog_obj
@@ -134,6 +145,9 @@ def add_blog(request):
     if not (request.user.is_authenticated and request.user.is_staff):
             return redirect('/')
     else:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
 
         context['form'] = BlogForms
 
@@ -158,12 +172,14 @@ def add_blog(request):
 
         return render(request, 'add-blog.html', context)
 
-
 def blog_update(request, pk):
     context = {}
     if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
         try:
             blog_obj = Blog.objects.get(id = pk)
         
@@ -178,9 +194,15 @@ def blog_update(request, pk):
                     blog_obj.title = request.POST.get('title')
                     blog_obj.gist =  request.POST.get('gist')
 
-                    if not len(request.FILES['image']) == 0:
+                    # if not len(request.FILES['image']) == 0:
+                    #     blog_obj.image = request.FILES['image']
+                    #     os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+
+                    img = request.FILES.get('image')
+                    if not img is None:
                         blog_obj.image = request.FILES['image']
                         os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+        
 
                     if form.is_valid():
                         blog_obj.content = form.cleaned_data['content']
@@ -223,6 +245,9 @@ def my_blogs(request):
     if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
         try:
             blog_objs = Blog.objects.filter(user = request.user)
             context['blogs_obj'] = blog_objs
@@ -245,11 +270,19 @@ def signup(request):
 def search(request):
     context = {}
 
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
     if request.GET.get('search'):
         searchQuery = request.GET.get('search')
-        searchResults = Blog.objects.filter(title__icontains=searchQuery)
-        context['searchResults'] = searchResults
+        searchBlogs = Blog.objects.filter(title__icontains=searchQuery)
+        context['searchResults'] = searchBlogs
         context['searchQuery'] = searchQuery
+        try:
+            searchUsers = (User.objects.filter(username = searchQuery).all()) or (User.objects.filter(first_name = searchQuery).all()) or (User.objects.filter(last_name = searchQuery).all())
+            context['searchUsers'] = searchUsers
+        except Exception as e:
+            print(e)
 
     return render(request, 'search-page.html', context)
 
@@ -276,13 +309,35 @@ def comment_delete(request, id):
 #     return HttpResponseRedirect(reverse('post_detail', args=[post_id]))
 
 #TODO
-# EDIT BLOG should work even if image is not selected
-# About and Contact tabs in the navbar
 # Add bookmark option for a user
-# Should be able to see each users profile page anonymously
+
 # comment box should scoll at bottom after adding a new comment
 # Review blog from any user and then publish accordingly
 
 def tickets(request):
     return HttpResponse()
 
+
+def user_profile(request, username):
+    context = {}
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+    usr = User.objects.get(username = username)
+
+    userCommentData = BlogComment.objects.filter(user = usr).all()
+    context['userCommentData'] = userCommentData
+
+    context['userTotalComments'] = userCommentData.count()
+    context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
+
+    if usr.is_superuser and usr.is_staff:
+        context['userState'] = 'SUPERUSER'
+    elif usr.is_staff:
+        context['userState'] = 'Staff'
+    else:
+        context['userState'] = 'Viewer'
+
+    context['userData'] = usr
+
+    return render(request, 'user-profile.html', context)
