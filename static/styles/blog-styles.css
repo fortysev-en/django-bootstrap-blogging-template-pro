@@ -92,9 +92,16 @@ html {
 	top: 10%;
 	/* border-radius: 8px; */
 	font-size: 0.8em;
-	color: #F50057;
 	font-weight: 800;
 	}
+
+.nav-contents .pending{
+	color: #F50057;
+}
+
+.nav-contents .noPending{
+	color: #00BFA6;
+}
 
 .nav-contents .dropdown button{
 	background: none;
@@ -1187,9 +1194,9 @@ html {
 	margin-top: 3em;
 }
 
-/* .searchHead span{
+.searchHead span{
 	color: #249169;
-} */
+}
 
 .searchRow{
 	height: 80vh;
@@ -1591,6 +1598,15 @@ td {
 	padding:10px;
 	margin-bottom: 10px;
 	border-radius: 8px;
+}
+
+.userPro{
+	color: #FF9704 !important;
+	text-decoration: none;
+}
+
+.userPro:hover{
+	color: white !important;
 }
 
 .userComment a{

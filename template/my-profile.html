@@ -21,7 +21,11 @@
             }
         </style>
         <div class="col-lg-8 profilePage-summary">
-            <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+            {% if request.user.is_active %}
+            <h1>{{request.user.first_name}} {{request.user.last_name}} <i class="bi bi-patch-check verified"></i></h1>
+            {% else %}
+            <h1>{{request.user.first_name}} {{request.user.last_name}} <i class="bi bi-patch-exclamation notVerified"></i></h1>
+            {% endif %}
             <div class="col-lg-2 summary-wid">
                 <h6>Total Messages</h6>
                 <span>{{userTotalComments}}</span>

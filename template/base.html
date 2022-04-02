@@ -66,12 +66,18 @@
           <!-- <a href="{% url 'blogs:about' %}">ABOUT</a>
           <a href="{% url 'blogs:contact' %}">CONTACT</a> -->
           {% if request.user.is_staff and request.user.is_superuser %}
-          <a href=""><i class="bi bi-chat-square-text"></i></a>
-          <span>5</span>
+          <a href="{% url 'blogs:admin-messages' %}"><i class="bi bi-chat-square-text"></i></a>
+          {% if pendingMessageCount > 0 %}
+          <span class="pending">{{pendingMessageCount}}</span>
+          {% else %}
+          <span class="noPending">{{pendingMessageCount}}</span>
+          {% endif %}
           <a href="{% url 'blogs:review-blog' %}"><i class="bi bi-archive"></i></a>
-          <span>{{pendingReviewCount}}</span>
-          <a href=""><i class="bi bi-bell"></i></a>
-          <span>0</span>
+          {% if pendingReviewCount > 0 %}
+          <span class="pending">{{pendingReviewCount}}</span>
+          {% else %}
+          <span class="noPending">{{pendingReviewCount}}</span>
+          {% endif %}
           {% endif %}
           {% if request.user.is_authenticated %}
           <div class="dropdown">
@@ -92,12 +98,12 @@
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
               <li><a class="dropdown-item" href="{% url 'blogs:my-profile' %}">Profile</a></li>
               {% if request.user.is_staff and request.user.is_superuser %}
-                <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
-                <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li> 
-                <li><a class="dropdown-item" href="{% url 'blogs:admin-panel' %}">Admin Panel</a></li> 
+              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:admin-panel' %}">Admin Panel</a></li>
               {% elif request.user.is_staff %}
-                <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
-                <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>  
+              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
               {% endif %}
               <li>
                 <hr class="dropdown-divider">
@@ -106,9 +112,9 @@
             </ul>
           </div>
           {% else %}
-            <!-- <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i
+          <!-- <a class="btnLoginLogout" href="{% url 'blogs:login' %}">LOGIN/REGISTER <i
               class="bi bi-box-arrow-in-right"></i></a> -->
-              <a href="{% url 'blogs:login' %}" class="logInIcon"><i class="bi bi-box-arrow-in-right"></i></a>
+          <a href="{% url 'blogs:login' %}" class="logInIcon"><i class="bi bi-box-arrow-in-right"></i></a>
           {% endif %}
         </div>
 
@@ -182,13 +188,13 @@
           <label id="btn-confirmation-close"><i class="bi bi-x"></i></label>
           <img src="{% static 'img/blog-assests/confirmation-alert-img.svg' %}" alt="confiramtion-alert">
           <p id="confirmationMessage"></p>
-         <footer>
-          <div class="btn-confirmation">
-            <input id="userChoice" type="hidden" value="No">
-          <button id="userConfirmed" class="btn-confirmation-confirm">CONFIRM</button>
-          <button onclick="closeConfirmationBox()" class="btn-confirmation-cancel">CANCEL</button>
-          </div>
-         </footer>
+          <footer>
+            <div class="btn-confirmation">
+              <input id="userChoice" type="hidden" value="No">
+              <button id="userConfirmed" class="btn-confirmation-confirm">CONFIRM</button>
+              <button onclick="closeConfirmationBox()" class="btn-confirmation-cancel">CANCEL</button>
+            </div>
+          </footer>
         </div>
       </div>
     </div>

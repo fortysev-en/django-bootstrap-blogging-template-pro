@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="row searchRow">
+        {% if searchResults|length > 0 %}
         {% for blog in searchResults %}
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content">
@@ -26,8 +27,41 @@
                 </a>
             </div>
         </div>
-    </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+        {% endif %}
 
+        {% if searchUsers|length > 0 %}
+        {% for usr in searchUsers %}
+        <div class="col-lg-3 col-md-6 col-10 blog-list">
+            <div class="blog-content">
+                <a href="{% url 'blogs:user-profile' usr.username %}">
+                    {% if not usr.profile.profilePicture.url %}
+                    <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-pic">
+                    {% else %}
+                    <img src="{{usr.profile.profilePicture.url}}" alt="profile-pic">
+                    {% endif %}
+                    <h4>{{usr.first_name}} {{usr.last_name}}</h4>
+                    <p>{{usr.email}}</p><br>
+                    {% if usr.is_superuser %}
+                    <span>USER TYPE: SUPERUSER</span><br>
+                    {% elif usr.is_staff and not usr.is_superuser %}
+                    <span>USER TYPE: Staff</span><br>
+                    {% else %}
+                    <span>USER TYPE: Viewer</span><br>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if searchResults|length == 0 and searchUsers|length == 0 %}
+        <div class="row noDataAvailable">
+            <h3>NO DATA AVAILABLE</h3>
+        </div>
+        {% endif %}
+
+
+    </div>
+</div>
 {% endblock %}
