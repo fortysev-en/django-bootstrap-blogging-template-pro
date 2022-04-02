@@ -26,9 +26,9 @@
           <tr class="table-row">
             <th scope="row">{{forloop.revcounter}}</th>
             {% if user.is_active %}
-            <td class="activeUser">{{user.first_name}} {{user.last_name}}</td>
+            <td class="activeUser"><a href="{% url 'blogs:user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
             {% else %}
-            <td class="inactiveUser">{{user.first_name}} {{user.last_name}}</td>
+            <td class="inactiveUser"><a href="{% url 'blogs:user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
             {% endif %}
             <td>{{user.email}}</td>
             <td>{{user.date_joined|date:"M d, Y"}} {{user.date_joined|time:"h:i A"}}</td>

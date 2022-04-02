@@ -714,6 +714,21 @@ html {
 	color: white;
 }
 
+.profilePage-summary i{
+	font-size: 0.5em;
+	position: absolute;
+	top: -5px;
+	padding: 2px;
+}
+
+.profilePage-summary .verified{
+	color: #00BFA6;
+}
+
+.profilePage-summary .notVerified{
+	color: #F50057;
+}
+
 .summary-wid{
 	/* padding:10px;
 	border: 2px solid white;
@@ -743,9 +758,9 @@ html {
 	height: 100vh;
 }
 
-.profileUserData .disabled{
+/* .profileUserData .disabled{
 	color: #6d6d6d;
-}
+} */
 
 .profileUserData-row input{
 	margin-top: 30px;
@@ -1252,15 +1267,19 @@ html {
 	color: #FFF;
 }
 
-
-.activeUser{
-	color: #00BFA6;
-	font-weight: 500;
+.table-row a{
+	text-decoration: none;
 }
 
-.inactiveUser{
-	color: #F50057;
-	font-weight: 500;
+
+.activeUser a{
+	color: #00BFA6 !important;
+	font-weight: 500 !important;
+}
+
+.inactiveUser a{
+	color: #F50057 !important;
+	font-weight: 500 !important;
 }
 
 .userAccountTable{
