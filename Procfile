@@ -1,1 +1,1 @@
-web: gunicorn Fortyseven.wsgi --log-file=-
+web: gunicorn Fortyseven.wsgi --log-file -
