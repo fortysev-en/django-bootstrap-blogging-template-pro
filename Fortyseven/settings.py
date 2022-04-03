@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-fe1#n^faux117p6=ip64q0%)f1^6sb3sdw6&2&1b)w77ho3nfy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['fortysev-en.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,7 +50,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io','https://127.0.0.1']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
