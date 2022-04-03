@@ -290,6 +290,44 @@ html {
 	display: flex;
 }
 
+.headerTxt{
+	font-family: 'Cousine', monospace;
+	position: relative;
+	top: 40%;
+	left: 25%;
+	max-width: 40em;
+}
+
+.headerTxt h1{
+	color: #e0e0e0;
+	font-size: 2.5em;
+}
+
+.headerTxt span{
+	display: block;
+	margin-top: 3em;
+	color: #e0e0e0;
+}
+
+.headerTxt a{
+	text-decoration: none;
+	display: block;
+	margin-top: 3em;
+	max-width: fit-content;
+	background: none;
+	border: none;
+	color: #FFF;
+	padding: 10px 20px 10px 20px;
+	border-radius: 12px;
+	background-color: #536DFE;
+	transition: all 0.3s ease;
+}
+
+.headerTxt a:hover{
+	background-color: #FFF;
+	color: #536DFE;
+}
+
 
 /* .bouncer-top{
     display:flex;
@@ -298,13 +336,13 @@ html {
 } */
 
 .header-img-row {
-	height: 80vh;
+	height: 90vh;
 }
 
 .header-img img {
-	margin-left: -50px;
-	margin-top: 10em;
-	max-width: 100%;
+	position: relative;
+	top: 10%;
+	max-width: 70%;
 }
 
 .logo-sign {
@@ -1811,9 +1849,8 @@ footer {
 }
 
 .footer-heading-text {
-	position: relative;
-	text-align: left;
 	margin: 60px;
+	display: block;
 }
 
 .footer-heading-text figure{
@@ -1827,6 +1864,8 @@ footer {
 
 .footer-heading-text a {
 	text-decoration: none;
+	display: block;
+	max-width: fit-content;
 }
 
 .footer-heading-text h1 {
@@ -1834,7 +1873,8 @@ footer {
 	font-family: 'Libre Barcode 39 Text';
 	font-size: 45px;
 	padding: 5px;
-	display: flex;
+	text-shadow: 0px 0px 10px #000;
+	max-width: fit-content;
 }
 
 
