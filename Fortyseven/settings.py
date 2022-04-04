@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,14 +127,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static"]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
-
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -168,5 +164,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = '0a000047@gmail.com'
 EMAIL_HOST_PASSWORD = '511750#21104041'  # os.environ['password_key'] suggested
 EMAIL_USE_TLS = True
-
-django_heroku.settings(locals())

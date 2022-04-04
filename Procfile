@@ -1,1 +1,0 @@
-web: gunicorn Fortyseven.wsgi --log-file -
