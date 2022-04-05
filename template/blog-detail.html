@@ -3,6 +3,10 @@
 
 <title>{% block title %} {{blogs_obj.title}} {% endblock %}</title>
 
+{% block metadescription %}
+<meta name="description" content="{{blogs_obj.gist|truncatechars:120}}">
+{% endblock %}
+
 {% block start %}
 <section>
     <div class="container indBlog-container">
@@ -18,7 +22,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5" src="{{blogs_obj.image.url}}" alt=""></div>
+            <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5" src="{{blogs_obj.image.url}}" alt="blog-img"></div>
         </div>
         <div class="row">
             <div class="col-xl-10 col-lg-10 mx-auto">

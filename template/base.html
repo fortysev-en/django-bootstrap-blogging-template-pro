@@ -6,6 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {% block metadescription %}
+  <meta name="description" content="This site provide something...">
+  {% endblock %}
+
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'styles/blog-styles.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}" />
@@ -223,7 +227,7 @@
                 <p>Names Are For Friends, So I Don't Need One.</p>
               </blockquote>
               <figcaption class="blockquote-footer text-center">
-               <cite title="Source Title">agent fortyseven</cite>
+                <cite title="Source Title">agent fortyseven</cite>
               </figcaption>
             </figure>
           </div>
