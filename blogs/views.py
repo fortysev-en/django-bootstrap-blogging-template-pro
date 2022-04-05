@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from traceback import print_tb
-from unicodedata import name
 from urllib import response
 from django import views
 from django.conf import settings
@@ -14,6 +11,7 @@ from .helpers import get_ip
 import os
 from datetime import datetime, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import boto3
 
 
 # Create your views here.
@@ -54,7 +52,6 @@ def my_profile(request):
     context['userCommentData'] = userCommentData
 
     context['userTotalComments'] = userCommentData.count()
-    context['defaultImg'] = "{% static 'img/blog-assests/default-profile-img.svg' %}"
 
     userModel = User.objects.get(username = request.user)
 
@@ -66,6 +63,8 @@ def my_profile(request):
         context['userState'] = 'Staff'
     else:
         context['userState'] = 'Viwer'
+
+    s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
     if request.method == 'POST':
         userModel.first_name = request.POST.get('firstname')
@@ -81,8 +80,11 @@ def my_profile(request):
             if not userProfile.profilePicture:
                 userProfile.profilePicture = request.FILES['profilePictureImg']
             else:
-                os.remove(os.path.join(settings.MEDIA_ROOT, str(userProfile.profilePicture)))
-                userProfile.profilePicture = request.FILES['profilePictureImg']
+                try:
+                    s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
+                    userProfile.profilePicture = request.FILES['profilePictureImg']
+                except:
+                    messages.warning(request, f"Unable to update profile picture!")
         
         userProfile.save()
         userModel.save()
@@ -201,7 +203,7 @@ def blog_update(request, pk):
                     img = request.FILES.get('image')
                     if not img is None:
                         blog_obj.image = request.FILES['image']
-                        os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+                        # os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
         
 
                     if form.is_valid():

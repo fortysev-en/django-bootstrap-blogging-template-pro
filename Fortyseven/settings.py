@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_email_verification',
+    'storages',
     'rest_framework',
     'froala_editor',
     'portfolio',
@@ -125,13 +126,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    BASE_DIR / "static"]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
+# STATICFILES_DIR = {
+#     os.path.join(BASE_DIR , "static")
+# }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR , 'static')
+# MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -156,11 +158,64 @@ EMAIL_TOKEN_LIFE = 60 * 60
 EMAIL_PAGE_TEMPLATE = 'email-confirmation.html'
 EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 EMAIL_MULTI_USER = True  # optional (defaults to False)
-
-# For Django Email Backend
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = '0a000047@gmail.com'
 EMAIL_HOST_PASSWORD = '511750#21104041'  # os.environ['password_key'] suggested
 EMAIL_USE_TLS = True
+
+
+
+AWS_ACCESS_KEY_ID = 'AKIAV34PMTYUDHPCKX4U'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'fortyseven-blog'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+# AWS_S3_SIGNATURE_VERSION ='s3v4'
+# AWS_S3_ENDPOINT_URL = 'https://sts.us-east-1.amazonaws.com'
+# AWS_S3_REGION_NAME = 'us-east-1'
+
+'''
+====BUCKET POLICY====
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicRead",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::fortyseven-blog/*"
+        }
+    ]
+}
+'''
+
+
+'''
+===CORS===
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "POST",
+            "GET",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+'''

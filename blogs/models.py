@@ -38,7 +38,7 @@ class Blog(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='blogs')
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    upload_to = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     is_approved = models.BooleanField(default=False)
     approved_at = models.CharField(max_length=255, null=True, blank=True)
