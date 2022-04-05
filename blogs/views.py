@@ -182,6 +182,8 @@ def blog_update(request, pk):
         context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
+        s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+
         try:
             blog_obj = Blog.objects.get(id = pk)
         
@@ -202,8 +204,12 @@ def blog_update(request, pk):
 
                     img = request.FILES.get('image')
                     if not img is None:
-                        blog_obj.image = request.FILES['image']
                         # os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+                        try:
+                            s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
+                            blog_obj.image = request.FILES['image']
+                        except:
+                            messages.warning(request, f"Unable to update blog picture!")
         
 
                     if form.is_valid():
@@ -309,15 +315,6 @@ def comment_delete(request, id):
 #     else:
 #         post.likes.add(IpModel.objects.get(ip=ip))
 #     return HttpResponseRedirect(reverse('post_detail', args=[post_id]))
-
-#TODO
-# Add bookmark option for a user
-
-# comment box should scoll at bottom after adding a new comment
-# Review blog from any user and then publish accordingly
-
-def tickets(request):
-    return HttpResponse()
 
 
 def user_profile(request, username):
