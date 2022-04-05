@@ -141,11 +141,13 @@ STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# ========= CAPTCHA CONFIG =========================== 
 GOOGLE_RECAPTCHA_SITE_KEY = '6Lf8ZAUfAAAAADLG4s-ANbIJDi-B-5vNixRgIyc8' #your reCAPTCHA SITE key 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf8ZAUfAAAAAMWYF4ftGuHuSoATYV7Bmz8rDfxh' #your reCAPTCHA SECRET key 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
+# ============= EMAIL CONFIG ===================
 def verified_callback(user):
     user.is_active = True
 
@@ -166,36 +168,35 @@ EMAIL_HOST_PASSWORD = '511750#21104041'  # os.environ['password_key'] suggested
 EMAIL_USE_TLS = True
 
 
-
+# ========= AWS CONFIG ==============
 AWS_ACCESS_KEY_ID = 'AKIAV34PMTYUDHPCKX4U'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'fortyseven-blog'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-
 AWS_S3_ENDPOINT_URL = 'https://s3-accelerate.amazonaws.com'
 AWS_S3_SIGNATURE_VERSION ='s3v4'
 AWS_S3_REGION_NAME = 'us-east-1'
 
 '''
 ====BUCKET POLICY====
-
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowPublicRead",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "*"
-            },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::fortyseven-blog/*"
-        }
-    ]
+  "Id": "Policy1649159763785",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1649151961634",
+      "Action": [
+        "s3:DeleteObject",
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::fortyseven-blog/*",
+      "Principal": "*"
+    }
+  ]
 }
 '''
 
