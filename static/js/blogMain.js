@@ -409,3 +409,30 @@ function resendVerification(user_id){
 function closeConfirmationBox(){
   $('.confirmation').removeClass('toggle-confirmation');
 }
+
+
+function subscribe(){
+  emailAddress = document.getElementById('emailAddress').value
+  var csrf = document.getElementById('csrf').value
+
+  if (emailAddress == "" || emailAddress.indexOf("@") == -1 || emailAddress.length < 6) {
+		text = "Please enter a valid email address!";
+		warningText.innerHTML = text;
+		var bsAlert = new bootstrap.Toast(warningAlert);
+		bsAlert.show();
+		return false;
+	}
+
+  $.ajax({
+    url: "subscribe/",
+    headers: {'X-CSRFToken': csrf},
+    data: {'emailAddress': emailAddress},
+    type: "POST",
+    success: function (response) {
+      document.getElementById('emailAddress').value = ''
+      successText.innerHTML = 'Subscribed successfully!';
+      var bsAlert = new bootstrap.Toast(successAlert);
+      bsAlert.show();
+    }
+});
+}

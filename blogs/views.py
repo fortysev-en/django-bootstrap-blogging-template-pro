@@ -340,3 +340,13 @@ def user_profile(request, username):
     context['userData'] = usr
 
     return render(request, 'user-profile.html', context)
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        emailAddress = request.POST.get('emailAddress')
+
+        if not Subscription.objects.filter(email = emailAddress).exists():
+            Subscription.objects.create(email = emailAddress)
+
+    return HttpResponse()

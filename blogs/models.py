@@ -89,3 +89,11 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+# Blog contact model
+class Subscription(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return str(self.email)
