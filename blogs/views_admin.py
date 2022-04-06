@@ -117,17 +117,41 @@ def admin_messages(request):
         return redirect('/')
 
 
-def mark_message(request, pk):
+# def mark_message(request, pk):
     
-    msg = Contact.objects.get(pk = pk)
+#     msg = Contact.objects.get(pk = pk)
 
-    if msg.is_viewed:
-        msg.is_viewed = False
-    else:
-        msg.is_viewed = True
-    msg.save()
+#     if msg.is_viewed:
+#         msg.is_viewed = False
+#     else:
+#         msg.is_viewed = True
+#     msg.save()
 
-    return redirect('/adminView/adminMessages/')
+#     return redirect('/adminView/adminMessages/')
+
+
+def mark_msg(request):
+    if request.method == 'POST':
+        msgId = request.POST.get('id')
+        msg = Contact.objects.get(pk = msgId)
+
+        if msg.is_viewed:
+            msg.is_viewed = False
+        else:
+            msg.is_viewed = True
+        msg.save()
+
+    return HttpResponse()
+
+
+def delete_msg(request):
+    if request.method == 'POST':
+        msgId = request.POST.get('id')
+        msg = Contact.objects.filter(pk = msgId)
+        msg.delete()
+
+    return HttpResponse()
+
 
 def publish_blog(request, pk):
     blogForApproval = Blog.objects.get(id = pk)

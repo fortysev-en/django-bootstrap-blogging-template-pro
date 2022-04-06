@@ -26,11 +26,11 @@
             <td>{{message.email}}</td>
             <td>{{message.desc}}</td>
             {% if message.is_viewed %}
-            <td><label><a href="{% url 'blogs:mark-message' message.pk %}"><i class="bi bi-envelope-open"></i></a></label>
-            <label><a href="{% url 'blogs:mark-message' message.pk %}"><i class="bi bi-trash"></a></label></td>
+            <td><label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i class="bi bi-envelope-open"></i></button></label>
+            <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"><i class="bi bi-trash"></button></label></td>
             {% else %}
-            <td><label><a href="{% url 'blogs:mark-message' message.pk %}"><i class="bi bi-envelope"></i></a></label></label>
-                <label><a href="{% url 'blogs:mark-message' message.pk %}"><i class="bi bi-trash"></a></label></td>
+            <td><label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i class="bi bi-envelope"></i></button></label></label>
+                <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"><i class="bi bi-trash"></button></label></td>
             {% endif %}
           </tr>
           {% endfor %}

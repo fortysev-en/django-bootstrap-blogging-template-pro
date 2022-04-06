@@ -1316,7 +1316,6 @@ html {
 	text-decoration: none;
 }
 
-
 .activeUser a{
 	color: #00BFA6 !important;
 	font-weight: 500 !important;
@@ -1339,13 +1338,19 @@ html {
 	background-color: #121212 !important;
 }
 
+.table-row button{
+	background: none;
+	border: none;
+	color: #999999;
+	transition: all 0.3s ease-in-out;
+}
+
 .table-row label{
 	margin-right: 8px;
 	transition: all 0.3s ease-in-out;
 }
 
-.table-row label:hover{
-	cursor: pointer;
+.table-row button:hover{
 	color: #F50057;
 }
 

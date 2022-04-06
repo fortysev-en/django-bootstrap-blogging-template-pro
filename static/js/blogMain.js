@@ -436,3 +436,36 @@ function subscribe(){
     }
 });
 }
+
+
+function markMsg(message_id){
+  var id = message_id.split('-')[1]
+  var csrf = document.getElementById('csrf').value
+
+  $.ajax({
+    url: "/adminView/markMessage/",
+    headers: {'X-CSRFToken': csrf},
+    data: {'id': id},
+    type: "POST",
+    success: function (response) {
+      $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      $( "#navbar" ).load(" #navbar" );
+    }
+});
+}
+
+function deleteMsg(message_id){
+  var id = message_id.split('-')[1]
+  var csrf = document.getElementById('csrf').value
+
+  $.ajax({
+    url: "/adminView/deleteMessage/",
+    headers: {'X-CSRFToken': csrf},
+    data: {'id': id},
+    type: "POST",
+    success: function (response) {
+      $( "#usersTable" ).load(window.location.href + " #usersTable" );
+      $( "#navbar" ).load(" #navbar" );
+    }
+});
+}
