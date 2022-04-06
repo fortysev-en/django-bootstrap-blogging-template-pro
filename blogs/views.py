@@ -64,7 +64,8 @@ def my_profile(request):
     else:
         context['userState'] = 'Viwer'
 
-    s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+    if not settings.DEBUG:
+        s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
     if request.method == 'POST':
         userModel.first_name = request.POST.get('firstname')
@@ -181,8 +182,9 @@ def blog_update(request, pk):
     else:
         context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
-
-        s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+        
+        if not settings.DEBUG:
+            s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
         try:
             blog_obj = Blog.objects.get(id = pk)
