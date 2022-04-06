@@ -1274,7 +1274,7 @@ html {
 	font-size: 3em;
 	display: block;
 	margin-top: 0.8in;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .adminTasks a:hover > i{
