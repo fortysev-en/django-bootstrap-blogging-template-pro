@@ -1243,16 +1243,50 @@ html {
 /* ============================== Admin Panel ============================== */
 
 .adminTasksRow{
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .adminTasksRow .adminTasks{
-	position: relative;
-	top: 50%;
+	margin-top: 7em;
 	text-align: center;
 }
 
 .adminTasks a{
+	display: inline-block;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	padding: 20px;
+	text-decoration: none;
+	max-width: 20em;
+	transition: all 0.3s ease-in-out;
+	color: #e0e0e0;
+	margin: 20px;
+}
+
+.adminTasks a:hover{
+	background-color: #00000060;
+	border-color: #ffffff40;
+	color: #E6E6E6;
+}
+
+.adminTasks i{
+	opacity: 0.7;
+	font-size: 3em;
+	display: block;
+	margin-top: 0.8in;
+	transition: all 0.3s ease-in-out;
+}
+
+.adminTasks a:hover > i{
+	opacity: 1;
+	color: #00BFA6;
+}
+
+.adminTasks p{
+	margin-top: 0.8in;
+}
+
+/* .adminTasks a{
 	border: 2px solid white;
 	padding: 15px 25px 15px 25px;
 	margin: 15px;
@@ -1267,7 +1301,7 @@ html {
 .adminTasks a:hover{
 	background-color: inherit;
 	color: white;
-}
+} */
 
 .noDataAvailable{
 	height: 100vh;
@@ -1348,6 +1382,11 @@ html {
 .table-row label{
 	margin-right: 8px;
 	transition: all 0.3s ease-in-out;
+}
+
+.table-row label:hover{
+	cursor: pointer;
+	color: #F50057;
 }
 
 .table-row button:hover{

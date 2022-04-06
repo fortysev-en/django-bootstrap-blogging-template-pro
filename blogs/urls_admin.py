@@ -11,6 +11,9 @@ urlpatterns = [
 
     path('reviewBlog/', review_blog, name='review-blog'),
     path('userManage/', user_manage, name='user-manage'),
+    path('userSubscriptions/', user_subscriptions, name='admin-subscriptions'),
+
+
     path('publish-blog/<int:pk>', publish_blog, name='publish-blog'),
 
     path('activateUser/<int:pk>', activate_user, name='activate-user'),

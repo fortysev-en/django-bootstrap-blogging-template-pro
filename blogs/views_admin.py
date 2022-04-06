@@ -173,3 +173,30 @@ def admin_panel(request):
         return render(request, 'admin-panel.html', context)
     else:
         return redirect('/')
+
+
+def user_subscriptions(request):
+    context = {}
+
+    if request.user.is_superuser:
+        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+        allSubscriptions = Subscription.objects.all()
+        context['allSubscriptions'] = allSubscriptions
+        
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(allSubscriptions, 15)
+        try:
+            SubscriptionList = paginator.page(page)
+        except PageNotAnInteger:
+            SubscriptionList = paginator.page(1)
+        except EmptyPage:
+            SubscriptionList = paginator.page(paginator.num_pages)
+
+        context['subscriptionList'] = SubscriptionList
+
+        return render(request, 'admin-subscriptions.html', context)
+    else:
+        return redirect('/')
