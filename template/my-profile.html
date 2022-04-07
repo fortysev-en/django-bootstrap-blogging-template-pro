@@ -6,11 +6,11 @@
 <title>{% block title %} My Profile {% endblock %}</title>
 
 <div class="container">
-    <div class="row">
+    <div class="row" id="profilePageRow">
         <div class="col-lg-4 profilePage-img">
             {% if request.user.profile.profilePicture %}
-            <div class="center-cropped" style="background-image: url('{{request.user.profile.profilePicture.url}}');">
-            </div>
+            <div class="center-cropped" style="background-image: url('{{request.user.profile.profilePicture.url}}');"></div>
+            <div class="deleteProPic"><button onclick="deleteProPic()"><i class="bi bi-trash"></i></button></div>
             {% else %}
             <div class="center-cropped"></div>
             {% endif %}

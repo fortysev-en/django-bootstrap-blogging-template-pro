@@ -14,6 +14,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import boto3
 
 
+if not settings.DEBUG:
+    s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+
 # Create your views here.
 def homepage(request):
     context = {}
@@ -33,7 +36,6 @@ def homepage(request):
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     return render(request, 'homepage.html', context)
-
 
 def login(request):
     context = {}
@@ -64,8 +66,8 @@ def my_profile(request):
     else:
         context['userState'] = 'Viwer'
 
-    if not settings.DEBUG:
-        s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+    # if not settings.DEBUG:
+    #     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
     if request.method == 'POST':
         userModel.first_name = request.POST.get('firstname')
@@ -81,11 +83,18 @@ def my_profile(request):
             if not userProfile.profilePicture:
                 userProfile.profilePicture = request.FILES['profilePictureImg']
             else:
-                try:
-                    s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
-                    userProfile.profilePicture = request.FILES['profilePictureImg']
-                except:
-                    messages.warning(request, f"Unable to update profile picture!")
+                if not settings.DEBUG:
+                    try:
+                        s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
+                        userProfile.profilePicture = request.FILES['profilePictureImg']
+                    except:
+                        messages.warning(request, f"Unable to update profile picture!")
+                else:
+                    try:
+                        os.remove(os.path.join(settings.MEDIA_ROOT, userProfile.profilePicture))
+                        userProfile.profilePicture = request.FILES['profilePictureImg']
+                    except:
+                        messages.warning(request, f"Unable to update profile picture!")
         
         userProfile.save()
         userModel.save()
@@ -95,6 +104,18 @@ def my_profile(request):
         # request.POST.get('gist')
 
     return render(request, 'my-profile.html', context)
+
+def delete_profile_pic(request):
+
+    usr = Profile.objects.get(user = request.user)
+
+    if not settings.DEBUG:
+        s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{usr.profilePicture}')
+    else:
+        os.remove(os.path.join(settings.MEDIA_ROOT, usr.profilePicture.name))
+        usr.profilePicture.delete()
+
+    return HttpResponse()
 
 def about(request):
     context = {}
@@ -189,8 +210,8 @@ def blog_update(request, pk):
         context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
         
-        if not settings.DEBUG:
-            s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+        # if not settings.DEBUG:
+        #     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
         try:
             blog_obj = Blog.objects.get(id = pk)
@@ -213,11 +234,24 @@ def blog_update(request, pk):
                     img = request.FILES.get('image')
                     if not img is None:
                         # os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
-                        try:
-                            s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
-                            blog_obj.image = request.FILES['image']
-                        except:
-                            messages.warning(request, f"Unable to update blog picture!")
+                        # try:
+                        #     s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
+                        #     blog_obj.image = request.FILES['image']
+                        # except:
+                        #     messages.warning(request, f"Unable to update blog picture!")
+                        
+                        if not settings.DEBUG:
+                            try:
+                                s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
+                                blog_obj.image = request.FILES['image']
+                            except:
+                                messages.warning(request, f"Unable to update blog picture!")
+                        else:
+                            try:
+                                os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
+                                blog_obj.image = request.FILES['image']
+                            except:
+                                messages.warning(request, f"Unable to update blog picture!")
         
 
                     if form.is_valid():
@@ -247,9 +281,20 @@ def blog_delete(request, id):
             blog_obj = Blog.objects.get(id = id)
 
             if blog_obj.user == request.user:
-                os.remove(os.path.join(settings.MEDIA_ROOT, blog_obj.image.name))
-                blog_obj.delete()
-                messages.success(request, 'Blog deleted successfully!')
+                # os.remove(os.path.join(settings.MEDIA_ROOT, blog_obj.image.name))
+                # blog_obj.delete()
+                # messages.success(request, 'Blog deleted successfully!')
+
+                if not settings.DEBUG:
+                    try:
+                        s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{blog_obj.image.name}')
+                        messages.success(request, 'Blog deleted successfully!')
+                    except:
+                        messages.warning(request, f"Unable to delete blog picture!")
+                else:
+                    os.remove(os.path.join(settings.MEDIA_ROOT, blog_obj.image.name))
+                    blog_obj.delete()
+                    messages.success(request, 'Blog deleted successfully!')
 
         except Exception as e:
             print(e)

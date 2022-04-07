@@ -14,6 +14,7 @@ urlpatterns = [
     path('froala_editor/',include('froala_editor.urls')),
     path('login/', views.login, name='login'),
     path('myProfile/', views.my_profile, name='my-profile'),
+    path('deleteProPic/', views.delete_profile_pic, name='delete-profile-pic'),
     path('signup/', views.signup, name='signup'),
     path('addBlog/', views.add_blog, name='add-blog'),
     path('blogDetail/<slug>', views.blog_detail, name='blog-detail'),

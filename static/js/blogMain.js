@@ -310,6 +310,26 @@ $('#btn-confirmation-close').click(function() {
 });
 
 
+function deleteProPic(){
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to DELETE your Profile Picture?'
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/deleteProPic/",
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#profilePageRow" ).load(" #profilePageRow" );
+        $( "#navbar" ).load(" #navbar" );
+        successText.innerHTML = 'Profile Picture Deleted Successfully!' ;
+        var bsAlert = new bootstrap.Toast(successAlert);
+        bsAlert.show();
+      }
+  })
+    });
+}
+
+
 function disableUser(user_id){
   var id = user_id.split('-')[1]
   var confirmation = document.getElementById('confirmationMessage')
