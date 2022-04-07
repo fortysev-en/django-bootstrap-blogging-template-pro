@@ -35,7 +35,7 @@
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content usrSearchResult">
                 <a href="{% url 'blogs:user-profile' usr.username %}">
-                    {% if not usr.profile.profilePicture.url %}
+                    {% if not usr.profile.profilePicture %}
                     <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-pic">
                     {% else %}
                     <img src="{{usr.profile.profilePicture.url}}" alt="profile-pic">

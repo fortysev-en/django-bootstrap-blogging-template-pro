@@ -1,3 +1,4 @@
+from email import message
 from urllib import response
 from django import views
 from django.conf import settings
@@ -5,6 +6,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from .models import ViewsModel, Contact
 from .forms import *
 from django.contrib.auth import logout
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.db.models import F
 from .helpers import get_ip
@@ -70,38 +72,55 @@ def my_profile(request):
     #     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
 
     if request.method == 'POST':
-        userModel.first_name = request.POST.get('firstname')
-        userModel.last_name = request.POST.get('lastname')
-        userProfile.website_url = request.POST.get('personalWebsite')
-        userProfile.github_url = request.POST.get('personalGithub')
-        userProfile.facebook_url = request.POST.get('personalFacebook')
-        userProfile.instagram_url = request.POST.get('personalInstagram')
-        userProfile.twitter_url = request.POST.get('personalTwitter')
+        if request.POST.get("form_type") == 'formTabOne':
+            userModel.first_name = request.POST.get('firstname')
+            userModel.last_name = request.POST.get('lastname')
+            userProfile.website_url = request.POST.get('personalWebsite')
+            userProfile.github_url = request.POST.get('personalGithub')
+            userProfile.facebook_url = request.POST.get('personalFacebook')
+            userProfile.instagram_url = request.POST.get('personalInstagram')
+            userProfile.twitter_url = request.POST.get('personalTwitter')
 
-        img = request.FILES.get('profilePictureImg')
-        if not img is None:
-            if not userProfile.profilePicture:
-                userProfile.profilePicture = request.FILES['profilePictureImg']
-            else:
-                if not settings.DEBUG:
-                    try:
-                        s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
-                        userProfile.profilePicture = request.FILES['profilePictureImg']
-                    except:
-                        messages.warning(request, f"Unable to update profile picture!")
+            img = request.FILES.get('profilePictureImg')
+            if not img is None:
+                if not userProfile.profilePicture:
+                    userProfile.profilePicture = request.FILES['profilePictureImg']
                 else:
-                    try:
-                        os.remove(os.path.join(settings.MEDIA_ROOT, userProfile.profilePicture))
-                        userProfile.profilePicture = request.FILES['profilePictureImg']
-                    except:
-                        messages.warning(request, f"Unable to update profile picture!")
-        
-        userProfile.save()
-        userModel.save()
+                    if not settings.DEBUG:
+                        try:
+                            s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
+                            userProfile.profilePicture = request.FILES['profilePictureImg']
+                        except:
+                            messages.warning(request, f"Unable to update profile picture!")
+                    else:
+                        try:
+                            os.remove(os.path.join(settings.MEDIA_ROOT, userProfile.profilePicture))
+                            userProfile.profilePicture = request.FILES['profilePictureImg']
+                        except:
+                            messages.warning(request, f"Unable to update profile picture!")
+            
+            userProfile.save()
+            userModel.save()
 
-        messages.success(request, f"Profile updated successfully!")
-        return redirect('/myProfile/')
-        # request.POST.get('gist')
+            messages.success(request, f"Profile updated successfully!")
+            return redirect('/myProfile/')
+        
+        elif request.POST.get("form_type") == 'formTabThree':
+            oldPassword = request.POST.get('oldPassword')
+            newPassword = request.POST.get('newPassword')
+            confirmNew = request.POST.get('confirmNewPassword')
+
+            if not newPassword == confirmNew:
+                messages.warning(request, 'Confirm Passwords does not match!')
+            else:
+                old_password_check = request.user.check_password(oldPassword)
+                if old_password_check:
+                    usr = User.objects.get(username = request.user)
+                    usr.set_password(newPassword)
+                    usr.save()
+                    messages.success(request, 'Password Changed Successfully!')
+                else:
+                    messages.warning(request, 'Problem while resetting your password!')
 
     return render(request, 'my-profile.html', context)
 

@@ -91,7 +91,7 @@ class Contact(models.Model):
         return str(self.name)
 
 
-# Blog contact model
+# Blog subscription model
 class Subscription(models.Model):
     email = models.EmailField()
 

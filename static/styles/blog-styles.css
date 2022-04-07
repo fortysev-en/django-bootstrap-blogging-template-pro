@@ -942,7 +942,7 @@ html {
 	color: #FF9704;
 	margin-top: 1em;
 }
-
+/*
 .blogHead li{
 	text-decoration: none;
 	color: white;
@@ -965,7 +965,7 @@ html {
 	display: block;
 }
 
-.commentList{
+ .commentList{
 	position: relative;
 }
 
@@ -983,9 +983,35 @@ html {
 	right: 0px;
 	padding-left: 10px;
 	color: #999999;
+} */
+
+.accordion-item{
+	border: 1px solid #999999 !important;
+	margin-top: 20px;
+	background-color: none !important;
 }
 
 
+.accordion-button {
+	background-color: #232323 !important;
+	color: #e0e0e0 !important;
+	display: inline !important;
+}
+
+.accordion-button i{
+	float: right;
+}
+
+.accordion-body{
+	padding: 0.4rem 1.25rem !important;
+	background-color: #333;
+	color: #e0e0e0;
+	font-size: 0.8em;
+}
+
+.accordion-body span{
+	float: right;
+}
 
 /* ============================== Froala ============================== */
 
