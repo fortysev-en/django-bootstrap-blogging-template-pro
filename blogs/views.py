@@ -5,8 +5,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render, HttpResponse
 from .models import ViewsModel, Contact
 from .forms import *
-from django.contrib.auth import logout
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib import messages
 from django.db.models import F
 from .helpers import get_ip
@@ -118,9 +117,10 @@ def my_profile(request):
                     usr = User.objects.get(username = request.user)
                     usr.set_password(newPassword)
                     usr.save()
+                    update_session_auth_hash(request, usr)
                     messages.success(request, 'Password Changed Successfully!')
                 else:
-                    messages.warning(request, 'Problem while resetting your password!')
+                    messages.warning(request, 'Incorrect password, please try again!')
 
     return render(request, 'my-profile.html', context)
 
