@@ -67,8 +67,6 @@
         </div> -->
 
         <div class="col-lg-4 col-sm-4 nav-contents">
-          <!-- <a href="{% url 'blogs:about' %}">ABOUT</a>
-          <a href="{% url 'blogs:contact' %}">CONTACT</a> -->
           {% if request.user.is_staff and request.user.is_superuser %}
           <a href="{% url 'blogs:admin-messages' %}"><i class="bi bi-chat-square-text"></i></a>
           {% if pendingMessageCount > 0 %}
@@ -237,6 +235,7 @@
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
           <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+          <a class="btn-footer" href="#!" role="button"><i class="bi bi-twitter"></i></a>
         </section>
         <div class="col-lg-4 mb-12">
           <div class="subscribe btn-submit" id="subscribeBtn">
@@ -244,6 +243,14 @@
             <button onclick="subscribe()">SUBSCRIBE <i class="bi bi-envelope"></i></button>
           </div>
         </div>
+      </div>
+
+      <div class="row additionalLinks">
+        <ul>
+          <li><a href="{% url 'blogs:about' %}">ABOUT</a></li>
+          <li><a href="{% url 'blogs:contact' %}">CONTACT</a></li>
+          <li><a href="">LEGAL</a></li>
+        </ul>
       </div>
 
       <div class="row copyright">

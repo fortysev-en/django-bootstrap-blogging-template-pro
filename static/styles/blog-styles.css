@@ -1859,7 +1859,7 @@ footer {
 }
 
 .footer-text a:hover {
-	color: #e0e0e0;
+	color: white;
 }
 
 .footer-text a {
@@ -1919,6 +1919,30 @@ footer {
 	padding: 5px;
 	text-shadow: 0px 0px 10px #000;
 	max-width: fit-content;
+}
+
+.additionalLinks{
+	text-align: center;
+}
+
+.additionalLinks ul{
+	list-style: none;
+}
+
+.additionalLinks li{
+	display: inline-block;
+	padding: 15px;
+}
+
+.additionalLinks a{
+	color: #999999;
+	text-decoration: none;
+	font-size: 0.8em;
+	transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.additionalLinks a:hover{
+	color: white;
 }
 
 

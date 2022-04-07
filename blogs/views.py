@@ -97,9 +97,15 @@ def my_profile(request):
     return render(request, 'my-profile.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    context = {}
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+    return render(request, 'about.html', context)
 
 def contact(request):
+    context = {}
+    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
@@ -107,7 +113,7 @@ def contact(request):
         con = Contact(name=name, email=email, desc=desc)
         con.save()
 
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', context)
 
 def logout_view(request):
     logout(request)
