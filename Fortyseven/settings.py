@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fe1#n^faux117p6=ip64q0%)f1^6sb3sdw6&2&1b)w77ho3nfy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = str(os.environ.get('DEBUG')) == "1"
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -47,7 +46,7 @@ INSTALLED_APPS = [
     'blogs'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io','https://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = []
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,81 +140,45 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ========= CAPTCHA CONFIG =========================== 
-GOOGLE_RECAPTCHA_SITE_KEY = '6Lf8ZAUfAAAAADLG4s-ANbIJDi-B-5vNixRgIyc8' #your reCAPTCHA SITE key 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf8ZAUfAAAAAMWYF4ftGuHuSoATYV7Bmz8rDfxh' #your reCAPTCHA SECRET key 
+GOOGLE_RECAPTCHA_SITE_KEY = os.environ.get('GOOGLE_RECAPTCHA_SITE_KEY')
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
-# ============= EMAIL CONFIG ===================
-def verified_callback(user):
-    user.is_active = True
+if not DEBUG:
 
-EMAIL_VERIFIED_CALLBACK = verified_callback
-EMAIL_FROM_ADDRESS = '0a000047@gmail.com' 
-EMAIL_MAIL_SUBJECT = 'Confirm Your Email'
-EMAIL_MAIL_HTML = 'verification-email.html'
-EMAIL_MAIL_PLAIN = 'mail_body.txt'
-EMAIL_TOKEN_LIFE = 60 * 60
-EMAIL_PAGE_TEMPLATE = 'email-confirmation.html'
-EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
-EMAIL_MULTI_USER = True  # optional (defaults to False)
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '0a000047@gmail.com'
-EMAIL_HOST_PASSWORD = '511750#21104041'  # os.environ['password_key'] suggested
-EMAIL_USE_TLS = True
+    ALLOWED_HOSTS += os.environ.get('ALLOWED_HOSTS')
+    CSRF_TRUSTED_ORIGINS += os.environ.get('ALLOWED_HOSTS')
 
 
-# ========= AWS CONFIG ==============
-# AWS_ACCESS_KEY_ID = 'AKIAV34PMTYUDHPCKX4U'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'fortyseven-blog'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-# AWS_S3_ENDPOINT_URL = 'https://s3-accelerate.amazonaws.com'
-# AWS_S3_SIGNATURE_VERSION ='s3v4'
-# AWS_S3_REGION_NAME = 'us-east-1'
+    # ============= EMAIL CONFIG ===================
+    def verified_callback(user):
+        user.is_active = True
 
-'''
-====BUCKET POLICY====
-{
-  "Id": "Policy1649159763785",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1649151961634",
-      "Action": [
-        "s3:DeleteObject",
-        "s3:GetObject"
-      ],
-      "Effect": "Allow",
-      "Resource": "arn:aws:s3:::fortyseven-blog/*",
-      "Principal": "*"
-    }
-  ]
-}
-'''
+    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_VERIFIED_CALLBACK = verified_callback
+    EMAIL_FROM_ADDRESS = os.environ.get('EMAIL_FROM_ADDRESS')
+    EMAIL_MAIL_SUBJECT = os.environ.get('EMAIL_MAIL_SUBJECT')
+    EMAIL_MAIL_HTML = os.environ.get('EMAIL_MAIL_HTML')
+    EMAIL_MAIL_PLAIN = os.environ.get('EMAIL_MAIL_PLAIN')
+    EMAIL_TOKEN_LIFE = os.environ.get('EMAIL_TOKEN_LIFE')
+    EMAIL_PAGE_TEMPLATE = os.environ.get('EMAIL_PAGE_TEMPLATE')
+    EMAIL_PAGE_DOMAIN = os.environ.get('EMAIL_PAGE_DOMAIN')
+    EMAIL_MULTI_USER = True
+    EMAIL_HOST = os.environ.get('EMAIL_HOST')
+    EMAIL_PORT = os.environ.get('EMAIL_PORT')
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    EMAIL_USE_TLS = True
 
-
-'''
-===CORS===
-[
-    {
-        "AllowedHeaders": [
-            "*"
-        ],
-        "AllowedMethods": [
-            "POST",
-            "GET",
-            "PUT"
-        ],
-        "AllowedOrigins": [
-            "*"
-        ],
-        "ExposeHeaders": []
-    }
-]
-'''
+    # ========= AWS CONFIG ==============
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE')
+    STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE')
+    AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+    AWS_S3_SIGNATURE_VERSION = os.environ.get('AWS_S3_SIGNATURE_VERSION')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
