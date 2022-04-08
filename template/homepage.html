@@ -129,9 +129,67 @@
         </div>
       </div>
     </div>
-
-
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 openSource">
+        <div class="openSourceContent">
+          <h1>OPEN SOURCE PROJECTS</h1>
+          <p>Most of the projects are open source that are licensed under the very permissive <strong>MIT</strong> and <strong>BSD-3-Clause Licenses</strong>. Consider giving us a star on the official Github repository to spread the news!</p>
+          <div class="openSourceComparison">
+            <h5>OPEN SOURCE</h5>
+            <ul>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> Free to use</li>
+              <li><i class="bi bi-x-circle-fill checkRed"></i> Continuous Updates</li>
+              <li><i class="bi bi-x-circle-fill checkRed"></i> No Customization</li>
+              <li><i class="bi bi-x-circle-fill checkRed"></i> More Features</li>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> Available Source</li>
+            </ul>
+          </div>
+          <div class="openSourceComparison">
+            <h5>PRO VERSION</h5>
+            <ul>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> On Demand Customization</li>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> More Features</li>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> Paid version</li>
+              <li><i class="bi bi-check-circle-fill checkGreen"></i> Continuous Updates</li>
+              <li><i class="bi bi-x-circle-fill checkRed"></i> Available Source</li>
+            </ul>
+          </div>
+          <a href="">View on GitHub</a>
+        </div>
+        <i class="bi bi-github"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="cards">
+        <h1>TOPICS</h1>
+          <a href="{% url 'blogs:review-blog' %}">
+            <h4>BLOGS</h4>
+            <i class="bi bi-calendar2-check"></i>
+            <p>Review and approve blogs from users which are pending to go live.</p>
+          </a>
+  
+          <a href="{% url 'blogs:user-manage' %}">
+            <h4>TOOLS</h4>
+            <i class="bi bi-people"></i>
+            <p>Manage all the registered users and their permissions.</p>
+          </a>
+  
+          <a href="{% url 'blogs:admin-messages' %}">
+            <h4>WEB DEV</h4>
+            <i class="bi bi-envelope"></i>
+            <p>Check all the messages from registered and non users.</p>
+          </a>
+      </div>
+    </div>
+  </div>
+
 
   <div class="container" id="blogs-container">
     <div class="row">
@@ -153,5 +211,11 @@
       {% endfor %}
     </div>
   </div>
+
+
+  
+
+
+
 </div>
 {% endblock %}
