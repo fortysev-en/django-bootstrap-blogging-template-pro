@@ -2309,6 +2309,10 @@ footer {
 	.carousel-item img{
 		width: 100%;
 	}
+
+	.openSourceContent{
+		text-align: center;
+	}
 }
 
 @media only screen and (min-width: 580px) and (max-width: 1200px) {
