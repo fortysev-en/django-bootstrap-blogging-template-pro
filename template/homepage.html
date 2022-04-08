@@ -19,8 +19,8 @@
     </svg>
   </div>
 
-  <div class="container-fluid container-head">
-    <div class="row header-img-row">
+  <div class="container-fluid">
+    <!-- <div class="row header-img-row">
       <div class="col-lg-6">
         <div class="headerTxt">
           <h1>KNOWLEDGE IS INCREASED BY SHARING BUT NOT BY HOLDING.</h1>
@@ -30,6 +30,94 @@
       </div>
       <div class="col-lg-6 header-img">
         <img src="{% static 'img/blog-assests/homepage-img-4.svg' %}" alt="homepage-img">
+      </div>
+    </div> -->
+
+    <div class="row landingRow">
+      <div class="col-lg-12">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+              aria-label="Slide 4"></button>
+          </div>
+          <div class="carousel-inner">
+
+            <!-- carausel item - 0 -->
+            <div class="carousel-item landingImg active">
+              <img src="{% static 'img/blog-assests/homepage-img.svg' %}" alt="homepage-img">
+            </div>
+
+            <!-- carausel item - 1 -->
+            <div class="carousel-item">
+              <img src="{% static 'img/blog-assests/featured-1.svg' %}" alt="homepage-img">
+              <div class="headerTxt carousel-caption d-md-block">
+                <h6>FEATURED</h6>
+                <h1>BURNWOOD</h1>
+                <span>Burnwood is an open source, cross-platform tool used to generate Windows Exploitation Packages (A
+                  Malware).</span>
+                <span>The tool is capable of generating Windows Executables consisting of a malware masking behind any
+                  normal file. The results could be used to study the vulnerabilities, and ultimately will help you
+                  prevent them.
+                  Burnwood provides two delivery methods, Email Based (Gmail) and Cloud Based (Google's Firebase). Both
+                  of these methods works on Google Services and has it's own pros and cons.</span>
+                <a href="#blogs-container">EXPLORE</a>
+              </div>
+            </div>
+
+            <!-- carausel item - 2 -->
+            <div class="carousel-item">
+              <img src="{% static 'img/blog-assests/featured-2.svg' %}" alt="homepage-img">
+              <div class="headerTxt carousel-caption d-md-block">
+                <h6>FEATURED</h6>
+                <h1>KEYLOGGER BUILDER</h1>
+                <span>Keylogger Builder is a standalone application to build multiple keyloggers.</span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic consectetur facilis debitis a, eaque
+                  ullam molestias accusantium minus provident aperiam adipisci iste eligendi, suscipit exercitationem
+                  quisquam cum error itaque non.
+                  Quia ullam accusantium eos delectus. Distinctio nulla quibusdam est optio consequuntur magni similique
+                  cum ad earum, blanditiis minima culpa neque possimus dignissimos esse ipsa iste nihil! Cum numquam
+                  soluta animi?</span>
+                <a href="#blogs-container">EXPLORE</a>
+              </div>
+            </div>
+
+            <!-- carausel item - 3 -->
+            <div class="carousel-item">
+              <img src="{% static 'img/blog-assests/featured-3.svg' %}" alt="homepage-img">
+              <div class="headerTxt carousel-caption d-md-block">
+                <h6>FEATURED</h6>
+                <h1>BYPASS DEFENDER</h1>
+                <span>Explore tools and blogs through a variety of interesting topics.</span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic consectetur facilis debitis a, eaque
+                  ullam molestias accusantium minus provident aperiam adipisci iste eligendi, suscipit exercitationem
+                  quisquam cum error itaque non.
+                  Quia ullam accusantium eos delectus. Distinctio nulla quibusdam est optio consequuntur magni similique
+                  cum ad earum, blanditiis minima culpa neque possimus dignissimos esse ipsa iste nihil! Cum numquam
+                  soluta animi?</span>
+                <a href="#blogs-container">EXPLORE</a>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -48,20 +136,20 @@
   <div class="container" id="blogs-container">
     <div class="row">
       {% for blog in blogs %}
-        {% if blog.is_approved %}
-        <div class="col-lg-3 col-md-6 col-10 blog-list">
-          <div class="blog-content">
-            <a href="{% url 'blogs:blog-detail' blog.slug %}">
-              <img src="{{blog.image.url}}" alt="blog-img">
-              <h4>{{blog.title}}</h4>
-              <p>{{blog.gist|safe}}</p><br>
-              <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
-                {{blog.user.first_name}}</span><br>
-              <span>Total Views: {{blog.total_views}}</span>
-            </a>
-          </div>
+      {% if blog.is_approved %}
+      <div class="col-lg-3 col-md-6 col-10 blog-list">
+        <div class="blog-content">
+          <a href="{% url 'blogs:blog-detail' blog.slug %}">
+            <img src="{{blog.image.url}}" alt="blog-img">
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.gist|safe}}</p><br>
+            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+              {{blog.user.first_name}}</span><br>
+            <span>Total Views: {{blog.total_views}}</span>
+          </a>
         </div>
-        {% endif %}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

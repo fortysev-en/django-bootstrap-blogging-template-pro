@@ -277,14 +277,103 @@ html {
 }
 
 
-/* ============================== Lander ============================== */
+/* ============================== Carausel ============================== */
 
-.container-head {
-	height: 100vh;
-	width: 100%;
+.carousel-inner{
+	height: 90vh;
+	background-color: inherit;
 }
 
-.header-img {
+.carousel-inner .active{
+	background-color: inherit !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.carousel-item{
+	box-shadow: none !important;
+}
+
+.carousel-item img{
+	width: 50%;
+	float: right;
+	position: relative;
+	right: 10%;
+	margin-top: 6em;
+	/* min-height: 75vh !important; */
+}
+
+.landingImg{
+	text-align: center;
+}
+
+.landingImg img{
+	width: 50%;
+	float: none;
+	position: relative;
+	right: 0;
+	margin-top: 12em;
+}
+
+.carousel-caption{
+	top: 12em !important;
+	bottom: 0 !important;
+}
+
+.carousel-control-next, .carousel-control-prev{
+	width: 8% !important;
+}
+
+.headerTxt{
+	font-family: 'Cousine', monospace;
+	position: relative;
+	left: 10% !important;
+	max-width: 30em;
+	text-align: left !important;
+}
+
+.headerTxt h6{
+	color: #999999;
+	font-size: 0.8em;
+}
+
+.headerTxt h1{
+	position: relative;
+	color: #e0e0e0;
+	font-size: 2em;
+}
+
+.headerTxt span{
+	display: block;
+	line-height: 1.8em;
+	margin-top: 1.8em;
+	font-size: 0.9em;
+	color: #e0e0e0;
+}
+
+.headerTxt a{
+	text-decoration: none;
+	display: block;
+	margin-top: 3em;
+	max-width: fit-content;
+	background: none;
+	border: none;
+	color: #FFF;
+	padding: 10px 20px 10px 20px;
+	border-radius: 12px;
+	background-color: #536DFE;
+	transition: all 0.3s ease;
+}
+
+.headerTxt a:hover{
+	background-color: #FFF;
+	color: #536DFE;
+}
+
+
+/* ============================== Lander ============================== */
+
+/* .header-img {
 	top: 20%;
 	left: 20%;
 	display: flex;
@@ -328,13 +417,6 @@ html {
 	color: #536DFE;
 }
 
-
-/* .bouncer-top{
-    display:flex;
-    justify-content:flex-start; 
-    flex-direction: column; 
-} */
-
 .header-img-row {
 	height: 90vh;
 }
@@ -343,7 +425,7 @@ html {
 	position: relative;
 	top: 10%;
 	max-width: 70%;
-}
+} */
 
 .logo-sign {
 	position: absolute;
@@ -918,7 +1000,7 @@ html {
 	cursor: pointer;
 }
 
-.active{
+.checklist-select .active{
 	color: #FF9704 !important;
 	background-color: #232323;
 	box-shadow: 0px 0px 4px #000;
@@ -1991,12 +2073,6 @@ footer {
 	color: white;
 }
 
-
-/* ============================== scrollbar ============================== */
-
-
-
-
 /* ============================== scrollbar ============================== */
 
 ::-webkit-scrollbar {
@@ -2089,6 +2165,10 @@ footer {
 
 	.footer-heading-text h1{
 		display: block;
+	}
+
+	.carousel-item img{
+		width: 100%;
 	}
 }
 
