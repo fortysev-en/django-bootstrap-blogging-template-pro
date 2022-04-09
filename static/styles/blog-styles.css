@@ -303,103 +303,6 @@ html {
 	/* min-height: 75vh !important; */
 }
 
-.openSource {
-	height: 100vh;
-	display: flex;
-	/* align-items: center; */
-	
-}
-
-.openSourceContent{
-	color: #e0e0e0;
-	float: left;
-	max-width: 45em;
-	position: relative;
-	top: 20%;
-	z-index: 9;
-}
-
-.openSourceContent h1, p{
-	font-family: 'Cousine', monospace;
-}
-
-.openSourceContent strong{
-	color: #F50057;
-}
-
-.openSourceContent a{
-	display: inline-block;
-	text-decoration: none;
-	font-size: 0.8em;
-	border: 2px solid white;
-	padding: 10px 20px 10px 20px;
-	border-radius: 5px;
-    color: white;
-	margin-top: 5em;
-	transition: all 0.3s ease-in-out;
-}
-
-.openSourceContent a:hover{
-	background-color: #e0e0e0;
-	color: #000;
-}
-
-.openSource i{
-	color: #333;
-	display: block;
-	position: absolute;
-	font-size: 35em;
-	right: 10%;
-	z-index: 1;
-}
-
-.cards{
-	margin-top: 7em;
-	text-align: center;
-}
-
-.cards h1{
-	color: #00BFA6;
-	font-size: 5em;
-}
-
-.cards a{
-	display: inline-block;
-	border: 1px solid #fff;
-	border-radius: 10px;
-	padding: 20px;
-	text-decoration: none;
-	max-width: 18em;
-	transition: all 0.3s ease-in-out;
-	color: #e0e0e0;
-	margin: 20px;
-}
-
-.cards a:hover{
-	background-color: #00000060;
-	border-color: #ffffff40;
-	color: #E6E6E6;
-}
-
-.cards i{
-	opacity: 0.7;
-	font-size: 3em;
-	display: block;
-	margin-top: 0.8in;
-	transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.cards a:hover > i{
-	opacity: 1;
-	color: #00BFA6;
-}
-
-.cards p{
-	margin-top: 0.8in;
-	font-size: 0.9em;
-}
-
-
 .landingImg{
 	text-align: center;
 }
@@ -444,7 +347,6 @@ html {
 	display: block;
 	line-height: 1.8em;
 	margin-top: 1.8em;
-	font-size: 0.9em;
 	color: #e0e0e0;
 }
 
@@ -467,14 +369,121 @@ html {
 	color: #536DFE;
 }
 
+
+/* ============================== Below Carousel ============================== */
+.openSourceContainer{
+	margin-top: 8em;
+}
+
+.openSource {
+	display: flex;
+	align-items: center;
+	
+}
+
+.openSourceContent{
+	color: #e0e0e0;
+	float: left;
+	max-width: 45em;
+	position: relative;
+	top: 20%;
+	z-index: 9;
+}
+
+.openSourceContent h1, .openSourceContent h5{
+	color: white;
+}
+
+.openSourceContent h1, .openSourceContent p{
+	font-family: 'Cousine', monospace;
+}
+
+
+.openSourceContent strong{
+	color: #F50057;
+}
+
+.openSourceContent a{
+	display: inline-block;
+	text-decoration: none;
+	font-size: 0.8em;
+	border: 2px solid white;
+	padding: 10px 20px 10px 20px;
+	border-radius: 15px;
+    color: white;
+	margin-top: 5em;
+	transition: all 0.3s ease-in-out;
+}
+
+.openSourceContent a:hover{
+	background-color: #e0e0e0;
+	color: #000;
+}
+
+.openSource i{
+	color: #333;
+	display: block;
+	position: absolute;
+	font-size: 35em;
+	right: 10%;
+	z-index: 1;
+}
+
+/* .cards{
+	margin-top: 7em;
+	text-align: center;
+}
+
+.cards h1{
+	color: #00BFA6;
+	font-size: 5em;
+}
+
+.cards a{
+	display: inline-block;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	padding: 20px;
+	text-decoration: none;
+	max-width: 18em;
+	transition: all 0.3s ease-in-out;
+	color: #e0e0e0;
+	margin: 20px;
+}
+
+.cards a:hover{
+	background-color: #00000060;
+	border-color: #ffffff40;
+	color: #E6E6E6;
+}
+
+.cards i{
+	opacity: 0.7;
+	font-size: 3em;
+	display: block;
+	margin-top: 0.8in;
+	transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.cards a:hover > i{
+	opacity: 1;
+	color: #00BFA6;
+}
+
+.cards p{
+	margin-top: 0.8in;
+	font-size: 0.9em;
+} */
+
 .openSourceContent .openSourceComparison{
 	border: 2px solid white;
-	margin-right: 20px;
+	margin-right: 50px;
 	margin-top: 4em;
 	display: inline-block;
 	width: 18em;
 	padding: 20px;
 	border-radius: 15px;
+	box-shadow: 8px 8px 0px white;
 }
 
 .openSourceComparison h5{
@@ -509,6 +518,44 @@ html {
 	position: relative;
 }
 
+.contactContainer{
+	margin-top: 25em;
+	color: #e0e0e0;
+}
+
+.contactRow{
+	border: 2px solid white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 15px;
+	box-shadow: 8px 8px 0px white;
+
+}
+
+.contactTxt{
+	float: left;
+	padding: 2em;
+}
+
+.contactBtn{
+	float: right;
+	margin-right: 20px;
+}
+
+.contactBtn a{
+	text-decoration: none;
+	color: white;
+	padding: 1em 2em;
+	border: 2px solid white;
+	border-radius: 15px;
+	transition: all 0.3s ease-in-out;
+}
+
+.contactBtn a:hover{
+	background-color: #e0e0e0;
+	color: #000;
+}
 
 /* ============================== Lander ============================== */
 
@@ -1741,6 +1788,10 @@ input:focus {
         text-align: center;
     }
      */
+
+.blogList{
+	margin-top: 20em;
+}
 
 .blog-content {
 	border-radius: 20px;
