@@ -13,7 +13,7 @@ import os
 from datetime import datetime, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import boto3
-
+from django.db.models import Count, Max
 
 if not settings.DEBUG:
     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
@@ -31,10 +31,16 @@ def homepage(request):
     visitor_count = ViewsModel.objects.all().count()
 
     context['visitorCount'] = visitor_count
-    context['blogs'] = Blog.objects.all()
-
     context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+    mostViewedBlogs = Blog.objects.annotate(vi=Count('views')).order_by("-vi")
+    context['mostViewedBlogs'] = mostViewedBlogs
+
+    mostRecentBlogs = Blog.objects.all().order_by('-updated_at')
+    context['mostRecentBlogs'] = mostRecentBlogs
+
+    context['blogs'] = Blog.objects.all()
 
     return render(request, 'homepage.html', context)
 
