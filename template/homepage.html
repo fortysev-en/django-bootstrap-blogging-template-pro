@@ -35,15 +35,15 @@
 
     <div class="row landingRow">
       <div class="col-lg-12">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselLander" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            <button type="button" data-bs-target="#carouselLander" data-bs-slide-to="0" class="active"
               aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            <button type="button" data-bs-target="#carouselLander" data-bs-slide-to="1"
               aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            <button type="button" data-bs-target="#carouselLander" data-bs-slide-to="2"
               aria-label="Slide 3"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+            <button type="button" data-bs-target="#carouselLander" data-bs-slide-to="3"
               aria-label="Slide 4"></button>
           </div>
           <div class="carousel-inner">
@@ -106,12 +106,12 @@
 
           </div>
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselLander"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselLander"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
@@ -136,7 +136,9 @@
       <div class="col-lg-12 openSource">
         <div class="openSourceContent">
           <h1>OPEN SOURCE PROJECTS</h1>
-          <p>Most of the projects are open source that are licensed under the very permissive <strong>MIT</strong> and <strong>BSD-3-Clause Licenses</strong>. Consider giving us a star on the official Github repository to spread the news!</p>
+          <p>Most of the projects are open source that are licensed under the very permissive <strong>MIT</strong> and
+            <strong>BSD-3-Clause Licenses</strong>. Consider giving a star <i class="bi bi-star-fill"></i> on the official Github repository to
+            spread the news!</p>
           <div class="openSourceComparison">
             <h5>OPEN SOURCE</h5>
             <ul>
@@ -189,8 +191,8 @@
   </div>
 
 
-  <div class="container blogList">
-    <h1>RECENT UPDATED BLOGS</h1>
+  <div class="container blogList" style="margin-top: 12em !important;">
+    <h1>RECENTLY UPDATED BLOGS</h1>
     <div class="row">
       {% for blog in mostRecentBlogs|slice:":4" %}
       {% if blog.is_approved %}
@@ -227,33 +229,158 @@
     </div>
   </div>
 
+  <div class="container accordionContainer">
+    <div class="row accordionRow">
+      <div class="col-lg-6">
+        <div class="faqImg">
+          <img src="{% static 'img/blog-assests/faq.svg' %}" alt="faq-img">
+        </div>
+      </div>
+      <div class="col-lg-6 faqCol">
+        <h1>FAQs</h1>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item accordionBorderRadiusTop accordionColor">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button accordionBorderRadiusTop accordionBtnColor collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                aria-controls="flush-collapseOne">
+                Do you work as a Freelancer?
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Yes, ofcourse! Feel free to get in touch and we'll discuss about your project. I'll be interested to work.</div>
+            </div>
+          </div>
+          <div class="accordion-item accordionColor">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button accordionBtnColor collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                On which technologies do you work on?
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Well, it completely depends on your project and requirements. The main technolgies I work upon are
+                <code>Python, HTML/CSS, ReactJS, Javascript, DJANGO, PostgreSQL</code> and many more. These are a few on which I work on regularly.</div>
+            </div>
+          </div>
+          <div class="accordion-item accordionColor">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button accordionBtnColor collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                aria-controls="flush-collapseThree">
+                How long will a licence work?
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Once you bought a licence, it will work for lifetime on that registered machine only. Please take a note that these licences are <code>NON-TRANSFERABLE</code>.</div>
+            </div>
+          </div>
+          <!-- forth accordion -->
+          <div class="accordion-item accordionBorderRadiusBottom accordionColor">
+            <h2 class="accordion-header" id="flush-headingForth">
+              <button class="accordion-button accordionBorderRadiusBottom accordionBtnColor collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#flush-collapseForth" aria-expanded="false"
+                aria-controls="flush-collapseForth">
+                Why don't you have ads on your website?
+              </button>
+            </h2>
+            <div id="flush-collapseForth" class="accordion-collapse collapse" aria-labelledby="flush-headingForth"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Who like ads? I developed this website to serve my users without any unnecessary distraction. Enjoy your ad-free experience.</div>
+            </div>
+          </div>
+          <!-- end forth accordion-->
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- <div class="container cardsContainer">
+
+  <!-- <div class="container cardsContainer">
     <div class="row">
+      <h1>SEE SPECIFIC</h1>
       <div class="col-lg-12 cardsRow">
         <div class="cards">
-          <h1>BROWSE TOPICS</h1>
-            <a href="{% url 'blogs:review-blog' %}">
-              <h4>BLOGS</h4>
-              <i class="bi bi-calendar2-check"></i>
-              <p>Browse through a variety of blogs.</p>
-            </a>
-    
-            <a href="{% url 'blogs:user-manage' %}">
-              <h4>TOOLS</h4>
-              <i class="bi bi-people"></i>
-              <p>Checkout all the important tools.</p>
-            </a>
-    
-            <a href="{% url 'blogs:admin-messages' %}">
-              <h4>WEB DEV</h4>
-              <i class="bi bi-envelope"></i>
-              <p>Blogs related to web development.</p>
-            </a>
+          <a href="{% url 'blogs:review-blog' %}">
+            <h4>BLOGS</h4>
+            <i class="bi bi-calendar2-check"></i>
+            <p>Browse through a variety of blogs.</p>
+          </a>
+
+          <a href="{% url 'blogs:user-manage' %}">
+            <h4>TOOLS</h4>
+            <i class="bi bi-people"></i>
+            <p>Checkout all the important tools.</p>
+          </a>
+
+          <a href="{% url 'blogs:admin-messages' %}">
+            <h4>WEB DEV</h4>
+            <i class="bi bi-envelope"></i>
+            <p>Blogs related to web development.</p>
+          </a>
         </div>
       </div>
     </div>
   </div> -->
+
+  <div class="container-fluid testimonialContainer">
+    <div class="row">
+      <div id="carouselTestimonial" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+
+        </div>
+        <div class="carousel-inner testimonialCarouselInner">
+          <!-- carausel item - 1 -->
+          <div class="carousel-item active">
+            <div class="testimonialTxt">
+              <i class="bi bi-quote"></i>
+              <div class="testimonialP">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+              <figcaption class="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </figcaption>
+              </div>
+            </div>
+          </div>
+
+          <!-- carausel item - 2 -->
+          <div class="carousel-item">
+            <div class="testimonialTxt">
+              <i class="bi bi-quote"></i>
+              <div class="testimonialP">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+              <figcaption class="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </figcaption>
+              </div>
+            </div>
+          </div>
+
+          <!-- carausel item - 3 -->
+          <div class="carousel-item">
+            <div class="testimonialTxt">
+              <i class="bi bi-quote"></i>
+              <div class="testimonialP">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+              <figcaption class="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </figcaption>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </div>
