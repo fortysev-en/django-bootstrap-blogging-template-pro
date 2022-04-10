@@ -28,10 +28,12 @@
         background-color: #333;
         color: #e0e0e0;
         font-size: 0.8em;
+        display: flex;
+        justify-content: space-between;
     }
-    
-    .accordion-body span{
-        float: right;
+
+    .accordion-body p {
+        max-width: 80%;
     }
 </style>
 
@@ -91,12 +93,12 @@
                 <ul class="checklist-select" role="tablist">
                     <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i
                             class="bi bi-person-video"></i> Profile</li>
-                    <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i
+                    <!-- <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i
                             class="bi bi-chat-left-quote"></i> Comments</li>
                     <li id="tab3" role="tab" aria-controls="panel3" aria-selected="false"><i
                             class="bi bi-bookmark-star"></i> Bookmarks</li>
                     <li id="tab4" role="tab" aria-controls="panel4" aria-selected="false"><i class="bi bi-heart"></i>
-                        Likes</li>
+                        Likes</li> -->
                     <li id="tab5" role="tab" aria-controls="panel5" aria-selected="false"><i
                             class="bi bi-gear-wide-connected"></i> Settings</li>
                 </ul>
@@ -172,7 +174,7 @@
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
-                                {{comment.comment}} <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}
+                                <p>{{comment.comment}}</p> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}
                             </div>
                         </div>
                         {% endfor %}
