@@ -4,6 +4,8 @@ from django import views
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, HttpResponse, reverse
 from . import models
+from blogs.models import Blog
+from django.db.models import Count
 
 context = {'isIpInDb' : 'False'}
 
@@ -28,6 +30,9 @@ def portfolio(request):
         context['isIpInDb'] = 'True'
     else:
         context['isIpInDb'] = 'False'
+
+    mostViewedBlogs = Blog.objects.annotate(vi=Count('views')).order_by("-vi")
+    context['mostViewedBlogs'] = mostViewedBlogs
 
     # get total unique visitor count
     visitor_count = models.ViewsModel.objects.all().count()

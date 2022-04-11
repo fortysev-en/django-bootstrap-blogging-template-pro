@@ -1,7 +1,5 @@
-from email.policy import default
-from tkinter import CASCADE
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import User
 from froala_editor.fields import FroalaField
 from .helpers import *
 
@@ -85,6 +83,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
     desc = models.TextField()
+    contacted_on = models.DateTimeField(auto_now_add=True)
     is_viewed = models.BooleanField(default=False)
 
     def __str__(self):

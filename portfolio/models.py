@@ -1,3 +1,4 @@
+from email.policy import default
 from statistics import mode
 from django.db import models
 
@@ -6,6 +7,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
     desc = models.TextField()
+    contacted_on = models.DateTimeField(auto_now_add=True)
 
 
 class ViewsModel(models.Model):

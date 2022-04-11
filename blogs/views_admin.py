@@ -69,8 +69,7 @@ def user_manage(request):
         context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
-        context['pending_approval'] = Blog.objects.filter(is_approved = False)
-        usersList = User.objects.all()
+        usersList = User.objects.all().order_by('-date_joined')
         
         page = request.GET.get('page', 1)
 
