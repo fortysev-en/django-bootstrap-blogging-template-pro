@@ -21,13 +21,26 @@ html {
   }
 
 
-.brand-img img{
-    width: 40%;
-    padding: 10px;
+.heading-text {
+	text-align: left;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.heading-text a {
+	text-decoration: none;
+}
+
+.heading-text h1 {
+	color: #e0e0e0;
+	font-family: 'Libre Barcode 39 Text';
+	font-size: 35px;
+    display: inline-block;
 }
 
 .nav-contents{
     padding: 15px;
+    display: inline-block;
 }
 
 .nav-contents a {
@@ -1222,6 +1235,10 @@ footer{
 @media only screen and (max-width: 580px) {
    /* styles for mobile browsers smaller than 580px; (iPhone) */
 
+.blog-content img{
+    max-height: 100%;
+}
+
 .h1-head h1{
     font-size: 8.5em;
     font-weight: 700;
@@ -1248,15 +1265,6 @@ footer{
 .nav-contents ul{
     display: none;
 }
-
-/* #navbar{
-    height: 16em;
-}
-
-.nav-contents li{
-    float: right;
-    clear: right;
-} */
 
 .resume{
     right: calc(32% + 2px);
