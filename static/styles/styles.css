@@ -818,7 +818,7 @@ width: 100%;
     margin-top: 80px;
 }
 
-.blog-content{
+/* .blog-content{
     text-align: justify;
     padding: 20px;
     transition: all 0.3s ease-in-out;
@@ -850,9 +850,58 @@ width: 100%;
 
 .blog-content:hover{
     box-shadow: #000 0px 0px 30px;
+} */
+
+.blog-content {
+	border: 1px solid #333;
+	border-radius: 20px;
+	padding: 15px;
+	transition: all 0.3s ease-in-out;
+	box-shadow: 8px 8px 0px #121212;
 }
 
-.btn-load-more{
+.blog-content img {
+	width: 100%;
+	max-height: 155px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.blog-content h4 {
+	font-size: 1em;
+	margin: 10px 0px 10px;
+	text-align: left;
+	color: white;
+	min-height: 3.5em;
+}
+
+.blog-content p {
+	margin: 15px 0px 10px;
+	color: #6d6d6d;
+	height: 15em;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 10;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.blog-content span {
+	font-size: 0.8em;
+	color: #999999;
+	font-weight: 500;
+}
+
+.blog-content a {
+	text-decoration: none;
+}
+
+.blog-content:hover {
+	/* box-shadow: #000 0px 0px 30px; */
+	border-color: #fff;
+}
+
+/* .btn-load-more{
     padding: 10px;
 }
 
@@ -876,6 +925,31 @@ width: 100%;
 
 .btn-load-more i{
     margin-left: 5px;
+} */
+
+.loadMoreBtn{
+	text-decoration: none;
+	color: white;
+	border: 2px solid #999999;
+	border-radius: 15px;
+	padding: 10px 15px 10px 15px;
+	width: 12em !important;
+	margin: 15px;
+	margin-top: 3em !important;
+    font-size: 0.8em;
+    transition: all 0.3s ease-in-out;
+	font-weight: 500;
+	box-shadow: 8px 8px 0px #121212;
+}
+
+.loadMoreBtn i{
+	float: right;
+}
+
+.loadMoreBtn:hover{
+	background-color: white;
+	border-color: white;
+	color: #000;
 }
 
 /* ============================== Contact ============================== */
@@ -924,20 +998,21 @@ textarea, input{
 	border: 2px solid grey;
 	border-radius: 5px;
 	background-color: #232323;
-	margin-top: 20px;
+	margin-top: 25px;
 	color: #e0e0e0;
+    box-shadow: 8px 8px 0px #121212;
 }
 
 textarea:focus{
     outline: none !important;
 	border-color: #3aaf85 !important;
-    box-shadow: 0 0 3px #3aaf85;
+    box-shadow: 8px 8px 0px #121212;
 }
 
 input:focus{
     outline: none !important;
 	border-color: #3aaf85 !important;
-    box-shadow: 0 0 3px #3aaf85;
+    box-shadow: 8px 8px 0px #121212;
 }
 
 
@@ -946,25 +1021,29 @@ input:focus{
 }
 
 .btn-submit button{
-    background-color: #000;
+    background-color: inherit;
     text-decoration: none;
+    text-align: left;
+	color: white;
+	border: 2px solid #999999;
+	border-radius: 15px;
+	padding: 10px 15px 10px 15px;
+	width: 12em !important;
+	margin-top: 3em !important;
     font-size: 0.8em;
-    border: 2px solid white;
-    border-radius: 5px;
-
-    color: white;
-    font-weight: 600;
-    padding: 10px 20px 10px;
     transition: all 0.3s ease-in-out;
+	font-weight: 500;
+	box-shadow: 8px 8px 0px #121212;
 }
     
 .btn-submit button:hover{
-    border-color: #000;
-    color: white;
+    background-color: white;
+	border-color: white;
+	color: #000;
 }
 
 .btn-submit i{
-    margin-left: 5px;
+	float: right;
 }
 
 .bg-toast-green {

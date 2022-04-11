@@ -87,12 +87,11 @@
 
     <div class="icon-list">
       <ul>
-        <li><a href=""><i class="bi bi-linkedin"></i></a></li>
-        <li><a href=""><i class="bi bi-github"></i></a></li>
-        <li><a href=""><i class="bi bi-instagram"></i></a></li>
-        <li><a href=""><i class="bi bi-discord"></i></a></li>
-        <li><a href=""><i class="bi bi-facebook"></i></a></li>
-        <li><a href=""><i class="bi bi-youtube"></i></a></li>
+        <li><a href="www.linkedin.com/in/pushkar-jadhav-511505207" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+        <li><a href="https://github.com/fortysev-en" target="_blank" ><i class="bi bi-github"></i></a></li>
+        <li><a href="https://www.instagram.com/mr__fortyseven" target="_blank"><i class="bi bi-instagram"></i></a></li>
+        <li><a href="https://discord.com/users/fortyseven#1540" target="_blank"><i class="bi bi-discord"></i></a></li>
+        <li><a href="https://www.facebook.com/pushkaraj.jadhao" target="_blank"><i class="bi bi-facebook"></i></a></li>
       </ul>
     </div>
 
@@ -134,23 +133,19 @@
       <div class="col-lg-6 h1-head about-me">
         <h1>ABOUT</h1>
         <h2>Hi! I'm Pushkar Jadhav</h2>
-        <p>Well, here's a gist, I'm a Programmer, a Blogger and an Ethical Hacker by profession. As a graduate, I hold a
+        <p>Here's a gist, I'm a Programmer, a Blogger and an Ethical Hacker by profession. As a graduate, I hold a
           Bachelors Degree in Computer Science and Engineering from Savitribai Phule Pune University (formerly
           University
           of Pune). Currently working in Cybage Software PVT. LTD, a leading IT services company which mainly delivers
           outsourced software product development.<br><br>
 
-          It's been more than five years I'm working, and as a freelancer, I've worked on several projects throughout
-          years which
-          includes Web Development, Graphics Designing, Android Development along with Android ROM Development as
-          well.<br><br>
+          I'm living a corporate life for more than five years and have a total working experience of a minimum of eight years. Being a freelancer, I've worked on several projects throughout years which includes Web Development, Graphics Designing, Android Development along with Android ROM Development as well.<br><br>
 
           Recently, I've developed several Windows Applications with the help of Python, Responsive and Interactive
-          Websites with Django and React.<br><br>
+          Websites with Django and ReactJS.<br><br>
 
           I believe in qualitative work rather than quantitative and believe that my skills will support your brand
-          and/or
-          you to succeed in your business and objectives.<br><br>
+          and/or you to succeed in your business and objectives.<br><br>
 
           Feel free to get in <a href="#contact">touch</a>.</p>
       </div>
@@ -174,7 +169,7 @@
           <div class="individual-skill">
             <h2>Django</h2>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+              <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
                 aria-valuemax="100"></div>
             </div>
           </div>
@@ -190,7 +185,7 @@
 
           <!-- skills -->
           <div class="individual-skill">
-            <h2>SQL/Postgre</h2>
+            <h2>SQL/PostgreSQL</h2>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
                 aria-valuemax="100"></div>
@@ -292,7 +287,7 @@
 
           <span>2021 - 2022</span>
           <h4>Burnwood - An Open Source, Python Based Cross Platform Tool</h4>
-          <h6><i>Freelance</i></h6>
+          <h6><i>Freelance Project</i></h6>
           <p>Burnwood is an open source, cross-platform tool used to generate Windows Exploitation Packages (A Malware).
             The tool is capable of generating Windows Executables consisting of a malware masking behind any normal
             file. The results could be used to study the vulnerabilities, and ultimately will help you prevent them.
@@ -468,52 +463,23 @@
   <div class="container blogs-container" id="blogs">
     <div class="row h1-head">
       <h1>BLOGS</h1>
-      <div class="col-lg-4 col-sm-12 col-10 blog-list">
+      {% for blog in mostViewedBlogs|slice:":4" %}
+      {% if blog.is_approved %}
+      <div class="col-lg-3 col-md-6 col-10 blog-list">
         <div class="blog-content">
-          <a href="">
-            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
-            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
-              provident ut totam itaque.</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
-              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
-              cumque consequuntur modi.</p><br>
-            <span>17 MAY 2022</span>
+          <a href="{% url 'blogs:blog-detail' blog.slug %}">
+            <img src="{{blog.image.url}}" alt="blog-img">
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.gist|safe}}</p><br>
+            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+              {{blog.user.first_name}}</span><br>
+            <span>Total Views: {{blog.total_views}}</span>
           </a>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-12 col-10 blog-list">
-        <div class="blog-content">
-          <a href="">
-            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
-            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
-              provident ut totam itaque.</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
-              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
-              cumque consequuntur modi.</p><br>
-            <span>17 MAY 2022</span>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-12 col-10 blog-list">
-        <div class="blog-content">
-          <a href="">
-            <img src="{% static 'img/portfolio/blog-2.jpg' %}" alt="">
-            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, sapiente aliquid reprehenderit quasi
-              provident ut totam itaque.</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente tenetur impedit consequuntur aliquid,
-              delectus natus quasi libero atque! Laboriosam atque, accusantium porro pariatur vel neque expedita illum
-              cumque consequuntur modi.</p><br>
-            <span>17 MAY 2022</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-10 col-7"></div>
-      <div class="col-lg-2 col-5 btn-load-more">
-        <a href="{% url 'blogs:homepage' %}">LOAD MORE <i class="bi bi-box-arrow-up-right"></i></a>
-      </div>
+      {% endif %}
+      {% endfor %}
+      <a href="{% url 'blogs:homepage' %}" class="loadMoreBtn">VIEW ALL <i class="bi bi-view-list"></i></a>
     </div>
   </div>
 
@@ -597,17 +563,15 @@
     <div class="container footer-container">
       <div class="row icons-row">
         <section class="mb-12 icon-sec">
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-linkedin"></i></a>
+          <a class="btn-footer" href="www.linkedin.com/in/pushkar-jadhav-511505207" target="_blank" role="button"><i class="bi bi-linkedin"></i></a>
 
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-github"></i></a>
+          <a class="btn-footer" href="https://github.com/fortysev-en" target="_blank" role="button"><i class="bi bi-github"></i></a>
 
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+          <a class="btn-footer" href="https://www.instagram.com/mr__fortyseven" target="_blank" role="button"><i class="bi bi-instagram"></i></a>
 
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-discord"></i></a>
+          <a class="btn-footer" href="https://discord.com/users/fortyseven#1540" target="_blank" role="button"><i class="bi bi-discord"></i></a>
 
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-facebook"></i></a>
-
-          <a class="btn-footer" href="#!" role="button"><i class="bi bi-youtube"></i></a>
+          <a class="btn-footer" href="https://www.facebook.com/pushkaraj.jadhao/" target="_blank" role="button"><i class="bi bi-facebook"></i></a>
         </section>
       </div>
 
