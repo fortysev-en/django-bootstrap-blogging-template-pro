@@ -51,12 +51,17 @@
         <h6 id="chtHead">COMMENTS <i class="bi bi-box-arrow-in-up"></i></h6>
         <div class="chtContentBox">
             <div class="innerContentBox" id="innerContentBox">
-                {% for comment in comments %}
+                <div class="scrollDownForOlderComments">
+                    <p>Scroll Down For Older Comments</p>
+                </div>
+                {% for comment in comments reversed %}
                 <form action="/delete-comment/{{comment.serial}}" method="POST">
                     {% csrf_token %}
+                    <!-- <div class="chtOptions">
+                        <button type="submit"><i class="bi bi-reply-fill"></i></button>
+                        <button type="submit"><i class="bi bi-trash hover-color"></i></button>
+                    </div> -->
                     <div class="userComment">
-                        <!-- <button type="submit">{{comment.serial}}<i
-                                class="bi bi-trash hover-color"></i></button> -->
                         <h6><a class="userPro" href="{% url 'blogs:user-profile' comment.user.username %}">{{comment.user.first_name}}</a></h6> <span>{{comment.time|date:"M d, Y"}}
                             {{comment.time|time:"h:i A"}}</span>
                         <p>{{comment.comment}}</p>

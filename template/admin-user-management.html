@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for user in usersList reversed %}
+          {% for user in usersList %}
           <input type="hidden" name="userPK" id="{{user.pk}}">
           <tr class="table-row">
             <th scope="row">{{forloop.revcounter}}</th>
