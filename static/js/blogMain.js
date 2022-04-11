@@ -34,8 +34,8 @@ $("#chtHead").click(function() {
   //   element.className = "myStyle";
   // }
 
-  var scrollEnd = document.getElementById('innerContentBox');
-  scrollEnd.scrollTop = scrollEnd.scrollHeight;
+  // var scrollEnd = document.getElementById('innerContentBox');
+  // scrollEnd.scrollTop = scrollEnd.scrollHeight;
 });
 
 
@@ -223,7 +223,7 @@ function blogComment(event){
     }).then(result => result.json()).then(response =>{
           if (response.status == 200){
             $( "#innerContentBox" ).load(window.location.href + " #innerContentBox" );
-            setTimeout(scrollTillBottom(), 1000)
+            // setTimeout(scrollTillBottom(), 1000)
             document.querySelector('input[name="postComment"]').value = '';
           }
           else{
