@@ -21,17 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fe1#n^faux117p6=ip64q0%)f1^6sb3sdw6&2&1b)w77ho3nfy'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
 ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
 
 # Application definition
 
 INSTALLED_APPS = [
-    # 'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,10 +48,13 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = []
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS += [os.environ.get('CSRF_TRUSTED_ORIGINS')]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -169,31 +173,38 @@ GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
+SESSION_COOKIE_SECURE = str(os.environ.get('SESSION_COOKIE_SECURE')) == '1'
+CSRF_COOKIE_SECURE = str(os.environ.get('CSRF_COOKIE_SECURE')) == '1'
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_SECONDS = 60
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_PRELOAD = True
+
+
+
+# ============= EMAIL CONFIG ===================
+def verified_callback(user):
+    user.is_active = True
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_VERIFIED_CALLBACK = verified_callback
+EMAIL_FROM_ADDRESS = os.environ.get('EMAIL_FROM_ADDRESS')
+EMAIL_MAIL_SUBJECT = os.environ.get('EMAIL_MAIL_SUBJECT')
+EMAIL_MAIL_HTML = os.environ.get('EMAIL_MAIL_HTML')
+EMAIL_MAIL_PLAIN = os.environ.get('EMAIL_MAIL_PLAIN')
+EMAIL_TOKEN_LIFE = os.environ.get('EMAIL_TOKEN_LIFE')
+EMAIL_PAGE_TEMPLATE = os.environ.get('EMAIL_PAGE_TEMPLATE')
+EMAIL_PAGE_DOMAIN = os.environ.get('EMAIL_PAGE_DOMAIN')
+EMAIL_MULTI_USER = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+
+
 if not DEBUG:
-
-    ALLOWED_HOSTS += os.environ.get('ALLOWED_HOSTS')
-    CSRF_TRUSTED_ORIGINS += os.environ.get('ALLOWED_HOSTS')
-
-
-    # ============= EMAIL CONFIG ===================
-    def verified_callback(user):
-        user.is_active = True
-
-    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    EMAIL_VERIFIED_CALLBACK = verified_callback
-    EMAIL_FROM_ADDRESS = os.environ.get('EMAIL_FROM_ADDRESS')
-    EMAIL_MAIL_SUBJECT = os.environ.get('EMAIL_MAIL_SUBJECT')
-    EMAIL_MAIL_HTML = os.environ.get('EMAIL_MAIL_HTML')
-    EMAIL_MAIL_PLAIN = os.environ.get('EMAIL_MAIL_PLAIN')
-    EMAIL_TOKEN_LIFE = os.environ.get('EMAIL_TOKEN_LIFE')
-    EMAIL_PAGE_TEMPLATE = os.environ.get('EMAIL_PAGE_TEMPLATE')
-    EMAIL_PAGE_DOMAIN = os.environ.get('EMAIL_PAGE_DOMAIN')
-    EMAIL_MULTI_USER = True
-    EMAIL_HOST = os.environ.get('EMAIL_HOST')
-    EMAIL_PORT = os.environ.get('EMAIL_PORT')
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-    EMAIL_USE_TLS = True
 
     # ========= AWS CONFIG ==============
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
