@@ -676,7 +676,7 @@ input:focus {
 
 .blog-content img {
 	width: 100%;
-	max-height: 250px;
+	max-height: 155px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 }
@@ -2121,8 +2121,18 @@ td {
 	margin-top: -8px;
 }
 
+.scrollDownForOlderComments{
+	height: 60%;
+}
+
+.scrollDownForOlderComments p{
+	position: relative;
+	color: white;
+	top: 50%;
+}
+
 .innerContentBox{
-	height: 500px;
+	height: 300px;
 	overflow-y: scroll;
 }
 
@@ -2242,13 +2252,13 @@ td {
 	  bottom: 0%;
 	}
 	100% {
-	  bottom: 65%;
+	  bottom: 42%;
 	}
   }
 
   @keyframes slideIn {
 	0% {
-	  bottom: 65%;
+	  bottom: 42%;
 	}
 	100% {
 	  bottom: 0%;
