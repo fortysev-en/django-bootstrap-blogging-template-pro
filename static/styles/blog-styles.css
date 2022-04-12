@@ -10,7 +10,6 @@ html {
 	scroll-behavior: smooth !important;
 }
 
-
 /* ============================== Navbar ============================== */
 
 #navbar {
@@ -153,6 +152,79 @@ html {
 	font-family: 'Libre Barcode 39 Text';
 	font-size: 35px;
 }
+
+
+/* ============================== Cookie Box ============================== */
+/* Cookie Dialog */
+#gdpr-cookie-message {
+	position: fixed;
+	right: 0.8%;
+	bottom: 1%;
+	max-width: 450px;
+	background-color: #536dfeec;
+	padding: 25px;
+	border-radius: 15px;
+	z-index: 1000;
+	display: block;
+	text-align: center;
+  }
+  
+  #gdpr-cookie-message h4 {
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	/* font-size: 18px; */
+	font-size: 1em;
+	font-weight: 600;
+	margin-bottom: 10px;
+  }
+  
+  #gdpr-cookie-message p {
+	color: white;
+	font-size: 0.8em;
+	line-height: 1.5em;
+  }
+  
+  /* #gdpr-cookie-message p:last-child {
+	margin-bottom: 0;
+	text-align: right;
+  } */
+
+  .cookieBtns{
+	  display: flex;
+	  justify-content:space-between;
+	  align-items: center;
+  }
+  
+  #gdpr-cookie-message a {
+	color: white;
+	text-decoration: none;
+	border: none;
+	border: 2px solid white;
+	font-size: 15px;
+	padding: 10px 15px 10px 15px;
+	border-radius: 15px;
+	width: 12em;
+	transition: all 0.3s ease-in;
+  }
+  
+  #gdpr-cookie-message a:hover {
+	color: #000;
+	background-color: white;
+  }
+  
+  #gdpr-cookie-message button {
+	border: none;
+	background: white;
+	color: #000;
+	font-size: 15px;
+	padding: 10px 15px 10px 15px;
+	border-radius: 15px;
+	margin-left: 15px;
+	width: 12em;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+	border: 2px solid white;
+  }
 
 
 /* ============================== About ============================== */
@@ -654,6 +726,7 @@ input:focus {
     transition: all 0.3s ease-in-out;
 	font-weight: 500;
 	box-shadow: 8px 8px 0px #121212;
+	display: block;
 }
 
 .loadMoreBtn i{
@@ -1937,7 +2010,7 @@ input:focus {
 }
 
 .table-row button:hover{
-	color: #F50057;
+	color: #F50057 !important;
 }
 
 .page-link{
@@ -2488,6 +2561,7 @@ footer {
 
 	.subscribe{
 		text-align: center;
+		margin: 20px 0px;
 	}
 
 	.footer-heading-text {
@@ -2509,6 +2583,10 @@ footer {
 	.testimonialTxt p{
 		font-size: 1em;
 	}
+
+	#gdpr-cookie-message button {
+		width: 6em;
+	  }
 }
 
 @media only screen and (min-width: 580px) and (max-width: 1200px) {
