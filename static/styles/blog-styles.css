@@ -2102,6 +2102,19 @@ td {
 } */
 
 
+/* ============================== All Blogs Page ============================== */
+
+.allBlogsRow h1{
+	position: relative;
+	margin-top: 3em;
+	text-align: center;
+	color: #00BFA6;
+}
+
+.allBlogsRow{
+	min-height: 100vh;
+}
+
 /* ============================== Individual Blogs Page ============================== */
 
 .editOptions{

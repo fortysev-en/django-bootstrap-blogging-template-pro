@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+<title>{% block title %} All Blogs {% endblock %}</title>
+
+{% load static %}
+{% block start %}
+
+<div class="container allBlogsContainer">
+    <div class="row allBlogsRow">
+        <h1>BLOG LIST</h1>
+        {% for blog in blogList %}
+        {% if blog.is_approved %}
+        <div class="col-lg-3 col-md-6 col-10 blog-list">
+            <div class="blog-content">
+                <a href="{% url 'blogs:blog-detail' blog.slug %}">
+                    <img src="{{blog.image.url}}" alt="blog-img">
+                    <h4>{{blog.title}}</h4>
+                    <p>{{blog.gist|safe}}</p><br>
+                    <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+                        {{blog.user.first_name}}</span><br>
+                    <span>Total Views: {{blog.total_views}}</span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 paginator">
+            <nav aria-label="Page navigation">
+                {% if blogList.has_other_pages %}
+                <ul class="pagination">
+                    {% if blogList.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogList.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true" class="disabled">&laquo;</span>
+                            {% endif %}
+                        </a>
+                    </li>
+
+                    {% for i in blogList.paginator.page_range %}
+                    {% if blogList.number == i %}
+                    <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if blogList.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogList.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true" class="disabled">&raquo;</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}

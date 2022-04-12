@@ -27,39 +27,39 @@
     </div>
   </div>
 
-<div class="row">
-  <div class="col-lg-12 paginator">
-    <nav aria-label="Page navigation">
-      {% if allSubscriptions.has_other_pages %}
-      <ul class="pagination">
-        {% if allSubscriptions.has_previous %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ allSubscriptions.previous_page_number }}" aria-label="Previous">
-            <span aria-hidden="true" class="disabled">&laquo;</span>
-            {% endif %}
-          </a>
-        </li>
+  <div class="row">
+    <div class="col-lg-12 paginator">
+      <nav aria-label="Page navigation">
+        {% if allSubscriptions.has_other_pages %}
+        <ul class="pagination">
+          {% if allSubscriptions.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ allSubscriptions.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true" class="disabled">&laquo;</span>
+              {% endif %}
+            </a>
+          </li>
 
-        {% for i in allSubscriptions.paginator.page_range %}
-        {% if allSubscriptions.number == i %}
-        <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-        {% else %}
-        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% for i in allSubscriptions.paginator.page_range %}
+          {% if allSubscriptions.number == i %}
+          <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+          {% endfor %}
+
+          {% if allSubscriptions.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ allSubscriptions.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true" class="disabled">&raquo;</span>
+              {% endif %}
+            </a>
+          </li>
+        </ul>
         {% endif %}
-        {% endfor %}
-
-        {% if allSubscriptions.has_next %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ allSubscriptions.next_page_number }}" aria-label="Next">
-            <span aria-hidden="true" class="disabled">&raquo;</span>
-            {% endif %}
-          </a>
-        </li>
-      </ul>
-      {% endif %}
-    </nav>
+      </nav>
+    </div>
   </div>
-</div>
 </div>
 
 {% endblock %}

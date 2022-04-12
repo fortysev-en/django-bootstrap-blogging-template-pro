@@ -18,6 +18,7 @@ urlpatterns = [
     path('deleteProPic/', views.delete_profile_pic, name='delete-profile-pic'),
     path('signup/', views.signup, name='signup'),
     path('addBlog/', views.add_blog, name='add-blog'),
+    path('allBlogs/', views.all_blogs, name='all-blogs'),
     path('blogDetail/<slug>', views.blog_detail, name='blog-detail'),
     path('myBlogs/', views.my_blogs, name='my-blogs'),
     path('blogDelete/<id>', views.blog_delete, name='blog-delete'),

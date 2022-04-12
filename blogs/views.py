@@ -1,4 +1,5 @@
 from email import message
+from multiprocessing import context
 from urllib import response
 from django import views
 from django.conf import settings
@@ -17,6 +18,15 @@ from django.db.models import Count, Max
 
 if not settings.DEBUG:
     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+
+
+def cookieConsent(request):
+    context = {}
+    if 'CONSENT' in request.COOKIES:
+        context['CONSENT'] = 'True'
+    else:
+        context['CONSENT'] = 'False'
+    return context
 
 # Create your views here.
 def homepage(request):
@@ -64,6 +74,26 @@ def cookie_acceptance(request):
         return response
 
     return HttpResponse()
+
+
+def all_blogs(request):
+    context = {}
+
+    allBlogs = Blog.objects.all()
+    
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(allBlogs, 15)
+    try:
+        b_logs = paginator.page(page)
+    except PageNotAnInteger:
+        b_logs = paginator.page(1)
+    except EmptyPage:
+        b_logs = paginator.page(paginator.num_pages)
+
+    context['blogList'] = b_logs
+
+    return render(request, 'all-blogs.html', context)
 
 def login(request):
     context = {}
@@ -165,12 +195,16 @@ def delete_profile_pic(request):
 
 def about(request):
     context = {}
+    co = cookieConsent(request)
+    context.update(co)
     context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
     return render(request, 'about.html', context)
 
 def contact(request):
     context = {}
+    co = cookieConsent(request)
+    context.update(co)
     context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
     if request.method == 'POST':
@@ -189,7 +223,8 @@ def logout_view(request):
 
 def blog_detail(request, slug):
     context = {}
-    
+    co = cookieConsent(request)
+    context.update(co)
     ip = get_ip(request)
 
     context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
@@ -367,6 +402,8 @@ def my_blogs(request):
 
 def signup(request):
     context = {}
+    co = cookieConsent(request)
+    context.update(co)
     if (request.user.is_authenticated):
         return redirect('/')
     else:

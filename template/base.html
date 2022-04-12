@@ -203,6 +203,24 @@
   </div>
 
 
+  {% if CONSENT == 'False' %}
+  <div id="cookieBox">
+    <div id="gdpr-cookie-message">
+      <h4>COOKIES &amp; PRIVACY</h4>
+      <p>
+        We use cookies to offer you a better browsing experience and analyze site traffic. If you continue to use this
+        site, you consent to our use of cookies. Please see our Cookie Policy for
+        more information.
+      </p>
+      <div class="cookieBtns">
+        <a href="">more information</a>
+        <button onclick="cookieAcceptance()" id="gdpr-cookie-accept" type="button">Got it!</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
   <div class="container">
     <div class="row">
       <div class="bouncer">
@@ -231,11 +249,16 @@
           </div>
         </div>
         <section class="col-lg-4 mb-12 icon-sec">
-          <a class="btn-footer" href="https://github.com/fortysev-en" target="_blank" role="button"><i class="bi bi-github"></i></a>
-          <a class="btn-footer" href="https://www.instagram.com/mr__fortyseven" target="_blank" role="button"><i class="bi bi-instagram"></i></a>
-          <a class="btn-footer" href="https://discord.com/users/fortyseven#1540" target="_blank" role="button"><i class="bi bi-discord"></i></a>
-          <a class="btn-footer" href="https://www.youtube.com/channel/UC1Be-Dq7exfnilNhNPgWCew/featured" target="_blank" role="button"><i class="bi bi-youtube"></i></a>
-          <a class="btn-footer" href="https://twitter.com/fortysev_en" target="_blank" role="button"><i class="bi bi-twitter"></i></a>
+          <a class="btn-footer" href="https://github.com/fortysev-en" target="_blank" role="button"><i
+              class="bi bi-github"></i></a>
+          <a class="btn-footer" href="https://www.instagram.com/mr__fortyseven" target="_blank" role="button"><i
+              class="bi bi-instagram"></i></a>
+          <a class="btn-footer" href="https://discord.com/users/fortyseven#1540" target="_blank" role="button"><i
+              class="bi bi-discord"></i></a>
+          <a class="btn-footer" href="https://www.youtube.com/channel/UC1Be-Dq7exfnilNhNPgWCew/featured" target="_blank"
+            role="button"><i class="bi bi-youtube"></i></a>
+          <a class="btn-footer" href="https://twitter.com/fortysev_en" target="_blank" role="button"><i
+              class="bi bi-twitter"></i></a>
         </section>
         <div class="col-lg-4 mb-12">
           <div class="subscribe btn-submit" id="subscribeBtn">
