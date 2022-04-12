@@ -13,7 +13,7 @@
         <h6><strong>NOTE: Once a blog is deleted, it will be deleted forever.</strong></h6>
     </div>
   </div>
-  <div class="row my-blogs-row">
+  <div class="row my-blogs-row" id="my-blogs-row">
     <div class="col-lg-12 actual-table">
       <table class="table">
         <thead>
@@ -36,7 +36,7 @@
             <td>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</td>
             <td>
               <a href="{%  url 'blogs:blog-update' blog.pk %}"><i class="bi bi-pen hover-color"></i></a>
-              <a href="{% url 'blogs:blog-delete' blog.id %}"><i class="bi bi-trash hover-color"></i></a>
+              <button id="delBlogBtn-{{blog.id}}" style="color: white;" onclick="delBlog(this.id)"><i class="bi bi-trash hover-color"></i></button>
             </td>
           </tr>
           {% endfor %}

@@ -329,6 +329,22 @@ function deleteProPic(){
     });
 }
 
+function delBlog(blog_id){
+  var id = blog_id.split('-')[1]
+  var confirmation = document.getElementById('confirmationMessage')
+  confirmation.innerHTML = 'Are you sure you want to DELETE this blog?'
+  toggleConfirmation()
+  $("#userConfirmed").on('click',function(){
+    $.ajax({
+      url: "/blogDelete/"+id,
+      success : function(json) {
+        $('.confirmation').removeClass('toggle-confirmation');
+        $( "#my-blogs-row" ).load(" #my-blogs-row" );
+      }
+  })
+    });
+}
+
 
 function disableUser(user_id){
   var id = user_id.split('-')[1]
