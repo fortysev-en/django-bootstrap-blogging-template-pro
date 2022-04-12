@@ -289,17 +289,49 @@ function deleteComment(event){
 });  
 
 
-// var xmlHttp = new XMLHttpRequest();
-// xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
-// xmlHttp.send( null );
 
-// let data = xmlHttp.responseText;
-// let dataJSON = JSON.parse(data);
-// console.log(dataJSON.content);
-// console.log(dataJSON.author);
+$(document).ready( function () {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.send( null );
 
-// document.getElementById('quote').innerHTML = dataJSON.content
-// document.getElementById('author').innerHTML = dataJSON.author
+  let data = xmlHttp.responseText;
+  let dataJSON = JSON.parse(data);
+  console.log(dataJSON.content);
+  console.log(dataJSON.author);
+
+  document.getElementById('quoteOne').innerHTML = dataJSON.content
+  document.getElementById('quoteOneAuthor').innerHTML = dataJSON.author
+});
+
+$(document).ready( function () {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.send( null );
+
+  let data = xmlHttp.responseText;
+  let dataJSON = JSON.parse(data);
+  console.log(dataJSON.content);
+  console.log(dataJSON.author);
+
+  document.getElementById('quoteTwo').innerHTML = dataJSON.content
+  document.getElementById('quoteTwoAuthor').innerHTML = dataJSON.author
+});
+
+$(document).ready( function () {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.send( null );
+
+  let data = xmlHttp.responseText;
+  let dataJSON = JSON.parse(data);
+  console.log(dataJSON.content);
+  console.log(dataJSON.author);
+
+  document.getElementById('quoteThree').innerHTML = dataJSON.content
+  document.getElementById('quoteThreeAuthor').innerHTML = dataJSON.author
+});
+
 
 function toggleConfirmation(){
   $('.confirmation').addClass('toggle-confirmation');

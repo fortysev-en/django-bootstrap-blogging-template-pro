@@ -344,9 +344,9 @@
             <div class="testimonialTxt">
               <i class="bi bi-quote"></i>
               <div class="testimonialP">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+                <p id="quoteOne"></p>
               <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
+                <cite title="Source Title" id="quoteOneAuthor"></cite>
               </figcaption>
               </div>
             </div>
@@ -357,9 +357,9 @@
             <div class="testimonialTxt">
               <i class="bi bi-quote"></i>
               <div class="testimonialP">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+                <p id="quoteTwo"></p>
               <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
+                <cite title="Source Title" id="quoteTwoAuthor"></cite>
               </figcaption>
               </div>
             </div>
@@ -370,9 +370,9 @@
             <div class="testimonialTxt">
               <i class="bi bi-quote"></i>
               <div class="testimonialP">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eveniet placeat totam amet architecto molestias quos dolores. Eligendi modi minima natus minus rerum dolorum animi. Reiciendis mollitia adipisci nobis sint!</p>
+                <p id="quoteThree"></p>
               <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
+                <cite title="Source Title" id="quoteThreeAuthor"></cite>
               </figcaption>
               </div>
             </div>
@@ -384,21 +384,5 @@
 
 
 </div>
-
-{% if CONSENT == 'False' %}  
-<div id="cookieBox">
-  <div id="gdpr-cookie-message">
-    <h4>COOKIES &amp; PRIVACY</h4>
-    <p>
-      We use cookies to offer you a better browsing experience and analyze site traffic. If you continue to use this site, you consent to our use of cookies. Please see our Cookie Policy for
-      more information.
-    </p>
-    <div class="cookieBtns">
-      <a href="">more information</a>
-      <button onclick="cookieAcceptance()" id="gdpr-cookie-accept" type="button">Got it!</button>
-    </div>
-  </div>
-</div>
-{% endif %}
 
 {% endblock %}
