@@ -186,8 +186,8 @@
       </div>
       {% endif %}
       {% endfor %}
-      <a href="" class="loadMoreBtn">VIEW ALL <i class="bi bi-view-list"></i></a>
     </div>
+    <a href="" class="loadMoreBtn">VIEW ALL <i class="bi bi-view-list"></i></a>
   </div>
 
 
@@ -210,8 +210,8 @@
       </div>
       {% endif %}
       {% endfor %}
-      <a href="" class="loadMoreBtn">VIEW ALL <i class="bi bi-view-list"></i></a>
     </div>
+    <a href="" class="loadMoreBtn">VIEW ALL <i class="bi bi-view-list"></i></a>
   </div>
 
 
@@ -384,4 +384,21 @@
 
 
 </div>
+
+{% if cookieAcceptance == 'CookieNotAccepted' %}  
+<div id="cookieBox">
+  <div id="gdpr-cookie-message">
+    <h4>COOKIES &amp; PRIVACY</h4>
+    <p>
+      We use cookies to offer you a better browsing experience and analyze site traffic. If you continue to use this site, you consent to our use of cookies. Please see our Cookie Policy for
+      more information.
+    </p>
+    <div class="cookieBtns">
+      <a href="">more information</a>
+      <button onclick="cookieAcceptance()" id="gdpr-cookie-accept" type="button">Got it!</button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
 {% endblock %}

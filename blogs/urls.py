@@ -11,6 +11,7 @@ app_name = 'blogs'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
+    path('cookieAcceptance/', views.cookie_acceptance, name='cookie-acceptance'),
     path('froala_editor/',include('froala_editor.urls')),
     path('login/', views.login, name='login'),
     path('myProfile/', views.my_profile, name='my-profile'),

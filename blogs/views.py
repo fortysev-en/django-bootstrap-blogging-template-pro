@@ -42,7 +42,28 @@ def homepage(request):
 
     context['blogs'] = Blog.objects.all()
 
+    if 'cookieAcceptance' in request.COOKIES:
+        context['cookieAcceptance'] = 'CookieAccepted'
+    else:
+        context['cookieAcceptance'] = 'CookieNotAccepted'
+
+    # if request.method == 'POST':
+    #     response = render(request, 'homepage.html', context)
+    #     response.set_cookie('cookieAcceptance', 'CookieAccepted')
+    #     return response
+
     return render(request, 'homepage.html', context)
+
+
+def cookie_acceptance(request):
+    response = render(request, 'homepage.html')
+    if 'cookieAcceptance' in request.COOKIES:
+        print('available')
+    else:
+        response.set_cookie('cookieAcceptance', 'CookieAccepted')
+        return response
+
+    return HttpResponse()
 
 def login(request):
     context = {}

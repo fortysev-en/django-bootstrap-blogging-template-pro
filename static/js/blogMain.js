@@ -346,6 +346,16 @@ function delBlog(blog_id){
 }
 
 
+function cookieAcceptance(){
+  $.ajax({
+    url: "/cookieAcceptance/",
+    success : function(json) {
+      $( "#cookieBox" ).load(" #cookieBox" );
+    }
+  });
+}
+
+
 function disableUser(user_id){
   var id = user_id.split('-')[1]
   var confirmation = document.getElementById('confirmationMessage')
