@@ -305,7 +305,7 @@ def blog_delete(request, id):
         try:
             blog_obj = Blog.objects.get(id = id)
 
-            if blog_obj.user == request.user:
+            if (blog_obj.user == request.user) or request.user.is_superuser:
                 # os.remove(os.path.join(settings.MEDIA_ROOT, blog_obj.image.name))
                 # blog_obj.delete()
                 # messages.success(request, 'Blog deleted successfully!')
@@ -313,6 +313,7 @@ def blog_delete(request, id):
                 if not settings.DEBUG:
                     try:
                         s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{blog_obj.image.name}')
+                        blog_obj.delete()
                         messages.success(request, 'Blog deleted successfully!')
                     except:
                         messages.warning(request, f"Unable to delete blog picture!")
