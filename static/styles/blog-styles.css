@@ -724,7 +724,7 @@ input:focus {
 }
 
 .accordionContainer{
-	margin-top: 4in;
+	margin-top: 2in;
 	margin-bottom: 2in;
 }
 
@@ -765,7 +765,7 @@ input:focus {
 }
 
 .accordionRow{
-	height: 50vh;
+	min-height: 60vh;
 }
 
 .faqImg img{
@@ -2434,6 +2434,10 @@ footer {
 
 @media only screen and (max-width: 580px) {
 	/* styles for mobile browsers smaller than 580px; (iPhone) */
+
+	body{
+		font-size: 0.8em !important;
+	}
 
 	.nav-contents{
 		position: absolute;

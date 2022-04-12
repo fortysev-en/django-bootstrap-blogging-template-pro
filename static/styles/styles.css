@@ -1240,7 +1240,7 @@ footer{
 }
 
 .h1-head h1{
-    font-size: 8.5em;
+    font-size: 6em;
     font-weight: 700;
     text-align: center;
 }
@@ -1259,7 +1259,7 @@ footer{
 }
 
 .txt-like h6{
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .nav-contents ul{
@@ -1267,7 +1267,7 @@ footer{
 }
 
 .resume{
-    right: calc(32% + 2px);
+    right: calc(34% + 2px);
 }
 
 .list-icon{
@@ -1275,8 +1275,8 @@ footer{
 }
 
 .about-me h2{
-    margin-top: 100px;
-    margin-left: 150px;
+    margin-top: 55px;
+    margin-left: 70px;
     font-size: 1em;
 }
 
@@ -1309,6 +1309,10 @@ footer{
 
 .btn-footer{
     margin: 10px !important;
+}
+
+footer{
+    font-size: 0.8em;
 }
 
 }
