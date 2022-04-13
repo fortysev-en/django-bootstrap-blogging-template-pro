@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_email_verification',
+    'admin_honeypot',
     'storages',
     'rest_framework',
     'froala_editor',

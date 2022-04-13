@@ -18,7 +18,8 @@ from django.urls import path, include
 from django_email_verification import urls as email_urls  # include the urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('secret/', admin.site.urls),
     path('portfolio/', include('portfolio.urls')),
     path('', include('blogs.urls')),
     path('email/', include(email_urls)), 
