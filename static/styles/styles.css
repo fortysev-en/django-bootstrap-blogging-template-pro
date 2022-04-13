@@ -41,6 +41,7 @@ html {
 .nav-contents{
     padding: 15px;
     display: inline-block;
+    text-align: end;
 }
 
 .nav-contents a {
@@ -953,6 +954,7 @@ width: 100%;
     transition: all 0.3s ease-in-out;
 	font-weight: 500;
 	box-shadow: 8px 8px 0px #121212;
+	display: block;
 }
 
 .loadMoreBtn i{
