@@ -292,7 +292,7 @@ function deleteComment(event){
 
 $(document).ready( function () {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=wisdom', false ); // false for synchronous request
   xmlHttp.send( null );
 
   let data = xmlHttp.responseText;
@@ -306,7 +306,7 @@ $(document).ready( function () {
 
 $(document).ready( function () {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=famous-quotes', false ); // false for synchronous request
   xmlHttp.send( null );
 
   let data = xmlHttp.responseText;
@@ -320,7 +320,7 @@ $(document).ready( function () {
 
 $(document).ready( function () {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", 'https://api.quotable.io/random?tags=technology', false ); // false for synchronous request
+  xmlHttp.open( "GET", 'https://api.quotable.io/random?minLength=100&maxLength=280', false ); // false for synchronous request
   xmlHttp.send( null );
 
   let data = xmlHttp.responseText;
