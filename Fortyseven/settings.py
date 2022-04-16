@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,14 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fe1#n^faux117p6=ip64q0%)f1^6sb3sdw6&2&1b)w77ho3nfy')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == "1"
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
-if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
 
@@ -48,10 +47,7 @@ INSTALLED_APPS = [
     'blogs'
 ]
 
-CSRF_TRUSTED_ORIGINS = []
-if not DEBUG:
-    CSRF_TRUSTED_ORIGINS += [os.environ.get('CSRF_TRUSTED_ORIGINS')]
-
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 
 MIDDLEWARE = [
@@ -91,12 +87,12 @@ WSGI_APPLICATION = 'Fortyseven.wsgi.application'
 if not DEBUG:
     DATABASES = {
         'default': {
-            'ENGINE': os.environ.get('DB_ENGINE'),
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT')
+            'ENGINE': config('DB_ENGINE'),
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT')
         }
     }
 else:
@@ -169,19 +165,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ========= CAPTCHA CONFIG =========================== 
-GOOGLE_RECAPTCHA_SITE_KEY = os.environ.get('GOOGLE_RECAPTCHA_SITE_KEY')
-GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-
+GOOGLE_RECAPTCHA_SITE_KEY = config('GOOGLE_RECAPTCHA_SITE_KEY')
+GOOGLE_RECAPTCHA_SECRET_KEY = config('GOOGLE_RECAPTCHA_SECRET_KEY')
 
 #============= PRODUCTION SETTINGS ==============
-SESSION_COOKIE_SECURE = str(os.environ.get('SESSION_COOKIE_SECURE')) == '1'
-CSRF_COOKIE_SECURE = str(os.environ.get('CSRF_COOKIE_SECURE')) == '1'
-SECURE_HSTS_INCLUDE_SUBDOMAINS = str(os.environ.get('SECURE_HSTS_INCLUDE_SUBDOMAINS')) == '1'
-SECURE_HSTS_SECONDS = os.environ.get('SECURE_HSTS_SECONDS')
-SECURE_SSL_REDIRECT = str(os.environ.get('SECURE_SSL_REDIRECT')) == '1'
-SECURE_HSTS_PRELOAD = str(os.environ.get('SECURE_HSTS_PRELOAD')) == '1'
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=True, cast=bool)
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=True, cast=bool)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = config('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True, cast=bool)
+SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', cast=int)
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
+SECURE_HSTS_PRELOAD = config('SECURE_HSTS_PRELOAD', default=True, cast=bool)
 
 
 
@@ -191,31 +184,31 @@ def verified_callback(user):
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_VERIFIED_CALLBACK = verified_callback
-EMAIL_FROM_ADDRESS = os.environ.get('EMAIL_FROM_ADDRESS')
-EMAIL_MAIL_SUBJECT = os.environ.get('EMAIL_MAIL_SUBJECT')
-EMAIL_MAIL_HTML = os.environ.get('EMAIL_MAIL_HTML')
-EMAIL_MAIL_PLAIN = os.environ.get('EMAIL_MAIL_PLAIN')
-EMAIL_TOKEN_LIFE = os.environ.get('EMAIL_TOKEN_LIFE')
-EMAIL_PAGE_TEMPLATE = os.environ.get('EMAIL_PAGE_TEMPLATE')
-EMAIL_PAGE_DOMAIN = os.environ.get('EMAIL_PAGE_DOMAIN')
-EMAIL_MULTI_USER = True
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_PORT = os.environ.get('EMAIL_PORT')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
+EMAIL_FROM_ADDRESS = config('EMAIL_FROM_ADDRESS')
+EMAIL_MAIL_SUBJECT = config('EMAIL_MAIL_SUBJECT')
+EMAIL_MAIL_HTML = config('EMAIL_MAIL_HTML')
+EMAIL_MAIL_PLAIN = config('EMAIL_MAIL_PLAIN')
+EMAIL_TOKEN_LIFE = config('EMAIL_TOKEN_LIFE', cast=int)
+EMAIL_PAGE_TEMPLATE = config('EMAIL_PAGE_TEMPLATE')
+EMAIL_PAGE_DOMAIN = config('EMAIL_PAGE_DOMAIN')
+EMAIL_MULTI_USER = config('EMAIL_MULTI_USER', default=True, cast=bool)
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
 
 if not DEBUG:
 
     # ========= AWS CONFIG ==============
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_FILE_OVERWRITE = False
+    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_FILE_OVERWRITE = config('AWS_S3_FILE_OVERWRITE', default=False, cast=bool)
     AWS_DEFAULT_ACL = None
-    DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE')
-    STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE')
-    AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
-    AWS_S3_SIGNATURE_VERSION = os.environ.get('AWS_S3_SIGNATURE_VERSION')
-    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
+    DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
+    STATICFILES_STORAGE = config('STATICFILES_STORAGE')
+    AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+    AWS_S3_SIGNATURE_VERSION = config('AWS_S3_SIGNATURE_VERSION')
+    AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
