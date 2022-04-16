@@ -202,7 +202,7 @@
             <img src="{{blog.image.url}}" alt="blog-img">
             <h4>{{blog.title}}</h4>
             <p>{{blog.gist|safe}}</p><br>
-            <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by
+            <span>{{blog.updated_at|date:"M d, Y"}} {{blog.updated_at|time:"h:i A"}} by
               {{blog.user.first_name}}</span><br>
             <span>Total Views: {{blog.total_views}}</span>
           </a>
