@@ -1,5 +1,6 @@
 from email import message
 from multiprocessing import context
+from traceback import print_tb
 from urllib import response
 from django import views
 from django.conf import settings
@@ -15,6 +16,7 @@ from datetime import datetime, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import boto3
 from django.db.models import Count, Max
+import requests
 
 if not settings.DEBUG:
     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
@@ -207,12 +209,26 @@ def contact(request):
     context.update(co)
     context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+    context['recaptcha_site_key'] = settings.GOOGLE_RECAPTCHA_SITE_KEY
+
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        desc = request.POST['desc']
-        con = Contact(name=name, email=email, desc=desc)
-        con.save()
+        recaptcha_response = request.POST.get('gReCaptcha')
+        recaptchaData = {
+        'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=recaptchaData)
+        result = r.json()
+        if result['success']:
+            name = request.POST['name']
+            email = request.POST['email']
+            desc = request.POST['desc']
+            con = Contact(name=name, email=email, desc=desc)
+            con.save()
+            messages.success(request, 'Thank you for reaching out \<b>'+ name +'</b>. I\'ll surely get back to you!')
+        else:
+            alert = result['error-codes'][0]
+            messages.warning(request, f'Captcha Error: {alert}')
 
     return render(request, 'contact.html', context)
 

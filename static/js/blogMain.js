@@ -270,6 +270,67 @@ function deleteComment(event){
 }
 
 
+function blogContact(){
+    var name  = document.getElementById('name').value
+    var email = document.getElementById('email').value
+    var desc = document.getElementById('desc').value
+    var gReCaptcha = document.getElementById('g-recaptcha-response').value
+    var csrf = document.getElementById('csrf').value
+
+    var text;
+  
+    if (name == "" || name.length < 5) {
+      text = "Please enter a valid name!";
+      warningText.innerHTML = text;
+      var bsAlert = new bootstrap.Toast(warningAlert);
+      bsAlert.show();
+      return false;
+    }
+  
+    if (
+      email == "" ||
+      email.indexOf("@") == -1 ||
+      email.length < 6
+    ) {
+      text = "Please enter a valid email address!";
+      warningText.innerHTML = text;
+      var bsAlert = new bootstrap.Toast(warningAlert);
+      bsAlert.show();
+      return false;
+    }
+  
+    if (desc == "" || desc.length <= 10) {
+      text = "Some more information would be better!";
+      warningText.innerHTML = text;
+      var bsAlert = new bootstrap.Toast(warningAlert);
+      bsAlert.show();
+      return false;
+    } else {
+      $.ajax({
+        type: 'POST',
+        url: '',
+        data: {
+          name : name,
+          email : email,
+          desc : desc,
+          gReCaptcha : gReCaptcha
+        },
+        headers : {
+        'X-CSRFToken' : csrf,
+      },
+        success: function(data){
+          // text = 'Thank you for reaching out \<b>'+ name +'</b>. I\'ll surely get back to you!';
+          // successText.innerHTML = text;
+          // var bsAlert = new bootstrap.Toast(successAlert);
+          // bsAlert.show();
+          document.getElementById("contact-form").reset(); 
+        
+        }
+      });
+    }
+
+}
+
 
   $('ul.checklist-select li').click(function() {
       var selectID = $(this).attr('id');
