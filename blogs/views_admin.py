@@ -95,7 +95,7 @@ def admin_messages(request):
         context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
-        allMessages = Contact.objects.all()
+        allMessages = Contact.objects.all().order_by('contacted_on')
         context['allMessages'] = allMessages
         # pendingMessageList = Contact.objects.filter(is_viewed = False).count()
         
