@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django_email_verification import urls as email_urls  # include the urls
+from decouple import config
 
 urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
-    path('secret/', admin.site.urls),
+    path(f'{config("ADMIN_URL")}/', admin.site.urls),
     path('portfolio/', include('portfolio.urls')),
     path('', include('blogs.urls')),
     path('email/', include(email_urls)), 
