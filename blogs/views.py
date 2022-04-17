@@ -1,21 +1,14 @@
-from email import message
-from multiprocessing import context
-from traceback import print_tb
-from urllib import response
-from django import views
 from django.conf import settings
 from django.shortcuts import redirect, render, HttpResponse
 from .models import ViewsModel, Contact
 from .forms import *
 from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib import messages
-from django.db.models import F
 from .helpers import get_ip
 import os
-from datetime import datetime, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import boto3
-from django.db.models import Count, Max
+from django.db.models import Count
 import requests
 
 if not settings.DEBUG:
@@ -33,11 +26,6 @@ def cookieConsent(request):
 # Create your views here.
 def homepage(request):
     context = {}
-
-    ip = get_ip(request)
-
-    if not ViewsModel.objects.filter(total_visits = ip).exists():
-        ViewsModel.objects.create(total_visits = ip)
         
     # get total unique visitor count
     visitor_count = ViewsModel.objects.all().count()
@@ -58,6 +46,10 @@ def homepage(request):
         context['CONSENT'] = 'True'
     else:
         context['CONSENT'] = 'False'
+
+    if not 'CONSENT' in request.COOKIES:
+        ip = get_ip(request)
+        ViewsModel.objects.create(total_visits = ip)
 
     # if request.method == 'POST':
     #     response = render(request, 'homepage.html', context)

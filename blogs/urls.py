@@ -30,7 +30,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('adminView/', include('blogs.urls_admin')),
-    path('userProfile/<str:username>', views.user_profile, name='user-profile')    ,
+    path('userProfile/<str:username>', views.user_profile, name='user-profile'),
     path('subscribe/', views.subscribe, name='subscribe')
 ]
 
