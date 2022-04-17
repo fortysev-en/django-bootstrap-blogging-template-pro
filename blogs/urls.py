@@ -29,6 +29,8 @@ urlpatterns = [
     path('deleteComment/<id>', views.comment_delete, name='delete-comment'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('privacyPolicy/', views.privacy_policy, name='privacy-policy'),
+    path('donatePage/', views.donate, name='donate'),
     path('adminView/', include('blogs.urls_admin')),
     path('userProfile/<str:username>', views.user_profile, name='user-profile'),
     path('subscribe/', views.subscribe, name='subscribe')

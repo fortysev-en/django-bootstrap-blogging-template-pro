@@ -49,7 +49,8 @@ def homepage(request):
 
     if not 'CONSENT' in request.COOKIES:
         ip = get_ip(request)
-        ViewsModel.objects.create(total_visits = ip)
+        if not ViewsModel.objects.filter(total_visits = ip).exists():
+            ViewsModel.objects.create(total_visits = ip)
 
     # if request.method == 'POST':
     #     response = render(request, 'homepage.html', context)
@@ -495,3 +496,9 @@ def subscribe(request):
             Subscription.objects.create(email = emailAddress)
 
     return HttpResponse()
+
+def privacy_policy(request):
+    return render(request, 'privacy-policy.html')
+
+def donate(request):
+    return render(request, 'donate.html')

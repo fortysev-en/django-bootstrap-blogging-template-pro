@@ -6,10 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% block metadescription %}
-  <meta name="description" content="This site provide something...">
-  {% endblock %}
-
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'styles/blog-styles.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}" />
@@ -213,7 +209,7 @@
         more information.
       </p>
       <div class="cookieBtns">
-        <a href="">more information</a>
+        <a href="{% url 'blogs:privacy-policy' %}">more information</a>
         <button onclick="cookieAcceptance()" id="gdpr-cookie-accept" type="button">Got it!</button>
       </div>
     </div>
@@ -272,8 +268,8 @@
         <ul>
           <li><a href="{% url 'blogs:about' %}">ABOUT</a></li>
           <li><a href="{% url 'blogs:contact' %}">CONTACT</a></li>
-          <li><a href="">LEGAL</a></li>
-          <li><a href="">PRIVACY POLICY</a></li>
+          <li><a href="{% url 'blogs:privacy-policy' %}">LEGAL</a></li>
+          <li><a href="{% url 'blogs:donate' %}">DONATE</a></li>
         </ul>
       </div>
 

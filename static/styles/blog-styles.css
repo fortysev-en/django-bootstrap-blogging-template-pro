@@ -230,6 +230,65 @@ html {
   }
 
 
+/* ============================== Privacy Policy ============================== */
+
+.privacyRow .privacyHead{
+	position: relative;
+	margin-top: 8em;
+	text-align: center;
+}
+
+.privacyRow{
+	color: #e0e0e0;
+	font-size: 1.1em;
+}
+
+.privacyRow .privacyCol{
+	margin-top: 5em;
+}
+
+.privacyRow .privacyHeadings{
+	color: #F50057;
+}
+
+.tableOfContents {
+	margin-top: 30px;
+}
+
+.tableOfContents ul{
+	list-style: none;
+	line-height: 2em;
+}
+
+.privacyRow a{
+	text-decoration: none;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.privacyRow a:hover{
+	color: #F50057;
+}
+
+.points{
+	margin-top: 5em;
+}
+
+.points h3{
+	margin-bottom: 20px;
+	color: #F50057;
+}
+
+.points p, .points ul{
+	padding-left: 30px;
+	color: #b9b9b9;
+}
+
+.points em{
+	font-weight: 500;
+	color: white;
+}
+
 /* ============================== About ============================== */
 .about-row{
 	text-align: center;
@@ -267,6 +326,20 @@ html {
 	padding-left: 0px;
 	color: #F50057;
 }
+
+/* ============================== Donate ============================== */
+.donateRow h1{
+	margin-top: 5em;
+	color: white;
+	text-align: center;
+}
+
+.donateRow p{
+	margin-top: 2em;
+	color: white;
+	text-align: center;
+}
+
 
 /* ============================== Contact ============================== */
 
@@ -1645,7 +1718,7 @@ input:focus {
 .add-blog-row .fr-element {
 	color: white !important;
 	background-color: #232323;
-	height: 40vh;
+	height: 50vh;
 }
 
 #fr-logo{
