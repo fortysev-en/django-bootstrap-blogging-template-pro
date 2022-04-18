@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<title>{% block title %} Donation Page {% endblock %}</title>
+
+{% load static %}
+{% block start %}
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<link rel="stylesheet" href="{% static 'styles/prism.css' %}">
+<div class="container">
+    <div class="row donateRow">
+        <div class="col-lg-12">
+            <h1>DONATION PAGE</h1>
+            <p>Since you're already here, I Thank You for your support. You're one of those people who encourage me to work harder and keep going in the right direction.</p>
+        </div>
+    </div>
+    <div class="row donateRow2">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="donateDiv">
+                <img src="{% static 'img/blog-assests/btc-btc.svg' %}" alt="btc-address">
+                <h1>BTC</h1>
+                <p><pre class="language-python"><code>17FhPFfDExrh3JNWhQJgTesE8NGphJH8ci</code></pre></p>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+{% endblock %}

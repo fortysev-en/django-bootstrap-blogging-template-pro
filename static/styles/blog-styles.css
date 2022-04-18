@@ -328,6 +328,7 @@ html {
 }
 
 /* ============================== Donate ============================== */
+
 .donateRow h1{
 	margin-top: 5em;
 	color: white;
@@ -338,6 +339,20 @@ html {
 	margin-top: 2em;
 	color: white;
 	text-align: center;
+}
+
+.donateRow2{
+	height: 50vh;
+}
+
+.donateDiv{
+	margin-top: 50px;
+	color: #FF9704;
+	text-align: center;
+}
+
+.donateDiv h1{
+	padding: 20px;
 }
 
 
