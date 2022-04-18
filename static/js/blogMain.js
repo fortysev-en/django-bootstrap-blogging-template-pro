@@ -438,7 +438,6 @@ function delBlog(blog_id){
     });
 }
 
-
 function cookieAcceptance(){
   $.ajax({
     url: "/cookieAcceptance/",
@@ -447,7 +446,6 @@ function cookieAcceptance(){
     }
   });
 }
-
 
 function disableUser(user_id){
   var id = user_id.split('-')[1]
@@ -575,7 +573,6 @@ function subscribe(){
     }
 });
 }
-
 
 function markMsg(message_id){
   var id = message_id.split('-')[1]

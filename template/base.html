@@ -6,6 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {% block metadescription %}
+  <meta name="description" content="TheFortyseven is the free blogging website mostly related software and tool development in the field of security and much more.">
+  {% endblock %}
+  
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'styles/blog-styles.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}" />

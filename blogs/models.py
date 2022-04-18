@@ -39,6 +39,7 @@ class Blog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     is_approved = models.BooleanField(default=False)
+    is_ready_for_review = models.BooleanField(default=False)
     approved_at = models.CharField(max_length=255, null=True, blank=True)
     approved_by = models.CharField(max_length=255, null=True, blank=True)
 

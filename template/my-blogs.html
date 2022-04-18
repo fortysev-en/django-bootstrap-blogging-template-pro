@@ -6,7 +6,7 @@
 <title>{% block title %} My Blogs {% endblock %}</title>
 
 <div class="container my-blogs-container">
-  <div class="row my-blogs-head-row">
+  <!-- <div class="row my-blogs-head-row">
     <div class="col-lg-12 my-blogs-head">
         <h1>MY BLOGS</h1>
         <h6>You can Update or Delete your blogs from here.</h6>
@@ -43,7 +43,84 @@
         </tbody>
       </table>
     </div>
+  </div> -->
+
+  <div class="row myBlogsRow">
+    <h1>MY BLOGS</h1>
+    <h6>You can manage your blogs from this page. REMEMBER, once a blog is deleted, it cannot be recovered.</h6>
+
+    <div class="row">
+      <div class="myBlogsList">
+        <h3>APPROVED BLOGS</h3>
+        {% for blog in blogs_obj %}
+        {% if blog.is_approved == True %}
+        <div class="col-lg-3 col-md-6 col-10 indBlog">
+          <div class="blog-content approvedBlogs">
+            <a href="{% url 'blogs:blog-update' blog.pk %}">
+              <img src="{{blog.image.url}}" alt="blog-img">
+              <h4>{{blog.title}}</h4>
+              <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</span><br>
+              <span>Is Approved: {{blog.is_approved}}</span><br>
+              <span>Total Views: {{blog.total_views}}</span>
+            </a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="myBlogsList">
+        <h3>NOT SENT FOR REVIEW</h3>
+        {% for blog in blogs_obj %}
+        {% if blog.is_ready_for_review == False and blog.is_approved == False %}
+        <div class="col-lg-3 col-md-6 col-10 indBlog">
+          <div class="blog-content notReviwedBlog">
+            <a href="{% url 'blogs:blog-update' blog.pk %}">
+              <img src="{{blog.image.url}}" alt="blog-img">
+              <h4>{{blog.title}}</h4>
+              <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</span><br>
+              <span>Is Approved: {{blog.is_approved}}</span><br>
+              <span>Total Views: {{blog.total_views}}</span>
+            </a>
+            <span class="approve-btn"><a href="{% url 'blogs:send-for-review' blog.pk %}">SEND FOR A REVIEW</a></span>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="myBlogsList">
+        <h3>PENDING REVIEW</h3>
+        {% for blog in blogs_obj %}
+        {% if blog.is_ready_for_review == True and blog.is_approved == False %}
+        <div class="col-lg-3 col-md-6 col-10 indBlog">
+          <div class="blog-content approvalPending">
+            <a href="{% url 'blogs:blog-update' blog.pk %}">
+              <img src="{{blog.image.url}}" alt="blog-img">
+              <h4>{{blog.title}}</h4>
+              <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}}</span><br>
+              <span>Is Approved: {{blog.is_approved}}</span><br>
+              <span>Total Views: {{blog.total_views}}</span>
+            </a>
+            {% if blog.is_ready_for_review == True %}
+            <span class="approve-btn"><a href="{% url 'blogs:send-for-review' blog.pk %}">WITHDRAW FROM A REVIEW</a></span>
+            {% else %}
+            <span class="approve-btn"><a href="{% url 'blogs:send-for-review' blog.pk %}">SEND FOR A REVIEW</a></span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
+
 </div>
 
 

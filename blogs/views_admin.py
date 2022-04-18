@@ -41,12 +41,12 @@ def resend_verification(request, pk):
 def review_blog(request):
     context = {}
     if request.user.is_superuser:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
-        approval_required = Blog.objects.filter(is_approved = False)
-        context['pending_approval'] = approval_required
-        # context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        readyForReview = Blog.objects.filter(is_ready_for_review = True)
+        context['readyForReview'] = readyForReview
+        # context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
  
         # page = request.GET.get('page', 1)
 
@@ -66,7 +66,7 @@ def user_manage(request):
     context = {}
 
     if request.user.is_superuser:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
         usersList = User.objects.all().order_by('-date_joined')
@@ -92,7 +92,7 @@ def admin_messages(request):
     context = {}
 
     if request.user.is_superuser:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
         allMessages = Contact.objects.all().order_by('contacted_on')
@@ -155,6 +155,7 @@ def delete_msg(request):
 def publish_blog(request, pk):
     blogForApproval = Blog.objects.get(id = pk)
     blogForApproval.is_approved = True
+    blogForApproval.is_ready_for_review = False
     blogForApproval.approved_at = datetime.now().strftime('%b %d, %Y %I:%M %p')
     blogForApproval.approved_by = str(request.user.first_name)
     blogForApproval.save()
@@ -166,7 +167,7 @@ def publish_blog(request, pk):
 def admin_panel(request):
     context = {}
     if request.user.is_superuser:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
         return render(request, 'admin-panel.html', context)
@@ -178,7 +179,7 @@ def user_subscriptions(request):
     context = {}
 
     if request.user.is_superuser:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
         allSubscriptions = Subscription.objects.all()

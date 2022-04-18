@@ -271,7 +271,7 @@ html {
 }
 
 .points{
-	margin-top: 5em;
+	padding-top: 5em;
 }
 
 .points h3{
@@ -1708,7 +1708,7 @@ input:focus {
 }
 
 .add-blog-row .fr-toolbar {
-	background-color: #999999;
+	background-color: #e0e0e0;
 }
 
 .add-blog-row .fr-second-toolbar {
@@ -1716,8 +1716,8 @@ input:focus {
 }
 
 .add-blog-row .fr-element {
-	color: white !important;
-	background-color: #232323;
+	/* color: white !important; */
+	background-color: #1B1A17;
 	height: 50vh;
 }
 
@@ -1742,6 +1742,7 @@ input:focus {
 
 .btn-create button{
 	margin-top: 50px;
+	width: 200px;
 	color: #000;
 	font-size: 0.8em;
 	background-color: #00BFA6;
@@ -2136,7 +2137,38 @@ input:focus {
 
 /* ============================== My Blogs ============================== */
 
-.my-blogs-container th,
+.myBlogsRow h1{
+	margin-top: 2em;
+	text-align: center;
+	color: white;
+}
+
+.myBlogsRow h6{
+	text-align: center;
+	color: #F50057;
+}
+
+.indBlog{
+	padding: 15px;
+	display: inline-block;
+}
+
+.myBlogsRow .myBlogsList h3{
+	margin-top: 3em;
+	text-align: right;
+	color: white;
+}
+
+.notReviwedBlog{
+	border-color: #F50057;
+}
+.approvedBlogs{
+	border-color: #00BFA6;
+}
+.approvalPending{
+	border-color: #FF9704;
+}
+/* .my-blogs-container th,
 td {
 	z-index: 9;
 	color: white;
@@ -2188,13 +2220,7 @@ td {
 
 .table-row:hover {
 	background-color: #00BFA6;
-}
-
-
-/* .see-blogs-row a:hover{
-    color: #F50057;
 } */
-
 
 /* ============================== All Blogs Page ============================== */
 

@@ -31,7 +31,7 @@ def homepage(request):
     visitor_count = ViewsModel.objects.all().count()
 
     context['visitorCount'] = visitor_count
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     mostViewedBlogs = Blog.objects.annotate(vi=Count('views')).order_by("-vi")
@@ -100,7 +100,7 @@ def login(request):
 def my_profile(request):
     context = {}
 
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     userCommentData = BlogComment.objects.filter(user = request.user).all()
@@ -192,7 +192,7 @@ def about(request):
     context = {}
     co = cookieConsent(request)
     context.update(co)
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
     return render(request, 'about.html', context)
 
@@ -200,7 +200,7 @@ def contact(request):
     context = {}
     co = cookieConsent(request)
     context.update(co)
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
     context['recaptcha_site_key'] = settings.GOOGLE_RECAPTCHA_SITE_KEY
 
@@ -236,7 +236,7 @@ def blog_detail(request, slug):
     context.update(co)
     ip = get_ip(request)
 
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     try:
@@ -265,7 +265,7 @@ def add_blog(request):
     if not (request.user.is_authenticated and request.user.is_staff):
             return redirect('/')
     else:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
 
@@ -284,7 +284,7 @@ def add_blog(request):
 
                 Blog.objects.create(user = user, title = title, gist = gist, content = content, image=image)
                 
-                messages.success(request, f"Blog Added Successfully, Pending Review!")
+                messages.success(request, f"Blog Saved Successfully, NOT sent for a review!")
                 return redirect('/myBlogs/')
 
         except Exception as e:
@@ -297,12 +297,9 @@ def blog_update(request, pk):
     if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
         
-        # if not settings.DEBUG:
-        #     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
-
         try:
             blog_obj = Blog.objects.get(id = pk)
         
@@ -316,20 +313,8 @@ def blog_update(request, pk):
                     form = BlogForms(request.POST)
                     blog_obj.title = request.POST.get('title')
                     blog_obj.gist =  request.POST.get('gist')
-
-                    # if not len(request.FILES['image']) == 0:
-                    #     blog_obj.image = request.FILES['image']
-                    #     os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
-
                     img = request.FILES.get('image')
-                    if not img is None:
-                        # os.remove(os.path.join(settings.MEDIA_ROOT, old_img))
-                        # try:
-                        #     s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
-                        #     blog_obj.image = request.FILES['image']
-                        # except:
-                        #     messages.warning(request, f"Unable to update blog picture!")
-                        
+                    if not img is None:               
                         if not settings.DEBUG:
                             try:
                                 s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{old_img}')
@@ -347,10 +332,11 @@ def blog_update(request, pk):
                     if form.is_valid():
                         blog_obj.content = form.cleaned_data['content']
 
+                    blog_obj.is_ready_for_review = True
                     blog_obj.is_approved = False
                     blog_obj.save()
 
-                    messages.success(request, f"Blog Updated Successfully, Pending Review!")
+                    messages.success(request, f"Blog Updated Successfully, NOT sent for a review!")
                     return redirect('/myBlogs/')
                 
                 context['blog_obj'] = blog_obj
@@ -397,7 +383,7 @@ def my_blogs(request):
     if not (request.user.is_authenticated and request.user.is_staff):
         return redirect('/')
     else:
-        context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
         context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
         try:
@@ -424,7 +410,7 @@ def signup(request):
 def search(request):
     context = {}
 
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     if request.GET.get('search'):
@@ -465,7 +451,7 @@ def comment_delete(request, id):
 
 def user_profile(request, username):
     context = {}
-    context['pendingReviewCount'] = Blog.objects.filter(is_approved = False).count()
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
     context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
 
     usr = User.objects.get(username = username)
@@ -502,3 +488,15 @@ def privacy_policy(request):
 
 def donate(request):
     return render(request, 'donate.html')
+
+def send_for_review(request, pk):
+    blogForReview = Blog.objects.get(id = pk)
+    if blogForReview.is_ready_for_review == False:
+        blogForReview.is_ready_for_review = True
+        messages.success(request, 'Blog Sent for a Review!')
+    else:
+        blogForReview.is_ready_for_review = False
+        messages.success(request, 'Blog Withdrawn form a Review!')
+    blogForReview.save()
+    
+    return redirect('/myBlogs/')
