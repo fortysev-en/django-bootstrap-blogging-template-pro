@@ -65,7 +65,7 @@ def cookie_acceptance(request):
     if 'CONSENT' in request.COOKIES:
         print('available')
     else:
-        response.set_cookie('CONSENT', 'True')
+        response.set_cookie('CONSENT', 'True', max_age=31556926)
         return response
 
     return HttpResponse()
