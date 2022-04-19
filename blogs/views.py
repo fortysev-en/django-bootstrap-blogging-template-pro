@@ -332,7 +332,7 @@ def blog_update(request, pk):
                     if form.is_valid():
                         blog_obj.content = form.cleaned_data['content']
 
-                    blog_obj.is_ready_for_review = True
+                    blog_obj.is_ready_for_review = False
                     blog_obj.is_approved = False
                     blog_obj.save()
 
@@ -500,3 +500,15 @@ def send_for_review(request, pk):
     blogForReview.save()
     
     return redirect('/myBlogs/')
+
+
+def preview_blog(request, pk):
+    context = {}
+
+    context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
+    context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+    blog_obj = Blog.objects.get(pk = pk)
+    context['blogs_obj'] = blog_obj
+
+    return render(request, 'preview-blog.html', context)

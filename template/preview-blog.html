@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title>{% block title %} {{blogs_obj.title}} {% endblock %}</title>
+
+{% block metadescription %}
+<meta name="description" content="{{blogs_obj.gist|truncatechars:120}}">
+{% endblock %}
+
+{% block start %}
+
+<link rel="stylesheet" href="{% static 'styles/prism.css' %}">
+
+<div class="preview">
+    <h3>PREVIEW</h3>
+</div>
+
+<section>
+    <div class="container indBlog-container">
+        <div class="row editRow">
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5" src="{{blogs_obj.image.url}}" alt="blog-img"></div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 mx-auto">
+                <div class="text-heading">
+                    <h2>{{blogs_obj.title|safe}}</h2>
+                </div>
+                <div class="auth-details">
+                    <p>Posted on <span>{{blogs_obj.created_at|date:"M d, Y"}} {{blogs_obj.created_at|time:"h:i A"}}</span> by <span>{{blogs_obj.user.first_name}}</span></p>
+                    <p>Approved at APPROVAL_TIME by APPROVED_BY</p>
+                    <p>Total Views: TOTAL_VIEWS</p>
+                </div>
+                <div class="text-content">
+                    {{blogs_obj.content|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/prism.js' %}"></script>
+
+{% endblock %}

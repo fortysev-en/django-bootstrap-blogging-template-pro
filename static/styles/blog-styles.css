@@ -893,6 +893,51 @@ input:focus {
 	border-color: #fff;
 }
 
+.blog-content .btnList{
+	display: flex;
+	justify-content: space-between;
+	/* padding: 5px; */
+	margin-top: 10px;
+	text-align: center;
+}
+
+.blog-content .btnList a, .blog-content .btnList button{
+	text-decoration: none;
+	background: none;
+	color: white;
+	border: 1px solid #999999;
+	/* padding:  5px 15px 5px 15px; */
+	width: 5.5em;
+	font-weight: 500;
+	font-size: 0.9em;
+	transition: all 0.3s ease;
+}
+
+.blog-content .btnList a:hover{
+	color: #000;
+	background-color: white;
+}
+
+.blog-content .btnList button:hover{
+	color: #000;
+	background-color: white;
+}
+
+.preview{
+	padding: 10px;
+	background-color: #FF9704;
+	color: white;
+	position: fixed;
+	top: 6%;
+	right: 20px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.preview h3{
+	padding: 5px 20px 5px 20px;
+}
+
 .usrSearchResult{
 	text-align: center !important;
 }

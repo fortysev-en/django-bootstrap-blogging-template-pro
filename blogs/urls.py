@@ -24,6 +24,7 @@ urlpatterns = [
     path('blogDelete/<id>', views.blog_delete, name='blog-delete'),
     path('blogUpdate/<int:pk>', views.blog_update, name='blog-update'),
     path('sendForReview/<int:pk>', views.send_for_review, name='send-for-review'),
+    path('previewBlog/<int:pk>', views.preview_blog, name='preview-blog'),
     path('logout-view/', views.logout_view, name='logout-view'),
     path('api/', include('blogs.urls_api')),
     path('search/', views.search, name='search-page'),
