@@ -358,8 +358,6 @@ $(document).ready( function () {
 
   let data = xmlHttp.responseText;
   let dataJSON = JSON.parse(data);
-  console.log(dataJSON.content);
-  console.log(dataJSON.author);
 
   document.getElementById('quoteOne').innerHTML = dataJSON.content
   document.getElementById('quoteOneAuthor').innerHTML = dataJSON.author
@@ -372,8 +370,6 @@ $(document).ready( function () {
 
   let data = xmlHttp.responseText;
   let dataJSON = JSON.parse(data);
-  console.log(dataJSON.content);
-  console.log(dataJSON.author);
 
   document.getElementById('quoteTwo').innerHTML = dataJSON.content
   document.getElementById('quoteTwoAuthor').innerHTML = dataJSON.author
@@ -386,8 +382,6 @@ $(document).ready( function () {
 
   let data = xmlHttp.responseText;
   let dataJSON = JSON.parse(data);
-  console.log(dataJSON.content);
-  console.log(dataJSON.author);
 
   document.getElementById('quoteThree').innerHTML = dataJSON.content
   document.getElementById('quoteThreeAuthor').innerHTML = dataJSON.author
@@ -432,7 +426,7 @@ function delBlog(blog_id){
       url: "/blogDelete/"+id,
       success : function(json) {
         $('.confirmation').removeClass('toggle-confirmation');
-        $( "#my-blogs-row" ).load(" #my-blogs-row" );
+        $( ".myBlogsList" ).load(" .myBlogsList" );
       }
   })
     });

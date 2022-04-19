@@ -2213,10 +2213,11 @@ input:focus {
 	display: inline-block;
 }
 
-.myBlogsList{
-	height: 600px;
-	overflow-x: scroll;
-}
+/* .scrollx{
+	display: flex;
+	overflow-x: auto;
+	height: 450px;
+} */
 
 .myBlogsRow .myBlogsList h3{
 	margin-top: 3em;
@@ -2233,7 +2234,7 @@ input:focus {
 .approvalPending{
 	border-color: #FF9704;
 }
-/* .my-blogs-container th,
+.my-blogs-container th,
 td {
 	z-index: 9;
 	color: white;
@@ -2285,7 +2286,7 @@ td {
 
 .table-row:hover {
 	background-color: #00BFA6;
-} */
+}
 
 /* ============================== All Blogs Page ============================== */
 
