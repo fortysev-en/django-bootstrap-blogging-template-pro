@@ -2213,6 +2213,11 @@ input:focus {
 	display: inline-block;
 }
 
+.myBlogsList{
+	height: 600px;
+	overflow-x: scroll;
+}
+
 .myBlogsRow .myBlogsList h3{
 	margin-top: 3em;
 	text-align: right;
@@ -2780,6 +2785,10 @@ footer {
 	#gdpr-cookie-message button {
 		width: 6em;
 	  }
+	
+	.myBlogsRow .myBlogsList{
+		text-align: center;
+	}
 }
 
 @media only screen and (min-width: 580px) and (max-width: 1200px) {
