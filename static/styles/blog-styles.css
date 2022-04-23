@@ -2292,7 +2292,6 @@ td {
 /* ============================== Password Reset ============================== */
 
 .pwdReset{
-	height: 100vh;
 	text-align: center;
 }
 
@@ -2301,12 +2300,11 @@ td {
 }
 
 .pwdReset p{
-	margin: 50px;
+	margin: 25px;
 	color: white;
 }
 
 .pwdReset img{
-	width: 100%;
 	margin-top: 12em;
 	margin-bottom: 4em;
 }
@@ -2340,6 +2338,17 @@ td {
 .pwdReset i {
 	margin-left: 5px;
 }
+
+.pwdReset ul{
+	margin: 25px;
+	text-align: left;
+	color: white;
+}
+
+.pwdReset li{
+	padding-left: 12px;
+}
+
 
 /* ============================== All Blogs Page ============================== */
 
