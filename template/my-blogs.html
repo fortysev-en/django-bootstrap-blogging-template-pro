@@ -48,13 +48,12 @@
   <div class="row myBlogsRow">
     <h1>MY BLOGS</h1>
     <h6>You can manage your blogs from this page. REMEMBER, once a blog is deleted, it cannot be recovered.</h6>
-
       <div class="myBlogsList">
+        {% if approvedBlogs|length > 0 %}
         <h3>APPROVED BLOGS</h3>
         <div class="scrollx">
-
-        {% for blog in blogs_obj %}
-        {% if blog.is_approved == True %}
+        {% for blog in approvedBlogs %}
+        <!-- {% if blog.is_approved == True %} -->
         <div class="col-lg-3 col-md-6 col-10 indBlog">
           <div class="blog-content approvedBlogs">
               <img src="{{blog.image.url}}" alt="blog-img">
@@ -69,17 +68,19 @@
             </div>
           </div>
         </div>
-        {% endif %}
+        <!-- {% endif %} -->
         {% endfor %}
         </div>
+        {% endif %}
       </div>
 
 
       <div class="myBlogsList">
+        {% if notSentForApproval|length > 0 %}
         <h3>NOT SENT FOR REVIEW</h3>
         <div class="scrollx">
-        {% for blog in blogs_obj %}
-        {% if blog.is_ready_for_review == False and blog.is_approved == False %}
+        {% for blog in notSentForApproval %}
+        <!-- {% if blog.is_ready_for_review == False and blog.is_approved == False %} -->
         <div class="col-lg-3 col-md-6 col-10 indBlog">
           <div class="blog-content notReviwedBlog">
               <img src="{{blog.image.url}}" alt="blog-img">
@@ -95,17 +96,18 @@
             <span class="approve-btn"><a href="{% url 'blogs:send-for-review' blog.pk %}">SEND FOR A REVIEW</a></span>
           </div>
         </div>
-        {% endif %}
+        <!-- {% endif %} -->
         {% endfor %}
         </div>
+        {% endif %}
       </div>
 
       <div class="myBlogsList">
+        {% if pendingReview|length > 0 %}
         <h3>PENDING REVIEW</h3>
         <div class="scrollx">
-
-        {% for blog in blogs_obj %}
-        {% if blog.is_ready_for_review == True and blog.is_approved == False %}
+        {% for blog in pendingReview %}
+        <!-- {% if blog.is_ready_for_review == True and blog.is_approved == False %} -->
         <div class="col-lg-3 col-md-6 col-10 indBlog">
           <div class="blog-content approvalPending">
               <img src="{{blog.image.url}}" alt="blog-img">
@@ -125,13 +127,12 @@
             {% endif %}
           </div>
         </div>
-        {% endif %}
+        <!-- {% endif %} -->
         {% endfor %}
         </div>
+        {% endif %}
       </div>
-
   </div>
-
 </div>
 
 

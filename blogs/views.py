@@ -388,7 +388,10 @@ def my_blogs(request):
 
         try:
             blog_objs = Blog.objects.filter(user = request.user)
-            context['blogs_obj'] = blog_objs
+            context['approvedBlogs'] = blog_objs.filter(is_approved = True)
+            context['notSentForApproval'] = blog_objs.filter(is_ready_for_review = False).filter(is_approved = False)
+            context['pendingReview'] = blog_objs.filter(is_ready_for_review = True).filter(is_approved = False)
+            # context['blogs_obj'] = blog_objs
 
         except Exception as e:
             print(e)
