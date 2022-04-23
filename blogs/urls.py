@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
+from django.contrib.auth import views as auth_views
 
 app_name = 'blogs'
 
@@ -35,7 +36,24 @@ urlpatterns = [
     path('donatePage/', views.donate, name='donate'),
     path('adminView/', include('blogs.urls_admin')),
     path('userProfile/<str:username>', views.user_profile, name='user-profile'),
-    path('subscribe/', views.subscribe, name='subscribe')
+    path('subscribe/', views.subscribe, name='subscribe'),
+
+    path('reset_password/',
+     auth_views.PasswordResetView.as_view(template_name="pwd_reset/password_reset.html"),
+     name="reset_password"),
+
+    path('reset/<uidb64>/<token>/',
+     auth_views.PasswordResetConfirmView.as_view(template_name="pwd_reset/password_reset_form.html"), 
+     name="password_reset_confirm"),
+
+
+    path('password_reset/done/', 
+        auth_views.PasswordResetDoneView.as_view(template_name="pwd_reset/password_reset_sent.html"), 
+        name="password_reset_done"),
+
+    path('reset/done/', 
+        auth_views.PasswordResetCompleteView.as_view(template_name="pwd_reset/password_reset_done.html"), 
+        name="password_reset_complete"),
 ]
 
 if settings.DEBUG:

@@ -2289,6 +2289,58 @@ td {
 	background-color: #00BFA6;
 }
 
+/* ============================== Password Reset ============================== */
+
+.pwdReset{
+	height: 100vh;
+	text-align: center;
+}
+
+.pwdReset h3{
+	color: #00BFA6;
+}
+
+.pwdReset p{
+	margin: 50px;
+	color: white;
+}
+
+.pwdReset img{
+	width: 100%;
+	margin-top: 12em;
+	margin-bottom: 4em;
+}
+
+.pwdReset a {
+	text-decoration: none;
+	background-color: #000;
+	text-decoration: none;
+	font-size: 0.7em;
+	border: 2px solid #999999;
+	border-radius: 5px;
+	color: white;
+	font-weight: 600;
+	padding: 10px 18px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+.pwdReset a:hover {
+	border-color: #000;
+	color: white;
+}
+
+.pwdReset label{
+	display: none;
+}
+
+.pwdReset button{
+	margin: 20px;
+}
+
+.pwdReset i {
+	margin-left: 5px;
+}
+
 /* ============================== All Blogs Page ============================== */
 
 .allBlogsRow h1{
