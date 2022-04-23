@@ -26,10 +26,9 @@
               <td>{{message.name}}</td>
               <td>{{message.email}}</td>
               <td>{{message.desc|truncatechars:100}}</td>
-              <td><label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i
-                      class="bi bi-envelope-open"></i></button></label>
-                <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"><i
-                      class="bi bi-trash"></button></label>
+              <td>
+                <label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i class="bi bi-envelope-open"></i></button></label>
+                <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"><i class="bi bi-trash"></i></button></label>
               </td>
               {% else %}
             <tr class="table-row bg-ifNotRead">
@@ -37,10 +36,9 @@
               <td>{{message.name}}</td>
               <td>{{message.email}}</td>
               <td>{{message.desc|truncatechars:100}}</td>
-              <td><label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i
-                      class="bi bi-envelope"></i></button></label></label>
-                <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"><i
-                      class="bi bi-trash"></button></label>
+              <td>
+                <label><button id="markMsg-{{message.pk}}" onclick="markMsg(this.id)"><i class="bi bi-envelope"></i></button></label>
+                <label><button id="deleteMsg-{{message.pk}}" onclick="deleteMsg(this.id)"></button></label>
               </td>
             </tr>
               {% endif %}
