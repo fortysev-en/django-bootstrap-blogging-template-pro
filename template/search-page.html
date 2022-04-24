@@ -34,7 +34,11 @@
         {% for usr in searchUsers %}
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content usrSearchResult">
+                {% if request.user.is_superuser %}
+                <a href="{% url 'blogs:admin-user-profile' usr.username %}">
+                {% else %}
                 <a href="{% url 'blogs:user-profile' usr.username %}">
+                {% endif %}
                     {% if not usr.profile.profilePicture %}
                     <img src="{% static 'img/blog-assests/default-profile-img.svg' %}" alt="profile-pic">
                     {% else %}
