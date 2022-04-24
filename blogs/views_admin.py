@@ -88,7 +88,7 @@ def admin_user_profile(request, username):
                 userModel.save()
 
                 messages.success(request, f"Profile updated successfully!")
-                return render('/myProfile/')
+                return redirect(f'/adminView/adminUserProfile/{username}')
             
             elif request.POST.get("form_type") == 'formTabThree':
                 newPassword = request.POST.get('newPassword')
