@@ -51,7 +51,7 @@ def admin_user_profile(request, username):
         elif userModel.is_staff and not userModel.is_superuser:
             context['userState'] = 'Staff'
         else:
-            context['userState'] = 'Viwer'
+            context['userState'] = 'Viewer'
 
         if not settings.DEBUG:
             s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)

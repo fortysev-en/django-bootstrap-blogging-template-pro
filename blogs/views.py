@@ -117,7 +117,7 @@ def my_profile(request):
     elif request.user.is_staff and not request.user.is_superuser:
         context['userState'] = 'Staff'
     else:
-        context['userState'] = 'Viwer'
+        context['userState'] = 'Viewer'
 
     # if not settings.DEBUG:
     #     s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
