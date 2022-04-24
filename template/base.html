@@ -66,6 +66,26 @@
           </ul>
         </div> -->
 
+        {% if request.user.is_superuser and request.user.is_staff %}
+          <style>
+            .nav-contents .dropdown button{
+              border-color: #FF9704;
+            }
+          </style>
+        {% elif request.user.is_staff and not request.user.is_superuser %}
+        <style>
+          .nav-contents .dropdown button{
+            border-color: #00BFA6;
+          }
+        </style>
+        {% else %}
+        <style>
+          .nav-contents .dropdown button{
+            border-color: #999999;
+          }
+        </style>
+        {% endif %}
+
         <div class="col-lg-4 col-sm-4 nav-contents">
           {% if request.user.is_staff and request.user.is_superuser %}
           <a href="{% url 'blogs:admin-messages' %}"><i class="bi bi-chat-square-text"></i></a>
