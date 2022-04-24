@@ -295,10 +295,8 @@ html {
 }
 
 .about-row img{
-	width: 60%;
-	/* padding: 20px; */
-	margin: 50px;
-	text-align: center;
+	max-width: 100%;
+	margin-bottom: 2em;
 }
 
 .about-row .infoPara{
@@ -309,7 +307,11 @@ html {
 	padding:  0px 50px 0px 50px;
 }
 
-.about-row blockquote{
+.disclaimer{
+	padding: 0px 40px 0px 40px;
+}
+
+.disclaimer blockquote{
 	color: #F50057;
 }
 
@@ -324,7 +326,6 @@ html {
 .about-row .rightPara ul{
 	list-style: none;
 	padding-left: 0px;
-	color: #F50057;
 }
 
 /* ============================== Donate ============================== */
