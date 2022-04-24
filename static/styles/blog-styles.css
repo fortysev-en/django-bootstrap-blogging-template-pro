@@ -947,6 +947,10 @@ input:focus {
 	text-align: center !important;
 }
 
+.usrSearchResult img{
+	max-height: 250px !important;
+}
+
 .accordionContainer{
 	margin-top: 2in;
 	margin-bottom: 2in;
