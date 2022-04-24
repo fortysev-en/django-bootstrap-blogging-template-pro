@@ -118,19 +118,19 @@
               }
             </style>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item" href="{% url 'blogs:my-profile' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:my-profile' %}"><i class="bi bi-person-circle"></i> Profile</a></li>
               {% if request.user.is_staff and request.user.is_superuser %}
-              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
-              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
-              <li><a class="dropdown-item" href="{% url 'blogs:admin-panel' %}">Admin Panel</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}"><i class="bi bi-view-list"></i> My Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}"><i class="bi bi-plus-circle"></i> Add Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:admin-panel' %}"><i class="bi bi-shield-check"></i> Admin Panel</a></li>
               {% elif request.user.is_staff %}
-              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}">My Blogs</a></li>
-              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}">Add Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:my-blogs' %}"><i class="bi bi-view-list"></i> My Blogs</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:add-blog' %}"><i class="bi bi-plus-circle"></i> Add Blogs</a></li>
               {% endif %}
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="{% url 'blogs:logout-view' %}">Logout</a></li>
+              <li><a class="dropdown-item" href="{% url 'blogs:logout-view' %}"><i class="bi bi-box-arrow-in-right"></i> Logout</a></li>
             </ul>
           </div>
           {% else %}

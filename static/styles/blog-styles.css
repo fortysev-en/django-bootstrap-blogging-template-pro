@@ -124,6 +124,10 @@ html {
 	box-shadow: none;
 }
 
+.dropdown-menu i{
+	margin-right: 10px;
+}
+
 .dropdown-menu-dark{
 	background-color: #232323 !important;
 }
