@@ -182,9 +182,13 @@ SECURE_HSTS_PRELOAD = config('SECURE_HSTS_PRELOAD', default=True, cast=bool)
 def verified_callback(user):
     user.is_active = True
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_VERIFIED_CALLBACK = verified_callback
-EMAIL_FROM_ADDRESS = config('EMAIL_FROM_ADDRESS')
+
+EMAIL_FROM_ADDRESS = config('EMAIL_FROM_VERIFY')
+EMAIL_FROM_RESET = config('EMAIL_FROM_RESET')
+
+
 EMAIL_MAIL_SUBJECT = config('EMAIL_MAIL_SUBJECT')
 EMAIL_MAIL_HTML = config('EMAIL_MAIL_HTML')
 EMAIL_MAIL_PLAIN = config('EMAIL_MAIL_PLAIN')
@@ -200,7 +204,6 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
 
 if not DEBUG:
-
     # ========= AWS CONFIG ==============
     AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
