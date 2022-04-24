@@ -39,7 +39,7 @@ urlpatterns = [
     path('subscribe/', views.subscribe, name='subscribe'),
 
     path('reset_password/',
-     auth_views.PasswordResetView.as_view(template_name="pwd_reset/password_reset.html"),
+     auth_views.PasswordResetView.as_view(template_name="pwd_reset/password_reset.html", html_email_template_name="pwd_reset/reset_email.html", from_email=settings.EMAIL_FROM_RESET, subject_template_name="pwd_reset/email_subject.txt"),
      name="reset_password"),
 
     path('reset/<uidb64>/<token>/',
