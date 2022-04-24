@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block start %}
+{% load static %}
+
+<title>{% block title %} My Profile {% endblock %}</title>
+
+<style>
+    .accordion-item{
+        border: 1px solid #999999 !important;
+        margin-top: 20px;
+        background-color: none !important;
+    }
+    
+    
+    .accordion-button {
+        background-color: #232323 !important;
+        color: #e0e0e0 !important;
+        display: inline !important;
+    }
+    
+    .accordion-button i{
+        float: right;
+    }
+    
+    .accordion-body{
+        padding: 0.4rem 1.25rem !important;
+        background-color: #333;
+        color: #e0e0e0;
+        font-size: 0.8em;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .accordion-body p {
+        max-width: 80%;
+    }
+</style>
+
+<div class="container">
+    <div class="row" id="profilePageRow">
+        <div class="col-lg-4 profilePage-img">
+            {% if userModel.profile.profilePicture %}
+            <div class="center-cropped" style="background-image: url('{{userModel.profile.profilePicture.url}}');">
+            </div>
+            <div class="deleteProPic"><button onclick="deleteProPic()"><i class="bi bi-trash"></i></button></div>
+            {% else %}
+            <div class="center-cropped"></div>
+            {% endif %}
+        </div>
+        <style>
+            .center-cropped {
+                background-image: url("{% static 'img/blog-assests/default-profile-img.svg' %}");
+            }
+        </style>
+        <div class="col-lg-8 profilePage-summary">
+            {% if userModel.is_active %}
+            <h1>{{userModel.first_name}} {{userModel.last_name}} <i class="bi bi-patch-check verified"></i></h1>
+            {% else %}
+            <h1>{{userModel.first_name}} {{userModel.last_name}} <i
+                    class="bi bi-patch-exclamation notVerified"></i></h1>
+            {% endif %}
+            <div class="col-lg-2 summary-wid">
+                <h6>Total Messages</h6>
+                <span>{{userTotalComments}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Reaction Score</h6>
+                <span>200</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>User Type</h6>
+                <span>{{userState}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Joined Since</h6>
+                <span>{{userModel.date_joined|date:"M d, Y"}} {{userModel.date_joined|time:"h:i A"}}</span>
+            </div>
+            <div class="col-lg-2 summary-wid">
+                <h6>Last Login</h6>
+                <span>{{userModel.last_login|date:"M d, Y"}} {{userModel.last_login|time:"h:i A"}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container profileUserData-container">
+    <div class="row profileUserData-row">
+        <div class="col-lg-4 profileLeftPanel">
+            <div class="panel">
+                <ul class="checklist-select" role="tablist">
+                    <li id="tab1" class="active" role="tab" aria-controls="panel1" aria-selected="true"><i
+                            class="bi bi-person-video"></i> Profile</li>
+                    <!-- <li id="tab2" role="tab" aria-controls="panel2" aria-selected="false"><i
+                            class="bi bi-chat-left-quote"></i> Comments</li>
+                    <li id="tab3" role="tab" aria-controls="panel3" aria-selected="false"><i
+                            class="bi bi-bookmark-star"></i> Bookmarks</li>
+                    <li id="tab4" role="tab" aria-controls="panel4" aria-selected="false"><i class="bi bi-heart"></i>
+                        Likes</li> -->
+                    <li id="tab5" role="tab" aria-controls="panel5" aria-selected="false"><i
+                            class="bi bi-gear-wide-connected"></i> Settings</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-8 profileUserData">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Profile Panel -->
+                <div class="row tabcontent tab1-tabcontent selected" id="panel1" role="tabpanel" aria-labelledby="tab1">
+                    <h3>PROFILE DETAILS</h3>
+                    <input type="hidden" name="form_type" value="formTabOne">
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="firstname" name="firstname" placeholder="Firstname"
+                                value="{{userModel.first_name}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="lastname" name="lastname" placeholder="Lastname"
+                                value="{{userModel.last_name}}"></div>
+                    </div>
+
+                    <div>
+                        <input class="disabled" id="email" type="text" placeholder="Email"
+                            value="{{userModel.email}}" disabled>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalWebsite" name="personalWebsite"
+                                placeholder="Personal Website" value="{{userModel.profile.website_url}}"></div>
+                        <div class="col-lg-6"> <input type="text" id="personalGithub" name="personalGithub"
+                                placeholder="Github Profile" value="{{userModel.profile.github_url}}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6"><input type="text" id="personalFacebook" name="personalFacebook"
+                                placeholder="Facebook Profile" value="{{userModel.profile.facebook_url}}"></div>
+                        <div class="col-lg-6"><input type="text" id="personalInstagram" name="personalInstagram"
+                                placeholder="Instagram Profile" value="{{userModel.profile.instagram_url}}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6"> <input type="text" id="personalTwitter" name="personalTwitter"
+                                placeholder="Twitter Profile" value="{{userModel.profile.twitter_url}}"></div>
+                        <div class="col-lg-6"> <input type="file" name="profilePictureImg" name="profilePictureImg"
+                                id="profilePictureImg"></div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <textarea name="bio" id="personalBio" cols="25" rows="5" name="personalBio"
+                            placeholder="Bio">{{userModel.profile.bio}}</textarea>
+                    </div>
+                    <div class="btn-update">
+                        <button type="submit">UPDATE</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Comments Panel -->
+            <div class="row tabcontent tab2-tabcontent box" id="panel2" role="tabpanel" aria-labelledby="tab2">
+                <h3>YOUR COMMENTS</h3>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            {% for comment in userCommentData reversed %}
+                            {% ifchanged %}
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseOne">
+                                {{comment.post}}
+                                <i class="bi bi-chevron-double-down"></i>
+                            </button>
+                            {% endifchanged %}
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <p>{{comment.comment}}</p> <span>{{comment.time|date:"M d, Y"}} {{comment.time|time:"h:i A"}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+
+            <form method="POST">
+                {% csrf_token %}
+                <!-- Settings Panel -->
+                <input type="hidden" name="form_type" value="formTabThree">
+
+                <div class="row tabcontent tab5-tabcontent box" id="panel5" role="tabpanel" aria-labelledby="tab5">
+                    <div class="row">
+                        <h3>CHANGE PASSWORD</h3>
+                        <div class="col-lg-6"><input type="text" id="newPassword" name="newPassword"
+                                placeholder="New Password"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 password"> <input type="password" id="password" name="confirmNewPassword"
+                                placeholder="Confirm New Password">
+                            <span id="eyeIcon" onclick="togglePassword()" style="margin-top:35px;"><i
+                                    class="bi bi-eye-slash toggle"></i></span>
+                        </div>
+                    </div>
+                    <div class="btn-update">
+                        <button type="submit">UPDATE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

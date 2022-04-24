@@ -422,22 +422,6 @@ function disableUser(user_id){
     });
 }
 
-function changeUserPwd(user_id){
-  var id = user_id.split('-')[1]
-  toggleConfirmation()
-  $("#userConfirmed").on('click',function(){
-    $.ajax({
-      url: "/adminView/changeUserPwd/"+id,
-      // data : { id : id},
-      success : function(json) {
-        $('.confirmation').removeClass('toggle-confirmation');
-        $( "#usersTable" ).load(window.location.href + " #usersTable" );
-        
-      }
-  })
-    });
-}
-
 function deleteUser(user_id){
   var id = user_id.split('-')[1]
   var confirmation = document.getElementById('confirmationMessage')

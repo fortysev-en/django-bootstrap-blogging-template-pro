@@ -7,7 +7,10 @@ from datetime import datetime, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import *
 from django_email_verification import send_email
-
+from django.conf import settings
+import boto3
+import os
+from django.contrib.auth import update_session_auth_hash
 
 def activate_user(request, pk):
     usr = User.objects.get(pk = pk)
@@ -23,8 +26,84 @@ def disable_user(request, pk):
     return redirect('/adminView/userManage/')
 
 
-def change_pwd(request, pk):
-    return redirect('/adminView/userManage/')
+def admin_user_profile(request, username):
+    if request.user.is_superuser:
+        context = {}
+
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
+        userModel = User.objects.get(username = username)
+        context['userModel'] = userModel
+
+        userCommentData = BlogComment.objects.filter(user = userModel.pk).all()
+
+        userPro = Profile.objects.filter(user = userModel)
+        if len(userPro) == 0:
+            Profile.objects.create(user = userModel)
+        userProfile = Profile.objects.get(user = userModel)
+
+        context['userCommentData'] = userCommentData
+        context['userTotalComments'] = userCommentData.count()
+
+        if userModel.is_superuser:
+            context['userState'] = 'SUPERUSER'
+        elif userModel.is_staff and not userModel.is_superuser:
+            context['userState'] = 'Staff'
+        else:
+            context['userState'] = 'Viwer'
+
+        if not settings.DEBUG:
+            s3 = boto3.client('s3', aws_access_key_id = settings.AWS_ACCESS_KEY_ID, aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+
+        if request.method == 'POST':
+            if request.POST.get("form_type") == 'formTabOne':
+                userModel.first_name = request.POST.get('firstname')
+                userModel.last_name = request.POST.get('lastname')
+                userProfile.website_url = request.POST.get('personalWebsite')
+                userProfile.github_url = request.POST.get('personalGithub')
+                userProfile.facebook_url = request.POST.get('personalFacebook')
+                userProfile.instagram_url = request.POST.get('personalInstagram')
+                userProfile.twitter_url = request.POST.get('personalTwitter')
+
+                img = request.FILES.get('profilePictureImg')
+                if not img is None:
+                    if not userProfile.profilePicture:
+                        userProfile.profilePicture = request.FILES['profilePictureImg']
+                    else:
+                        if not settings.DEBUG:
+                            try:
+                                s3.delete_object(Bucket = f'{settings.AWS_STORAGE_BUCKET_NAME}',Key = f'{userProfile.profilePicture}')
+                                userProfile.profilePicture = request.FILES['profilePictureImg']
+                            except:
+                                messages.warning(request, f"Unable to update profile picture!")
+                        else:
+                            try:
+                                os.remove(os.path.join(settings.MEDIA_ROOT, userProfile.profilePicture))
+                                userProfile.profilePicture = request.FILES['profilePictureImg']
+                            except:
+                                messages.warning(request, f"Unable to update profile picture!")
+                
+                userProfile.save()
+                userModel.save()
+
+                messages.success(request, f"Profile updated successfully!")
+                return render('/myProfile/')
+            
+            elif request.POST.get("form_type") == 'formTabThree':
+                newPassword = request.POST.get('newPassword')
+                confirmNew = request.POST.get('confirmNewPassword')
+
+                if not newPassword == confirmNew:
+                    messages.warning(request, 'Confirm Passwords does not match!')
+                    usr = User.objects.get(username = userModel)
+                    usr.set_password(newPassword)
+                    usr.save()
+                    messages.success(request, 'Password Changed Successfully!')
+    else:
+        return redirect('/')   
+
+    return render(request, 'admin-user-profile.html', context)
 
 
 def delete_user(request, pk):

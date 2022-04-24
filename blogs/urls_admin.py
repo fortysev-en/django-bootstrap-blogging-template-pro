@@ -8,6 +8,7 @@ urlpatterns = [
     # path('delete-message/<int:pk>', delete_message, name='delete-message'),
     path('markMessage/', mark_msg, name='mark-message'),
     path('deleteMessage/', delete_msg, name='delete-message'),
+    path('adminUserProfile/<str:username>', admin_user_profile, name='admin-user-profile'),
 
     path('reviewBlog/', review_blog, name='review-blog'),
     path('userManage/', user_manage, name='user-manage'),
@@ -18,7 +19,6 @@ urlpatterns = [
 
     path('activateUser/<int:pk>', activate_user, name='activate-user'),
     path('disableUser/<int:pk>', disable_user, name='disable-user'),
-    path('changeUserPwd/<int:pk>', change_pwd, name='change-user-pwd'),
     path('deleteUser/<int:pk>', delete_user, name='delete-user'),
     path('resendVerification/<int:pk>', resend_verification, name='resend-verification')
 

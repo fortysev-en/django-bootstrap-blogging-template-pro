@@ -26,9 +26,9 @@
           <tr class="table-row">
             <th scope="row">{{forloop.revcounter}}</th>
             {% if user.is_active %}
-            <td class="activeUser"><a href="{% url 'blogs:user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
+            <td class="activeUser"><a href="{% url 'blogs:admin-user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
             {% else %}
-            <td class="inactiveUser"><a href="{% url 'blogs:user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
+            <td class="inactiveUser"><a href="{% url 'blogs:admin-user-profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></td>
             {% endif %}
             <td>{{user.email}}</td>
             <td>{{user.date_joined|date:"M d, Y"}} {{user.date_joined|time:"h:i A"}}</td>
@@ -37,13 +37,11 @@
               <td>
               {% if user.is_active %}
               <label id="disableUser-{{user.pk}}" onclick="disableUser(this.id)"><i class="bi bi-person-x"></i></label>
-              <label id="changeUserPwd-{{user.pk}}" onclick="changeUserPwd(this.id)"><i class="bi bi-key"></i></label>
               <label id="deleteUser-{{user.pk}}" onclick="deleteUser(this.id)"><i class="bi bi-trash"></i></label>
               {% else %}
               <!-- <a href="{% url 'blogs:activate-user' user.pk %}"><i class="bi bi-person-check"></i></a> -->
               <label id="activateUser-{{user.pk}}" onclick="activateUser(this.id)"><i class="bi bi-person-check"></i></label>
               <label id="resendVerification-{{user.pk}}" onclick="resendVerification(this.id)"><i class="bi bi-envelope-paper"></i></label>
-              <label id="changeUserPwd-{{user.pk}}" onclick="changeUserPwd(this.id)"><i class="bi bi-key"></i></label>
               <label id="deleteUser-{{user.pk}}" onclick="deleteUser(this.id)"><i class="bi bi-trash"></i></label>
               {% endif %}
             </td>
@@ -51,7 +49,6 @@
             <td>
               {% if user.is_active %}
               <label class="suUser"><i class="bi bi-person-x"></i></label>
-              <label class="suUser"><i class="bi bi-key"></i></label>
               <label class="suUser"><i class="bi bi-trash"></i></label>
               {% endif %}
             </td>
