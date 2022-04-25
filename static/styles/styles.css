@@ -980,6 +980,11 @@ width: 100%;
     margin: 5em 0em 2.5em;
 }
 
+.google-location .giframe{
+    border-radius: 35px;
+    margin-bottom: 2em;
+}
+
 .get-in-touch{
     text-align: left;
 }
@@ -989,8 +994,11 @@ width: 100%;
 }
 
 .contact-bg .contact-data .get-in-data i, h6{
-    color: #4e4e4e;
-    display: inline-block;
+    color: #e0e0e0;
+}
+
+.contact-bg .contact-data .get-in-data h6{
+    font-size: 0.8em;
 }
 
 .contact-bg .contact-data .get-in-data i{
