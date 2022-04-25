@@ -96,8 +96,7 @@ if not DEBUG:
         }
     }
 else:
-  
-  DATABASES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'Stage_DB',

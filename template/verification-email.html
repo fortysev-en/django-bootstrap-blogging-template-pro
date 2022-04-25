@@ -8,79 +8,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="height: 100vh; font-family: 'Cousine', monospace;">
 
-	<style>
-		body {
-			height: 100vh;
-			font-family: 'Cousine', monospace;
-		}
-
-		.wrapper {
-			text-align: center;
-			margin: 15px;
-		}
-
-		.head-img h1 {
-			font-size: 35px;
-			font-family: 'Libre Barcode 39 Text';
-			color: #333;
-			font-weight: 100;
-		}
-
-		.welcome-img img {
-			width: 25%;
-			min-width: 280px;
-		}
-
-		.email-body {
-			line-height: 2;
-			text-align: center;
-		}
-
-		.email-body p {
-			color: #333;
-		}
-
-		.email-body a {
-			position: relative;
-			text-decoration: none;
-			color: white;
-			font-size: 1.5em;
-			padding: 15px 80px 15px 80px;
-			border: 2px solid white;
-			border-radius: 40px;
-			transition: all 0.3s ease-in-out;
-			background-color: #00BFA6;
-			max-width: 150px;
-		}
-
-		.btn-verify {
-			margin-top: 30px;
-		}
-
-		.footer {
-			margin-left: 10px;
-			margin-right: 10px;
-			margin-top: 130px;
-			text-align: center;
-		}
-
-		.footer p {
-			font-size: 0.8em;
-			color: #999999;
-		}
-	</style>
-
-	<div class="wrapper">
+	<div class="wrapper" style="text-align: center; margin: 15px;">
 		<div class="head-img">
-			<h1>FORTYSEVEN</h1>
+			<h1 style="font-size: 35px; font-family: 'Libre Barcode 39 Text'; color: #333; font-weight: 100;">FORTYSEVEN</h1>
 		</div>
 		<div class="col-one welcome-img">
-			<img src="https://i.ibb.co/W0QC1p9/Welcome.png" alt="welcome-img">
+			<img style="width: 25%; min-width: 280px;" src="https://i.ibb.co/W0QC1p9/Welcome.png" alt="welcome-img">
 		</div>
-		<div class="email-body">
-			<p>
+		<div class="email-body" style="line-height: 2; text-align: center;">
+			<p style="color: #333;">
 				Hi {{ user.first_name }},<br>
 
 				We just need to verify your email address before you can access your account.<br>
@@ -89,13 +27,13 @@
 
 				The link expires at {{ expiry|time:"h:i A" }}.<br>
 
-			<div class="btn-verify">
-				<a href="{{ link }}">VERIFY</a>
+			<div class="btn-verify" style="margin-top: 30px;">
+				<a href="{{ link }}" style="position: relative; text-decoration: none; color: white; font-size: 1.5em; padding: 15px 80px 15px 80px; border: 2px solid white; border-radius: 40px; background-color: #00BFA6; max-width: 150px;">VERIFY</a>
 			</div>
 			</p>
 		</div>
-		<div class="footer">
-			<p>Copyright © 2022 Pushkar Jadhav, All rights Reserved.</p>
+		<div class="footer" style="margin-left: 10px; margin-right: 10px; margin-top: 130px; text-align: center;">
+			<p style="font-size: 0.8em; color: #999999;">Copyright © 2022 Pushkar Jadhav, All rights Reserved.</p>
 		</div>
 	</div>
 </body>
