@@ -9,79 +9,17 @@
         rel="stylesheet">
 </head>
 
-<body>
-
-    <style>
-        body {
-            height: 100vh;
-            font-family: 'Cousine', monospace;
-        }
-
-        .wrapper {
-            text-align: center;
-            margin: 15px;
-        }
-
-        .head-img h1 {
-            font-size: 35px;
-            font-family: 'Libre Barcode 39 Text';
-            color: #333;
-            font-weight: 100;
-        }
-
-        .welcome-img img {
-            width: 25%;
-            min-width: 280px;
-        }
-
-        .email-body {
-            line-height: 2;
-            text-align: center;
-        }
-
-        .email-body p {
-            color: #333;
-        }
-
-        .email-body a {
-            position: relative;
-            text-decoration: none;
-            color: white;
-            font-size: 1.5em;
-            padding: 15px 80px 15px 80px;
-            border: 2px solid white;
-            border-radius: 40px;
-            transition: all 0.3s ease-in-out;
-            background-color: #00BFA6;
-            max-width: 150px;
-        }
-
-        .btn-verify {
-            margin-top: 30px;
-        }
-
-        .footer {
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-top: 130px;
-            text-align: center;
-        }
-
-        .footer p {
-            font-size: 0.8em;
-            color: #999999;
-        }
-    </style>
-
-    <div class="wrapper">
+<body style="height: 100vh; font-family: 'Cousine', monospace;">
+    
+    <div class="wrapper" style="text-align: center; margin: 15px;">
         <div class="head-img">
-            <h1>FORTYSEVEN</h1>
+            <h1 style="font-size: 35px; font-family: 'Libre Barcode 39 Text'; color: #333; font-weight: 100;">FORTYSEVEN</h1>
         </div>
         <div class="col-one welcome-img">
-            <img src="https://i.ibb.co/HqS2JZM/undraw-Vault-re-s4my.png" alt="undraw-Vault-re-s4my">
+            <img style="width: 25%; min-width: 280px;" src="https://i.ibb.co/HqS2JZM/undraw-Vault-re-s4my.png" alt="undraw-Vault-re-s4my">
         </div>
-        <div class="email-body">
-            <p>
+        <div class="email-body" style="line-height: 2; text-align: center;">
+            <p style="color: #333;">
                 {% load i18n %}{% autoescape off %}
                 {% blocktranslate %}You're receiving this email because you requested a password reset for your user account at {{ site_name }}.{% endblocktranslate %}
 
@@ -90,15 +28,15 @@
                 {% endautoescape %}
 
                 {% block reset_link %}
-            <div class="btn-verify">
-                <a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}">RESET YOUR PASSWORD</a>
+            <div class="btn-verify" style="margin-top: 30px;">
+                <a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}" style="position: relative; text-decoration: none; color: white; font-size: 1.5em; padding: 15px 80px 15px 80px; border: 2px solid white; border-radius: 40px; background-color: #00BFA6; max-width: 150px;">RESET YOUR PASSWORD</a>
             </div>
             {% endblock %}
             </p>
         </div>
-        <div class="footer">
-            <p>Copyright © 2022 Pushkar Jadhav, All rights Reserved.</p>
-        </div>
+        <div class="footer" style="margin-left: 10px; margin-right: 10px; margin-top: 130px; text-align: center;">
+			<p style="font-size: 0.8em; color: #999999;">Copyright © 2022 Pushkar Jadhav, All rights Reserved.</p>
+		</div>
     </div>
 </body>
 
