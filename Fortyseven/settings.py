@@ -201,6 +201,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
+print(config('AWS_S3_OBJECT_PARAMETERS'))
 
 if not DEBUG:
     # ========= AWS CONFIG ==============
@@ -214,4 +215,4 @@ if not DEBUG:
     AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
     AWS_S3_SIGNATURE_VERSION = config('AWS_S3_SIGNATURE_VERSION')
     AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
-    AWS_S3_OBJECT_PARAMETERS  = {config('AWS_S3_OBJECT_PARAMETERS')}
+    AWS_S3_OBJECT_PARAMETERS  = {'CacheControl' : str('max-age=525960')}
