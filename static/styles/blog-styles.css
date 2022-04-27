@@ -2401,6 +2401,16 @@ td {
 	color: #E6E6E6 !important;
 }
 
+.text-content a{
+	color: #F50057;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.text-content a:hover{
+	color: white;
+}
+
 .img-fluid{
 	width: 100%;
 }
@@ -2422,7 +2432,7 @@ td {
 }
 
 .auth-details span{
-	color: #00BFA6;
+	color: #FF9704;
 	font-weight: 500;
 }
 
@@ -2861,6 +2871,14 @@ footer {
 	
 	.myBlogsRow .myBlogsList{
 		text-align: center;
+	}
+
+	.footer-heading-text a{
+		max-width: 100%;
+	}
+
+	.footer-heading-text h1{
+		max-width: 100%;
 	}
 }
 
