@@ -15,7 +15,7 @@ class ViewsModel(models.Model):
 # User profile model - extended
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    bio = models.TextField()
+    bio = models.TextField(null=True, blank=True)
     profilePicture = models.ImageField(null=True, blank=True,  upload_to='img/blog-assests/profile-pictures/')
     website_url = models.CharField(max_length=255, null=True, blank=True)
     github_url = models.CharField(max_length=255, null=True, blank=True)

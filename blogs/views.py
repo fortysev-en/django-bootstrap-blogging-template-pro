@@ -131,7 +131,7 @@ def my_profile(request):
             userProfile.facebook_url = request.POST.get('personalFacebook')
             userProfile.instagram_url = request.POST.get('personalInstagram')
             userProfile.twitter_url = request.POST.get('personalTwitter')
-            userProfile.bio = request.POST.get('personalBio')
+            userProfile.bio = request.POST.get('bio')
 
             img = request.FILES.get('profilePictureImg')
             if not img is None:
