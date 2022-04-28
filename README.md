@@ -67,9 +67,6 @@ By default,
 
 
 # Screenshots:
-
-
-# Screenshots:
 ### HOMEPAGE
 ![HOMEPAGE](screenshots/homepage.jpg)
 
