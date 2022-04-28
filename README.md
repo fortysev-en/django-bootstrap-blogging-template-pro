@@ -5,7 +5,7 @@ This is a **Free**, **Production grade**, django-bootstrap blogging template alo
 **NOTE**: I'll continuously be updating this template and add new features, make sure you fork it and in case you like it, please don't forget to leave a **STAR**!
 
 The **LIVE VERSION** of this website can be seen here: 
->**Blog**: https://thefortyseven.dev
+>**Blog**: https://thefortyseven.dev  
 **Portfolio**: https://thefortyseven.dev/portfolio
 
 # Features:
@@ -21,6 +21,10 @@ Complete List of Features:
 - Email based user account verification
 - Email based user password reset option
 - Editable User Profile
+- Froala Editor for writing blogs
+- Search Blogs and Users
+- Most Viewed Blogs and Recently Updated Blogs section
+- Preview Blog before sending for approval
 - User Types: 
 	- **Superuser** 
 		- Edit/Delete any blog from ANY user .
@@ -59,6 +63,16 @@ By default,
 - A user created through signup page is a **Viewer** user type.
 - A blog needs to be sent for review so as to get an approval and make it live, until then it sits in the user profile only.
 - Editing a blog will take it down from live and it needs an approval again.
+- Search Bar will query through Blog Titles and Users FirstName, LastName. 
 
 
 # Screenshots:
+
+
+# Screenshots:
+![HOMEPAGE](screenshots/homepage.jpg)
+![LOGIN](screenshots/login.jpg)
+![SIGNUP](screenshots/signup.jpg)
+![MY BLOGS](screenshots/myblogs.jpg)
+![APPROVAL PAGE](screenshots/forapproval.jpg)
+![ACTIVATE USER](screenshots/activateuser.jpg)
