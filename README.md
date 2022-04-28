@@ -70,9 +70,20 @@ By default,
 
 
 # Screenshots:
+### HOMEPAGE
 ![HOMEPAGE](screenshots/homepage.jpg)
+
+### LOGIN
 ![LOGIN](screenshots/login.jpg)
+
+### SIGNUP
 ![SIGNUP](screenshots/signup.jpg)
-![MY BLOGS](screenshots/myblogs.jpg)
-![APPROVAL PAGE](screenshots/forapproval.jpg)
-![ACTIVATE USER](screenshots/activateuser.jpg)
+
+### MY BLOGS
+![MYBLOGS](screenshots/myblogs.jpg)
+
+### APPROVAL PAGE
+![APPROVALPAGE](screenshots/forapproval.jpg)
+
+### ACTIVATE USER
+![ACTIVATEUSER](screenshots/activateuser.jpg)
