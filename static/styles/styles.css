@@ -499,9 +499,11 @@ width: 100%;
 }
 
 .about-me-img img{
-    margin-top: 165px;
+    margin-top: 185px;
     float: left;
-    width: 90%;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 8px 8px 0px #333;
 }
 
 /* ============================== Skills ============================== */
