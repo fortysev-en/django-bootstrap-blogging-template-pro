@@ -74,6 +74,10 @@ def cookie_acceptance(request):
 def all_blogs(request):
     context = {}
 
+    if request.user.is_superuser:
+        context['pendingReviewCount'] = Blog.objects.filter(is_ready_for_review = True).count()
+        context['pendingMessageCount'] = Contact.objects.filter(is_viewed = False).count()
+
     allBlogs = Blog.objects.all()
     
     page = request.GET.get('page', 1)
