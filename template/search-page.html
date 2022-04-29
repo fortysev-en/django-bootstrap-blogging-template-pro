@@ -18,7 +18,7 @@
         <div class="col-lg-3 col-md-6 col-10 blog-list">
             <div class="blog-content">
                 <a href="{% url 'blogs:blog-detail' blog.slug %}">
-                    <img src="/media/{{blog.image}}" alt="blog-thumbnail">
+                    <img src="{{blog.image.url}}" alt="blog-thumbnail">
                     <h4>{{blog.title}}</h4>
                     <p>{{blog.gist|safe}}</p><br>
                     <span>{{blog.created_at|date:"M d, Y"}} {{blog.created_at|time:"h:i A"}} by

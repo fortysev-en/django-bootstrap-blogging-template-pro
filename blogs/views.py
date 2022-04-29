@@ -419,7 +419,7 @@ def search(request):
 
     if request.GET.get('search'):
         searchQuery = request.GET.get('search')
-        searchBlogs = Blog.objects.filter(title__icontains=searchQuery)
+        searchBlogs = Blog.objects.filter(title__icontains=searchQuery).filter(is_approved = True)
         context['searchResults'] = searchBlogs
         context['searchQuery'] = searchQuery
         try:
