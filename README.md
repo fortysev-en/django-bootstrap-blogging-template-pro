@@ -66,6 +66,75 @@ By default,
 - Search Bar will query through Blog Titles and Users FirstName, LastName. 
 
 
+# Set ENV Variables
+You'll have to declare all the secret credentials in an `.env` file in the project folder.
+
+```
+#=========== DJANGO APP CONFIG ===========
+ADMIN_URL = <ANY NAME TO ACCESS THE /ADMIN PAGE EX: secret>
+SECRET_KEY = <DJANGO SECRET KEY>
+DEBUG = True
+ALLOWED_HOSTS = 'YOURDOMAIN.COM, 127.0.0.1'
+CSRF_TRUSTED_ORIGINS = 'https://YOURDOMAIN.COM, http://127.0.0.1'
+
+#============== SET TO True IN PRODUCTION =============
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_SECONDS = 3600
+
+#=========== GOOGLE CAPTCHA CONFIG ===========
+
+GOOGLE_RECAPTCHA_SITE_KEY = <RECAPTCHA SITE KEY>
+GOOGLE_RECAPTCHA_SECRET_KEY = <RECAPTCHA SECRET KEY>
+
+
+#=========== EMAIL CONFIG ===========
+
+EMAIL_FROM_VERIFY = VERIFY <verify@YOURDOMAIN.COM>
+EMAIL_FROM_RESET = RESET <reset@YOURDOMAIN.COM>
+
+
+EMAIL_MAIL_SUBJECT = Confirm Your Email
+EMAIL_MAIL_HTML = verification-email.html
+EMAIL_MAIL_PLAIN = mail_body.txt
+EMAIL_TOKEN_LIFE = 3600
+EMAIL_PAGE_TEMPLATE = email-confirmation.html
+EMAIL_PAGE_DOMAIN = https://YOURDOMAIN.COM
+EMAIL_MULTI_USER = True
+EMAIL_HOST = email-smtp.<SES HOST LOCATION>.amazonaws.com
+EMAIL_PORT = 587
+EMAIL_HOST_USER = <AWS SES USER NAME>
+EMAIL_HOST_PASSWORD = <AWS SES USER PASSWORD>
+EMAIL_USE_TLS = True
+
+
+#=========== AWS POSTGRES RDS DATABASE CONFIG ===========
+
+DB_ENGINE = django.db.backends.postgresql
+DB_NAME = <DB NAME>
+DB_USER = <POSTGRES USERNAME>
+DB_PASSWORD = <USER PASSWORD>
+DB_HOST = <POSTGRES HOST NAME>
+DB_PORT = 5432
+
+#=========== AWS S3 CONFIG ===========
+
+AWS_ACCESS_KEY_ID = <AWS ACCESS ID>
+AWS_SECRET_ACCESS_KEY = <AWS SECRET KEY>
+AWS_STORAGE_BUCKET_NAME = <AWS S3 BUCKET NAME>
+AWS_S3_FILE_OVERWRITE = False
+DEFAULT_FILE_STORAGE = storages.backends.s3boto3.S3Boto3Storage
+STATICFILES_STORAGE = storages.backends.s3boto3.S3StaticStorage
+AWS_S3_ENDPOINT_URL = https://s3-accelerate.amazonaws.com
+AWS_S3_SIGNATURE_VERSION = s3v4
+AWS_S3_REGION_NAME = <AWS S3 REGION>
+```
+
+
+
 # Screenshots:
 ### HOMEPAGE
 ![HOMEPAGE](screenshots/homepage.jpg)
