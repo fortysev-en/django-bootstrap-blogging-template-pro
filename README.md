@@ -2,12 +2,6 @@
 
 This is a **Free**, **Production grade**, django-bootstrap blogging template along with **Personal Portfolio**. It consist of various unique features mentioned below.
 
->**NOTE: I'll continuously be updating this template and add new features, make sure you fork it and in case you like it, please don't forget to leave a STAR**!
-
-The **LIVE VERSION** of this website can be seen here: 
->**Blog**: https://thefortyseven.dev  
-**Portfolio**: https://thefortyseven.dev/portfolio
-
 # Features:
 Complete List of Features:
 - Responsive and Minimal Design 
